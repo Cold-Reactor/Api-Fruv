@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream
 el
+=======
+como
+>>>>>>> Stashed changes
