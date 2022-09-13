@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace api_SIF.Models
 {
     public class Ticket
     {
+        [Key]
         public int id { get; set; }
         public DateTime? fecharegistro { get; set; }
         public TimeSpan? horaregistro { get; set; }

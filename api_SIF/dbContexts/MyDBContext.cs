@@ -48,6 +48,7 @@ namespace api_SIF.dbContexts
 
             }
                  public DbSet<api_SIF.Models.EstadoTicket> EstadoTicket { get; set; }
+                 public DbSet<api_SIF.Models.InventarioCuernavaca> InventarioCuernavaca { get; set; }
     }
 
     
