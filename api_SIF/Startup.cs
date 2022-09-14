@@ -28,16 +28,11 @@ namespace api_SIF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<MyDBContext>(
-    dbContextOptions => dbContextOptions
-        .UseMySql(mySqlConnectionStr, null)
-        // The following three options help with debugging, but should
-        // be changed or removed for production.
-        
-        .EnableSensitiveDataLogging()
-        .EnableDetailedErrors()
-);
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<MyDBContext>(options =>
+            {
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            });
 
             services.AddControllers();
         }
