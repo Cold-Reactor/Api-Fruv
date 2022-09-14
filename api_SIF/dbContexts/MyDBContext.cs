@@ -11,7 +11,8 @@ namespace api_SIF.dbContexts
     {
 
         public DbSet<Ticket> tickets { get; set; }
-
+        public DbSet<api_SIF.Models.EstadoTicket> EstadoTicket { get; set; }
+        public DbSet<api_SIF.Models.InventarioCuernavaca> InventarioCuernavaca { get; set; }
         public MyDBContext(DbContextOptions<MyDBContext> options) : base(options)
         { }
                  protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -47,8 +48,7 @@ namespace api_SIF.dbContexts
              */
 
             }
-                 public DbSet<api_SIF.Models.EstadoTicket> EstadoTicket { get; set; }
-                 public DbSet<api_SIF.Models.InventarioCuernavaca> InventarioCuernavaca { get; set; }
+               
     }
 
     
