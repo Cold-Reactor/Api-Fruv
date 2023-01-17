@@ -28,16 +28,26 @@ namespace api_SIF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
+            string BodegaConnectionStr = Configuration.GetConnectionString("BodegaConnection");
             services.AddDbContext<MyDBContext>(
-    dbContextOptions => dbContextOptions
-        .UseMySql(mySqlConnectionStr, null)
-        // The following three options help with debugging, but should
-        // be changed or removed for production.
-        
-        .EnableSensitiveDataLogging()
-        .EnableDetailedErrors()
-);
+            dbContextOptions => dbContextOptions
+            .UseMySql(BodegaConnectionStr, ServerVersion.AutoDetect(BodegaConnectionStr))
+            .EnableSensitiveDataLogging()
+            .EnableDetailedErrors());
+
+            string RHConnectionStr = Configuration.GetConnectionString("BodegaConnection");
+
+            services.AddDbContext<RHDBContext>(
+            dbContextOptions => dbContextOptions
+            .UseMySql(RHConnectionStr, ServerVersion.AutoDetect(RHConnectionStr))
+            .EnableSensitiveDataLogging()
+            .EnableDetailedErrors());
+
+            services.AddDbContext<BodegaDBContext>(
+           dbContextOptions => dbContextOptions
+           .UseMySql(BodegaConnectionStr, ServerVersion.AutoDetect(BodegaConnectionStr))
+           .EnableSensitiveDataLogging()
+           .EnableDetailedErrors());
 
             services.AddControllers();
         }
