@@ -12,27 +12,27 @@ namespace api_SIF.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmpleadosController : ControllerBase
+    public class EmpleadoesController : ControllerBase
     {
         private readonly RHDBContext _context;
 
-        public EmpleadosController(RHDBContext context)
+        public EmpleadoesController(RHDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/empleados
+        // GET: api/Empleadoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<empleado>>> Getempleados()
+        public async Task<ActionResult<IEnumerable<Empleado>>> GetEmpleados()
         {
-            return await _context.empleados.ToListAsync();
+            return await _context.Empleados.ToListAsync();
         }
 
-        // GET: api/empleados/5
+        // GET: api/Empleadoes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<empleado>> Getempleado(int id)
+        public async Task<ActionResult<Empleado>> GetEmpleado(int id)
         {
-            var empleado = await _context.empleados.FindAsync(id);
+            var empleado = await _context.Empleados.FindAsync(id);
 
             if (empleado == null)
             {
@@ -42,10 +42,10 @@ namespace api_SIF.Controllers
             return empleado;
         }
 
-        // PUT: api/empleados/5
+        // PUT: api/Empleadoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putempleado(int id, empleado empleado)
+        public async Task<IActionResult> PutEmpleado(int id, Empleado empleado)
         {
             if (id != empleado.Id)
             {
@@ -60,7 +60,7 @@ namespace api_SIF.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!empleadoExists(id))
+                if (!EmpleadoExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace api_SIF.Controllers
             return NoContent();
         }
 
-        // POST: api/empleados
+        // POST: api/Empleadoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<empleado>> Postempleado(empleado empleado)
+        public async Task<ActionResult<Empleado>> PostEmpleado(Empleado empleado)
         {
-            _context.empleados.Add(empleado);
+            _context.Empleados.Add(empleado);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Getempleado", new { id = empleado.Id }, empleado);
+            return CreatedAtAction("GetEmpleado", new { id = empleado.Id }, empleado);
         }
 
-        // DELETE: api/empleados/5
+        // DELETE: api/Empleadoes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Deleteempleado(int id)
+        public async Task<IActionResult> DeleteEmpleado(int id)
         {
-            var empleado = await _context.empleados.FindAsync(id);
+            var empleado = await _context.Empleados.FindAsync(id);
             if (empleado == null)
             {
                 return NotFound();
             }
 
-            _context.empleados.Remove(empleado);
+            _context.Empleados.Remove(empleado);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool empleadoExists(int id)
+        private bool EmpleadoExists(int id)
         {
-            return _context.empleados.Any(e => e.Id == id);
+            return _context.Empleados.Any(e => e.Id == id);
         }
     }
 }

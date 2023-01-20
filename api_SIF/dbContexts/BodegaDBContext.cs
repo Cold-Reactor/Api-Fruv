@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using api_SIF.Models.Bodega;
+using api_SIF.Models.Empleados;
 
 namespace api_SIF.dbContexts
 {
@@ -19,14 +20,7 @@ namespace api_SIF.dbContexts
 
         public virtual DbSet<ordencompradetalle> ordencompradetalles { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=localhost;port=3306;database=bodega;user=root;password=enramfle", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.21-mariadb"));
-            }
-        }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,11 +40,21 @@ namespace api_SIF.dbContexts
                 entity.Property(e => e.vehiculo).HasDefaultValueSql("'0'");
             });
 
+            modelBuilder.Entity<ordencompra>(entity =>
+            {
+                entity.Property(i => i.usuario).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         public DbSet<api_SIF.Models.Bodega.ordencompra> ordencompra { get; set; }
+
+        public DbSet<api_SIF.Models.Empleados.Checadas2> Checadas2 { get; set; }
+
+        public DbSet<api_SIF.Models.Empleados.Empleado> Empleado { get; set; }
     }
 }

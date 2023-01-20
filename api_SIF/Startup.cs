@@ -35,7 +35,7 @@ namespace api_SIF
             .EnableSensitiveDataLogging()
             .EnableDetailedErrors());
 
-            string RHConnectionStr = Configuration.GetConnectionString("BodegaConnection");
+            string RHConnectionStr = Configuration.GetConnectionString("RHConnection");
 
             services.AddDbContext<RHDBContext>(
             dbContextOptions => dbContextOptions
@@ -49,7 +49,10 @@ namespace api_SIF
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+            }); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

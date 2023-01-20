@@ -45,8 +45,22 @@ namespace api_SIF.Controllers
         // PUT: api/ordencompras/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putordencompra(int id, ordencompra ordencompra)
+        public async Task<IActionResult> Putordencompra(int id, ordencompra ordencompra2)
         {
+
+            var entity = _context.ordencompra.FirstOrDefault(x => x.id == id);
+
+            // Validate entity is not null
+            if (entity != null)
+            {
+                // Answer for question #2
+
+                // Make changes on entity
+                entity = ordencompra2;
+
+                await _context.SaveChangesAsync();
+            }
+            /*
             if (id != ordencompra.id)
             {
                 return BadRequest();
@@ -70,7 +84,10 @@ namespace api_SIF.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(ordencompra);
+            */
+
+            return Ok(entity);
         }
 
         // POST: api/ordencompras
