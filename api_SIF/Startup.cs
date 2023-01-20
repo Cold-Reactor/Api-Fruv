@@ -12,6 +12,7 @@ using Pomelo.EntityFrameworkCore.MySql.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace api_SIF
@@ -49,10 +50,8 @@ namespace api_SIF
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
 
-            services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
-            }); ;
+            services.AddControllers(options => options.UseDateOnlyTimeOnlyStringConverters())
+    .AddJsonOptions(options => options.UseDateOnlyTimeOnlyStringConverters()); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
