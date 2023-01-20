@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace api_SIF.Models.Empleados
 {
     public partial class Empleado
     {
+
+        [Key]
         public int Id { get; set; }
         public int NoEmpleado { get; set; }
         public string Nombres { get; set; }
