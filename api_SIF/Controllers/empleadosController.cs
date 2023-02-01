@@ -5,34 +5,34 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using api_SIF.Models.Empleados;
+using api_SIF.Models.EmpleadosN;
 using api_SIF.dbContexts;
 
 namespace api_SIF.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("RH/[controller]")]
     [ApiController]
-    public class EmpleadoesController : ControllerBase
+    public class empleadosController : ControllerBase
     {
         private readonly RHDBContext _context;
 
-        public EmpleadoesController(RHDBContext context)
+        public empleadosController(RHDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/Empleadoes
+        // GET: api/empleados
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Empleado>>> GetEmpleados()
+        public async Task<ActionResult<IEnumerable<empleado>>> Getempleados()
         {
-            return await _context.Empleados.ToListAsync();
+            return await _context.empleados.ToListAsync();
         }
 
-        // GET: api/Empleadoes/5
+        // GET: api/empleados/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Empleado>> GetEmpleado(int id)
+        public async Task<ActionResult<empleado>> Getempleado(int id)
         {
-            var empleado = await _context.Empleados.FindAsync(id);
+            var empleado = await _context.empleados.FindAsync(id);
 
             if (empleado == null)
             {
@@ -42,12 +42,12 @@ namespace api_SIF.Controllers
             return empleado;
         }
 
-        // PUT: api/Empleadoes/5
+        // PUT: api/empleados/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmpleado(int id, Empleado empleado)
+        public async Task<IActionResult> Putempleado(int id, empleado empleado)
         {
-            if (id != empleado.Id)
+            if (id != empleado.id_empleado)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace api_SIF.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmpleadoExists(id))
+                if (!empleadoExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace api_SIF.Controllers
             return NoContent();
         }
 
-        // POST: api/Empleadoes
+        // POST: api/empleados
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Empleado>> PostEmpleado(Empleado empleado)
+        public async Task<ActionResult<empleado>> Postempleado(empleado empleado)
         {
-            _context.Empleados.Add(empleado);
+            _context.empleados.Add(empleado);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmpleado", new { id = empleado.Id }, empleado);
+            return CreatedAtAction("Getempleado", new { id = empleado.id_empleado }, empleado);
         }
 
-        // DELETE: api/Empleadoes/5
+        // DELETE: api/empleados/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmpleado(int id)
+        public async Task<IActionResult> Deleteempleado(int id)
         {
-            var empleado = await _context.Empleados.FindAsync(id);
+            var empleado = await _context.empleados.FindAsync(id);
             if (empleado == null)
             {
                 return NotFound();
             }
 
-            _context.Empleados.Remove(empleado);
+            _context.empleados.Remove(empleado);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool EmpleadoExists(int id)
+        private bool empleadoExists(int id)
         {
-            return _context.Empleados.Any(e => e.Id == id);
+            return _context.empleados.Any(e => e.id_empleado == id);
         }
     }
 }

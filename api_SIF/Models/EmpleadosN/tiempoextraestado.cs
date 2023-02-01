@@ -4,16 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace api_SIF.Models.Empleados
+namespace api_SIF.Models.EmpleadosN
 {
-    [Table("estado")]
-    public partial class estado
+    [Table("tiempoextraestado")]
+    public partial class tiempoextraestado
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_estado { get; set; }
-        [Required]
-        [Column(TypeName = "tinytext")]
+        [StringLength(45)]
         public string nombre { get; set; }
+        [StringLength(10)]
+        public string color { get; set; }
     }
 }

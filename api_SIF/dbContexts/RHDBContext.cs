@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using api_SIF.Models.Empleados;
+using api_SIF.Models.EmpleadosN;
 
 namespace api_SIF.dbContexts
 {
@@ -17,66 +17,70 @@ namespace api_SIF.dbContexts
         {
         }
 
-        public virtual DbSet<AltaBaja> AltaBajas { get; set; }
-        public virtual DbSet<Amonestacion> Amonestacions { get; set; }
-        public virtual DbSet<Area> Areas { get; set; }
-        public virtual DbSet<Checada> Checadas { get; set; }
-        public virtual DbSet<Checadas2> Checadas2s { get; set; }
-        public virtual DbSet<Checadore> Checadores { get; set; }
-        public virtual DbSet<Ciudad> Ciudads { get; set; }
-        public virtual DbSet<Departamento> Departamentos { get; set; }
-        public virtual DbSet<Dia> Dias { get; set; }
-        public virtual DbSet<Diasferiado> Diasferiados { get; set; }
-        public virtual DbSet<Empleado> Empleados { get; set; }
-        public virtual DbSet<Empleadoarchivo> Empleadoarchivos { get; set; }
-        public virtual DbSet<Empresa> Empresas { get; set; }
-        public virtual DbSet<Encuestaempleado> Encuestaempleados { get; set; }
-        public virtual DbSet<Encuestum> Encuesta { get; set; }
-        public virtual DbSet<Enfermerium> Enfermeria { get; set; }
-        public virtual DbSet<Estado> Estados { get; set; }
-        public virtual DbSet<Estadopermiso> Estadopermisos { get; set; }
-        public virtual DbSet<Estadotiempoextra> Estadotiempoextras { get; set; }
-        public virtual DbSet<Falta> Faltas { get; set; }
-        public virtual DbSet<Faltaxrh> Faltaxrhs { get; set; }
-        public virtual DbSet<Incapacidad> Incapacidads { get; set; }
-        public virtual DbSet<IncapacidadDia> IncapacidadDias { get; set; }
-        public virtual DbSet<IncapacidadMotivo> IncapacidadMotivos { get; set; }
-        public virtual DbSet<Modalidadpermiso> Modalidadpermisos { get; set; }
-        public virtual DbSet<Nomina> Nominas { get; set; }
-        public virtual DbSet<Opcione> Opciones { get; set; }
-        public virtual DbSet<Opcionespreguntum> Opcionespregunta { get; set; }
-        public virtual DbSet<Parentesco> Parentescos { get; set; }
-        public virtual DbSet<Pariente> Parientes { get; set; }
-        public virtual DbSet<Permiso> Permisos { get; set; }
-        public virtual DbSet<Personaltiempoextra> Personaltiempoextras { get; set; }
-        public virtual DbSet<Preguntum> Pregunta { get; set; }
-        public virtual DbSet<Puesto> Puestos { get; set; }
-        public virtual DbSet<Renovacion> Renovacions { get; set; }
-        public virtual DbSet<Respuestum> Respuesta { get; set; }
-        public virtual DbSet<RolEmpleado> RolEmpleados { get; set; }
-        public virtual DbSet<SecurityUggroup> SecurityUggroups { get; set; }
-        public virtual DbSet<SecurityUgmember> SecurityUgmembers { get; set; }
-        public virtual DbSet<SecurityUgright> SecurityUgrights { get; set; }
-        public virtual DbSet<Solicitudtiempoextra> Solicitudtiempoextras { get; set; }
-        public virtual DbSet<StatusEmpleado> StatusEmpleados { get; set; }
-        public virtual DbSet<Suspension> Suspensions { get; set; }
-        public virtual DbSet<SuspensionDia> SuspensionDias { get; set; }
-        public virtual DbSet<Tabuladorvacacione> Tabuladorvacaciones { get; set; }
-        public virtual DbSet<TipoBaja> TipoBajas { get; set; }
-        public virtual DbSet<Tipoarchivo> Tipoarchivos { get; set; }
-        public virtual DbSet<Tipoempleado> Tipoempleados { get; set; }
-        public virtual DbSet<Tipopreguntum> Tipopregunta { get; set; }
-        public virtual DbSet<Turno> Turnos { get; set; }
-        public virtual DbSet<Turnodetalle> Turnodetalles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<VArea> VAreas { get; set; }
-        public virtual DbSet<VDepartamento> VDepartamentos { get; set; }
-        public virtual DbSet<VEmpleado> VEmpleados { get; set; }
-        public virtual DbSet<VEstadocivil> VEstadocivils { get; set; }
-        public virtual DbSet<VSexo> VSexos { get; set; }
-        public virtual DbSet<Vacacion> Vacacions { get; set; }
-        public virtual DbSet<VacacionDia> VacacionDias { get; set; }
-        public virtual DbSet<Vacacione> Vacaciones { get; set; }
+        public virtual DbSet<accidente> accidentes { get; set; }
+        public virtual DbSet<amonestacion> amonestacions { get; set; }
+        public virtual DbSet<analisistipo> analisistipos { get; set; }
+        public virtual DbSet<area> areas { get; set; }
+        public virtual DbSet<checada> checadas { get; set; }
+        public virtual DbSet<checador> checadors { get; set; }
+        public virtual DbSet<cincosbitacora> cincosbitacoras { get; set; }
+        public virtual DbSet<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }
+        public virtual DbSet<cincostipo> cincostipos { get; set; }
+        public virtual DbSet<ciudad> ciudads { get; set; }
+        public virtual DbSet<consultum> consulta { get; set; }
+        public virtual DbSet<cotizacion> cotizacions { get; set; }
+        public virtual DbSet<crud> cruds { get; set; }
+        public virtual DbSet<departamento> departamentos { get; set; }
+        public virtual DbSet<diagnostico> diagnosticos { get; set; }
+        public virtual DbSet<diasferiado> diasferiados { get; set; }
+        public virtual DbSet<empleado> empleados { get; set; }
+        public virtual DbSet<empleado_tiempoextra> empleado_tiempoextras { get; set; }
+        public virtual DbSet<empleadoarchivo> empleadoarchivos { get; set; }
+        public virtual DbSet<empleadohistorial> empleadohistorials { get; set; }
+        public virtual DbSet<empleadotipo> empleadotipos { get; set; }
+        public virtual DbSet<empleadotipoarchivo> empleadotipoarchivos { get; set; }
+        public virtual DbSet<empresa> empresas { get; set; }
+        public virtual DbSet<estado> estados { get; set; }
+        public virtual DbSet<examenmedico> examenmedicos { get; set; }
+        public virtual DbSet<falta> faltas { get; set; }
+        public virtual DbSet<formato> formatos { get; set; }
+        public virtual DbSet<hipertension> hipertensions { get; set; }
+        public virtual DbSet<historialanalisismedico> historialanalisismedicos { get; set; }
+        public virtual DbSet<hora> horas { get; set; }
+        public virtual DbSet<incapacidad> incapacidads { get; set; }
+        public virtual DbSet<inmobiliario> inmobiliarios { get; set; }
+        public virtual DbSet<iva> ivas { get; set; }
+        public virtual DbSet<medicamento> medicamentos { get; set; }
+        public virtual DbSet<medicamentotipo> medicamentotipos { get; set; }
+        public virtual DbSet<nomina> nominas { get; set; }
+        public virtual DbSet<ordencompra> ordencompras { get; set; }
+        public virtual DbSet<pariente> parientes { get; set; }
+        public virtual DbSet<partidum> partida { get; set; }
+        public virtual DbSet<permiso> permisos { get; set; }
+        public virtual DbSet<permisomodalidad> permisomodalidads { get; set; }
+        public virtual DbSet<presupuesto> presupuestos { get; set; }
+        public virtual DbSet<proveedor> proveedors { get; set; }
+        public virtual DbSet<puesto> puestos { get; set; }
+        public virtual DbSet<refaccion> refaccions { get; set; }
+        public virtual DbSet<renovacion> renovacions { get; set; }
+        public virtual DbSet<solicitudcompra> solicitudcompras { get; set; }
+        public virtual DbSet<submodulo> submodulos { get; set; }
+        public virtual DbSet<sucursal> sucursals { get; set; }
+        public virtual DbSet<sucursale> sucursales { get; set; }
+        public virtual DbSet<suspension> suspensions { get; set; }
+        public virtual DbSet<tiempoextra> tiempoextras { get; set; }
+        public virtual DbSet<tiempoextraestado> tiempoextraestados { get; set; }
+        public virtual DbSet<tipobaja> tipobajas { get; set; }
+        public virtual DbSet<trabajo_refaccion> trabajo_refaccions { get; set; }
+        public virtual DbSet<trabajoexterno> trabajoexternos { get; set; }
+        public virtual DbSet<trabajointerno> trabajointernos { get; set; }
+        public virtual DbSet<trabajotipo> trabajotipos { get; set; }
+        public virtual DbSet<turno> turnos { get; set; }
+        public virtual DbSet<usuario> usuarios { get; set; }
+        public virtual DbSet<usuario_empleadorol> usuario_empleadorols { get; set; }
+        public virtual DbSet<usuariorol> usuariorols { get; set; }
+        public virtual DbSet<vacacione> vacaciones { get; set; }
+        public virtual DbSet<vacacionesperiodo> vacacionesperiodos { get; set; }
 
        
 
@@ -85,2021 +89,882 @@ namespace api_SIF.dbContexts
             modelBuilder.UseCollation("utf8_spanish2_ci")
                 .HasCharSet("utf8");
 
-            modelBuilder.Entity<AltaBaja>(entity =>
+            modelBuilder.Entity<accidente>(entity =>
             {
-                entity.ToTable("alta_baja");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Alta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("alta")
-                    .HasDefaultValueSql("'1646735655'");
-
-                entity.Property(e => e.Baja)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("baja")
-                    .HasDefaultValueSql("'1646735399'");
-
-                entity.Property(e => e.NoEmpleado).HasColumnType("int(11)");
-
-                entity.Property(e => e.Razon)
-                    .HasColumnType("text")
-                    .HasColumnName("razon");
-            });
-
-            modelBuilder.Entity<Amonestacion>(entity =>
-            {
-                entity.ToTable("amonestacion");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Causa)
-                    .HasColumnType("text")
-                    .HasColumnName("causa");
-
-                entity.Property(e => e.Comentario)
-                    .HasColumnType("text")
-                    .HasColumnName("comentario");
-
-                entity.Property(e => e.Departamento)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("departamento")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Empleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("empleado");
-
-                entity.Property(e => e.Estado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("estado")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.Firmaamonestado)
-                    .HasColumnType("text")
-                    .HasColumnName("firmaamonestado");
-
-                entity.Property(e => e.Hora)
-                    .HasColumnType("time")
-                    .HasColumnName("hora");
-
-                entity.Property(e => e.Registro)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("registro");
-
-                entity.Property(e => e.Supervisor)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("supervisor");
-            });
-
-            modelBuilder.Entity<Area>(entity =>
-            {
-                entity.ToTable("area");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Area1)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("area");
-            });
-
-            modelBuilder.Entity<Checada>(entity =>
-            {
-                entity.ToTable("checadas");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Ent)
-                    .HasColumnType("text")
-                    .HasColumnName("ent")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Fecha)
-                    .HasColumnType("text")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Nombre)
-                    .HasColumnType("text")
-                    .HasColumnName("nombre")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Notrab)
-                    .HasColumnType("bigint(20)")
-                    .HasColumnName("notrab");
-
-                entity.Property(e => e.Sal)
-                    .HasColumnType("text")
-                    .HasColumnName("sal")
-                    .UseCollation("utf8_general_ci");
-            });
-
-            modelBuilder.Entity<Checadas2>(entity =>
-            {
-                entity.ToTable("checadas2");
-
-                entity.HasIndex(e => e.Numeroempleado, "empleado_idx");
-
-                entity.HasIndex(e => e.RazonManual, "razonmanual");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.Fechasubida)
-                    .HasColumnType("datetime")
-                    .HasColumnName("fechasubida")
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                entity.Property(e => e.Hora)
-                    .HasColumnType("time")
-                    .HasColumnName("hora");
-
-                entity.Property(e => e.Noempleado)
-                    .HasMaxLength(45)
-                    .HasColumnName("noempleado")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Numeroempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("numeroempleado");
-
-                entity.Property(e => e.RazonManual)
-                    .HasMaxLength(150)
-                    .HasColumnName("razonManual")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Retardo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("retardo")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Sucursal)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("sucursal");
-            });
-
-            modelBuilder.Entity<Checadore>(entity =>
-            {
-                entity.ToTable("checadores");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(45)
-                    .HasColumnName("nombre");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(45)
-                    .HasColumnName("serialNumber");
-
-                entity.Property(e => e.Sucursal)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("sucursal");
-            });
-
-            modelBuilder.Entity<Ciudad>(entity =>
-            {
-                entity.ToTable("ciudad");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Ciudad1)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Ciudad");
-            });
-
-            modelBuilder.Entity<Departamento>(entity =>
-            {
-                entity.ToTable("departamentos");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Departamentos)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("departamentos");
-            });
-
-            modelBuilder.Entity<Dia>(entity =>
-            {
-                entity.ToTable("dias");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Dia1)
-                    .HasMaxLength(45)
-                    .HasColumnName("dia");
-
-                entity.Property(e => e.Inicial)
-                    .HasMaxLength(45)
-                    .HasColumnName("inicial");
-            });
-
-            modelBuilder.Entity<Diasferiado>(entity =>
-            {
-                entity.ToTable("diasferiados");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.FechaOriginal).HasColumnName("fechaOriginal");
-
-                entity.Property(e => e.Fechafinal).HasColumnName("fechafinal");
-
-                entity.Property(e => e.Motivo)
-                    .HasColumnType("text")
-                    .HasColumnName("motivo");
-
-                entity.Property(e => e.Texto)
-                    .HasMaxLength(45)
-                    .HasColumnName("texto")
-                    .HasDefaultValueSql("'Festivo'");
-
-                entity.Property(e => e.Turno)
-                    .HasColumnName("turno")
-                    .HasDefaultValueSql("'0'");
-            });
-
-            modelBuilder.Entity<Empleado>(entity =>
-            {
-                entity.HasKey(e => new { e.Id })
-                    .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0});
-
-                entity.ToTable("empleados");
-
-                entity.HasCharSet("latin1")
-                    .UseCollation("latin1_swedish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedOnAdd();
-
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(50)")
-                    .HasColumnName("noEmpleado");
-
-                entity.Property(e => e.AltaImss).HasColumnName("Alta IMSS");
-
-                entity.Property(e => e.ApellidoMaterno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Apellido materno");
-
-                entity.Property(e => e.ApellidoPaterno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Apellido_paterno");
-
-                entity.Property(e => e.Areaid)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("areaid")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.CalleYNumero)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Calle_y_Numero");
-
-                entity.Property(e => e.Carrera).HasColumnType("tinytext");
-
-                entity.Property(e => e.Ciudad).HasColumnType("tinytext");
-
-                entity.Property(e => e.ClaveElectoral)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Clave_electoral");
-
-                entity.Property(e => e.Colonia).HasColumnType("tinytext");
-
-                entity.Property(e => e.Cp)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("CP");
-
-                entity.Property(e => e.Curp)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("CURP");
-
-                entity.Property(e => e.Departamento)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.EdoCivil)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Edo_civil");
-
-                entity.Property(e => e.Email)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("email");
-
-                entity.Property(e => e.Empresa)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.Estado).HasColumnType("tinytext");
-
-                entity.Property(e => e.FechaBaja).HasColumnName("fecha_baja");
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                entity.Property(e => e.FechaDeIngreso).HasColumnName("Fecha_de_Ingreso");
-
-                entity.Property(e => e.FechaNacimiento).HasColumnName("Fecha_Nacimiento");
-
-                entity.Property(e => e.FechaUltimaNomina).HasColumnName("fechaUltimaNomina");
-
-                entity.Property(e => e.Firma)
-                    .HasColumnType("text")
-                    .HasColumnName("firma");
-
-                entity.Property(e => e.GradoDeEstudios)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("grado_de_estudios");
-
-                entity.Property(e => e.Imagen)
-                    .HasMaxLength(300)
-                    .HasColumnName("imagen");
-
-                entity.Property(e => e.Instituto).HasColumnType("tinytext");
-
-                entity.Property(e => e.JefeInmediato)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Jefe Inmediato");
-
-                entity.Property(e => e.MotivoBaja)
-                    .HasMaxLength(45)
-                    .HasColumnName("motivoBaja");
-
-                entity.Property(e => e.NoCedula).HasColumnType("tinytext");
-
-                entity.Property(e => e.NoHuella)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noHuella");
-
-                entity.Property(e => e.NoImss)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("No IMSS");
-
-                entity.Property(e => e.NombreContacto)
-                    .HasMaxLength(100)
-                    .HasColumnName("nombreContacto");
-
-                entity.Property(e => e.Nombres)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.Nomina).HasColumnType("tinytext");
-
-                entity.Property(e => e.Parentesco)
-                    .HasMaxLength(45)
-                    .HasColumnName("parentesco");
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(45)
-                    .HasColumnName("password");
-
-                entity.Property(e => e.Presencial)
-                    .HasColumnName("presencial")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Puesto)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.RegistraPermiso).HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Renovacion)
-                    .HasColumnName("renovacion")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Rfc)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("RFC");
-
-                entity.Property(e => e.Sangre)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("sangre");
-
-                entity.Property(e => e.SdSalario).HasColumnName("SD_salario");
-
-                entity.Property(e => e.Sexo).HasColumnType("tinytext");
-
-                entity.Property(e => e.Status)
-                    .HasColumnType("int(11)")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Supervisor)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("supervisor")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Telefono).HasColumnType("tinytext");
-
-                entity.Property(e => e.TelefonoEmergencias)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Telefono_emergencias");
-
-                entity.Property(e => e.TipoBaja)
-                    .HasColumnType("int(1)")
-                    .HasColumnName("tipoBaja")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.TipoDeEmpleado)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Tipo _de_empleado");
-
-                entity.Property(e => e.Tipoempleado)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("tipoempleado");
-
-                entity.Property(e => e.Titulo).HasColumnType("int(11)");
-
-                entity.Property(e => e.Turno)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.TurnoId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("turnoId")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.User)
-                    .HasColumnName("user")
-                    .HasDefaultValueSql("'1'");
-            });
-
-            modelBuilder.Entity<Empleadoarchivo>(entity =>
-            {
-                entity.ToTable("empleadoarchivo");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Noempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleado");
-
-                entity.Property(e => e.Ruta)
-                    .HasColumnType("text")
-                    .HasColumnName("ruta");
-
-                entity.Property(e => e.Tipo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("tipo");
-            });
-
-            modelBuilder.Entity<Empresa>(entity =>
-            {
-                entity.ToTable("empresas");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Empresas)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("empresas");
-            });
-
-            modelBuilder.Entity<Encuestaempleado>(entity =>
-            {
-                entity.ToTable("encuestaempleado");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Area)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("area");
-
-                entity.Property(e => e.Encuesta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("encuesta");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.HoraFinal)
-                    .HasColumnType("time")
-                    .HasColumnName("horaFinal");
-
-                entity.Property(e => e.HoraInicio)
-                    .HasColumnType("time")
-                    .HasColumnName("horaInicio");
-
-                entity.Property(e => e.Noempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleado");
-            });
-
-            modelBuilder.Entity<Encuestum>(entity =>
-            {
-                entity.ToTable("encuesta");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Creador)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("creador");
-
-                entity.Property(e => e.Descripcion)
-                    .HasColumnType("text")
-                    .HasColumnName("descripcion");
-
-                entity.Property(e => e.Estado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("estado")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Titulo)
-                    .HasMaxLength(45)
-                    .HasColumnName("titulo");
-            });
-
-            modelBuilder.Entity<Enfermerium>(entity =>
-            {
-                entity.ToTable("enfermeria");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "ID")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.Apellidom)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("apellidom");
-
-                entity.Property(e => e.Apellidop)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("apellidop");
-
-                entity.Property(e => e.Atencion)
-                    .HasColumnType("time")
-                    .HasColumnName("atencion");
-
-                entity.Property(e => e.Departamento)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("departamento");
-
-                entity.Property(e => e.Diagnostico)
-                    .IsRequired()
-                    .HasColumnType("mediumtext");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.Incidencia)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("incidencia");
-
-                entity.Property(e => e.JefeInmediato)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("jefe inmediato");
-
-                entity.Property(e => e.NoEmpleado)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("noEmpleado");
-
-                entity.Property(e => e.Nombre)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.Tratamiento)
-                    .IsRequired()
-                    .HasColumnType("mediumtext");
-
-                entity.Property(e => e.Turno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("turno");
-            });
-
-            modelBuilder.Entity<Estado>(entity =>
-            {
-                entity.ToTable("estado");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Estado1)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Estado");
-            });
-
-            modelBuilder.Entity<Estadopermiso>(entity =>
-            {
-                entity.ToTable("estadopermiso");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(45)
-                    .HasColumnName("nombre");
-            });
-
-            modelBuilder.Entity<Estadotiempoextra>(entity =>
-            {
-                entity.ToTable("estadotiempoextra");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Color)
-                    .HasMaxLength(10)
-                    .HasColumnName("color");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(45)
-                    .HasColumnName("nombre");
-            });
-
-            modelBuilder.Entity<Falta>(entity =>
-            {
-                entity.ToTable("faltas");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Comentario)
-                    .IsRequired()
-                    .HasColumnType("text")
-                    .HasColumnName("comentario");
-
-                entity.Property(e => e.Falta1).HasColumnName("falta");
-
-                entity.Property(e => e.Justificada)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("justificada");
-
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("No.Empleado");
-
-                entity.Property(e => e.Permiso).HasColumnType("int(11)");
-
-                entity.Property(e => e.Suspencion).HasColumnType("int(11)");
-            });
-
-            modelBuilder.Entity<Faltaxrh>(entity =>
-            {
-                entity.ToTable("faltaxrh");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.Noempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleado");
-
-                entity.Property(e => e.NoempleadoRegistro)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleadoRegistro");
-            });
-
-            modelBuilder.Entity<Incapacidad>(entity =>
-            {
-                entity.ToTable("incapacidad");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Cancelado)
-                    .HasColumnType("tinyint(4)")
-                    .HasColumnName("cancelado")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Comentarios)
-                    .HasColumnType("text")
-                    .HasColumnName("comentarios");
-
-                entity.Property(e => e.Dias)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("dias");
-
-                entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
-
-                entity.Property(e => e.FechaDesde).HasColumnName("fecha_desde");
-
-                entity.Property(e => e.FechaHasta).HasColumnName("fecha_hasta");
-
-                entity.Property(e => e.Motivo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("motivo");
-
-                entity.Property(e => e.Noempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleado");
-
-                entity.Property(e => e.Permanente)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("permanente")
-                    .HasDefaultValueSql("'0'");
-            });
-
-            modelBuilder.Entity<IncapacidadDia>(entity =>
-            {
-                entity.ToTable("incapacidad_dias");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.IdIncapacidad)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_incapacidad");
-            });
-
-            modelBuilder.Entity<IncapacidadMotivo>(entity =>
-            {
-                entity.ToTable("incapacidad_motivo");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
-            });
-
-            modelBuilder.Entity<Modalidadpermiso>(entity =>
-            {
-                entity.ToTable("modalidadpermiso");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(45)
-                    .HasColumnName("nombre");
-            });
-
-            modelBuilder.Entity<Nomina>(entity =>
-            {
-                entity.ToTable("nomina");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Nomina1)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Nomina");
-            });
-
-            modelBuilder.Entity<Opcione>(entity =>
-            {
-                entity.ToTable("opciones");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.HasIndex(e => e.Descripcion, "descripcion_UNIQUE")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(65)
-                    .HasColumnName("descripcion");
-
-                entity.Property(e => e.Imagen)
-                    .HasMaxLength(45)
-                    .HasColumnName("imagen");
-            });
-
-            modelBuilder.Entity<Opcionespreguntum>(entity =>
-            {
-                entity.ToTable("opcionespregunta");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Opcion)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("opcion");
-
-                entity.Property(e => e.Pregunta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("pregunta");
-            });
-
-            modelBuilder.Entity<Parentesco>(entity =>
-            {
-                entity.HasKey(e => e.NoEmpleado)
+                entity.HasKey(e => e.id_accidentes)
                     .HasName("PRIMARY");
 
-                entity.ToTable("parentesco");
+                entity.Property(e => e.cierre_ST2).HasDefaultValueSql("b'0'");
 
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever()
-                    .HasColumnName("noEmpleado");
+                entity.Property(e => e.inicia_ST7).HasDefaultValueSql("b'0'");
 
-                entity.Property(e => e.Descripcion)
-                    .IsRequired()
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
+                entity.HasOne(d => d.id_areaNavigation)
+                    .WithMany(p => p.accidentes)
+                    .HasForeignKey(d => d.id_area)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_incapacidad_area1");
 
-                entity.Property(e => e.Parentesco1)
-                    .IsRequired()
-                    .HasMaxLength(45)
-                    .HasColumnName("parentesco");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.accidentes)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_incapacidad_empleados1");
+
+                entity.HasMany(d => d.id_diagnosticos)
+                    .WithMany(p => p.id_accidentes)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "accidente_diagnostico",
+                        l => l.HasOne<diagnostico>().WithMany().HasForeignKey("id_diagnostico").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_incapacidad_has_diagnostico_diagnostico1"),
+                        r => r.HasOne<accidente>().WithMany().HasForeignKey("id_accidente").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_incapacidad_has_diagnostico_incapacidad1"),
+                        j =>
+                        {
+                            j.HasKey("id_accidente", "id_diagnostico").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                            j.ToTable("accidente_diagnostico");
+
+                            j.HasIndex(new[] { "id_diagnostico" }, "fk_incapacidad_has_diagnostico_diagnostico1_idx");
+
+                            j.HasIndex(new[] { "id_accidente" }, "fk_incapacidad_has_diagnostico_incapacidad1_idx");
+
+                            j.IndexerProperty<int>("id_accidente").HasColumnType("int(11)");
+
+                            j.IndexerProperty<int>("id_diagnostico").HasColumnType("int(11)");
+                        });
             });
 
-            modelBuilder.Entity<Pariente>(entity =>
+            modelBuilder.Entity<amonestacion>(entity =>
             {
-                entity.ToTable("parientes");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.ApellidoMaterno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("apellido_materno");
-
-                entity.Property(e => e.ApellidoPaterno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("apellido_paterno");
-
-                entity.Property(e => e.Area)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("area");
-
-                entity.Property(e => e.NoEmpleado).HasColumnType("int(11)");
-
-                entity.Property(e => e.Nombres)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.Parentesco).HasColumnType("tinytext");
-
-                entity.Property(e => e.Puesto)
-                    .IsRequired()
-                    .HasColumnType("tinytext");
-
-                entity.Property(e => e.RelacionNoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("relacion_no_empleado");
-            });
-
-            modelBuilder.Entity<Permiso>(entity =>
-            {
-                entity.ToTable("permiso");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Autorizo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("autorizo");
-
-                entity.Property(e => e.Dias)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("dias");
-
-                entity.Property(e => e.Estado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("estado");
-
-                entity.Property(e => e.FechaCreacion).HasColumnName("fechaCreacion");
-
-                entity.Property(e => e.FechaSolicitadaDesde).HasColumnName("fechaSolicitadaDesde");
-
-                entity.Property(e => e.FechaSolicitadaHasta).HasColumnName("fechaSolicitadaHasta");
-
-                entity.Property(e => e.HoraCreacion)
-                    .HasColumnType("time")
-                    .HasColumnName("horaCreacion");
-
-                entity.Property(e => e.HoraSolicitadaDesde)
-                    .HasColumnType("time")
-                    .HasColumnName("horaSolicitadaDesde");
-
-                entity.Property(e => e.HoraSolicitadaHasta)
-                    .HasColumnType("time")
-                    .HasColumnName("horaSolicitadaHasta");
-
-                entity.Property(e => e.Horadesde)
-                    .HasColumnType("time")
-                    .HasColumnName("horadesde");
-
-                entity.Property(e => e.Horahasta)
-                    .HasColumnType("time")
-                    .HasColumnName("horahasta");
-
-                entity.Property(e => e.Horas).HasColumnName("horas");
-
-                entity.Property(e => e.Modalidad)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("modalidad");
-
-                entity.Property(e => e.Motivo)
-                    .HasColumnType("text")
-                    .HasColumnName("motivo");
-
-                entity.Property(e => e.Noempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleado");
-
-                entity.Property(e => e.Pagado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("pagado")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Supervisor)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("supervisor");
-            });
-
-            modelBuilder.Entity<Personaltiempoextra>(entity =>
-            {
-                entity.ToTable("personaltiempoextra");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Actividad)
-                    .HasColumnType("text")
-                    .HasColumnName("actividad");
-
-                entity.Property(e => e.Autorizado)
-                    .HasColumnType("tinyint(4)")
-                    .HasColumnName("autorizado");
-
-                entity.Property(e => e.Desde)
-                    .HasColumnType("time")
-                    .HasColumnName("desde");
-
-                entity.Property(e => e.Hasta)
-                    .HasColumnType("time")
-                    .HasColumnName("hasta");
-
-                entity.Property(e => e.Horas).HasColumnName("horas");
-
-                entity.Property(e => e.IdEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("idEmpleado");
-
-                entity.Property(e => e.IdSolicitud)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("idSolicitud");
-
-                entity.Property(e => e.Idactividad)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("idactividad")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noEmpleado");
-
-                entity.Property(e => e.Pago)
-                    .HasColumnName("pago")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.TiempoTrabajado).HasColumnName("tiempoTrabajado");
-            });
-
-            modelBuilder.Entity<Preguntum>(entity =>
-            {
-                entity.ToTable("pregunta");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Adicional)
-                    .HasMaxLength(45)
-                    .HasColumnName("adicional");
-
-                entity.Property(e => e.DescripcionPregunta)
-                    .HasColumnType("text")
-                    .HasColumnName("descripcionPregunta");
-
-                entity.Property(e => e.Idencuesta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("idencuesta");
-
-                entity.Property(e => e.Tipo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("tipo");
-            });
-
-            modelBuilder.Entity<Puesto>(entity =>
-            {
-                entity.ToTable("puestos");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Puesto1)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Puesto");
-            });
-
-            modelBuilder.Entity<Renovacion>(entity =>
-            {
-                entity.ToTable("renovacion");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.Noempleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noempleado");
-            });
-
-            modelBuilder.Entity<Respuestum>(entity =>
-            {
-                entity.ToTable("respuesta");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.EncuestaEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("encuestaEmpleado");
-
-                entity.Property(e => e.Pregunta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("pregunta");
-
-                entity.Property(e => e.Respuesta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("respuesta");
-
-                entity.Property(e => e.RespuestaDirecta)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("respuestaDirecta")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Texto)
-                    .HasColumnType("text")
-                    .HasColumnName("texto")
-                    .UseCollation("utf8_general_ci");
-            });
-
-            modelBuilder.Entity<RolEmpleado>(entity =>
-            {
-                entity.ToTable("rol_empleado");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
-            });
-
-            modelBuilder.Entity<SecurityUggroup>(entity =>
-            {
-                entity.HasKey(e => e.GroupId)
+                entity.HasKey(e => e.id_amonestacion)
                     .HasName("PRIMARY");
 
-                entity.ToTable("security_uggroups");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.GroupId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("GroupID");
-
-                entity.Property(e => e.Label).HasMaxLength(300);
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.amonestacions)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_amonestacion_empleado1");
             });
 
-            modelBuilder.Entity<SecurityUgmember>(entity =>
+            modelBuilder.Entity<analisistipo>(entity =>
             {
-                entity.HasKey(e => new { e.UserName, e.GroupId })
+                entity.HasKey(e => e.id_analisisT)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<area>(entity =>
+            {
+                entity.HasKey(e => e.id_area)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_departamentoNavigation)
+                    .WithMany(p => p.areas)
+                    .HasForeignKey(d => d.id_departamento)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_area_departamento1");
+
+                entity.HasMany(d => d.id_bitacoras)
+                    .WithMany(p => p.id_areas)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "area_cincosbitacora",
+                        l => l.HasOne<cincosbitacora>().WithMany().HasForeignKey("id_bitacora").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_area_has_cincoSbitacora_cincoSbitacora1"),
+                        r => r.HasOne<area>().WithMany().HasForeignKey("id_area").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_area_has_cincoSbitacora_area1"),
+                        j =>
+                        {
+                            j.HasKey("id_area", "id_bitacora").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                            j.ToTable("area_cincosbitacora");
+
+                            j.HasIndex(new[] { "id_area" }, "fk_area_has_cincoSbitacora_area1_idx");
+
+                            j.HasIndex(new[] { "id_bitacora" }, "fk_area_has_cincoSbitacora_cincoSbitacora1_idx");
+
+                            j.IndexerProperty<int>("id_area").HasColumnType("int(11)");
+
+                            j.IndexerProperty<int>("id_bitacora").HasColumnType("int(11)");
+                        });
+            });
+
+            modelBuilder.Entity<checada>(entity =>
+            {
+                entity.HasKey(e => e.id_checadas)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.nomina).HasDefaultValueSql("'0'");
+
+                entity.HasOne(d => d.id_checadorNavigation)
+                    .WithMany(p => p.checada)
+                    .HasForeignKey(d => d.id_checador)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_checadas_checador1");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.checada)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_checadas_empleados1");
+            });
+
+            modelBuilder.Entity<checador>(entity =>
+            {
+                entity.HasKey(e => e.id_checador)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_sucursalNavigation)
+                    .WithMany(p => p.checadors)
+                    .HasForeignKey(d => d.id_sucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_checador_sucursal1");
+            });
+
+            modelBuilder.Entity<cincosbitacora>(entity =>
+            {
+                entity.HasKey(e => e.id_bitacora)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<cincosbitacora_cincostipo>(entity =>
+            {
+                entity.HasKey(e => new { e.id_bitacora, e.id_cincoStipo })
                     .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 50, 0 });
+                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
-                entity.ToTable("security_ugmembers");
+                entity.Property(e => e.valor).HasDefaultValueSql("'0'");
 
-                entity.UseCollation("utf8_general_ci");
+                entity.HasOne(d => d.id_bitacoraNavigation)
+                    .WithMany(p => p.cincosbitacora_cincostipos)
+                    .HasForeignKey(d => d.id_bitacora)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_cincoSbitacora_has_cincoStipo_cincoSbitacora1");
 
-                entity.Property(e => e.UserName).HasMaxLength(300);
-
-                entity.Property(e => e.GroupId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("GroupID");
+                entity.HasOne(d => d.id_cincoStipoNavigation)
+                    .WithMany(p => p.cincosbitacora_cincostipos)
+                    .HasForeignKey(d => d.id_cincoStipo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_cincoSbitacora_has_cincoStipo_cincoStipo1");
             });
 
-            modelBuilder.Entity<SecurityUgright>(entity =>
+            modelBuilder.Entity<cincostipo>(entity =>
             {
-                entity.HasKey(e => new { e.TableName, e.GroupId })
+                entity.HasKey(e => e.id_cincoStipo)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<ciudad>(entity =>
+            {
+                entity.HasKey(e => e.id_ciudad)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<consultum>(entity =>
+            {
+                entity.HasKey(e => e.id_consulta)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_areaNavigation)
+                    .WithMany(p => p.consulta)
+                    .HasForeignKey(d => d.id_area)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_consultorio_area1");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.consulta)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_consultorio_empleados1");
+
+                entity.HasMany(d => d.id_diagnosticos)
+                    .WithMany(p => p.id_consulta)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "consultas_diagnostico",
+                        l => l.HasOne<diagnostico>().WithMany().HasForeignKey("id_diagnostico").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consultorio_has_diagnostico_diagnostico1"),
+                        r => r.HasOne<consultum>().WithMany().HasForeignKey("id_consulta").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consultorio_has_diagnostico_consultorio1"),
+                        j =>
+                        {
+                            j.HasKey("id_consulta", "id_diagnostico").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                            j.ToTable("consultas_diagnosticos");
+
+                            j.HasIndex(new[] { "id_consulta" }, "fk_consultorio_has_diagnostico_consultorio1_idx");
+
+                            j.HasIndex(new[] { "id_diagnostico" }, "fk_consultorio_has_diagnostico_diagnostico1_idx");
+
+                            j.IndexerProperty<int>("id_consulta").HasColumnType("int(11)");
+
+                            j.IndexerProperty<int>("id_diagnostico").HasColumnType("int(11)");
+                        });
+
+                entity.HasMany(d => d.id_medicamentos)
+                    .WithMany(p => p.id_consulta)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "consulta_medicamento",
+                        l => l.HasOne<medicamento>().WithMany().HasForeignKey("id_medicamento").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consulta_has_medicamentos_medicamentos1"),
+                        r => r.HasOne<consultum>().WithMany().HasForeignKey("id_consulta").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consulta_has_medicamentos_consulta1"),
+                        j =>
+                        {
+                            j.HasKey("id_consulta", "id_medicamento").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                            j.ToTable("consulta_medicamento");
+
+                            j.HasIndex(new[] { "id_consulta" }, "fk_consulta_has_medicamentos_consulta1_idx");
+
+                            j.HasIndex(new[] { "id_medicamento" }, "fk_consulta_has_medicamentos_medicamentos1_idx");
+
+                            j.IndexerProperty<int>("id_consulta").HasColumnType("int(11)");
+
+                            j.IndexerProperty<int>("id_medicamento").HasColumnType("int(11)");
+                        });
+            });
+
+            modelBuilder.Entity<cotizacion>(entity =>
+            {
+                entity.HasKey(e => e.id_cotizacion)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_ivaNavigation)
+                    .WithMany(p => p.cotizacions)
+                    .HasForeignKey(d => d.id_iva)
+                    .HasConstraintName("fk_cotizacion_iva1");
+
+                entity.HasOne(d => d.id_proveedorNavigation)
+                    .WithMany(p => p.cotizacions)
+                    .HasForeignKey(d => d.id_proveedor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_cotizacion_proveedor1");
+
+                entity.HasOne(d => d.id_solicitudCNavigation)
+                    .WithMany(p => p.cotizacions)
+                    .HasForeignKey(d => d.id_solicitudC)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_cotizacion_solicitudCompra1");
+            });
+
+            modelBuilder.Entity<crud>(entity =>
+            {
+                entity.HasKey(e => e.id_crud)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<departamento>(entity =>
+            {
+                entity.HasKey(e => e.id_departamento)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<diagnostico>(entity =>
+            {
+                entity.HasKey(e => e.id_diagnostico)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<diasferiado>(entity =>
+            {
+                entity.HasKey(e => e.id_diasFeriados)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.texto).HasDefaultValueSql("'Festivo'");
+            });
+
+            modelBuilder.Entity<empleado>(entity =>
+            {
+                entity.HasKey(e => e.id_empleado)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.externo).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.presencial).HasDefaultValueSql("b'1'");
+
+                entity.Property(e => e.status).HasDefaultValueSql("b'1'");
+            });
+
+            modelBuilder.Entity<empleado_tiempoextra>(entity =>
+            {
+                entity.HasKey(e => new { e.id_tiempoExtra, e.id_empleado })
                     .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 50, 0 });
+                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
-                entity.ToTable("security_ugrights");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.TableName).HasMaxLength(300);
-
-                entity.Property(e => e.GroupId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("GroupID");
-
-                entity.Property(e => e.AccessMask).HasMaxLength(10);
+                entity.Property(e => e.status).HasDefaultValueSql("b'1'");
             });
 
-            modelBuilder.Entity<Solicitudtiempoextra>(entity =>
+            modelBuilder.Entity<empleadoarchivo>(entity =>
             {
-                entity.ToTable("solicitudtiempoextra");
+                entity.HasKey(e => e.id_empleadoArchivo)
+                    .HasName("PRIMARY");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Area)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("area");
-
-                entity.Property(e => e.Autorizo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("autorizo");
-
-                entity.Property(e => e.AutorizoGerenteRh)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("autorizoGerenteRH");
-
-                entity.Property(e => e.Departamento)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("departamento");
-
-                entity.Property(e => e.Estado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("estado")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.FechaSolicitada).HasColumnName("fechaSolicitada");
-
-                entity.Property(e => e.FechaSolicitud).HasColumnName("fechaSolicitud");
-
-                entity.Property(e => e.Folio)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("folio");
-
-                entity.Property(e => e.HoraSolicitud)
-                    .HasColumnType("time")
-                    .HasColumnName("horaSolicitud");
-
-                entity.Property(e => e.Justificacion)
-                    .HasColumnType("text")
-                    .HasColumnName("justificacion");
-
-                entity.Property(e => e.Solicitante)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("solicitante");
-
-                entity.Property(e => e.Sucursal)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("sucursal");
+                entity.HasOne(d => d.id_empleadoArchivoTNavigation)
+                    .WithMany(p => p.empleadoarchivos)
+                    .HasForeignKey(d => d.id_empleadoArchivoT)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_empleadoArchivo_empleadoTipoArchivo1");
             });
 
-            modelBuilder.Entity<StatusEmpleado>(entity =>
+            modelBuilder.Entity<empleadohistorial>(entity =>
             {
-                entity.ToTable("status_empleado");
+                entity.HasKey(e => e.id_empleadoHistorial)
+                    .HasName("PRIMARY");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.empleadohistorials)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_empleado_status_empleados1");
 
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
+                entity.HasOne(d => d.id_tipoBajaNavigation)
+                    .WithMany(p => p.empleadohistorials)
+                    .HasForeignKey(d => d.id_tipoBaja)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_empleado_historial_tipo_baja1");
             });
 
-            modelBuilder.Entity<Suspension>(entity =>
+            modelBuilder.Entity<empleadotipo>(entity =>
             {
-                entity.ToTable("suspension");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Causa)
-                    .HasColumnType("text")
-                    .HasColumnName("causa");
-
-                entity.Property(e => e.Departamento)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("departamento")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Dias)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("dias")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Empleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("empleado");
-
-                entity.Property(e => e.Estado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("estado")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.FirmaRecursosHumanos)
-                    .HasColumnType("text")
-                    .HasColumnName("firmaRecursosHumanos");
-
-                entity.Property(e => e.FirmaSupervisor)
-                    .HasColumnType("text")
-                    .HasColumnName("firmaSupervisor");
-
-                entity.Property(e => e.Firmaamonestado)
-                    .HasColumnType("text")
-                    .HasColumnName("firmaamonestado");
-
-                entity.Property(e => e.Hora)
-                    .HasColumnType("time")
-                    .HasColumnName("hora");
-
-                entity.Property(e => e.Registro)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("registro");
-
-                entity.Property(e => e.Supervisor)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("supervisor");
+                entity.HasKey(e => e.id_empleadoT)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<SuspensionDia>(entity =>
+            modelBuilder.Entity<empleadotipoarchivo>(entity =>
             {
-                entity.ToTable("suspension_dias");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.IdSuspension)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_suspension")
-                    .HasDefaultValueSql("'0'");
+                entity.HasKey(e => e.id_empleadoArchivoT)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<Tabuladorvacacione>(entity =>
+            modelBuilder.Entity<empresa>(entity =>
             {
-                entity.ToTable("tabuladorvacaciones");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.DiasCorrespondientes)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("diasCorrespondientes");
-
-                entity.Property(e => e.RangoA)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("rangoA");
-
-                entity.Property(e => e.RangoB)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("rangoB");
+                entity.HasKey(e => e.id_empresa)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<TipoBaja>(entity =>
+            modelBuilder.Entity<estado>(entity =>
             {
-                entity.ToTable("tipo_baja");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
-
-                entity.Property(e => e.Iniciales)
-                    .HasMaxLength(45)
-                    .HasColumnName("iniciales");
+                entity.HasKey(e => e.id_estado)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<Tipoarchivo>(entity =>
+            modelBuilder.Entity<examenmedico>(entity =>
             {
-                entity.ToTable("tipoarchivos");
+                entity.HasKey(e => e.id_examen)
+                    .HasName("PRIMARY");
 
-                entity.UseCollation("utf8_spanish_ci");
+                entity.Property(e => e.covid).HasDefaultValueSql("b'0'");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
+                entity.Property(e => e.hospitalizacionCovid).HasDefaultValueSql("b'0'");
 
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(60)
-                    .HasColumnName("nombre");
+                entity.Property(e => e.secuelas).HasDefaultValueSql("b'0'");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.examenmedicos)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_examen_medico_empleados1");
             });
 
-            modelBuilder.Entity<Tipoempleado>(entity =>
+            modelBuilder.Entity<falta>(entity =>
             {
-                entity.ToTable("tipoempleado");
+                entity.HasKey(e => e.id_falta)
+                    .HasName("PRIMARY");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.falta)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_faltas_empleado1");
             });
 
-            modelBuilder.Entity<Tipopreguntum>(entity =>
+            modelBuilder.Entity<formato>(entity =>
             {
-                entity.ToTable("tipopregunta");
+                entity.HasKey(e => e.id_formato)
+                    .HasName("PRIMARY");
 
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(45)
-                    .HasColumnName("descripcion");
+                entity.HasOne(d => d.id_departamentoNavigation)
+                    .WithMany(p => p.formatos)
+                    .HasForeignKey(d => d.id_departamento)
+                    .HasConstraintName("fk_formato_departamento1");
             });
 
-            modelBuilder.Entity<Turno>(entity =>
+            modelBuilder.Entity<hipertension>(entity =>
             {
-                entity.ToTable("turno");
+                entity.HasKey(e => e.id_hiperT)
+                    .HasName("PRIMARY");
 
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Disponible)
-                    .HasColumnName("disponible")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Turno1)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Turno");
+                entity.HasOne(d => d.id_trabajoENavigation)
+                    .WithMany(p => p.hipertensions)
+                    .HasForeignKey(d => d.id_trabajoE)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_hiperTension_trabajoExterno1");
             });
 
-            modelBuilder.Entity<Turnodetalle>(entity =>
+            modelBuilder.Entity<historialanalisismedico>(entity =>
             {
-                entity.ToTable("turnodetalle");
+                entity.HasKey(e => e.id_historialA)
+                    .HasName("PRIMARY");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
+                entity.HasOne(d => d.id_analisisTNavigation)
+                    .WithMany(p => p.historialanalisismedicos)
+                    .HasForeignKey(d => d.id_analisisT)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_historialAnalisis_analisisTipo1");
 
-                entity.Property(e => e.Dia)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("dia");
-
-                entity.Property(e => e.HrEntrada)
-                    .HasColumnType("time")
-                    .HasColumnName("hrEntrada");
-
-                entity.Property(e => e.HrSalida)
-                    .HasColumnType("time")
-                    .HasColumnName("hrSalida");
-
-                entity.Property(e => e.Turno)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("turno");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.historialanalisismedicos)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_historialAnalisis_empleado1");
             });
 
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<hora>(entity =>
             {
-                entity.ToTable("user");
-
-                entity.UseCollation("utf8_general_ci");
-
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Grupo).HasColumnType("tinytext");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("name");
-
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noEmpleado");
-
-                entity.Property(e => e.Password)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("password");
+                entity.HasKey(e => e.id_hora)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<VArea>(entity =>
+            modelBuilder.Entity<incapacidad>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.id_incapacidad)
+                    .HasName("PRIMARY");
 
-                entity.ToView("v_area");
-
-                entity.Property(e => e.Area)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("area")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.IdArea)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_area");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.incapacidads)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_incapacidad_empleado1");
             });
 
-            modelBuilder.Entity<VDepartamento>(entity =>
+            modelBuilder.Entity<inmobiliario>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.id_inmobiliario)
+                    .HasName("PRIMARY");
 
-                entity.ToView("v_departamento");
-
-                entity.Property(e => e.Departamento)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("departamento")
-                    .UseCollation("utf8_general_ci");
-
-                entity.Property(e => e.IdDepartamento)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_departamento");
+                entity.HasOne(d => d.id_areaNavigation)
+                    .WithMany(p => p.inmobiliarios)
+                    .HasForeignKey(d => d.id_area)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_inmobiliario_area1");
             });
 
-            modelBuilder.Entity<VEmpleado>(entity =>
+            modelBuilder.Entity<iva>(entity =>
             {
-                entity.HasNoKey();
-
-                entity.ToView("v_empleado");
-
-                entity.Property(e => e.AltaImss).HasColumnName("Alta IMSS");
-
-                entity.Property(e => e.ApellidoMaterno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("apellido_materno")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.ApellidoPaterno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("apellido_paterno")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Areaid)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("areaid")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Carrera)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("carrera")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.ClaveElectoral)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Clave_electoral")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Cp)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("CP");
-
-                entity.Property(e => e.Curp)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("CURP")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Departamento)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Direccion)
-                    .HasMaxLength(511)
-                    .HasColumnName("direccion")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Email)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("email")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Empresa)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.EstadoCivil)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("estado_civil")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.FechaBaja).HasColumnName("fecha_baja");
-
-                entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-
-                entity.Property(e => e.FechaDeIngreso).HasColumnName("Fecha_de_Ingreso");
-
-                entity.Property(e => e.FechaNacimiento).HasColumnName("fecha_nacimiento");
-
-                entity.Property(e => e.FechaUltimaNomina).HasColumnName("fechaUltimaNomina");
-
-                entity.Property(e => e.Firma)
-                    .HasColumnType("text")
-                    .HasColumnName("firma")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.GradoDeEstudios)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("grado_de_estudios")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.IdCiudad)
-                    .HasColumnType("bigint(11)")
-                    .HasColumnName("id_ciudad");
-
-                entity.Property(e => e.IdEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_empleado");
-
-                entity.Property(e => e.IdEmpleadoTipo)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("id_empleado_tipo")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.IdEstado)
-                    .HasColumnType("bigint(11)")
-                    .HasColumnName("id_estado");
-
-                entity.Property(e => e.Imagen)
-                    .HasMaxLength(300)
-                    .HasColumnName("imagen")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Imss)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("IMSS")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Instituto)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("instituto")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.JefeInmediato)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Jefe Inmediato")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.MotivoBaja)
-                    .HasMaxLength(45)
-                    .HasColumnName("motivoBaja")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.NoCedula)
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(50)")
-                    .HasColumnName("no_Empleado");
-
-                entity.Property(e => e.NoHuella)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noHuella");
-
-                entity.Property(e => e.Nombre)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .HasColumnName("nombre")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.NombreContacto)
-                    .HasMaxLength(100)
-                    .HasColumnName("nombreContacto")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Nomina)
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Parentesco)
-                    .HasMaxLength(45)
-                    .HasColumnName("parentesco")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(45)
-                    .HasColumnName("password")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Presencial)
-                    .HasColumnName("presencial")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Puesto)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.RegistraPermiso).HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Renovacion)
-                    .HasColumnName("renovacion")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Rfc)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("RFC")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Sangre)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("sangre")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.SdSalario).HasColumnName("SD_salario");
-
-                entity.Property(e => e.Sexo)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("sexo")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Status)
-                    .HasColumnType("int(11)")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.Supervisor)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("supervisor")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Telefono)
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.TelefonoEmergencias)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("Telefono_emergencias")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.TipoBaja)
-                    .HasColumnType("int(1)")
-                    .HasColumnName("tipoBaja")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Tipoempleado)
-                    .HasColumnType("tinytext")
-                    .HasColumnName("tipoempleado")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.Titulo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("titulo");
-
-                entity.Property(e => e.Turno)
-                    .IsRequired()
-                    .HasColumnType("tinytext")
-                    .UseCollation("latin1_swedish_ci")
-                    .HasCharSet("latin1");
-
-                entity.Property(e => e.TurnoId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("turnoId")
-                    .HasDefaultValueSql("'1'");
-
-                entity.Property(e => e.User)
-                    .HasColumnName("user")
-                    .HasDefaultValueSql("'1'");
+                entity.HasKey(e => e.id_iva)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<VEstadocivil>(entity =>
+            modelBuilder.Entity<medicamento>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.id_medicamento)
+                    .HasName("PRIMARY");
 
-                entity.ToView("v_estadocivil");
-
-                entity.Property(e => e.EstadoCivil)
-                    .IsRequired()
-                    .HasMaxLength(11)
-                    .HasDefaultValueSql("''")
-                    .UseCollation("utf8mb4_general_ci")
-                    .HasCharSet("utf8mb4");
-
-                entity.Property(e => e.EstadoCivilId)
-                    .HasColumnType("bigint(20)")
-                    .HasColumnName("EstadoCivilID");
-
-                entity.Property(e => e.Genero).HasColumnType("bigint(20)");
+                entity.HasOne(d => d.id_medicamentoTNavigation)
+                    .WithMany(p => p.medicamentos)
+                    .HasForeignKey(d => d.id_medicamentoT)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_medicamentos_medicamentoTipo1");
             });
 
-            modelBuilder.Entity<VSexo>(entity =>
+            modelBuilder.Entity<medicamentotipo>(entity =>
             {
-                entity.HasNoKey();
-
-                entity.ToView("v_sexo");
-
-                entity.Property(e => e.Sexo)
-                    .IsRequired()
-                    .HasMaxLength(9)
-                    .HasDefaultValueSql("''")
-                    .UseCollation("utf8mb4_general_ci")
-                    .HasCharSet("utf8mb4");
-
-                entity.Property(e => e.SexoId)
-                    .HasColumnType("bigint(20)")
-                    .HasColumnName("SexoID");
+                entity.HasKey(e => e.id_medicamentoT)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<Vacacion>(entity =>
+            modelBuilder.Entity<nomina>(entity =>
             {
-                entity.ToTable("vacacion");
-
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Diascorrespondientes)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("diascorrespondientes")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Estado)
-                    .HasColumnName("estado")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.FechaRegistro).HasColumnName("fechaRegistro");
-
-                entity.Property(e => e.FechaRegreso).HasColumnName("fechaRegreso");
-
-                entity.Property(e => e.Gozado)
-                    .HasColumnName("gozado")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.IdSupervisor)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("idSupervisor");
-
-                entity.Property(e => e.NoEmpleado)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("noEmpleado");
-
-                entity.Property(e => e.Pagado)
-                    .HasColumnName("pagado")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.Periodo)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("periodo")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.TotalDias)
-                    .HasMaxLength(45)
-                    .HasColumnName("totalDias");
-
-                entity.Property(e => e.UserRegistroId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("userRegistroId");
+                entity.HasKey(e => e.id_nomina)
+                    .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<VacacionDia>(entity =>
+            modelBuilder.Entity<ordencompra>(entity =>
             {
-                entity.ToTable("vacacion_dias");
+                entity.HasKey(e => e.id_ordenC)
+                    .HasName("PRIMARY");
 
-                entity.UseCollation("utf8_spanish_ci");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Fecha).HasColumnName("fecha");
-
-                entity.Property(e => e.IdVacacion)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id_vacacion");
+                entity.HasOne(d => d.id_cotizacionNavigation)
+                    .WithMany(p => p.ordencompras)
+                    .HasForeignKey(d => d.id_cotizacion)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_ordenCompra_cotizacion1");
             });
 
-            modelBuilder.Entity<Vacacione>(entity =>
+            modelBuilder.Entity<pariente>(entity =>
             {
-                entity.ToTable("vacaciones");
+                entity.HasKey(e => e.id_pariente)
+                    .HasName("PRIMARY");
 
-                entity.UseCollation("utf8_general_ci");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.parientes)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_parientes_empleado1");
+            });
 
-                entity.HasIndex(e => e.Id, "id")
-                    .IsUnique();
+            modelBuilder.Entity<partidum>(entity =>
+            {
+                entity.HasKey(e => e.id_partida)
+                    .HasName("PRIMARY");
 
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("id");
+                entity.HasOne(d => d.id_departamentoNavigation)
+                    .WithMany(p => p.partida)
+                    .HasForeignKey(d => d.id_departamento)
+                    .HasConstraintName("fk_partida_departamento1");
 
-                entity.Property(e => e.Comentario)
-                    .IsRequired()
-                    .HasColumnType("text")
-                    .HasColumnName("comentario");
+                entity.HasOne(d => d.id_presupuestoNavigation)
+                    .WithMany(p => p.partida)
+                    .HasForeignKey(d => d.id_presupuesto)
+                    .HasConstraintName("fk_partida_presupuesto1");
+            });
 
-                entity.Property(e => e.Entra)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("entra");
+            modelBuilder.Entity<permiso>(entity =>
+            {
+                entity.HasKey(e => e.id_permiso)
+                    .HasName("PRIMARY");
 
-                entity.Property(e => e.NoEmpleado).HasColumnType("int(11)");
+                entity.Property(e => e.pagado).HasDefaultValueSql("b'0'");
 
-                entity.Property(e => e.Pagadas)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("pagadas");
+                entity.Property(e => e.status).HasDefaultValueSql("b'0'");
 
-                entity.Property(e => e.Sale)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("sale");
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.permisos)
+                    .HasForeignKey(d => d.id_empleado)
+                    .HasConstraintName("fk_permiso_empleados1");
+
+                entity.HasOne(d => d.id_modalidadNavigation)
+                    .WithMany(p => p.permisos)
+                    .HasForeignKey(d => d.id_modalidad)
+                    .HasConstraintName("fk_permiso_permisoModalidad1");
+            });
+
+            modelBuilder.Entity<permisomodalidad>(entity =>
+            {
+                entity.HasKey(e => e.id_modalidad)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<presupuesto>(entity =>
+            {
+                entity.HasKey(e => e.id_presupuesto)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<proveedor>(entity =>
+            {
+                entity.HasKey(e => e.id_proveedor)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<puesto>(entity =>
+            {
+                entity.HasKey(e => e.id_puesto)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<refaccion>(entity =>
+            {
+                entity.HasKey(e => e.id_refaccion)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.cantidad).HasDefaultValueSql("'0'");
+            });
+
+            modelBuilder.Entity<renovacion>(entity =>
+            {
+                entity.HasKey(e => e.id_renovacion)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.renovacions)
+                    .HasForeignKey(d => d.id_empleado)
+                    .HasConstraintName("fk_renovacion_empleado1");
+            });
+
+            modelBuilder.Entity<solicitudcompra>(entity =>
+            {
+                entity.HasKey(e => e.id_solicitudC)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.status).HasDefaultValueSql("'1'");
+
+                entity.HasOne(d => d.id_partidaNavigation)
+                    .WithMany(p => p.solicitudcompras)
+                    .HasForeignKey(d => d.id_partida)
+                    .HasConstraintName("fk_solicitudCompra_partida1");
+            });
+
+            modelBuilder.Entity<submodulo>(entity =>
+            {
+                entity.HasKey(e => e.id_subM)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_rolNavigation)
+                    .WithMany(p => p.submodulos)
+                    .HasForeignKey(d => d.id_rol)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_subModulos_empleadoRol1");
+            });
+
+            modelBuilder.Entity<sucursal>(entity =>
+            {
+                entity.HasKey(e => e.id_sucursal)
+                    .HasName("PRIMARY");
+
+                entity.HasMany(d => d.id_empresas)
+                    .WithMany(p => p.id_sucursals)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "sucursal_empresa",
+                        l => l.HasOne<empresa>().WithMany().HasForeignKey("id_empresa").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_empresa1"),
+                        r => r.HasOne<sucursal>().WithMany().HasForeignKey("id_sucursal").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_sucursal1"),
+                        j =>
+                        {
+                            j.HasKey("id_sucursal", "id_empresa").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                            j.ToTable("sucursal_empresa");
+
+                            j.HasIndex(new[] { "id_empresa" }, "fk_sucursal_has_empresa_empresa1_idx");
+
+                            j.HasIndex(new[] { "id_sucursal" }, "fk_sucursal_has_empresa_sucursal1_idx");
+
+                            j.IndexerProperty<int>("id_sucursal").HasColumnType("int(11)");
+
+                            j.IndexerProperty<int>("id_empresa").HasColumnType("int(11)");
+                        });
+            });
+
+            modelBuilder.Entity<sucursale>(entity =>
+            {
+                entity.HasKey(e => e.id_sucursales)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<suspension>(entity =>
+            {
+                entity.HasKey(e => e.id_suspension)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.dias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.status).HasDefaultValueSql("b'1'");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.suspensions)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_suspension_empleado1");
+            });
+
+            modelBuilder.Entity<tiempoextra>(entity =>
+            {
+                entity.HasKey(e => e.id_tiempoExtra)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<tiempoextraestado>(entity =>
+            {
+                entity.HasKey(e => e.id_estado)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<tipobaja>(entity =>
+            {
+                entity.HasKey(e => e.id_tipoBaja)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<trabajo_refaccion>(entity =>
+            {
+                entity.HasKey(e => new { e.id_trabajoI, e.id_refaccion })
+                    .HasName("PRIMARY")
+                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                entity.HasOne(d => d.id_refaccionNavigation)
+                    .WithMany(p => p.trabajo_refaccions)
+                    .HasForeignKey(d => d.id_refaccion)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_refaccion_has_trabajoInterno_refaccion1");
+
+                entity.HasOne(d => d.id_trabajoINavigation)
+                    .WithMany(p => p.trabajo_refaccions)
+                    .HasForeignKey(d => d.id_trabajoI)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_refaccion_has_trabajoInterno_trabajoInterno1");
+            });
+
+            modelBuilder.Entity<trabajoexterno>(entity =>
+            {
+                entity.HasKey(e => e.id_trabajoE)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.cancelado).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.condicionAreaTrabajo).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.conformidad).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.equipo).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.liberacionSH).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.medidasSeguridad).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.rs).HasDefaultValueSql("b'0'");
+
+                entity.HasOne(d => d.id_areaNavigation)
+                    .WithMany(p => p.trabajoexternos)
+                    .HasForeignKey(d => d.id_area)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoExterno_area1");
+
+                entity.HasOne(d => d.id_departamentoNavigation)
+                    .WithMany(p => p.trabajoexternos)
+                    .HasForeignKey(d => d.id_departamento)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoExterno_departamento1");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.trabajoexternos)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajo_empleados1");
+
+                entity.HasOne(d => d.id_tipoNavigation)
+                    .WithMany(p => p.trabajoexternos)
+                    .HasForeignKey(d => d.id_tipo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajo_trabajo_tipo1");
+            });
+
+            modelBuilder.Entity<trabajointerno>(entity =>
+            {
+                entity.HasKey(e => e.id_trabajoI)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.cancelado).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.equipoTrabajo).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.liberacionSH).HasDefaultValueSql("b'0'");
+
+                entity.HasOne(d => d.id_areaNavigation)
+                    .WithMany(p => p.trabajointernos)
+                    .HasForeignKey(d => d.id_area)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoInterno_area1");
+
+                entity.HasOne(d => d.id_departamentoNavigation)
+                    .WithMany(p => p.trabajointernos)
+                    .HasForeignKey(d => d.id_departamento)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoInterno_departamento1");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.trabajointernos)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoInterno_empleado1");
+
+                entity.HasOne(d => d.id_inmobiliarioNavigation)
+                    .WithMany(p => p.trabajointernos)
+                    .HasForeignKey(d => d.id_inmobiliario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoInterno_inmobiliario1");
+
+                entity.HasOne(d => d.id_tipo_trabajoNavigation)
+                    .WithMany(p => p.trabajointernos)
+                    .HasForeignKey(d => d.id_tipo_trabajo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_trabajoInterno_trabajoTipo1");
+            });
+
+            modelBuilder.Entity<trabajotipo>(entity =>
+            {
+                entity.HasKey(e => e.id_trabajoT)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<turno>(entity =>
+            {
+                entity.HasKey(e => e.id_turno)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.descanso).HasDefaultValueSql("'domingo'");
+
+                entity.Property(e => e.entradaF).HasDefaultValueSql("'00:00:00'");
+
+                entity.Property(e => e.salidaF).HasDefaultValueSql("'00:00:00'");
+            });
+
+            modelBuilder.Entity<usuario>(entity =>
+            {
+                entity.HasKey(e => e.id_usuario)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.compras).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.god).HasDefaultValueSql("'0'");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.usuarios)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_usuario_empleado1");
+            });
+
+            modelBuilder.Entity<usuario_empleadorol>(entity =>
+            {
+                entity.HasKey(e => e.id_usuario)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.id_usuario).ValueGeneratedNever();
+
+                entity.Property(e => e.master).HasDefaultValueSql("'0'");
+
+                entity.HasOne(d => d.id_crudNavigation)
+                    .WithMany(p => p.usuario_empleadorols)
+                    .HasForeignKey(d => d.id_crud)
+                    .HasConstraintName("fk_usuario_has_empleadoRol_crud1");
+
+                entity.HasOne(d => d.id_rolNavigation)
+                    .WithMany(p => p.usuario_empleadorols)
+                    .HasForeignKey(d => d.id_rol)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_usuario_has_empleadoRol_empleadoRol1");
+
+                entity.HasOne(d => d.id_sucursalesNavigation)
+                    .WithMany(p => p.usuario_empleadorols)
+                    .HasForeignKey(d => d.id_sucursales)
+                    .HasConstraintName("fk_usuario_empleadoRol_sucursales1");
+
+                entity.HasOne(d => d.id_usuarioNavigation)
+                    .WithOne(p => p.usuario_empleadorol)
+                    .HasForeignKey<usuario_empleadorol>(d => d.id_usuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_usuario_has_empleadoRol_usuario1");
+            });
+
+            modelBuilder.Entity<usuariorol>(entity =>
+            {
+                entity.HasKey(e => e.id_rol)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<vacacione>(entity =>
+            {
+                entity.HasKey(e => e.id_vacaciones)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.cantidadPago).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.dias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.gozado).HasDefaultValueSql("b'0'");
+
+                entity.Property(e => e.pagado).HasDefaultValueSql("b'0'");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.vacaciones)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_vacaciones_empleados1");
+            });
+
+            modelBuilder.Entity<vacacionesperiodo>(entity =>
+            {
+                entity.HasKey(e => e.id_vacacionesP)
+                    .HasName("PRIMARY");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="Models\Empleados\" />
     <Folder Include="Models\Bodega\" />
+    <Folder Include="Models\EmpleadosN\" />
     <Folder Include="Models\RH\" />
   </ItemGroup>
 

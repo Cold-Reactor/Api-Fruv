@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace api_SIF.Models.Empleados
+namespace api_SIF.Models.EmpleadosN
 {
     [Table("estado")]
     public partial class estado
