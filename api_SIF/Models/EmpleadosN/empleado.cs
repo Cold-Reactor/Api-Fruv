@@ -19,27 +19,6 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_sucursal", Name = "fk_empleados_sucursal1_idx")]
     public partial class empleado
     {
-        public empleado()
-        {
-            accidentes = new HashSet<accidente>();
-            amonestacions = new HashSet<amonestacion>();
-            checada = new HashSet<checada>();
-            consulta = new HashSet<consultum>();
-            empleadohistorials = new HashSet<empleadohistorial>();
-            examenmedicos = new HashSet<examenmedico>();
-            falta = new HashSet<falta>();
-            historialanalisismedicos = new HashSet<historialanalisismedico>();
-            incapacidads = new HashSet<incapacidad>();
-            parientes = new HashSet<pariente>();
-            permisos = new HashSet<permiso>();
-            renovacions = new HashSet<renovacion>();
-            suspensions = new HashSet<suspension>();
-            trabajoexternos = new HashSet<trabajoexterno>();
-            trabajointernos = new HashSet<trabajointerno>();
-            usuarios = new HashSet<usuario>();
-            vacaciones = new HashSet<vacacione>();
-        }
-
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
@@ -51,15 +30,13 @@ namespace api_SIF.Models.EmpleadosN
         [Required]
         [Column(TypeName = "tinytext")]
         public string apellidoPaterno { get; set; }
-        [Required]
         [Column(TypeName = "tinytext")]
         public string apellidoMaterno { get; set; }
         [Column(TypeName = "tinytext")]
         public string estadoCivil { get; set; }
         [Column(TypeName = "tinytext")]
         public string sexo { get; set; }
-        public DateOnly fechaNacimiento { get; set; }
-        [Required]
+        public DateOnly? fechaNacimiento { get; set; }
         [Column(TypeName = "tinytext")]
         public string IMSS { get; set; }
         [Column(TypeName = "tinytext")]
@@ -73,9 +50,9 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string RFC { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_ciudad { get; set; }
+        public int? id_ciudad { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_estado { get; set; }
+        public int? id_estado { get; set; }
         [Column(TypeName = "tinytext")]
         public string direccion { get; set; }
         [Column(TypeName = "int(11)")]
@@ -89,71 +66,36 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? titulo { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_empleadoTipo { get; set; }
+        public int? id_empleadoTipo { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_puesto { get; set; }
+        public int? id_puesto { get; set; }
         [Column(TypeName = "int(11)")]
         public int? jefeInmediato { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_turno { get; set; }
+        public int? id_turno { get; set; }
         public double? salarioDiario { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_nomina { get; set; }
-        public DateOnly fechaIngreso { get; set; }
+        public int? id_nomina { get; set; }
+        public DateOnly? fechaIngreso { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_empresa { get; set; }
+        public int? id_empresa { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_sucursal { get; set; }
-        [Column(TypeName = "bit(1)")]
-        public ulong? presencial { get; set; }
+        public int? id_sucursal { get; set; }
+        [Column(TypeName = "int(1)")]
+        public int? presencial { get; set; }
         [StringLength(45)]
         public string parentesco { get; set; }
         [StringLength(300)]
         public string imagen { get; set; }
         [Column(TypeName = "text")]
         public string firma { get; set; }
-        [Column(TypeName = "int(11)")]
+        [Column(TypeName = "int(1)")]
         public int? id_rol { get; set; }
-        [Column(TypeName = "bit(1)")]
-        public ulong? status { get; set; }
-        [Column(TypeName = "bit(1)")]
-        public ulong? externo { get; set; }
+        [Column(TypeName = "int(1)")]
+        public int? status { get; set; }
+        [Column(TypeName = "int(1)")]
+        public int? externo { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_area { get; set; }
-
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<accidente> accidentes { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<amonestacion> amonestacions { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<checada> checada { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<consultum> consulta { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<empleadohistorial> empleadohistorials { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<examenmedico> examenmedicos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<falta> falta { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<historialanalisismedico> historialanalisismedicos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<incapacidad> incapacidads { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<pariente> parientes { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<permiso> permisos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<renovacion> renovacions { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<suspension> suspensions { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<trabajointerno> trabajointernos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<usuario> usuarios { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<vacacione> vacaciones { get; set; }
+        public int? id_area { get; set; }
     }
 }
