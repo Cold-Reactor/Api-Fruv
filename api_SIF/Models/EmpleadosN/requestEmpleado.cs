@@ -8,7 +8,7 @@ using System;
 
 namespace api_SIF.Models.EmpleadosN
 {
-    public class empleadoRequest
+    public class requestEmpleado
     {
 
       

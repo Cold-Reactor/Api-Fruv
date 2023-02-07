@@ -11,6 +11,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_crud", Name = "fk_usuario_has_empleadoRol_crud1_idx")]
     [Index("id_rol", Name = "fk_usuario_has_empleadoRol_empleadoRol1_idx")]
     [Index("id_usuario", Name = "fk_usuario_has_empleadoRol_usuario1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class usuario_empleadorol
     {
         [Key]

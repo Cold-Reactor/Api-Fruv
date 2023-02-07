@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Index("id_empleado", Name = "fk_faltas_empleado1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class falta
     {
         [Key]

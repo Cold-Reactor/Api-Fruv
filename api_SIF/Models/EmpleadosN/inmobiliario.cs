@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("inmobiliario")]
     [Index("id_area", Name = "fk_inmobiliario_area1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class inmobiliario
     {
         public inmobiliario()

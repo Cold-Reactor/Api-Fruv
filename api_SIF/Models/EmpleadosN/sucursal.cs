@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("sucursal")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class sucursal
     {
         public sucursal()
         {
-            checadors = new HashSet<checador>();
             id_empresas = new HashSet<empresa>();
         }
 
@@ -21,9 +21,6 @@ namespace api_SIF.Models.EmpleadosN
         [Required]
         [Column(TypeName = "tinytext")]
         public string nombre { get; set; }
-
-        [InverseProperty("id_sucursalNavigation")]
-        public virtual ICollection<checador> checadors { get; set; }
 
         [ForeignKey("id_sucursal")]
         [InverseProperty("id_sucursals")]

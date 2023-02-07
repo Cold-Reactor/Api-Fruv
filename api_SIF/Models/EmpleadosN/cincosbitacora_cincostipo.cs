@@ -9,6 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("cincosbitacora_cincostipo")]
     [Index("id_bitacora", Name = "fk_cincoSbitacora_has_cincoStipo_cincoSbitacora1_idx")]
     [Index("id_cincoStipo", Name = "fk_cincoSbitacora_has_cincoStipo_cincoStipo1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class cincosbitacora_cincostipo
     {
         [Key]

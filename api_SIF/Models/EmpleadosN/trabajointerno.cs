@@ -12,6 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_empleado", Name = "fk_trabajoInterno_empleado1_idx")]
     [Index("id_inmobiliario", Name = "fk_trabajoInterno_inmobiliario1_idx")]
     [Index("id_tipo_trabajo", Name = "fk_trabajoInterno_trabajoTipo1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class trabajointerno
     {
         public trabajointerno()

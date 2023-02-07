@@ -10,6 +10,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_iva", Name = "fk_cotizacion_iva1_idx")]
     [Index("id_proveedor", Name = "fk_cotizacion_proveedor1_idx")]
     [Index("id_solicitudC", Name = "fk_cotizacion_solicitudCompra1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class cotizacion
     {
         public cotizacion()

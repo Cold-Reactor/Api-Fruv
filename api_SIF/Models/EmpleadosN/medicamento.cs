@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("medicamento")]
     [Index("id_medicamentoT", Name = "fk_medicamentos_medicamentoTipo1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class medicamento
     {
         public medicamento()

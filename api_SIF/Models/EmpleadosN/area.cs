@@ -9,6 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("area")]
     [Index("id_departamento", Name = "fk_area_departamento1_idx")]
     [Index("id_area", Name = "id", IsUnique = true)]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class area
     {
         public area()

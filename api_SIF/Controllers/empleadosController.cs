@@ -24,10 +24,10 @@ namespace api_SIF.Controllers
 
         // GET: api/empleados
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<empleadoRequest>>> Getempleados()
+        public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados()
         {
             var empleadosLista = from x in _context.empleados
-                        select new empleadoRequest()
+                        select new requestEmpleado()
                         {
 
                             id_empleado = x.id_empleado,
@@ -76,7 +76,7 @@ namespace api_SIF.Controllers
 
         // GET: api/empleados/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<empleado>> Getempleado(int id)
+        public async Task<ActionResult<requestEmpleado>> Getempleado(int id)
         {
             var empleado = await _context.empleados.FindAsync(id);
 
@@ -84,8 +84,50 @@ namespace api_SIF.Controllers
             {
                 return NotFound();
             }
+            var reqEmpleado = new requestEmpleado()
+            {
 
-            return empleado;
+                id_empleado = empleado.id_empleado,
+                no_empleado = empleado.no_empleado,
+                nombre = empleado.nombre,
+                apellidoPaterno = empleado.apellidoPaterno,
+                apellidoMaterno = empleado.apellidoMaterno,
+                estadoCivil = empleado.estadoCivil,
+                sexo = empleado.sexo,
+                fechaNacimiento = empleado.fechaNacimiento,
+                IMSS = empleado.IMSS,
+                telefono = empleado.telefono,
+                telefonoEmergencias = empleado.telefonoEmergencias,
+                email = empleado.email,
+                CURP = empleado.CURP,
+                RFC = empleado.RFC,
+                id_ciudad = empleado.id_ciudad,
+                id_estado = empleado.id_estado,
+                direccion = empleado.direccion,
+                CP = empleado.CP,
+                gradoEstudios = empleado.gradoEstudios,
+                carrera = empleado.carrera,
+                instituto = empleado.instituto,
+                titulo = empleado.titulo,
+                id_empleadoTipo = empleado.id_empleadoTipo,
+                id_puesto = empleado.id_puesto,
+                jefeInmediato = empleado.jefeInmediato,
+                id_turno = empleado.id_turno,
+                salarioDiario = empleado.salarioDiario,
+                id_nomina = empleado.id_nomina,
+                fechaIngreso = empleado.fechaIngreso,
+                id_empresa = empleado.id_empresa,
+                id_sucursal = empleado.id_sucursal,
+                presencial = empleado.presencial,
+                parentesco = empleado.parentesco,
+                imagen = empleado.imagen,
+                firma = empleado.firma,
+                id_rol = empleado.id_rol,
+                status = empleado.status,
+                externo = empleado.externo
+            };
+
+            return reqEmpleado;
         }
 
         // PUT: api/empleados/5

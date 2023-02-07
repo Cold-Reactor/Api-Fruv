@@ -11,6 +11,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_departamento", Name = "fk_trabajoExterno_departamento1_idx")]
     [Index("id_empleado", Name = "fk_trabajo_empleados1_idx")]
     [Index("id_tipo", Name = "fk_trabajo_trabajo_tipo1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class trabajoexterno
     {
         public trabajoexterno()

@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Index("id_departamento", Name = "fk_partida_departamento1_idx")]
     [Index("id_presupuesto", Name = "fk_partida_presupuesto1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class partidum
     {
         public partidum()

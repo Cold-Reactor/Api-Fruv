@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("checador")]
-    [Index("id_sucursal", Name = "fk_checador_sucursal1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class checador
     {
         public checador()
@@ -25,9 +25,6 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_sucursal { get; set; }
 
-        [ForeignKey("id_sucursal")]
-        [InverseProperty("checadors")]
-        public virtual sucursal id_sucursalNavigation { get; set; }
         [InverseProperty("id_checadorNavigation")]
         public virtual ICollection<checada> checada { get; set; }
     }

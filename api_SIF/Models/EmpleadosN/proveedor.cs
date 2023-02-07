@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("proveedor")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class proveedor
     {
         public proveedor()

@@ -9,6 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("trabajo_refaccion")]
     [Index("id_refaccion", Name = "fk_refaccion_has_trabajoInterno_refaccion1_idx")]
     [Index("id_trabajoI", Name = "fk_refaccion_has_trabajoInterno_trabajoInterno1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class trabajo_refaccion
     {
         [Key]

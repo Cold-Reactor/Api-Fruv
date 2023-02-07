@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("formato")]
     [Index("id_departamento", Name = "fk_formato_departamento1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class formato
     {
         [Key]

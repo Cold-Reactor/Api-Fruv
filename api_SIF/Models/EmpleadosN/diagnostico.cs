@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("diagnostico")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class diagnostico
     {
         public diagnostico()
         {
-            id_accidentes = new HashSet<accidente>();
+            accidente_diagnosticos = new HashSet<accidente_diagnostico>();
             id_consulta = new HashSet<consultum>();
         }
 
@@ -23,9 +24,9 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string diagnostico1 { get; set; }
 
-        [ForeignKey("id_diagnostico")]
-        [InverseProperty("id_diagnosticos")]
-        public virtual ICollection<accidente> id_accidentes { get; set; }
+        [InverseProperty("id_diagnosticoNavigation")]
+        public virtual ICollection<accidente_diagnostico> accidente_diagnosticos { get; set; }
+
         [ForeignKey("id_diagnostico")]
         [InverseProperty("id_diagnosticos")]
         public virtual ICollection<consultum> id_consulta { get; set; }

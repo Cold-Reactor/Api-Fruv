@@ -9,6 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("historialanalisismedico")]
     [Index("id_analisisT", Name = "fk_historialAnalisis_analisisTipo1_idx")]
     [Index("id_empleado", Name = "fk_historialAnalisis_empleado1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class historialanalisismedico
     {
         [Key]

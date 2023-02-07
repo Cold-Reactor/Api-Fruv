@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("solicitudcompra")]
     [Index("id_partida", Name = "fk_solicitudCompra_partida1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class solicitudcompra
     {
         public solicitudcompra()

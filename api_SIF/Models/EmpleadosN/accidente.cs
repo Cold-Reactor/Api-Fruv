@@ -8,11 +8,12 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Index("id_area", Name = "fk_incapacidad_area1_idx")]
     [Index("id_empleado", Name = "fk_incapacidad_empleados1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class accidente
     {
         public accidente()
         {
-            id_diagnosticos = new HashSet<diagnostico>();
+            accidente_diagnosticos = new HashSet<accidente_diagnostico>();
         }
 
         [Key]
@@ -51,9 +52,7 @@ namespace api_SIF.Models.EmpleadosN
         [ForeignKey("id_empleado")]
         [InverseProperty("accidentes")]
         public virtual empleado id_empleadoNavigation { get; set; }
-
-        [ForeignKey("id_accidente")]
-        [InverseProperty("id_accidentes")]
-        public virtual ICollection<diagnostico> id_diagnosticos { get; set; }
+        [InverseProperty("id_accidenteNavigation")]
+        public virtual ICollection<accidente_diagnostico> accidente_diagnosticos { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("hipertension")]
     [Index("id_trabajoE", Name = "fk_hiperTension_trabajoExterno1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class hipertension
     {
         [Key]

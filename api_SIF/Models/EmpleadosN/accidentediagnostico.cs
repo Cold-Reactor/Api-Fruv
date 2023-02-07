@@ -6,15 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api_SIF.Models.EmpleadosN
 {
-    [Table("ciudad")]
+    [Table("accidentediagnostico")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class ciudad
+    public partial class accidentediagnostico
     {
         [Key]
         [Column(TypeName = "int(11)")]
-        public int id_ciudad { get; set; }
-        [Required]
-        [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public int id_accidente { get; set; }
+        [Key]
+        [Column(TypeName = "int(11)")]
+        public int id_diagnostico { get; set; }
     }
 }

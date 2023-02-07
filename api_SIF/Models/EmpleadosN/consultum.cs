@@ -8,6 +8,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Index("id_area", Name = "fk_consultorio_area1_idx")]
     [Index("id_empleado", Name = "fk_consultorio_empleados1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class consultum
     {
         public consultum()

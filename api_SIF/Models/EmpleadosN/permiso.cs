@@ -9,6 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("permiso")]
     [Index("id_empleado", Name = "fk_permiso_empleados1_idx")]
     [Index("id_modalidad", Name = "fk_permiso_permisoModalidad1_idx")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class permiso
     {
         [Key]

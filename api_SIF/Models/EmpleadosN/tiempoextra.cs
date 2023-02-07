@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("tiempoextra")]
+    [MySqlCollation("utf8_spanish2_ci")]
     public partial class tiempoextra
     {
         [Key]
@@ -23,8 +24,8 @@ namespace api_SIF.Models.EmpleadosN
         public string justificacion { get; set; }
         [Column(TypeName = "int(11)")]
         public int? realizo { get; set; }
-        [Column(TypeName = "bit(1)")]
-        public ulong? id_estado { get; set; }
+        [Column(TypeName = "int(11)")]
+        public int? id_estado { get; set; }
         [Column(TypeName = "int(11)")]
         public int? autorizoRH { get; set; }
     }
