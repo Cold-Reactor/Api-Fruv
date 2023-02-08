@@ -69,6 +69,115 @@ namespace api_SIF.Controllers
             return reqChecada;
         }
 
+        [HttpGet("getEmpleadoChecadas/{from1}/{to}")]
+        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to)
+        {
+
+            /*var checks = (from ch in _context.checadas
+
+                          where ch.fecha >= from1 && ch.fecha <= to
+                          select new
+                          {
+                              fecha = ch.fecha,
+                              id_empleado = ch.id_empleado,
+                              ausentismo = "",
+                              extra = 0,
+                          } into x
+                          group x by new { x.fecha, x.id_empleado, x.ausentismo, x.extra } into g
+                          select new requestChecadaCheck
+                          {
+                              id_empleado=g.Key.id_empleado,
+                              ausentismo = g.Key.ausentismo,
+                              extra = g.Key.extra,
+                              fecha = g.Key.fecha,
+                              checks = (from c in _context.checadas
+                                        where c.fecha == g.Key.fecha && g.Key.id_empleado == c.id_empleado
+                                        select new requestCheck
+                                        {
+                                            id = c.id_checadas,
+                                            hora = c.hora,
+                                            horaM = c.fechaHora,
+                                            nomina = (int)c.nomina,
+                                            id_empleado=c.id_empleado
+                                            
+                                        }).ToList()
+                          }).ToList();
+            ;
+            */
+
+            var empleados = (from p in _context.empleados
+                             select new requestEmpleadoChecadas
+                             {
+                                 id = p.id_empleado,
+                                 noEmpleado = p.no_empleado,
+                                 nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
+                                 turno = p.id_turno.ToString(),
+                                 area = p.id_area.ToString(),
+                                 precencial = (int)p.presencial,
+                                 checadas =
+                                 (from ch in _context.checadas
+
+                                  where ch.fecha >= from1 && ch.fecha <= to && ch.id_empleado==p.id_empleado
+                                  //select new
+                                  //{
+                                  //    fecha = ch.fecha,
+                                  //    id_empleado = ch.id_empleado,
+                                  //    ausentismo = "",
+                                  //    extra = 0,
+                                  //} into x
+                                  //group x by new { x.fecha, x.id_empleado, x.ausentismo, x.extra } into g
+                                  select new requestChecadaCheck
+                                  {
+                                      id_empleado = ch.id_empleado,
+                                      ausentismo = "",
+                                      extra = 0,
+                                      fecha = ch.fecha,
+                                      checks = (from c in _context.checadas
+                                                where c.fecha == ch.fecha && ch.id_empleado == c.id_empleado
+                                                select new requestCheck
+                                                {
+                                                    id = c.id_checadas,
+                                                    hora = c.hora,
+                                                    horaM = c.fechaHora,
+                                                    nomina = (int)c.nomina,
+                                                    id_empleado = c.id_empleado
+
+                                                }).ToList()
+                                  }).ToList()
+
+
+                             }).ToList();
+            /*var checadas = (from ch in _context.checadas
+                            
+                             where ch.fecha >= from1 && ch.fecha <= to && ch.id_empleado==1
+                            select new
+                            {
+                                fecha = ch.fecha,
+                                id_empleado =ch.id_empleado,
+                                ausentismo = "",
+                                extra = 0,
+                            } into x
+                             group x by new { x.fecha,x.id_empleado,x.ausentismo,x.extra } into g 
+                          select new requestChecadaCheck
+                             {
+                              ausentismo = g.Key.ausentismo,
+                              extra = g.Key.extra,
+                              fecha = g.Key.fecha,
+                              checks = (from c in _context.checadas
+                                        where c.fecha == g.Key.fecha && g.Key.id_empleado == c.id_empleado
+                                        select new requestCheck
+                                        {
+                                            id = c.id_checadas,
+                                            hora = c.hora,
+                                            horaM = c.fechaHora,
+                                            nomina = (int)c.nomina
+
+                                        }).ToList()
+
+                          }).ToList();*/
+
+            return empleados;
+        }
         // PUT: api/checadas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
