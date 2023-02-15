@@ -96,7 +96,7 @@ namespace api_SIF.Controllers
 
             List<requestChecadaCheck> checadas1 = new List<requestChecadaCheck>();
 
-           
+
 
             /*var checks = (from ch in _context.checadas
 
@@ -129,6 +129,19 @@ namespace api_SIF.Controllers
                           }).ToList();
             ;
             */
+            var turnos = (from p in _context.turnos
+                          select new turno
+                          {
+                              id_turno = p.id_turno,
+                              descanso = p.descanso,
+                              entrada = p.entrada,
+                              entradaF = p.entradaF,
+                              name = p.name,
+                              salida = p.salida,
+                              salidaF = p.salida
+                          }
+                         ).ToList();
+                         ;
 
             var empleados = (from p in _context.empleados 
                              
@@ -178,6 +191,15 @@ namespace api_SIF.Controllers
 
             foreach(var empleado in empleados)
             {
+
+                foreach (var turno in turnos)
+                {
+                    if (turno.id_turno == Convert.ToInt32(empleado.turno))
+                    {
+                        empleado.turno = turno.name;
+                        break;
+                    }
+                }
                 var checadasEmpleados = new List<requestChecadaCheck>();
 
                 foreach (var fecha in fechas)
