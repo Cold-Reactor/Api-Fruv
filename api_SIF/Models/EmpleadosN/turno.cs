@@ -27,5 +27,12 @@ namespace api_SIF.Models.EmpleadosN
         [Required]
         [StringLength(20)]
         public string descanso { get; set; }
+
+        [Column(TypeName = "time")]
+        public TimeOnly comida { get; set; }
+
+        [Column(TypeName = "double")]
+        public double horas_trabajadas { get; set; }
+
     }
 }
