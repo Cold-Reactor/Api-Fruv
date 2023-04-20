@@ -84,7 +84,7 @@ namespace api_SIF.Models.EmpleadosN
         public string carrera { get; set; }
         [Column(TypeName = "tinytext")]
         public string instituto { get; set; }
-        [Column(TypeName = "int(11)")]
+        [Column(TypeName = "int(1)")]
         public int? titulo { get; set; }
         [Column(TypeName = "int(11)")]
         public int? id_empleadoTipo { get; set; }

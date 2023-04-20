@@ -30,6 +30,7 @@ namespace api_SIF.dbContexts
         public virtual DbSet<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }
         public virtual DbSet<cincostipo> cincostipos { get; set; }
         public virtual DbSet<ciudad> ciudads { get; set; }
+        public virtual DbSet<consulta_medicamento> consulta_medicamentos { get; set; }
         public virtual DbSet<consultum> consulta { get; set; }
         public virtual DbSet<cotizacion> cotizacions { get; set; }
         public virtual DbSet<crud> cruds { get; set; }
@@ -259,6 +260,24 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
+            modelBuilder.Entity<consulta_medicamento>(entity =>
+            {
+                entity.HasKey(e => e.id_consultaMedicamento)
+                    .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_consultaNavigation)
+                    .WithMany(p => p.consulta_medicamentos)
+                    .HasForeignKey(d => d.id_consulta)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_consulta_has_medicamentos_consulta1");
+
+                entity.HasOne(d => d.id_medicamentoNavigation)
+                    .WithMany(p => p.consulta_medicamentos)
+                    .HasForeignKey(d => d.id_medicamento)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_consulta_has_medicamentos_medicamentos1");
+            });
+
             modelBuilder.Entity<consultum>(entity =>
             {
                 entity.HasKey(e => e.id_consulta)
@@ -267,13 +286,11 @@ namespace api_SIF.dbContexts
                 entity.HasOne(d => d.id_areaNavigation)
                     .WithMany(p => p.consulta)
                     .HasForeignKey(d => d.id_area)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_consultorio_area1");
 
                 entity.HasOne(d => d.id_empleadoNavigation)
                     .WithMany(p => p.consulta)
                     .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_consultorio_empleados1");
 
                 entity.HasMany(d => d.id_diagnosticos)
@@ -295,27 +312,6 @@ namespace api_SIF.dbContexts
                             j.IndexerProperty<int>("id_consulta").HasColumnType("int(11)");
 
                             j.IndexerProperty<int>("id_diagnostico").HasColumnType("int(11)");
-                        });
-
-                entity.HasMany(d => d.id_medicamentos)
-                    .WithMany(p => p.id_consulta)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "consulta_medicamento",
-                        l => l.HasOne<medicamento>().WithMany().HasForeignKey("id_medicamento").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consulta_has_medicamentos_medicamentos1"),
-                        r => r.HasOne<consultum>().WithMany().HasForeignKey("id_consulta").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consulta_has_medicamentos_consulta1"),
-                        j =>
-                        {
-                            j.HasKey("id_consulta", "id_medicamento").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
-                            j.ToTable("consulta_medicamento").UseCollation("utf8_spanish2_ci");
-
-                            j.HasIndex(new[] { "id_consulta" }, "fk_consulta_has_medicamentos_consulta1_idx");
-
-                            j.HasIndex(new[] { "id_medicamento" }, "fk_consulta_has_medicamentos_medicamentos1_idx");
-
-                            j.IndexerProperty<int>("id_consulta").HasColumnType("int(11)");
-
-                            j.IndexerProperty<int>("id_medicamento").HasColumnType("int(11)");
                         });
             });
 
@@ -378,6 +374,8 @@ namespace api_SIF.dbContexts
                 entity.Property(e => e.presencial).HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.status).HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.titulo).HasDefaultValueSql("'0'");
             });
 
             modelBuilder.Entity<empleado_tiempoextra>(entity =>
@@ -769,9 +767,8 @@ namespace api_SIF.dbContexts
 
             modelBuilder.Entity<trabajo_refaccion>(entity =>
             {
-                entity.HasKey(e => new { e.id_trabajoI, e.id_refaccion })
-                    .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                entity.HasKey(e => e.id_trabajoRefaccion)
+                    .HasName("PRIMARY");
 
                 entity.HasOne(d => d.id_refaccionNavigation)
                     .WithMany(p => p.trabajo_refaccions)
@@ -882,6 +879,8 @@ namespace api_SIF.dbContexts
             {
                 entity.HasKey(e => e.id_turno)
                     .HasName("PRIMARY");
+
+                entity.Property(e => e.comida).HasDefaultValueSql("'00:00:00'");
 
                 entity.Property(e => e.descanso).HasDefaultValueSql("'domingo'");
 

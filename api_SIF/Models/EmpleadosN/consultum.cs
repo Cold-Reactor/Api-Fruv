@@ -13,8 +13,8 @@ namespace api_SIF.Models.EmpleadosN
     {
         public consultum()
         {
+            consulta_medicamentos = new HashSet<consulta_medicamento>();
             id_diagnosticos = new HashSet<diagnostico>();
-            id_medicamentos = new HashSet<medicamento>();
         }
 
         [Key]
@@ -23,9 +23,15 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "datetime")]
         public DateTime fecha { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_area { get; set; }
+        public int? id_area { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_empleado { get; set; }
+        public int? id_empleado { get; set; }
+        [StringLength(45)]
+        public string nombre { get; set; }
+        [Column(TypeName = "tinytext")]
+        public string hta { get; set; }
+        [StringLength(45)]
+        public string comentario { get; set; }
 
         [ForeignKey("id_area")]
         [InverseProperty("consulta")]
@@ -33,12 +39,11 @@ namespace api_SIF.Models.EmpleadosN
         [ForeignKey("id_empleado")]
         [InverseProperty("consulta")]
         public virtual empleado id_empleadoNavigation { get; set; }
+        [InverseProperty("id_consultaNavigation")]
+        public virtual ICollection<consulta_medicamento> consulta_medicamentos { get; set; }
 
         [ForeignKey("id_consulta")]
         [InverseProperty("id_consulta")]
         public virtual ICollection<diagnostico> id_diagnosticos { get; set; }
-        [ForeignKey("id_consulta")]
-        [InverseProperty("id_consulta")]
-        public virtual ICollection<medicamento> id_medicamentos { get; set; }
     }
 }

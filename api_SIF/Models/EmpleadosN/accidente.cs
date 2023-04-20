@@ -25,7 +25,7 @@ namespace api_SIF.Models.EmpleadosN
         public int id_area { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
-        public string causualidad { get; set; }
+        public string causalidad { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime fechaCreacion { get; set; }
         public DateOnly fechaAccidente { get; set; }

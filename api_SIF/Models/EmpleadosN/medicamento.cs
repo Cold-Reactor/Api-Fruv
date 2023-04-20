@@ -13,7 +13,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public medicamento()
         {
-            id_consulta = new HashSet<consultum>();
+            consulta_medicamentos = new HashSet<consulta_medicamento>();
         }
 
         [Key]
@@ -31,9 +31,7 @@ namespace api_SIF.Models.EmpleadosN
         [ForeignKey("id_medicamentoT")]
         [InverseProperty("medicamentos")]
         public virtual medicamentotipo id_medicamentoTNavigation { get; set; }
-
-        [ForeignKey("id_medicamento")]
-        [InverseProperty("id_medicamentos")]
-        public virtual ICollection<consultum> id_consulta { get; set; }
+        [InverseProperty("id_medicamentoNavigation")]
+        public virtual ICollection<consulta_medicamento> consulta_medicamentos { get; set; }
     }
 }

@@ -69,8 +69,8 @@ namespace api_SIF.Controllers
             return reqChecada;
         }
 
-        [HttpGet("getEmpleadoChecadas/{from1}/{to}")]
-        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to)
+        [HttpGet("getEmpleadoChecadas/{from1}/{to}/{sucursal}")]
+        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to, int sucursal)
         {
             List<DateOnly> fechas = new List<DateOnly>();
             DateOnly date1 = from1;
@@ -84,11 +84,13 @@ namespace api_SIF.Controllers
                                          where c.fecha >=from1 && c.fecha<=to
                                          select new requestCheck
                                          {
-                                             
-                                             id = c.id_checadas,
-                                             fecha=c.fecha,
+
+                                             id_checadas = c.id_checadas,
+                                             id_checador = c.id_checador,
+
+                                             fecha = c.fecha,
                                              hora = c.hora.ToString("HH:mm:ss"),
-                                             horaM = c.fechaHora,
+                                             horaM = "",
                                              nomina = (int)c.nomina,
                                              id_empleado = c.id_empleado
 
@@ -145,10 +147,10 @@ namespace api_SIF.Controllers
 
             var empleados = (from p in _context.empleados 
                              
-                             where p.status==1 && p.id_sucursal==9
+                             where p.status==1 && p.id_sucursal==sucursal
                              select new requestEmpleadoChecadas
                              {
-                                 id = p.id_empleado,
+                                 id_empleado = p.id_empleado,
                                  noEmpleado = p.no_empleado,
                                  nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
                                  turno = p.id_turno.ToString(),
@@ -213,15 +215,16 @@ namespace api_SIF.Controllers
 
                     foreach (var check in checks) {
                         if (check.fecha==fecha) {
-                            if (empleado.id == check.id_empleado)
+                            if (empleado.id_empleado == check.id_empleado)
                             {
                                 requestCheck ch = new requestCheck();
-                                ch.id = check.id;
+                                ch.id_checadas = check.id_checadas;
+                                ch.id_checador = check.id_checador;
                                 ch.fecha = check.fecha;
                                 ch.hora = check.hora;
                                 ch.horaM = check.horaM;
                                 ch.nomina = check.nomina;
-                                //ch.id_empleado = check.id_empleado;
+                                ch.id_empleado = check.id_empleado;
                                 checksEmpleado.Add(ch);
                             }
                         }

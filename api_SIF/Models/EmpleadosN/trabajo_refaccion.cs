@@ -14,8 +14,9 @@ namespace api_SIF.Models.EmpleadosN
     {
         [Key]
         [Column(TypeName = "int(11)")]
+        public int id_trabajoRefaccion { get; set; }
+        [Column(TypeName = "int(11)")]
         public int id_trabajoI { get; set; }
-        [Key]
         [Column(TypeName = "int(11)")]
         public int id_refaccion { get; set; }
         [Column(TypeName = "int(11)")]
