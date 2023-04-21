@@ -50,6 +50,16 @@ namespace api_SIF
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
 
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("nuevaPolitica", app =>
+                {
+                    app.AllowAnyOrigin()
+                    .AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddControllers(options => options.UseDateOnlyTimeOnlyStringConverters())
     .AddJsonOptions(options => options.UseDateOnlyTimeOnlyStringConverters()); ;
         }
@@ -65,7 +75,7 @@ namespace api_SIF
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("nuevaPolitica");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
