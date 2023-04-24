@@ -12,18 +12,19 @@ namespace api_SIF.Models.EmpleadosN
     {
         public sucursal()
         {
-            id_empresas = new HashSet<empresa>();
+            usuario_empleadorols = new HashSet<usuario_empleadorol>();
         }
 
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_sucursal { get; set; }
-        [Required]
+        [Column("sucursal")]
+        [StringLength(45)]
+        public string sucursal1 { get; set; }
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string nomenclatura { get; set; }
 
-        [ForeignKey("id_sucursal")]
-        [InverseProperty("id_sucursals")]
-        public virtual ICollection<empresa> id_empresas { get; set; }
+        [InverseProperty("id_sucursalesNavigation")]
+        public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
     }
 }

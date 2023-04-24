@@ -53,7 +53,7 @@ namespace api_SIF.Controllers
             {
                 id_checador = checador.id_checador,
                 nombre = checador.nombre, serialNumber = checador.serialNumber,id_sucursal=checador.id_sucursal
-
+      
             };
 
 

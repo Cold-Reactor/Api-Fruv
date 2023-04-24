@@ -6,7 +6,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     public class requestChecadas
     {
-        public int id_checadas { get; set; }
+        public int id_checada { get; set; }
         public int id_empleado { get; set; }
         public int id_checador { get; set; }
         public DateTime fechaHora { get; set; }

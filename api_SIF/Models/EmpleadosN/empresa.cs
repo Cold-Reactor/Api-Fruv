@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public empresa()
         {
-            id_sucursals = new HashSet<sucursal>();
+            id_sucursals = new HashSet<sucursale>();
         }
 
         [Key]
@@ -24,6 +24,6 @@ namespace api_SIF.Models.EmpleadosN
 
         [ForeignKey("id_empresa")]
         [InverseProperty("id_empresas")]
-        public virtual ICollection<sucursal> id_sucursals { get; set; }
+        public virtual ICollection<sucursale> id_sucursals { get; set; }
     }
 }

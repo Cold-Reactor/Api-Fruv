@@ -4,7 +4,7 @@ namespace api_SIF.Models.EmpleadosN
 {
     public class requestCheck
     {
-        public int id_checadas { get; set; }
+        public int id_checada { get; set; }
         public int id_checador { get; set; }
 
         public int nomina { get; set; }

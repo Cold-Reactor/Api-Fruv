@@ -35,7 +35,7 @@ namespace api_SIF.Controllers
                                      fecha= x.fecha,
                                      fechaHora= x.fechaHora,
                                      hora= x.hora,  
-                                     id_checadas = x.id_checadas    ,
+                                     id_checada = x.id_checada    ,
                                      id_empleado = x.id_empleado,
                                      
                                      
@@ -61,7 +61,7 @@ namespace api_SIF.Controllers
                 fecha = checada.fecha,
                 fechaHora = checada.fechaHora,
                 hora = checada.hora,
-                id_checadas = checada.id_checadas,
+                id_checada = checada.id_checada,
                 id_empleado = checada.id_empleado,
 
 
@@ -85,7 +85,7 @@ namespace api_SIF.Controllers
                                          select new requestCheck
                                          {
 
-                                             id_checadas = c.id_checadas,
+                                             id_checada = c.id_checada,
                                              id_checador = c.id_checador,
 
                                              fecha = c.fecha,
@@ -138,7 +138,7 @@ namespace api_SIF.Controllers
                               descanso = p.descanso,
                               entrada = p.entrada,
                               entradaF = p.entradaF,
-                              name = p.name,
+                              turno1 = p.turno1,
                               salida = p.salida,
                               salidaF = p.salida
                           }
@@ -150,9 +150,11 @@ namespace api_SIF.Controllers
                              where p.status==1 && p.id_sucursal==sucursal
                              select new requestEmpleadoChecadas
                              {
+
                                  id_empleado = p.id_empleado,
-                                 noEmpleado = p.no_empleado,
                                  nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
+                                 noEmpleado = p.no_empleado,
+                                 sucursal = p.id_sucursal,
                                  turno = p.id_turno.ToString(),
                                  area = p.id_area.ToString(),
                                  precencial = (int)p.presencial,
@@ -198,7 +200,7 @@ namespace api_SIF.Controllers
                 {
                     if (turno.id_turno == Convert.ToInt32(empleado.turno))
                     {
-                        empleado.turno = turno.name;
+                        empleado.turno = turno.turno1;
                         break;
                     }
                 }
@@ -218,7 +220,7 @@ namespace api_SIF.Controllers
                             if (empleado.id_empleado == check.id_empleado)
                             {
                                 requestCheck ch = new requestCheck();
-                                ch.id_checadas = check.id_checadas;
+                                ch.id_checada = check.id_checada;
                                 ch.id_checador = check.id_checador;
                                 ch.fecha = check.fecha;
                                 ch.hora = check.hora;
@@ -264,7 +266,7 @@ namespace api_SIF.Controllers
                                             nomina = (int)c.nomina
 
                                         }).ToList()
-
+       
                           }).ToList();*/
 
             return empleados;
@@ -274,7 +276,7 @@ namespace api_SIF.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Putchecada(int id, checada checada)
         {
-            if (id != checada.id_checadas)
+            if (id != checada.id_checada)
             {
                 return BadRequest();
             }
@@ -308,7 +310,7 @@ namespace api_SIF.Controllers
             _context.checadas.Add(checada);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Getchecada", new { id = checada.id_checadas }, checada);
+            return CreatedAtAction("Getchecada", new { id = checada.id_checada }, checada);
         }
 
         // DELETE: api/checadas/5
@@ -329,7 +331,7 @@ namespace api_SIF.Controllers
 
         private bool checadaExists(int id)
         {
-            return _context.checadas.Any(e => e.id_checadas == id);
+            return _context.checadas.Any(e => e.id_checada == id);
         }
     }
 }

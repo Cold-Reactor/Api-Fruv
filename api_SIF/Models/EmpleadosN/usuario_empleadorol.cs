@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("usuario_empleadorol")]
-    [Index("id_sucursales", Name = "fk_usuario_empleadoRol_sucursales1_idx")]
     [Index("id_crud", Name = "fk_usuario_has_empleadoRol_crud1_idx")]
     [Index("id_rol", Name = "fk_usuario_has_empleadoRol_empleadoRol1_idx")]
+    [Index("id_sucursal", Name = "fk_usuario_has_empleadoRol_sucursal1_idx")]
     [Index("id_usuario", Name = "fk_usuario_has_empleadoRol_usuario1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class usuario_empleadorol
@@ -24,7 +24,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? id_crud { get; set; }
         [Column(TypeName = "int(11)")]
-        public int? id_sucursales { get; set; }
+        public int id_sucursal { get; set; }
         [Column(TypeName = "int(1)")]
         public int? master { get; set; }
 
@@ -34,9 +34,9 @@ namespace api_SIF.Models.EmpleadosN
         [ForeignKey("id_rol")]
         [InverseProperty("usuario_empleadorols")]
         public virtual usuariorol id_rolNavigation { get; set; }
-        [ForeignKey("id_sucursales")]
+        [ForeignKey("id_sucursal")]
         [InverseProperty("usuario_empleadorols")]
-        public virtual sucursale id_sucursalesNavigation { get; set; }
+        public virtual sucursale id_sucursalNavigation { get; set; }
         [ForeignKey("id_usuario")]
         [InverseProperty("usuario_empleadorol")]
         public virtual usuario id_usuarioNavigation { get; set; }

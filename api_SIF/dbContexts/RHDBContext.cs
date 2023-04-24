@@ -69,7 +69,6 @@ namespace api_SIF.dbContexts
         public virtual DbSet<renovacion> renovacions { get; set; }
         public virtual DbSet<solicitudcompra> solicitudcompras { get; set; }
         public virtual DbSet<submodulo> submodulos { get; set; }
-        public virtual DbSet<sucursal> sucursals { get; set; }
         public virtual DbSet<sucursale> sucursales { get; set; }
         public virtual DbSet<suspension> suspensions { get; set; }
         public virtual DbSet<tiempoextra> tiempoextras { get; set; }
@@ -203,7 +202,7 @@ namespace api_SIF.dbContexts
 
             modelBuilder.Entity<checada>(entity =>
             {
-                entity.HasKey(e => e.id_checadas)
+                entity.HasKey(e => e.id_checada)
                     .HasName("PRIMARY");
 
                 entity.Property(e => e.nomina).HasDefaultValueSql("'0'");
@@ -698,7 +697,7 @@ namespace api_SIF.dbContexts
                     .HasConstraintName("fk_subModulos_empleadoRol1");
             });
 
-            modelBuilder.Entity<sucursal>(entity =>
+            modelBuilder.Entity<sucursale>(entity =>
             {
                 entity.HasKey(e => e.id_sucursal)
                     .HasName("PRIMARY");
@@ -708,7 +707,7 @@ namespace api_SIF.dbContexts
                     .UsingEntity<Dictionary<string, object>>(
                         "sucursal_empresa",
                         l => l.HasOne<empresa>().WithMany().HasForeignKey("id_empresa").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_empresa1"),
-                        r => r.HasOne<sucursal>().WithMany().HasForeignKey("id_sucursal").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_sucursal1"),
+                        r => r.HasOne<sucursale>().WithMany().HasForeignKey("id_sucursal").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_sucursal1"),
                         j =>
                         {
                             j.HasKey("id_sucursal", "id_empresa").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
@@ -723,12 +722,6 @@ namespace api_SIF.dbContexts
 
                             j.IndexerProperty<int>("id_empresa").HasColumnType("int(11)");
                         });
-            });
-
-            modelBuilder.Entity<sucursale>(entity =>
-            {
-                entity.HasKey(e => e.id_sucursales)
-                    .HasName("PRIMARY");
             });
 
             modelBuilder.Entity<suspension>(entity =>
@@ -925,10 +918,11 @@ namespace api_SIF.dbContexts
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_usuario_has_empleadoRol_empleadoRol1");
 
-                entity.HasOne(d => d.id_sucursalesNavigation)
+                entity.HasOne(d => d.id_sucursalNavigation)
                     .WithMany(p => p.usuario_empleadorols)
-                    .HasForeignKey(d => d.id_sucursales)
-                    .HasConstraintName("fk_usuario_empleadoRol_sucursales1");
+                    .HasForeignKey(d => d.id_sucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_usuario_has_empleadoRol_sucursal1");
 
                 entity.HasOne(d => d.id_usuarioNavigation)
                     .WithOne(p => p.usuario_empleadorol)

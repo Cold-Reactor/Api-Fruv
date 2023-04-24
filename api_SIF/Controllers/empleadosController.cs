@@ -29,7 +29,7 @@ namespace api_SIF.Controllers
             var empleadosLista = from x in _context.empleados
                         select new requestEmpleado()
                         {
-
+     
                             id_empleado = x.id_empleado,
                             no_empleado = x.no_empleado,
                             nombre = x.nombre,

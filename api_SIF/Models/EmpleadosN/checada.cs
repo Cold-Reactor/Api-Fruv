@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         [Key]
         [Column(TypeName = "int(11)")]
-        public int id_checadas { get; set; }
+        public int id_checada { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
         [Column(TypeName = "int(11)")]
