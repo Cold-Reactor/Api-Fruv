@@ -157,7 +157,7 @@ namespace api_SIF.Controllers
                                  sucursal = p.id_sucursal,
                                  turno = p.id_turno.ToString(),
                                  area = p.id_area.ToString(),
-                                 precencial = (int)p.presencial,
+                                 presencial = (int)p.presencial,
                                  //checadas = checadas1.Where(x=>x.id_empleado==p.id_empleado).ToList()
 
                                  //(from ch in _context.checadas

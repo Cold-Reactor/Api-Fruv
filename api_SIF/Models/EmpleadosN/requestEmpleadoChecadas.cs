@@ -11,7 +11,7 @@ namespace api_SIF.Models.EmpleadosN
 
         public string turno { get; set; }
         public string area { get; set; }
-        public int precencial { get; set; }
+        public int presencial { get; set; }
         public List<requestChecadaCheck> checadas { get; set; }
     }
 }
