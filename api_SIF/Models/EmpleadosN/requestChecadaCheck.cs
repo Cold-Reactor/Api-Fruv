@@ -9,6 +9,6 @@ namespace api_SIF.Models.EmpleadosN
         public int extra { get; set; }
 
         public string ausentismo { get; set; }
-        public List<requestCheck> checks{ get; set; }
+        public List<requestCheck> check{ get; set; }
     }
 }

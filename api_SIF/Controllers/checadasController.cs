@@ -80,7 +80,7 @@ namespace api_SIF.Controllers
                 date1= date1.AddDays(1);
 
             }
-            List<requestCheck> checks = (from c in _context.checadas
+            List<requestCheck> check = (from c in _context.checadas
                                          where c.fecha >=from1 && c.fecha<=to
                                          select new requestCheck
                                          {
@@ -215,23 +215,23 @@ namespace api_SIF.Controllers
                     
                     var checksEmpleado = new List<requestCheck>();
 
-                    foreach (var check in checks) {
-                        if (check.fecha==fecha) {
-                            if (empleado.id_empleado == check.id_empleado)
+                    foreach (var chec in check) {
+                        if (chec.fecha==fecha) {
+                            if (empleado.id_empleado == chec.id_empleado)
                             {
                                 requestCheck ch = new requestCheck();
-                                ch.id_checada = check.id_checada;
-                                ch.id_checador = check.id_checador;
-                                ch.fecha = check.fecha;
-                                ch.hora = check.hora;
-                                ch.horaM = check.horaM;
-                                ch.nomina = check.nomina;
-                                ch.id_empleado = check.id_empleado;
+                                ch.id_checada = chec.id_checada;
+                                ch.id_checador = chec.id_checador;
+                                ch.fecha = chec.fecha;
+                                ch.hora = chec.hora;
+                                ch.horaM = chec.horaM;
+                                ch.nomina = chec.nomina;
+                                ch.id_empleado = chec.id_empleado;
                                 checksEmpleado.Add(ch);
                             }
                         }
                      }
-                    checadaEmpleado.checks = checksEmpleado;
+                    checadaEmpleado.check = checksEmpleado;
                     checadasEmpleados.Add(checadaEmpleado);
 
 
