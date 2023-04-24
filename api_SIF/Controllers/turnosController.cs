@@ -25,18 +25,18 @@ namespace api_SIF.Controllers
             var turnosLista = from x in _context.turnos
                               select new requestTurno()
                               {
-                                  comida = x.comida,
+                                  comida = Clases.Funciones.HoraAString(x.comida),
                                   turno = x.turno1,
                                   descanso = x.descanso,
-                                  entrada = x.entrada,
-                                  entradaF = x.entradaF,
+                                  entrada = Clases.Funciones.HoraAString(x.entrada),
+                                  entradaF = Clases.Funciones.HoraAString(x.entradaF),
                                   horas = x.horas,
                                   horasF = x.horasF,
                                   horas_trabajadas = x.horas_trabajadas,
                                   id_turno = x.id_turno,
                                   nocturno = x.nocturno,
-                                  salida = x.salida,
-                                  salidaF = x.salidaF
+                                  salida = Clases.Funciones.HoraAString(x.salida),
+                                  salidaF = Clases.Funciones.HoraAString(x.salidaF)
                               };
 
             return await turnosLista.ToListAsync();
