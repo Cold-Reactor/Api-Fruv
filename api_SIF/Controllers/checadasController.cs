@@ -69,8 +69,8 @@ namespace api_SIF.Controllers
             return reqChecada;
         }
 
-        [HttpGet("getEmpleadoChecadas/{from1}/{to}/{sucursal}")]
-        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to, int sucursal)
+        [HttpGet("getEmpleadoChecadas/{from1}/{to}/{sucursal}/{area}/{no_empleado}")]
+        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to, int sucursal, int area, int no_empleado)
         {
             List<DateOnly> fechas = new List<DateOnly>();
             DateOnly date1 = from1;
@@ -157,6 +157,8 @@ namespace api_SIF.Controllers
                                  sucursal = p.id_sucursal,
                                  turno = p.id_turno.ToString(),
                                  area = p.id_area.ToString(),
+                                // id_area = p.id_area,
+
                                  presencial = (int)p.presencial,
                                  //checadas = checadas1.Where(x=>x.id_empleado==p.id_empleado).ToList()
 
@@ -192,8 +194,17 @@ namespace api_SIF.Controllers
 
 
                              }).ToList();
+            if (no_empleado>0)
+            {
+                empleados = empleados.Where(x => x.noEmpleado == no_empleado).ToList();
 
-            foreach(var empleado in empleados)
+            }
+            if (area > 0)
+            {
+                empleados = empleados.Where(x => x.id_area == area).ToList();
+
+            }
+            foreach (var empleado in empleados)
             {
 
                 foreach (var turno in turnos)
