@@ -9,6 +9,8 @@ namespace api_SIF.Models.EmpleadosN
         public int noEmpleado { get; set; }
         public int? sucursal { get; set; }
 
+        public int? id_turno { get; set; }
+
         public string turno { get; set; }
         public int? id_area { get; set; }
 
