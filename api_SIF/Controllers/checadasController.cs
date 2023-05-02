@@ -20,25 +20,20 @@ namespace api_SIF.Controllers
         {
             _context = context;
         }
-
         // GET: api/checadas
         [HttpGet]
         public async Task<ActionResult<IEnumerable<requestChecadas>>> Getchecadas()
         {
-
             var checadoresLista = from x in _context.checadas
                                   select new requestChecadas()
                                   {
-
-                                      id_checador = x.id_checador,
+                                     id_checador = x.id_checador,
                                      nomina= x.nomina,
                                      fecha= x.fecha,
                                      fechaHora= x.fechaHora,
                                      hora= x.hora,  
                                      id_checada = x.id_checada    ,
                                      id_empleado = x.id_empleado,
-                                     
-                                     
                                   };
             return await checadoresLista.ToListAsync();
         }
@@ -48,14 +43,12 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<requestChecadas>> Getchecada(int id)
         {
             var checada = await _context.checadas.FindAsync(id);
-
             if (checada == null)
             {
                 return NotFound();
             }
             var reqChecada =  new requestChecadas()
             {
-
                 id_checador = checada.id_checador,
                 nomina = checada.nomina,
                 fecha = checada.fecha,
@@ -63,8 +56,6 @@ namespace api_SIF.Controllers
                 hora = checada.hora,
                 id_checada = checada.id_checada,
                 id_empleado = checada.id_empleado,
-
-
             };
             return reqChecada;
         }
@@ -84,10 +75,8 @@ namespace api_SIF.Controllers
                                          where c.fecha >=from1 && c.fecha<=to
                                          select new requestCheck
                                          {
-
                                              id_checada = c.id_checada,
                                              id_checador = c.id_checador,
-
                                              fecha = c.fecha,
                                              hora = c.hora.ToString("HH:mm:ss"),
                                              horaM = "",
@@ -97,40 +86,6 @@ namespace api_SIF.Controllers
                                          }).ToList();
 
             List<requestChecadaCheck> checadas1 = new List<requestChecadaCheck>();
-
-
-
-            /*var checks = (from ch in _context.checadas
-
-                          where ch.fecha >= from1 && ch.fecha <= to
-                          select new
-                          {
-                              fecha = ch.fecha,
-                              id_empleado = ch.id_empleado,
-                              ausentismo = "",
-                              extra = 0,
-                          } into x
-                          group x by new { x.fecha, x.id_empleado, x.ausentismo, x.extra } into g
-                          select new requestChecadaCheck
-                          {
-                              id_empleado=g.Key.id_empleado,
-                              ausentismo = g.Key.ausentismo,
-                              extra = g.Key.extra,
-                              fecha = g.Key.fecha,
-                              checks = (from c in _context.checadas
-                                        where c.fecha == g.Key.fecha && g.Key.id_empleado == c.id_empleado
-                                        select new requestCheck
-                                        {
-                                            id = c.id_checadas,
-                                            hora = c.hora,
-                                            horaM = c.fechaHora,
-                                            nomina = (int)c.nomina,
-                                            id_empleado=c.id_empleado
-                                            
-                                        }).ToList()
-                          }).ToList();
-            ;
-            */
             var turnos = (from p in _context.turnos
                           select new turno
                           {
@@ -144,75 +99,33 @@ namespace api_SIF.Controllers
                           }
                          ).ToList();
                          ;
-
-            var empleados = (from p in _context.empleados 
-                             
+            var empleados = (from p in _context.empleados                              
                              where p.status==1 && p.id_sucursal==sucursal
                              select new requestEmpleadoChecadas
                              {
                                  id_turno = p.id_turno,
-
                                  id_empleado = p.id_empleado,
                                  nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
                                  noEmpleado = p.no_empleado,
                                  sucursal = p.id_sucursal,
                                  turno = p.id_turno.ToString(),
                                  area = p.id_area.ToString(),
-                                // id_area = p.id_area,
-
                                  presencial = (int)p.presencial,
-                                 //checadas = checadas1.Where(x=>x.id_empleado==p.id_empleado).ToList()
-
-                                 //(from ch in _context.checadas
-
-                                 // where ch.fecha >= from1 && ch.fecha <= to && ch.id_empleado==p.id_empleado
-                                 // //select new
-                                 // //{
-                                 // //    fecha = ch.fecha,
-                                 // //    id_empleado = ch.id_empleado,
-                                 // //    ausentismo = "",
-                                 // //    extra = 0,
-                                 // //} into x
-                                 // //group x by new { x.fecha, x.id_empleado, x.ausentismo, x.extra } into g
-                                 // select new requestChecadaCheck
-                                 // {
-                                 //     id_empleado = ch.id_empleado,
-                                 //     ausentismo = "",
-                                 //     extra = 0,
-                                 //     fecha = ch.fecha,
-                                 //     checks = (from c in _context.checadas
-                                 //               where c.fecha == ch.fecha && ch.id_empleado == c.id_empleado
-                                 //               select new requestCheck
-                                 //               {
-                                 //                   id = c.id_checadas,
-                                 //                   hora = c.hora,
-                                 //                   horaM = c.fechaHora,
-                                 //                   nomina = (int)c.nomina,
-                                 //                   id_empleado = c.id_empleado
-
-                                 //               }).ToList()
-                                 // }).ToList()
-
-
                              }).ToList();
             if (no_empleado>0)
             {
                 empleados = empleados.Where(x => x.noEmpleado == no_empleado).ToList();
-
             }
             if (area > 0)
             {
                 empleados = empleados.Where(x => x.id_area == area).ToList();
-
             }
             if (id_turno_request > 0)
             {
                 empleados = empleados.Where(x => x.id_turno == id_turno_request).ToList();
-
             }
             foreach (var empleado in empleados)
             {
-
                 foreach (var turno in turnos)
                 {
                     if (turno.id_turno == Convert.ToInt32(empleado.turno))
@@ -222,16 +135,13 @@ namespace api_SIF.Controllers
                     }
                 }
                 var checadasEmpleados = new List<requestChecadaCheck>();
-
                 foreach (var fecha in fechas)
                 {
                     var checadaEmpleado = new requestChecadaCheck();
                     checadaEmpleado.fecha = fecha;
                     checadaEmpleado.extra = 0;
-                    checadaEmpleado.ausentismo = "";
-                    
+                    checadaEmpleado.ausentismo = "";                    
                     var checksEmpleado = new List<requestCheck>();
-
                     foreach (var chec in check) {
                         if (chec.fecha==fecha) {
                             if (empleado.id_empleado == chec.id_empleado)
@@ -249,43 +159,10 @@ namespace api_SIF.Controllers
                         }
                      }
                     checadaEmpleado.check = checksEmpleado;
-                    checadasEmpleados.Add(checadaEmpleado);
-
-
-                    
-                }
-                
+                    checadasEmpleados.Add(checadaEmpleado);                    
+                }                
                 empleado.checadas = checadasEmpleados;
-            }
-            /*var checadas = (from ch in _context.checadas
-                            
-                             where ch.fecha >= from1 && ch.fecha <= to && ch.id_empleado==1
-                            select new
-                            {
-                                fecha = ch.fecha,
-                                id_empleado =ch.id_empleado,
-                                ausentismo = "",
-                                extra = 0,
-                            } into x
-                             group x by new { x.fecha,x.id_empleado,x.ausentismo,x.extra } into g 
-                          select new requestChecadaCheck
-                             {
-                              ausentismo = g.Key.ausentismo,
-                              extra = g.Key.extra,
-                              fecha = g.Key.fecha,
-                              checks = (from c in _context.checadas
-                                        where c.fecha == g.Key.fecha && g.Key.id_empleado == c.id_empleado
-                                        select new requestCheck
-                                        {
-                                            id = c.id_checadas,
-                                            hora = c.hora,
-                                            horaM = c.fechaHora,
-                                            nomina = (int)c.nomina
-
-                                        }).ToList()
-       
-                          }).ToList();*/
-
+            }            
             return empleados;
         }
         // PUT: api/checadas/5
@@ -293,30 +170,17 @@ namespace api_SIF.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Putchecada(int id, checada checada)
         {
-            if (id != checada.id_checada)
-            {
-                return BadRequest();
-            }
+            var entity = _context.checadas.FirstOrDefault(item => item.id_checada == id);
 
-            _context.Entry(checada).State = EntityState.Modified;
-
-            try
+            // Validate entity is not null
+            if (entity != null)
             {
-                await _context.SaveChangesAsync();
+                entity.fecha = checada.fecha;                
+                entity.hora = checada.hora;
+                entity.nomina = checada.nomina;
+                _context.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!checadaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/checadas

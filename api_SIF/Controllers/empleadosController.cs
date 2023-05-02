@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using api_SIF.Models.EmpleadosN;
 using api_SIF.dbContexts;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Security.Cryptography.X509Certificates;
 
 namespace api_SIF.Controllers
 {
@@ -86,7 +87,6 @@ namespace api_SIF.Controllers
             }
             var reqEmpleado = new requestEmpleado()
             {
-
                 id_empleado = empleado.id_empleado,
                 no_empleado = empleado.no_empleado,
                 nombre = empleado.nombre,
@@ -126,10 +126,57 @@ namespace api_SIF.Controllers
                 status = empleado.status,
                 externo = empleado.externo
             };
-
             return reqEmpleado;
         }
+        // GET: api/empleados/5/9
+        [HttpGet("{noEmpleado}/{id_sucursal}")]
+        public async Task<IEnumerable<requestEmpleado>> Getempleado(int noEmpleado,int id_sucursal)
+        {
+            var empleado = from x in _context.empleados.Where(x=>x.no_empleado==noEmpleado && x.id_sucursal==id_sucursal)                        
+             select new requestEmpleado()
+            {
+                id_empleado = x.id_empleado,
+                no_empleado = x.no_empleado,
+                nombre = x.nombre,
+                apellidoPaterno = x.apellidoPaterno,
+                apellidoMaterno =   x.apellidoMaterno,
+                estadoCivil = x.estadoCivil,
+                sexo = x.sexo,
+                fechaNacimiento = x.fechaNacimiento,
+                IMSS = x.IMSS,
+                telefono = x.telefono,
+                telefonoEmergencias = x.telefonoEmergencias,
+                email = x.email,
+                CURP = x.CURP,
+                RFC = x.RFC,
+                id_ciudad = x.id_ciudad,
+                id_estado = x.id_estado,
+                direccion = x.direccion,
+                CP = x.CP,
+                gradoEstudios = x.gradoEstudios,
+                carrera = x.carrera,
+                instituto = x.instituto,
+                titulo = x.titulo,
+                id_empleadoTipo = x.id_empleadoTipo,
+                id_puesto = x.id_puesto,
+                jefeInmediato = x.jefeInmediato,
+                id_turno = x.id_turno,
+                salarioDiario = x.salarioDiario,
+                id_nomina = x.id_nomina,
+                fechaIngreso = x.fechaIngreso,
+                id_empresa = x.id_empresa,
+                id_sucursal = x.id_sucursal,
+                presencial = x.presencial,
+                parentesco = x.parentesco,
+                imagen = x.imagen,
+                firma = x.firma,
+                id_rol = x.id_rol,
+                status = x.status,
+                externo = x.externo
+            };
 
+            return empleado;
+        }
         // PUT: api/empleados/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -139,9 +186,7 @@ namespace api_SIF.Controllers
             {
                 return BadRequest();
             }
-
             _context.Entry(empleado).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -160,9 +205,7 @@ namespace api_SIF.Controllers
 
             return NoContent();
         }
-
         // POST: api/empleados
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<empleado>> Postempleado(empleado empleado)
         {
@@ -181,10 +224,8 @@ namespace api_SIF.Controllers
             {
                 return NotFound();
             }
-
             _context.empleados.Remove(empleado);
             await _context.SaveChangesAsync();
-
             return NoContent();
         }
 

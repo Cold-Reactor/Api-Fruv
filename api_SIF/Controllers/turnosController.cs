@@ -38,11 +38,7 @@ namespace api_SIF.Controllers
                                   salida = Clases.Funciones.HoraAString(x.salida),
                                   salidaF = Clases.Funciones.HoraAString(x.salidaF)
                               };
-
             return await turnosLista.ToListAsync();
-            //return await _context.empleados.ToListAsync();
         }
-
-
     }
 }

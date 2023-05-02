@@ -26,11 +26,8 @@ namespace api_SIF.Controllers
                              {  id_area = x.id_area,
                                  id_departamento = x.id_departamento,
                                  area = x.area1
-
                              };
-
-            return await areasLista.ToListAsync();
-            //return await _context.empleados.ToListAsync();
+            return await areasLista.ToListAsync();            
         }
     }
 }

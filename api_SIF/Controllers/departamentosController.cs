@@ -26,11 +26,9 @@ namespace api_SIF.Controllers
                                      select new requestDepartamento()
                                      {
                                          id_departamento = x.id_departamento,
-                                         departamento = x.departamento1
-                                         
+                                         departamento = x.departamento1                                         
                                      };
             return await departamentosLista.ToListAsync();
-            //return await _context.empleados.ToListAsync();
         }
     }
 }

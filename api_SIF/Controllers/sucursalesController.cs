@@ -26,12 +26,9 @@ namespace api_SIF.Controllers
                                   {
                                       id_sucursal = x.id_sucursal,
                                       sucursal = x.sucursal
-                                  }
-                                 
+                                  }                                 
                             ;
-
             return await sucursalesLista.ToListAsync();
-            //return await _context.empleados.ToListAsync();
         }
     }
 }
