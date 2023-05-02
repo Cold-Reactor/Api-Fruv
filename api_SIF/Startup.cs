@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Pomelo.EntityFrameworkCore.MySql.Storage;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,10 @@ namespace api_SIF
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
 
-
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v2", new OpenApiInfo { Title = "MVCCallWebAPI", Version = "v2" });
+            });
             services.AddCors(options =>
             {
                 options.AddPolicy("nuevaPolitica", app =>
@@ -77,7 +81,14 @@ namespace api_SIF
             app.UseRouting();
             app.UseCors("nuevaPolitica");
             app.UseAuthorization();
+            app.UseSwagger();
 
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "MVCCallWebAPI");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
