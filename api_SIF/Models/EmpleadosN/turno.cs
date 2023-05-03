@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("turno")]
+    [Index("id_sucursal", Name = "id_sucursal_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class turno
     {
@@ -34,7 +35,15 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "time")]
         public TimeOnly comida { get; set; }
         public double horas_trabajadas { get; set; }
+        [Column(TypeName = "int(11)")]
+        public int id_sucursal { get; set; }
         [Column(TypeName = "int(1)")]
         public int nocturno { get; set; }
+        [Column(TypeName = "int(1)")]
+        public int disponible { get; set; }
+
+        [ForeignKey("id_sucursal")]
+        [InverseProperty("turnos")]
+        public virtual sucursale id_sucursalNavigation { get; set; }
     }
 }

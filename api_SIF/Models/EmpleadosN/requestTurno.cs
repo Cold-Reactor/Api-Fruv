@@ -5,7 +5,8 @@ namespace api_SIF.Models.EmpleadosN
     public class requestTurno
     {
         public int id_turno { get; set; }
-       
+        public int disponible { get; set; }
+
         public string turno { get; set; }
        
         public string entrada { get; set; }

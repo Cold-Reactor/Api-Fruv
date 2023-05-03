@@ -205,8 +205,6 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_checada)
                     .HasName("PRIMARY");
 
-                entity.Property(e => e.nomina).HasDefaultValueSql("'0'");
-
                 entity.HasOne(d => d.id_checadorNavigation)
                     .WithMany(p => p.checada)
                     .HasForeignKey(d => d.id_checador)
@@ -877,9 +875,17 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.descanso).HasDefaultValueSql("'domingo'");
 
+                entity.Property(e => e.disponible).HasDefaultValueSql("'1'");
+
                 entity.Property(e => e.entradaF).HasDefaultValueSql("'00:00:00'");
 
                 entity.Property(e => e.salidaF).HasDefaultValueSql("'00:00:00'");
+
+                entity.HasOne(d => d.id_sucursalNavigation)
+                    .WithMany(p => p.turnos)
+                    .HasForeignKey(d => d.id_sucursal)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("id_sucursal");
             });
 
             modelBuilder.Entity<usuario>(entity =>

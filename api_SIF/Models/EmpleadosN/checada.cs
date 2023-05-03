@@ -23,7 +23,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "time")]
         public TimeOnly hora { get; set; }
         [Column(TypeName = "tinyint(4)")]
-        public sbyte? nomina { get; set; }
+        public sbyte nomina { get; set; }
 
         [ForeignKey("id_checador")]
         [InverseProperty("checada")]
