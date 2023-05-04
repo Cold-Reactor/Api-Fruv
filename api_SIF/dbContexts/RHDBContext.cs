@@ -879,13 +879,15 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.entradaF).HasDefaultValueSql("'00:00:00'");
 
+                entity.Property(e => e.id_sucursal).HasDefaultValueSql("'9'");
+
                 entity.Property(e => e.salidaF).HasDefaultValueSql("'00:00:00'");
 
                 entity.HasOne(d => d.id_sucursalNavigation)
                     .WithMany(p => p.turnos)
                     .HasForeignKey(d => d.id_sucursal)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("id_sucursal");
+                    .HasConstraintName("fk_sucursal");
             });
 
             modelBuilder.Entity<usuario>(entity =>
