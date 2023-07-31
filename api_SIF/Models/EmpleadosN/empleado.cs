@@ -104,8 +104,8 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_sucursal { get; set; }
         [Column(TypeName = "int(1)")]
         public int? presencial { get; set; }
-        [StringLength(45)]
-        public string parentesco { get; set; }
+        //[StringLength(45)]
+        //public string parentesco { get; set; }
         [StringLength(300)]
         public string imagen { get; set; }
         [Column(TypeName = "text")]

@@ -63,13 +63,64 @@ namespace api_SIF.Controllers
                             id_empresa = x.id_empresa,
                             id_sucursal = x.id_sucursal,
                             presencial = x.presencial,
-                            parentesco = x.parentesco,
+                            //parentesco = x.parentesco,
                             imagen = x.imagen,
                             firma = x.firma,
                             id_rol = x.id_rol,
                             status = x.status,
                             externo = x.externo
                         };
+
+            return await empleadosLista.ToListAsync();
+            //return await _context.empleados.ToListAsync();
+        }
+
+        [HttpGet("GetempleadosPorSucursal/{id_sucursal}")]
+        public async Task<ActionResult<IEnumerable<requestEmpleado>>> GetempleadosPorSucursal(int id_sucursal)
+        {
+            var empleadosLista = from x in _context.empleados.Where(x=>x.id_sucursal==id_sucursal)
+                                 select new requestEmpleado()
+                                 {
+
+                                     id_empleado = x.id_empleado,
+                                     no_empleado = x.no_empleado,
+                                     nombre = x.nombre,
+                                     apellidoPaterno = x.apellidoPaterno,
+                                     apellidoMaterno = x.apellidoMaterno,
+                                     estadoCivil = x.estadoCivil,
+                                     sexo = x.sexo,
+                                     fechaNacimiento = x.fechaNacimiento,
+                                     IMSS = x.IMSS,
+                                     telefono = x.telefono,
+                                     telefonoEmergencias = x.telefonoEmergencias,
+                                     email = x.email,
+                                     CURP = x.CURP,
+                                     RFC = x.RFC,
+                                     id_ciudad = x.id_ciudad,
+                                     id_estado = x.id_estado,
+                                     direccion = x.direccion,
+                                     CP = x.CP,
+                                     gradoEstudios = x.gradoEstudios,
+                                     carrera = x.carrera,
+                                     instituto = x.instituto,
+                                     titulo = x.titulo,
+                                     id_empleadoTipo = x.id_empleadoTipo,
+                                     id_puesto = x.id_puesto,
+                                     jefeInmediato = x.jefeInmediato,
+                                     id_turno = x.id_turno,
+                                     salarioDiario = x.salarioDiario,
+                                     id_nomina = x.id_nomina,
+                                     fechaIngreso = x.fechaIngreso,
+                                     id_empresa = x.id_empresa,
+                                     id_sucursal = x.id_sucursal,
+                                     presencial = x.presencial,
+                                     //parentesco = x.parentesco,
+                                     imagen = x.imagen,
+                                     firma = x.firma,
+                                     id_rol = x.id_rol,
+                                     status = x.status,
+                                     externo = x.externo
+                                 };
 
             return await empleadosLista.ToListAsync();
             //return await _context.empleados.ToListAsync();
@@ -119,7 +170,7 @@ namespace api_SIF.Controllers
                 id_empresa = empleado.id_empresa,
                 id_sucursal = empleado.id_sucursal,
                 presencial = empleado.presencial,
-                parentesco = empleado.parentesco,
+                //parentesco = empleado.parentesco,
                 imagen = empleado.imagen,
                 firma = empleado.firma,
                 id_rol = empleado.id_rol,
@@ -167,7 +218,7 @@ namespace api_SIF.Controllers
                 id_empresa = x.id_empresa,
                 id_sucursal = x.id_sucursal,
                 presencial = x.presencial,
-                parentesco = x.parentesco,
+                //parentesco = x.parentesco,
                 imagen = x.imagen,
                 firma = x.firma,
                 id_rol = x.id_rol,
