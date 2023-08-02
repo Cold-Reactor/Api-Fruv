@@ -9,6 +9,7 @@ using api_SIF.Models.EmpleadosN;
 using api_SIF.dbContexts;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api_SIF.Controllers
 {
@@ -24,6 +25,7 @@ namespace api_SIF.Controllers
         }
 
         // GET: api/empleados
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados()
         {

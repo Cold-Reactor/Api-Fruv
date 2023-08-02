@@ -1,18 +1,22 @@
 using api_SIF.dbContexts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Pomelo.EntityFrameworkCore.MySql.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -50,6 +54,7 @@ namespace api_SIF
            .UseMySql(BodegaConnectionStr, ServerVersion.AutoDetect(BodegaConnectionStr))
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
+            
 
             services.AddSwaggerGen(c =>
             {
@@ -63,6 +68,34 @@ namespace api_SIF
                     .AllowAnyHeader().AllowAnyMethod();
                 });
             });
+
+            // Configurar autenticación con JWT
+            var jwtSettings = Configuration.GetSection("JwtSettings");
+            var a = jwtSettings["SecretKey"];
+            var b = jwtSettings["Issuer"];
+            var c = jwtSettings["Audience"];
+            var key = Encoding.ASCII.GetBytes(jwtSettings["SecretKey"]);
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+   .AddJwtBearer(options =>
+   {
+       options.RequireHttpsMetadata = false;
+       options.SaveToken = true;
+       options.TokenValidationParameters = new TokenValidationParameters
+       {
+           ValidateIssuer = true,
+           ValidateAudience = true,
+           ValidateIssuerSigningKey = true,
+           ValidateLifetime = true, // Validar la expiración del token
+           //ClockSkew = TimeSpan.Zero, // No permitir diferencia de tiempo entre el servidor y el token (opcional)
+           ValidIssuer = jwtSettings["Issuer"],
+           ValidAudience = jwtSettings["Audience"],
+           IssuerSigningKey = new SymmetricSecurityKey(key),
+       };
+   });
 
             services.AddControllers(options => options.UseDateOnlyTimeOnlyStringConverters())
     .AddJsonOptions(options => options.UseDateOnlyTimeOnlyStringConverters()); ;
@@ -80,6 +113,7 @@ namespace api_SIF
 
             app.UseRouting();
             app.UseCors("nuevaPolitica");
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwagger();
 
