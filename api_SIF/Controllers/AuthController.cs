@@ -7,6 +7,10 @@ using System.Text;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
+using api_SIF.Models;
+using System.Threading.Tasks;
+using api_SIF.dbContexts;
+using System.Linq;
 
 namespace api_SIF.Controllers
 {
@@ -15,26 +19,31 @@ namespace api_SIF.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly RHDBContext _context;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, RHDBContext context)
         {
             _configuration = configuration;
+            _context = context;
         }
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login(string username, string password)
+        public async Task<IActionResult> LoginAsync([FromBody] LoginRequest model)
         {
-            // Aquí deberías validar el usuario y la contraseña (por ejemplo, desde una base de datos)
-            bool isValidUser = true;// YourUserAuthenticationMethod(username, password);
-
+            bool isValidUser = true;
+            var user = _context.usuarios.FirstOrDefault(x=>x.user== model.userName);
+            if (user == null || !(model.password.Equals(user.password)))
+            {
+                isValidUser = false;
+            }
             if (!isValidUser)
             {
                 return Unauthorized(); // El usuario no está autorizado
             }
 
             // Generar el token JWT
-            var token = GenerateJwtToken(username);
+            var token = GenerateJwtToken(model.userName);
             return Ok(new { token });
         }
 
