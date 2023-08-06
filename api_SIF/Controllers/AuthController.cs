@@ -56,7 +56,7 @@ namespace api_SIF.Controllers
             var token = GenerateJwtToken(usuarioR);
             var jwtSettings = _configuration.GetSection("JwtSettings");
 
-            DateTime expiracion_acceso = DateTime.UtcNow.AddMinutes(Convert.ToInt32(jwtSettings["ExpirationDays"]));
+            DateTime expiracion_acceso = DateTime.UtcNow.AddDays(Convert.ToInt32(jwtSettings["ExpirationDays"]));
             return Ok(new {token,usuarioR.id_empleado,usuarioR.no_empleado,usuarioR.id_sucursal,expiracion_acceso});
         }
         private string GenerateJwtTokenActualizacionExpiracion(string username)
@@ -106,7 +106,7 @@ namespace api_SIF.Controllers
                 }),
                 Audience = jwtSettings["Audience"],
                 Issuer = jwtSettings["Issuer"],
-                Expires = DateTime.UtcNow.AddMinutes(Convert.ToInt32(jwtSettings["ExpirationDays"])),
+                Expires = DateTime.UtcNow.AddDays(Convert.ToInt32(jwtSettings["ExpirationDays"])),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
