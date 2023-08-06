@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using api_SIF.Models.EmpleadosN;
 using api_SIF.dbContexts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api_SIF.Controllers
 {
@@ -185,6 +186,7 @@ namespace api_SIF.Controllers
 
         // POST: api/checadas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<checada>> Postchecada(checada checada)
         {
