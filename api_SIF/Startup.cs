@@ -54,7 +54,13 @@ namespace api_SIF
            .UseMySql(BodegaConnectionStr, ServerVersion.AutoDetect(BodegaConnectionStr))
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
-            
+            services.AddDbContext<EmpleadosContext>(
+           dbContextOptions => dbContextOptions
+           .UseMySql(Configuration.GetConnectionString("EmpleadosConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("EmpleadosConnection")))
+           .EnableSensitiveDataLogging()
+           .EnableDetailedErrors());
+
+
 
             services.AddSwaggerGen(c =>
             {

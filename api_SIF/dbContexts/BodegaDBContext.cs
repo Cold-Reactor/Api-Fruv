@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using api_SIF.Models.Bodega;
+using api_SIF.Models.Empleados;
 
 namespace api_SIF.dbContexts
 {
@@ -68,5 +69,6 @@ namespace api_SIF.dbContexts
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
     }
 }
