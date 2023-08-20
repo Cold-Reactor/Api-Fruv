@@ -34,13 +34,16 @@ namespace api_SIF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region conexionBodega
             string BodegaConnectionStr = Configuration.GetConnectionString("BodegaConnection");
-            services.AddDbContext<MyDBContext>(
+            services.AddDbContext<BodegaDBContext>(
             dbContextOptions => dbContextOptions
             .UseMySql(BodegaConnectionStr, ServerVersion.AutoDetect(BodegaConnectionStr))
             .EnableSensitiveDataLogging()
             .EnableDetailedErrors());
+            #endregion
 
+            #region conexionRHNuevaBd
             string RHConnectionStr = Configuration.GetConnectionString("RHConnection");
 
             services.AddDbContext<RHDBContext>(
@@ -48,18 +51,15 @@ namespace api_SIF
             .UseMySql(RHConnectionStr, ServerVersion.AutoDetect(RHConnectionStr))
             .EnableSensitiveDataLogging()
             .EnableDetailedErrors());
+            #endregion
 
-            services.AddDbContext<BodegaDBContext>(
-           dbContextOptions => dbContextOptions
-           .UseMySql(BodegaConnectionStr, ServerVersion.AutoDetect(BodegaConnectionStr))
-           .EnableSensitiveDataLogging()
-           .EnableDetailedErrors());
+            #region conexionRHViejaBD
             services.AddDbContext<EmpleadosContext>(
            dbContextOptions => dbContextOptions
            .UseMySql(Configuration.GetConnectionString("EmpleadosConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("EmpleadosConnection")))
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
-
+            #endregion
 
 
             services.AddSwaggerGen(c =>
