@@ -10,7 +10,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_area", Name = "fk_empleado_area1_idx")]
     [Index("id_ciudad", Name = "fk_empleados_ciudad1_idx")]
     [Index("id_rol", Name = "fk_empleados_empleadoRol1_idx")]
-    [Index("id_empleadoTipo", Name = "fk_empleados_empleadoTipo1_idx")]
+ //   [Index("id_empleadoTipo", Name = "fk_empleados_empleadoTipo1_idx")]
     [Index("id_empresa", Name = "fk_empleados_empresa1_idx")]
     [Index("id_estado", Name = "fk_empleados_estado1_idx")]
     [Index("id_turno", Name = "fk_empleados_jornada1_idx")]
@@ -87,8 +87,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int? titulo { get; set; }
         [Column(TypeName = "int(11)")]
-        public int? id_empleadoTipo { get; set; }
-        [Column(TypeName = "int(11)")]
+        //public int? id_empleadoTipo { get; set; }
+//[Column(TypeName = "int(11)")]
         public int? id_puesto { get; set; }
         [Column(TypeName = "int(11)")]
         public int? jefeInmediato { get; set; }
