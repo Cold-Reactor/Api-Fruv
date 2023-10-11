@@ -13,7 +13,6 @@ namespace api_SIF.Models.EmpleadosN
         {
             turnos = new HashSet<turno>();
             usuario_empleadorols = new HashSet<usuario_empleadorol>();
-            id_empresas = new HashSet<empresa>();
         }
 
         [Key]
@@ -30,9 +29,5 @@ namespace api_SIF.Models.EmpleadosN
         public virtual ICollection<turno> turnos { get; set; }
         [InverseProperty("id_sucursalNavigation")]
         public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
-
-        [ForeignKey("id_sucursal")]
-        [InverseProperty("id_sucursals")]
-        public virtual ICollection<empresa> id_empresas { get; set; }
     }
 }

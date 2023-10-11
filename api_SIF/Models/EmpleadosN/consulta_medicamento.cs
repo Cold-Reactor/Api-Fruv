@@ -14,9 +14,8 @@ namespace api_SIF.Models.EmpleadosN
     {
         [Key]
         [Column(TypeName = "int(11)")]
-        public int id_consultaMedicamento { get; set; }
-        [Column(TypeName = "int(11)")]
         public int id_consulta { get; set; }
+        [Key]
         [Column(TypeName = "int(11)")]
         public int id_medicamento { get; set; }
         [Column(TypeName = "tinyint(4)")]

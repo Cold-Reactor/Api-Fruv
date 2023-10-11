@@ -46,6 +46,7 @@ namespace api_SIF.dbContexts
         public virtual DbSet<empresa> empresas { get; set; }
         public virtual DbSet<estado> estados { get; set; }
         public virtual DbSet<examenmedico> examenmedicos { get; set; }
+        public virtual DbSet<examenmedicot> examenmedicots { get; set; }
         public virtual DbSet<falta> faltas { get; set; }
         public virtual DbSet<formato> formatos { get; set; }
         public virtual DbSet<hipertension> hipertensions { get; set; }
@@ -205,11 +206,19 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_checada)
                     .HasName("PRIMARY");
 
+                entity.Property(e => e.fechaHoraSubida).HasDefaultValueSql("CURRENT_TIMESTAMP");
+
                 entity.HasOne(d => d.id_checadorNavigation)
                     .WithMany(p => p.checada)
                     .HasForeignKey(d => d.id_checador)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_checadas_checador1");
+
+                entity.HasOne(d => d.id_empleadoNavigation)
+                    .WithMany(p => p.checada)
+                    .HasForeignKey(d => d.id_empleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("empleado");
             });
 
             modelBuilder.Entity<checador>(entity =>
@@ -259,8 +268,9 @@ namespace api_SIF.dbContexts
 
             modelBuilder.Entity<consulta_medicamento>(entity =>
             {
-                entity.HasKey(e => e.id_consultaMedicamento)
-                    .HasName("PRIMARY");
+                entity.HasKey(e => new { e.id_consulta, e.id_medicamento })
+                    .HasName("PRIMARY")
+                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
                 entity.HasOne(d => d.id_consultaNavigation)
                     .WithMany(p => p.consulta_medicamentos)
@@ -366,6 +376,8 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_empleado)
                     .HasName("PRIMARY");
 
+                entity.Property(e => e.bonoProd).HasDefaultValueSql("'0'");
+
                 entity.Property(e => e.externo).HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.presencial).HasDefaultValueSql("'1'");
@@ -438,20 +450,130 @@ namespace api_SIF.dbContexts
 
             modelBuilder.Entity<examenmedico>(entity =>
             {
-                entity.HasKey(e => e.id_examen)
+                entity.HasKey(e => e.id_examenMedico)
                     .HasName("PRIMARY");
 
-                entity.Property(e => e.covid).HasDefaultValueSql("b'0'");
+                entity.Property(e => e.id_examenMedico).ValueGeneratedNever();
 
-                entity.Property(e => e.hospitalizacionCovid).HasDefaultValueSql("b'0'");
+                entity.Property(e => e.accidentes).HasDefaultValueSql("'0'");
 
-                entity.Property(e => e.secuelas).HasDefaultValueSql("b'0'");
+                entity.Property(e => e.adicciones).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.agudezaVisual).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.alcoholismo).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.alergias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.alergiasActual).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.alteracionesNerviosas).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.antidoping).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.apto).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.aptoExposicionQuimicos).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.aptoExposicionRuido).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.aptoManipulacionCarga).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.aptoTrabajosAltura).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.artralgias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.asmaB).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.cardiopat).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.cirugias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.covid).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.dermatosis).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.diabetes).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.dismenorrea).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.embarazo).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.epilepsia).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.esguinceCronico).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.fractura).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.gastritis).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.habilidades).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.hepatitis).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.hernia).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.hipoacustico).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.hombroDoloroso).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.lumbalgias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.migranas).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.nasofaringe).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.nuevasTecnologias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.ocuparVacante).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.otalgias).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.papanicolaou).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.porAccidente).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.prevenirRiesgo).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.problemasRenales).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.pruebaDiabetes).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.recuperacionQuimio).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.restricciones).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.sanoApto).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.tosCronica).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.usaLentes).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.varices).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.vistaOido).HasDefaultValueSql("'0'");
 
                 entity.HasOne(d => d.id_empleadoNavigation)
                     .WithMany(p => p.examenmedicos)
                     .HasForeignKey(d => d.id_empleado)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_examen_medico_empleados1");
+
+                entity.HasOne(d => d.id_examenMedicoTNavigation)
+                    .WithMany(p => p.examenmedicos)
+                    .HasForeignKey(d => d.id_examenMedicoT)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_examenMedico_examenMedicoT1");
+            });
+
+            modelBuilder.Entity<examenmedicot>(entity =>
+            {
+                entity.HasKey(e => e.id_examenMedicoT)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.id_examenMedicoT).ValueGeneratedNever();
+
+                entity.Property(e => e.utilizable).HasDefaultValueSql("'1'");
             });
 
             modelBuilder.Entity<falta>(entity =>
@@ -588,13 +710,18 @@ namespace api_SIF.dbContexts
                     .WithMany(p => p.parientes)
                     .HasForeignKey(d => d.id_empleado)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_parientes_empleado1");
+                    .HasConstraintName("fk_pariente_empleado1");
             });
 
             modelBuilder.Entity<partidum>(entity =>
             {
                 entity.HasKey(e => e.id_partida)
                     .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_areaNavigation)
+                    .WithMany(p => p.partida)
+                    .HasForeignKey(d => d.id_area)
+                    .HasConstraintName("fk_partida_area1");
 
                 entity.HasOne(d => d.id_departamentoNavigation)
                     .WithMany(p => p.partida)
@@ -604,6 +731,7 @@ namespace api_SIF.dbContexts
                 entity.HasOne(d => d.id_presupuestoNavigation)
                     .WithMany(p => p.partida)
                     .HasForeignKey(d => d.id_presupuesto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_partida_presupuesto1");
             });
 
@@ -649,6 +777,12 @@ namespace api_SIF.dbContexts
             {
                 entity.HasKey(e => e.id_puesto)
                     .HasName("PRIMARY");
+
+                entity.HasOne(d => d.id_empleadoTNavigation)
+                    .WithMany(p => p.puestos)
+                    .HasForeignKey(d => d.id_empleadoT)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_puesto_empleadoT");
             });
 
             modelBuilder.Entity<refaccion>(entity =>
@@ -699,27 +833,6 @@ namespace api_SIF.dbContexts
             {
                 entity.HasKey(e => e.id_sucursal)
                     .HasName("PRIMARY");
-
-                entity.HasMany(d => d.id_empresas)
-                    .WithMany(p => p.id_sucursals)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "sucursal_empresa",
-                        l => l.HasOne<empresa>().WithMany().HasForeignKey("id_empresa").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_empresa1"),
-                        r => r.HasOne<sucursale>().WithMany().HasForeignKey("id_sucursal").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_sucursal_has_empresa_sucursal1"),
-                        j =>
-                        {
-                            j.HasKey("id_sucursal", "id_empresa").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
-                            j.ToTable("sucursal_empresa").UseCollation("utf8_spanish2_ci");
-
-                            j.HasIndex(new[] { "id_empresa" }, "fk_sucursal_has_empresa_empresa1_idx");
-
-                            j.HasIndex(new[] { "id_sucursal" }, "fk_sucursal_has_empresa_sucursal1_idx");
-
-                            j.IndexerProperty<int>("id_sucursal").HasColumnType("int(11)");
-
-                            j.IndexerProperty<int>("id_empresa").HasColumnType("int(11)");
-                        });
             });
 
             modelBuilder.Entity<suspension>(entity =>

@@ -19,9 +19,9 @@ namespace api_SIF.Models.EmpleadosN
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_bitacora { get; set; }
-        [Column(TypeName = "tinytext")]
-        public string sucursal { get; set; }
-        public DateOnly? fecha { get; set; }
+        [Column(TypeName = "int(11)")]
+        public int id_sucursal { get; set; }
+        public DateOnly fecha { get; set; }
 
         [InverseProperty("id_bitacoraNavigation")]
         public virtual ICollection<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }

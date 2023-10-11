@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api_SIF.Models.EmpleadosN
 {
+    [Index("id_empleado", Name = "empleado_idx")]
     [Index("id_checador", Name = "fk_checadas_checador1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class checada
@@ -24,9 +25,14 @@ namespace api_SIF.Models.EmpleadosN
         public TimeOnly hora { get; set; }
         [Column(TypeName = "tinyint(4)")]
         public sbyte nomina { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? fechaHoraSubida { get; set; }
 
         [ForeignKey("id_checador")]
         [InverseProperty("checada")]
         public virtual checador id_checadorNavigation { get; set; }
+        [ForeignKey("id_empleado")]
+        [InverseProperty("checada")]
+        public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

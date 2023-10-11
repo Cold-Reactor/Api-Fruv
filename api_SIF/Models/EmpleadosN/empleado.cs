@@ -10,7 +10,6 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_area", Name = "fk_empleado_area1_idx")]
     [Index("id_ciudad", Name = "fk_empleados_ciudad1_idx")]
     [Index("id_rol", Name = "fk_empleados_empleadoRol1_idx")]
- //   [Index("id_empleadoTipo", Name = "fk_empleados_empleadoTipo1_idx")]
     [Index("id_empresa", Name = "fk_empleados_empresa1_idx")]
     [Index("id_estado", Name = "fk_empleados_estado1_idx")]
     [Index("id_turno", Name = "fk_empleados_jornada1_idx")]
@@ -24,6 +23,7 @@ namespace api_SIF.Models.EmpleadosN
         {
             accidentes = new HashSet<accidente>();
             amonestacions = new HashSet<amonestacion>();
+            checada = new HashSet<checada>();
             consulta = new HashSet<consultum>();
             empleadohistorials = new HashSet<empleadohistorial>();
             examenmedicos = new HashSet<examenmedico>();
@@ -87,8 +87,6 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int? titulo { get; set; }
         [Column(TypeName = "int(11)")]
-        //public int? id_empleadoTipo { get; set; }
-//[Column(TypeName = "int(11)")]
         public int? id_puesto { get; set; }
         [Column(TypeName = "int(11)")]
         public int? jefeInmediato { get; set; }
@@ -104,8 +102,6 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_sucursal { get; set; }
         [Column(TypeName = "int(1)")]
         public int? presencial { get; set; }
-        //[StringLength(45)]
-        //public string parentesco { get; set; }
         [StringLength(300)]
         public string imagen { get; set; }
         [Column(TypeName = "text")]
@@ -118,11 +114,14 @@ namespace api_SIF.Models.EmpleadosN
         public int? externo { get; set; }
         [Column(TypeName = "int(11)")]
         public int? id_area { get; set; }
+        public double? bonoProd { get; set; }
 
         [InverseProperty("id_empleadoNavigation")]
         public virtual ICollection<accidente> accidentes { get; set; }
         [InverseProperty("id_empleadoNavigation")]
         public virtual ICollection<amonestacion> amonestacions { get; set; }
+        [InverseProperty("id_empleadoNavigation")]
+        public virtual ICollection<checada> checada { get; set; }
         [InverseProperty("id_empleadoNavigation")]
         public virtual ICollection<consultum> consulta { get; set; }
         [InverseProperty("id_empleadoNavigation")]

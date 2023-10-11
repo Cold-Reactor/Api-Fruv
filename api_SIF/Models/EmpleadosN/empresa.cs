@@ -10,20 +10,11 @@ namespace api_SIF.Models.EmpleadosN
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class empresa
     {
-        public empresa()
-        {
-            id_sucursals = new HashSet<sucursale>();
-        }
-
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_empresa { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
         public string nombre { get; set; }
-
-        [ForeignKey("id_empresa")]
-        [InverseProperty("id_empresas")]
-        public virtual ICollection<sucursale> id_sucursals { get; set; }
     }
 }

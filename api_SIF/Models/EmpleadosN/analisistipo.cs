@@ -21,6 +21,8 @@ namespace api_SIF.Models.EmpleadosN
         [Required]
         [StringLength(45)]
         public string analisis { get; set; }
+        [Column(TypeName = "int(1)")]
+        public int utilizable { get; set; }
 
         [InverseProperty("id_analisisTNavigation")]
         public virtual ICollection<historialanalisismedico> historialanalisismedicos { get; set; }

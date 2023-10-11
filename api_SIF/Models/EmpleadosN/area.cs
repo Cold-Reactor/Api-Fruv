@@ -17,6 +17,7 @@ namespace api_SIF.Models.EmpleadosN
             accidentes = new HashSet<accidente>();
             consulta = new HashSet<consultum>();
             inmobiliarios = new HashSet<inmobiliario>();
+            partida = new HashSet<partidum>();
             trabajoexternos = new HashSet<trabajoexterno>();
             trabajointernos = new HashSet<trabajointerno>();
             id_bitacoras = new HashSet<cincosbitacora>();
@@ -40,6 +41,8 @@ namespace api_SIF.Models.EmpleadosN
         public virtual ICollection<consultum> consulta { get; set; }
         [InverseProperty("id_areaNavigation")]
         public virtual ICollection<inmobiliario> inmobiliarios { get; set; }
+        [InverseProperty("id_areaNavigation")]
+        public virtual ICollection<partidum> partida { get; set; }
         [InverseProperty("id_areaNavigation")]
         public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
         [InverseProperty("id_areaNavigation")]

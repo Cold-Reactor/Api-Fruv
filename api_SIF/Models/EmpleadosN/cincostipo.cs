@@ -18,8 +18,12 @@ namespace api_SIF.Models.EmpleadosN
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_cincoStipo { get; set; }
+        [Required]
         [StringLength(45)]
         public string tipo { get; set; }
+        [Required]
+        [StringLength(45)]
+        public string color { get; set; }
 
         [InverseProperty("id_cincoStipoNavigation")]
         public virtual ICollection<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }
