@@ -10,7 +10,8 @@ namespace api_SIF.Models.EmpleadosN
         public string turno { get; set; }
        
         public string entrada { get; set; }
-       
+        public int id_sucursal { get; set; }
+
         public string salida { get; set; }
         
         public int horas { get; set; }
