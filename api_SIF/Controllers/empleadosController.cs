@@ -262,10 +262,16 @@ namespace api_SIF.Controllers
         [HttpPost]
         public async Task<ActionResult<empleado>> Postempleado(empleado empleado)
         {
+            if (empleado==null || empleado.id_empleado>0)
+            {
+                return BadRequest();
+            }
+            empleado.no_empleado = this.ObtenerUltimoNumeroEmpleadoMasUno(empleado.id_sucursal);
+            
             _context.empleados.Add(empleado);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Getempleado", new { id = empleado.id_empleado }, empleado);
+            return CreatedAtAction("Getempleado", new { id = empleado.id_empleado,no_empleado=empleado.no_empleado }, empleado);
         }
 
         // DELETE: api/empleados/5
@@ -282,6 +288,20 @@ namespace api_SIF.Controllers
             return NoContent();
         }
 
+        public int ObtenerUltimoNumeroEmpleadoMasUno(int? id_sucursal)
+        {
+            // Utiliza la función Max para obtener el valor máximo actual
+            int? ultimoValor = _context.empleados.Where(e => e.id_sucursal == id_sucursal).Max(e => (int?)e.no_empleado);
+
+            // Si no hay valores en la tabla, establece el valor inicial en 1
+            if (!ultimoValor.HasValue)
+            {
+                return 1;
+            }
+
+            // Suma uno al último valor obtenido
+            return ultimoValor.Value + 1;
+        }
         private bool empleadoExists(int id)
         {
             return _context.empleados.Any(e => e.id_empleado == id);

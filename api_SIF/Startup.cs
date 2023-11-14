@@ -113,6 +113,14 @@ namespace api_SIF
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+
+                // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+                // specifying the Swagger JSON endpoint.
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v2/swagger.json", "MVCCallWebAPI");
+                });
             }
 
             app.UseHttpsRedirection();
@@ -121,14 +129,7 @@ namespace api_SIF
             app.UseCors("nuevaPolitica");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "MVCCallWebAPI");
-            });
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
