@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace api_SIF.Controllers
 {
+    [Authorize]
+
     [Route("RH/[controller]")]
     [ApiController]
     public class empleadosController : ControllerBase
