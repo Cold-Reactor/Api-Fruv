@@ -78,7 +78,7 @@ namespace api_SIF.Controllers
             return await empleadosLista.ToListAsync();
             //return await _context.empleados.ToListAsync();
         }
-
+        
         [HttpGet("GetempleadosPorSucursal/{id_sucursal}")]
         public async Task<ActionResult<IEnumerable<requestEmpleado>>> GetempleadosPorSucursal(int id_sucursal)
         {
@@ -129,6 +129,7 @@ namespace api_SIF.Controllers
             return await empleadosLista.ToListAsync();
             //return await _context.empleados.ToListAsync();
         }
+        
 
         // GET: api/empleados/5
         [HttpGet("{id}")]
@@ -183,6 +184,7 @@ namespace api_SIF.Controllers
             };
             return reqEmpleado;
         }
+        
         // GET: api/empleados/5/9
         [HttpGet("{noEmpleado}/{id_sucursal}")]
         public async Task<IEnumerable<requestEmpleado>> Getempleado(int noEmpleado,int id_sucursal)
@@ -232,6 +234,7 @@ namespace api_SIF.Controllers
 
             return empleado;
         }
+        
         // PUT: api/empleados/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -260,6 +263,7 @@ namespace api_SIF.Controllers
 
             return NoContent();
         }
+        
         // POST: api/empleados
         [HttpPost]
         public async Task<ActionResult<empleado>> Postempleado(empleado empleado)
@@ -275,7 +279,7 @@ namespace api_SIF.Controllers
 
             return CreatedAtAction("Getempleado", new { id = empleado.id_empleado,no_empleado=empleado.no_empleado }, empleado);
         }
-
+        
         // DELETE: api/empleados/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Deleteempleado(int id)
@@ -289,8 +293,8 @@ namespace api_SIF.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
-
-        public int ObtenerUltimoNumeroEmpleadoMasUno(int? id_sucursal)
+       
+        private int ObtenerUltimoNumeroEmpleadoMasUno(int? id_sucursal)
         {
             // Utiliza la función Max para obtener el valor máximo actual
             int? ultimoValor = _context.empleados.Where(e => e.id_sucursal == id_sucursal).Max(e => (int?)e.no_empleado);

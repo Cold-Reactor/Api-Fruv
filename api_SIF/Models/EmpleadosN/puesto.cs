@@ -20,8 +20,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_empleadoT { get; set; }
 
-        [ForeignKey("id_empleadoT")]
-        [InverseProperty("puestos")]
-        public virtual empleadotipo id_empleadoTNavigation { get; set; }
+        //[ForeignKey("id_empleadoT")]
+        //[InverseProperty("puestos")]
+        //public virtual empleadotipo id_empleadoTNavigation { get; set; }
     }
 }

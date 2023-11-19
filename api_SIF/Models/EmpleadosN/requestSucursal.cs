@@ -9,5 +9,7 @@ namespace api_SIF.Models.EmpleadosN
        
         public string sucursal { get; set; }
 
+        public string nomenclatura { get; set; }
+
     }
 }

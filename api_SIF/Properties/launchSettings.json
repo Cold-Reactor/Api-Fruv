@@ -12,7 +12,9 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-     // "launchUrl": "weatherforecast",
+      // "launchUrl": "weatherforecast",
+      "launchUrl": "swagger",
+
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +22,9 @@
     "api_SIF": {
       "commandName": "Project",
       "launchBrowser": true,
-     // "launchUrl": "weatherforecast",
+      // "launchUrl": "weatherforecast",
+      "launchUrl": "swagger",
+
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -29,7 +33,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "publishAllPorts": true,
       "useSSL": true
     }

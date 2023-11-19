@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using api_SIF.Clases;
 
 namespace api_SIF.Controllers
 {
@@ -24,6 +25,7 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<IEnumerable<puesto>>> GetPuestos()
         {
             var turnosLista = await _context.puestos.ToListAsync();
+
             return turnosLista;
         }
 
@@ -34,73 +36,31 @@ namespace api_SIF.Controllers
 
             return puesto;
         }
-        //[HttpPost]
-        //public async Task<ActionResult> PostPuesto(puesto turnoNuevo)
-        //{
-        //    turno turnoN = new turno();
-        //    turnoN.turno1 = turnoNuevo.turno;
-        //    turnoN.entradaF = turnoNuevo.entradaF;
-        //    turnoN.entrada = turnoNuevo.entrada;
-        //    turnoN.horas_trabajadas = turnoNuevo.horas_trabajadas;
-        //    turnoN.comida = turnoNuevo.comida;
-        //    turnoN.descanso = turnoNuevo.descanso;
-        //    turnoN.salidaF = turnoNuevo.salidaF;
-        //    turnoN.disponible = turnoNuevo.disponible;
-        //    turnoN.horas = turnoNuevo.horas;
-        //    turnoN.horasF = turnoNuevo.horasF;
-        //    turnoN.id_sucursal = turnoNuevo.id_sucursal;
-        //    turnoN.nocturno = turnoNuevo.nocturno;
-        //    turnoN.salida = turnoNuevo.salida;
+        [HttpPost]
+        public async Task<ActionResult<puesto>> Postarea(PuestoRequest reqPuesto)
+        {
+            var entidadExistente = _context.puestos.SingleOrDefault(e => e.id_puesto == reqPuesto.id_puesto);
+            if (entidadExistente == null)
+            {
+                var reqAreaN = new puesto()
+                {
+                    id_puesto = reqPuesto.id_puesto,
+                    id_empleadoT = reqPuesto.id_empleadoT,
+                    nombre = reqPuesto.nombre,
+                };
+                _context.puestos.Add(reqAreaN);
+                _context.SaveChanges();
+                reqPuesto.id_puesto = Funciones.ObtenerUltimoId<puesto>(_context);
+            }
+            else
+            {
+                reqPuesto.id_puesto = entidadExistente.id_puesto;
+                entidadExistente.nombre = reqPuesto.nombre;
+                entidadExistente.id_empleadoT = reqPuesto.id_empleadoT;
+                _context.SaveChanges();
 
-        //    _context.turnos.Add(turnoN);
-        //    await _context.SaveChangesAsync();
-        //    ReturnId ri = new ReturnId(turnoN.id_turno);
-        //    return Ok(ri);
-        //}
-        //[HttpPut("{id}")]
-        //public async Task<ActionResult> Putchecada(int id, TurnoRequest turnoNuevo)
-        //{
-        //    if (id != turnoNuevo.id_turno)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    turno turnoN = _context.turnos
-        //    .FirstOrDefault(p => p.id_turno == turnoNuevo.id_turno);
-        //    try
-        //    {
-        //        turnoN.turno1 = turnoNuevo.turno;
-        //        turnoN.entradaF = turnoNuevo.entradaF;
-        //        turnoN.entrada = turnoNuevo.entrada;
-        //        turnoN.horas_trabajadas = turnoNuevo.horas_trabajadas;
-        //        turnoN.comida = turnoNuevo.comida;
-        //        turnoN.descanso = turnoNuevo.descanso;
-        //        turnoN.salidaF = turnoNuevo.salidaF;
-        //        turnoN.disponible = turnoNuevo.disponible;
-        //        turnoN.horas = turnoNuevo.horas;
-        //        turnoN.horasF = turnoNuevo.horasF;
-        //        turnoN.id_sucursal = turnoNuevo.id_sucursal;
-        //        turnoN.nocturno = turnoNuevo.nocturno;
-        //        turnoN.salida = turnoNuevo.salida;
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!turnoExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-
-        //}
-        //private bool turnoExists(int id)
-        //{
-        //    return _context.turnos.Any(e => e.id_turno == id);
-        //}
+            }
+            return Ok(new { id = reqPuesto.id_puesto });
+        }
     }
 }

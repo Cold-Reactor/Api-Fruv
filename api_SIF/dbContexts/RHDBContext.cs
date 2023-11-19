@@ -778,11 +778,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_puesto)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoTNavigation)
-                    .WithMany(p => p.puestos)
-                    .HasForeignKey(d => d.id_empleadoT)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_puesto_empleadoT");
+                //entity.HasOne(d => d.id_empleadoTNavigation)
+                //    .WithMany(p => p.puestos)
+                //    .HasForeignKey(d => d.id_empleadoT)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_puesto_empleadoT");
             });
 
             modelBuilder.Entity<refaccion>(entity =>

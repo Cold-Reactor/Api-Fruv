@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public empleadotipo()
         {
-            puestos = new HashSet<puesto>();
+            //puestos = new HashSet<puesto>();
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string nombre { get; set; }
 
-        [InverseProperty("id_empleadoTNavigation")]
-        public virtual ICollection<puesto> puestos { get; set; }
+        //[InverseProperty("id_empleadoTNavigation")]
+        //public virtual ICollection<puesto> puestos { get; set; }
     }
 }

@@ -21,14 +21,32 @@ namespace api_SIF.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<requestSucursales>>> GetSucursales()
         {
-            var sucursalesLista = from x in  _context.sucursales
+            var sucursalesLista = from x in _context.sucursales
                                   select new requestSucursales()
                                   {
                                       id_sucursal = x.id_sucursal,
-                                      sucursal = x.sucursal
+                                      sucursal = x.sucursal,
+                                      nomenclatura = x.nomenclatura,
                                   }                                 
                             ;
             return await sucursalesLista.ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<requestSucursales>> GetSucursal(int id)
+        {
+            var area = await _context.sucursales.FindAsync(id);
+            if (area == null)
+            {
+                return NotFound();
+            }
+            var reqArea = new requestSucursales()
+            {
+                id_sucursal = area.id_sucursal,
+                sucursal = area.sucursal,
+                nomenclatura = area.nomenclatura,
+            };
+            return reqArea;
         }
     }
 }
