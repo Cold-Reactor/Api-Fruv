@@ -15,7 +15,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public cotizacion()
         {
-            ordencompras = new HashSet<ordencompra>();
+            //ordencompras = new HashSet<ordencompra>();
         }
 
         [Key]
@@ -45,16 +45,16 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_iva { get; set; }
         public double? precioTot { get; set; }
 
-        [ForeignKey("id_iva")]
-        [InverseProperty("cotizacions")]
-        public virtual iva id_ivaNavigation { get; set; }
-        [ForeignKey("id_proveedor")]
-        [InverseProperty("cotizacions")]
-        public virtual proveedor id_proveedorNavigation { get; set; }
-        [ForeignKey("id_solicitudC")]
-        [InverseProperty("cotizacions")]
-        public virtual solicitudcompra id_solicitudCNavigation { get; set; }
-        [InverseProperty("id_cotizacionNavigation")]
-        public virtual ICollection<ordencompra> ordencompras { get; set; }
+        //[ForeignKey("id_iva")]
+        //[InverseProperty("cotizacions")]
+        //public virtual iva id_ivaNavigation { get; set; }
+        //[ForeignKey("id_proveedor")]
+        //[InverseProperty("cotizacions")]
+        //public virtual proveedor id_proveedorNavigation { get; set; }
+        //[ForeignKey("id_solicitudC")]
+        //[InverseProperty("cotizacions")]
+        //public virtual solicitudcompra id_solicitudCNavigation { get; set; }
+        //[InverseProperty("id_cotizacionNavigation")]
+        //public virtual ICollection<ordencompra> ordencompras { get; set; }
     }
 }

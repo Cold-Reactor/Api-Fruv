@@ -41,8 +41,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int disponible { get; set; }
 
-        [ForeignKey("id_sucursal")]
-        [InverseProperty("turnos")]
-        public virtual sucursale id_sucursalNavigation { get; set; }
+        //[ForeignKey("id_sucursal")]
+        //[InverseProperty("turnos")]
+        //public virtual sucursale id_sucursalNavigation { get; set; }
     }
 }

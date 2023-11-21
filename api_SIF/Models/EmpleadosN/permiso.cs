@@ -41,11 +41,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? autorizo { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("permisos")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [ForeignKey("id_modalidad")]
-        [InverseProperty("permisos")]
-        public virtual permisomodalidad id_modalidadNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("permisos")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_modalidad")]
+        //[InverseProperty("permisos")]
+        //public virtual permisomodalidad id_modalidadNavigation { get; set; }
     }
 }

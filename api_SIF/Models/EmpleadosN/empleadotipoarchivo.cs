@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public empleadotipoarchivo()
         {
-            empleadoarchivos = new HashSet<empleadoarchivo>();
+            //empleadoarchivos = new HashSet<empleadoarchivo>();
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string nombre { get; set; }
 
-        [InverseProperty("id_empleadoArchivoTNavigation")]
-        public virtual ICollection<empleadoarchivo> empleadoarchivos { get; set; }
+        //[InverseProperty("id_empleadoArchivoTNavigation")]
+        //public virtual ICollection<empleadoarchivo> empleadoarchivos { get; set; }
     }
 }

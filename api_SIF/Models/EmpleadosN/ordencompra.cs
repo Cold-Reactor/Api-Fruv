@@ -28,8 +28,8 @@ namespace api_SIF.Models.EmpleadosN
         public double? iva { get; set; }
         public double? precioT { get; set; }
 
-        [ForeignKey("id_cotizacion")]
-        [InverseProperty("ordencompras")]
-        public virtual cotizacion id_cotizacionNavigation { get; set; }
+        //[ForeignKey("id_cotizacion")]
+        //[InverseProperty("ordencompras")]
+        //public virtual cotizacion id_cotizacionNavigation { get; set; }
     }
 }

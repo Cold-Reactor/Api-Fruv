@@ -16,7 +16,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public trabajoexterno()
         {
-            hipertensions = new HashSet<hipertension>();
+            //hipertensions = new HashSet<hipertension>();
         }
 
         [Key]
@@ -61,19 +61,19 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "bit(1)")]
         public ulong? cancelado { get; set; }
 
-        [ForeignKey("id_area")]
-        [InverseProperty("trabajoexternos")]
-        public virtual area id_areaNavigation { get; set; }
-        [ForeignKey("id_departamento")]
-        [InverseProperty("trabajoexternos")]
-        public virtual departamento id_departamentoNavigation { get; set; }
-        [ForeignKey("id_empleado")]
-        [InverseProperty("trabajoexternos")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [ForeignKey("id_tipo")]
-        [InverseProperty("trabajoexternos")]
-        public virtual trabajotipo id_tipoNavigation { get; set; }
-        [InverseProperty("id_trabajoENavigation")]
-        public virtual ICollection<hipertension> hipertensions { get; set; }
+        //[ForeignKey("id_area")]
+        //[InverseProperty("trabajoexternos")]
+        //public virtual area id_areaNavigation { get; set; }
+        //[ForeignKey("id_departamento")]
+        //[InverseProperty("trabajoexternos")]
+        //public virtual departamento id_departamentoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("trabajoexternos")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_tipo")]
+        //[InverseProperty("trabajoexternos")]
+        //public virtual trabajotipo id_tipoNavigation { get; set; }
+        //[InverseProperty("id_trabajoENavigation")]
+        //public virtual ICollection<hipertension> hipertensions { get; set; }
     }
 }

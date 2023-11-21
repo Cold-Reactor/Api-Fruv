@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public checador()
         {
-            checada = new HashSet<checada>();
+            //checada = new HashSet<checada>();
         }
 
         [Key]
@@ -25,7 +25,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_sucursal { get; set; }
 
-        [InverseProperty("id_checadorNavigation")]
-        public virtual ICollection<checada> checada { get; set; }
+        //[InverseProperty("id_checadorNavigation")]
+        //public virtual ICollection<checada> checada { get; set; }
     }
 }

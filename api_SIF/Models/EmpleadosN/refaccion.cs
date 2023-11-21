@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public refaccion()
         {
-            trabajo_refaccions = new HashSet<trabajo_refaccion>();
+            //trabajo_refaccions = new HashSet<trabajo_refaccion>();
         }
 
         [Key]
@@ -24,7 +24,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? cantidad { get; set; }
 
-        [InverseProperty("id_refaccionNavigation")]
-        public virtual ICollection<trabajo_refaccion> trabajo_refaccions { get; set; }
+        //[InverseProperty("id_refaccionNavigation")]
+        //public virtual ICollection<trabajo_refaccion> trabajo_refaccions { get; set; }
     }
 }

@@ -12,8 +12,8 @@ namespace api_SIF.Models.EmpleadosN
     {
         public trabajotipo()
         {
-            trabajoexternos = new HashSet<trabajoexterno>();
-            trabajointernos = new HashSet<trabajointerno>();
+            //trabajoexternos = new HashSet<trabajoexterno>();
+            //trabajointernos = new HashSet<trabajointerno>();
         }
 
         [Key]
@@ -23,9 +23,9 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string trabajoT { get; set; }
 
-        [InverseProperty("id_tipoNavigation")]
-        public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
-        [InverseProperty("id_tipo_trabajoNavigation")]
-        public virtual ICollection<trabajointerno> trabajointernos { get; set; }
+        //[InverseProperty("id_tipoNavigation")]
+        //public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
+        //[InverseProperty("id_tipo_trabajoNavigation")]
+        //public virtual ICollection<trabajointerno> trabajointernos { get; set; }
     }
 }

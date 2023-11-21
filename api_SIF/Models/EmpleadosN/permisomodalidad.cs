@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public permisomodalidad()
         {
-            permisos = new HashSet<permiso>();
+            //permisos = new HashSet<permiso>();
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string nombre { get; set; }
 
-        [InverseProperty("id_modalidadNavigation")]
-        public virtual ICollection<permiso> permisos { get; set; }
+        //[InverseProperty("id_modalidadNavigation")]
+        //public virtual ICollection<permiso> permisos { get; set; }
     }
 }

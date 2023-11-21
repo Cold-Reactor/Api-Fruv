@@ -22,8 +22,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "text")]
         public string ruta { get; set; }
 
-        [ForeignKey("id_empleadoArchivoT")]
-        [InverseProperty("empleadoarchivos")]
-        public virtual empleadotipoarchivo id_empleadoArchivoTNavigation { get; set; }
+        //[ForeignKey("id_empleadoArchivoT")]
+        //[InverseProperty("empleadoarchivos")]
+        //public virtual empleadotipoarchivo id_empleadoArchivoTNavigation { get; set; }
     }
 }

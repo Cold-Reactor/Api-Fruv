@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public iva()
         {
-            cotizacions = new HashSet<cotizacion>();
+            //cotizacions = new HashSet<cotizacion>();
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? cantidad { get; set; }
 
-        [InverseProperty("id_ivaNavigation")]
-        public virtual ICollection<cotizacion> cotizacions { get; set; }
+        //[InverseProperty("id_ivaNavigation")]
+        //public virtual ICollection<cotizacion> cotizacions { get; set; }
     }
 }

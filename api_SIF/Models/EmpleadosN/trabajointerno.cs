@@ -17,7 +17,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public trabajointerno()
         {
-            trabajo_refaccions = new HashSet<trabajo_refaccion>();
+            //trabajo_refaccions = new HashSet<trabajo_refaccion>();
         }
 
         [Key]
@@ -57,22 +57,22 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "bit(1)")]
         public ulong? cancelado { get; set; }
 
-        [ForeignKey("id_area")]
-        [InverseProperty("trabajointernos")]
-        public virtual area id_areaNavigation { get; set; }
-        [ForeignKey("id_departamento")]
-        [InverseProperty("trabajointernos")]
-        public virtual departamento id_departamentoNavigation { get; set; }
-        [ForeignKey("id_empleado")]
-        [InverseProperty("trabajointernos")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [ForeignKey("id_inmobiliario")]
-        [InverseProperty("trabajointernos")]
-        public virtual inmobiliario id_inmobiliarioNavigation { get; set; }
-        [ForeignKey("id_tipo_trabajo")]
-        [InverseProperty("trabajointernos")]
-        public virtual trabajotipo id_tipo_trabajoNavigation { get; set; }
-        [InverseProperty("id_trabajoINavigation")]
-        public virtual ICollection<trabajo_refaccion> trabajo_refaccions { get; set; }
+        //[ForeignKey("id_area")]
+        //[InverseProperty("trabajointernos")]
+        //public virtual area id_areaNavigation { get; set; }
+        //[ForeignKey("id_departamento")]
+        //[InverseProperty("trabajointernos")]
+        //public virtual departamento id_departamentoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("trabajointernos")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_inmobiliario")]
+        //[InverseProperty("trabajointernos")]
+        //public virtual inmobiliario id_inmobiliarioNavigation { get; set; }
+        //[ForeignKey("id_tipo_trabajo")]
+        //[InverseProperty("trabajointernos")]
+        //public virtual trabajotipo id_tipo_trabajoNavigation { get; set; }
+        //[InverseProperty("id_trabajoINavigation")]
+        //public virtual ICollection<trabajo_refaccion> trabajo_refaccions { get; set; }
     }
 }

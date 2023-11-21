@@ -35,8 +35,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "text")]
         public string firmaRH { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("suspensions")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("suspensions")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

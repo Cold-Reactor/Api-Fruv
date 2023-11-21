@@ -22,11 +22,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int cantidad { get; set; }
 
-        [ForeignKey("id_refaccion")]
-        [InverseProperty("trabajo_refaccions")]
-        public virtual refaccion id_refaccionNavigation { get; set; }
-        [ForeignKey("id_trabajoI")]
-        [InverseProperty("trabajo_refaccions")]
-        public virtual trabajointerno id_trabajoINavigation { get; set; }
+        //[ForeignKey("id_refaccion")]
+        //[InverseProperty("trabajo_refaccions")]
+        //public virtual refaccion id_refaccionNavigation { get; set; }
+        //[ForeignKey("id_trabajoI")]
+        //[InverseProperty("trabajo_refaccions")]
+        //public virtual trabajointerno id_trabajoINavigation { get; set; }
     }
 }

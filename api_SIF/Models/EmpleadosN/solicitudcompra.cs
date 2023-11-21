@@ -13,7 +13,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public solicitudcompra()
         {
-            cotizacions = new HashSet<cotizacion>();
+            //cotizacions = new HashSet<cotizacion>();
         }
 
         [Key]
@@ -33,10 +33,10 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int? status { get; set; }
 
-        [ForeignKey("id_partida")]
-        [InverseProperty("solicitudcompras")]
-        public virtual partidum id_partidaNavigation { get; set; }
-        [InverseProperty("id_solicitudCNavigation")]
-        public virtual ICollection<cotizacion> cotizacions { get; set; }
+        //[ForeignKey("id_partida")]
+        //[InverseProperty("solicitudcompras")]
+        //public virtual partidum id_partidaNavigation { get; set; }
+        //[InverseProperty("id_solicitudCNavigation")]
+        //public virtual ICollection<cotizacion> cotizacions { get; set; }
     }
 }

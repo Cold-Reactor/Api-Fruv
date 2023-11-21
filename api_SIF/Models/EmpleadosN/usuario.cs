@@ -26,10 +26,10 @@ namespace api_SIF.Models.EmpleadosN
         public ulong? compras { get; set; }
         public bool? god { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("usuarios")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [InverseProperty("id_usuarioNavigation")]
-        public virtual usuario_empleadorol usuario_empleadorol { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("usuarios")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[InverseProperty("id_usuarioNavigation")]
+        //public virtual usuario_empleadorol usuario_empleadorol { get; set; }
     }
 }

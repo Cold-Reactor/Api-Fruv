@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public proveedor()
         {
-            cotizacions = new HashSet<cotizacion>();
+            //cotizacions = new HashSet<cotizacion>();
         }
 
         [Key]
@@ -39,7 +39,7 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string notas { get; set; }
 
-        [InverseProperty("id_proveedorNavigation")]
-        public virtual ICollection<cotizacion> cotizacions { get; set; }
+        //[InverseProperty("id_proveedorNavigation")]
+        //public virtual ICollection<cotizacion> cotizacions { get; set; }
     }
 }

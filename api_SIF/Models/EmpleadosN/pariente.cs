@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("pariente")]
-    [Index("id_empleado", Name = "fk_pariente_empleado1_idx")]
+    //[Index("id_empleado", Name = "fk_pariente_empleado1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class pariente
     {
@@ -22,8 +22,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string parentesco { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("parientes")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("parientes")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

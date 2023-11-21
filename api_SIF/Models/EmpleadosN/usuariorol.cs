@@ -12,8 +12,8 @@ namespace api_SIF.Models.EmpleadosN
     {
         public usuariorol()
         {
-            submodulos = new HashSet<submodulo>();
-            usuario_empleadorols = new HashSet<usuario_empleadorol>();
+            //submodulos = new HashSet<submodulo>();
+            //usuario_empleadorols = new HashSet<usuario_empleadorol>();
         }
 
         [Key]
@@ -23,9 +23,9 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string descripcion { get; set; }
 
-        [InverseProperty("id_rolNavigation")]
-        public virtual ICollection<submodulo> submodulos { get; set; }
-        [InverseProperty("id_rolNavigation")]
-        public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
+        //[InverseProperty("id_rolNavigation")]
+        //public virtual ICollection<submodulo> submodulos { get; set; }
+        //[InverseProperty("id_rolNavigation")]
+        //public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
     }
 }

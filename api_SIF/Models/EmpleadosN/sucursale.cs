@@ -11,8 +11,8 @@ namespace api_SIF.Models.EmpleadosN
     {
         public sucursale()
         {
-            turnos = new HashSet<turno>();
-            usuario_empleadorols = new HashSet<usuario_empleadorol>();
+            //turnos = new HashSet<turno>();
+            //usuario_empleadorols = new HashSet<usuario_empleadorol>();
         }
 
         [Key]
@@ -25,9 +25,9 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string nomenclatura { get; set; }
 
-        [InverseProperty("id_sucursalNavigation")]
-        public virtual ICollection<turno> turnos { get; set; }
-        [InverseProperty("id_sucursalNavigation")]
-        public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
+        //[InverseProperty("id_sucursalNavigation")]
+        //public virtual ICollection<turno> turnos { get; set; }
+        //[InverseProperty("id_sucursalNavigation")]
+        //public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
     }
 }

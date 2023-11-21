@@ -14,7 +14,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public partidum()
         {
-            solicitudcompras = new HashSet<solicitudcompra>();
+            //solicitudcompras = new HashSet<solicitudcompra>();
         }
 
         [Key]
@@ -29,16 +29,16 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? id_area { get; set; }
 
-        [ForeignKey("id_area")]
-        [InverseProperty("partida")]
-        public virtual area id_areaNavigation { get; set; }
-        [ForeignKey("id_departamento")]
-        [InverseProperty("partida")]
-        public virtual departamento id_departamentoNavigation { get; set; }
-        [ForeignKey("id_presupuesto")]
-        [InverseProperty("partida")]
-        public virtual presupuesto id_presupuestoNavigation { get; set; }
-        [InverseProperty("id_partidaNavigation")]
-        public virtual ICollection<solicitudcompra> solicitudcompras { get; set; }
+        //[ForeignKey("id_area")]
+        //[InverseProperty("partida")]
+        //public virtual area id_areaNavigation { get; set; }
+        //[ForeignKey("id_departamento")]
+        //[InverseProperty("partida")]
+        //public virtual departamento id_departamentoNavigation { get; set; }
+        //[ForeignKey("id_presupuesto")]
+        //[InverseProperty("partida")]
+        //public virtual presupuesto id_presupuestoNavigation { get; set; }
+        //[InverseProperty("id_partidaNavigation")]
+        //public virtual ICollection<solicitudcompra> solicitudcompras { get; set; }
     }
 }

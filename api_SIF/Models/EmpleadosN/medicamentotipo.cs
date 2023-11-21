@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public medicamentotipo()
         {
-            medicamentos = new HashSet<medicamento>();
+            //medicamentos = new HashSet<medicamento>();
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string tipo { get; set; }
 
-        [InverseProperty("id_medicamentoTNavigation")]
-        public virtual ICollection<medicamento> medicamentos { get; set; }
+        //[InverseProperty("id_medicamentoTNavigation")]
+        //public virtual ICollection<medicamento> medicamentos { get; set; }
     }
 }

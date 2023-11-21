@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public analisistipo()
         {
-            historialanalisismedicos = new HashSet<historialanalisismedico>();
+            //historialanalisismedicos = new HashSet<historialanalisismedico>();
         }
 
         [Key]
@@ -24,7 +24,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int utilizable { get; set; }
 
-        [InverseProperty("id_analisisTNavigation")]
-        public virtual ICollection<historialanalisismedico> historialanalisismedicos { get; set; }
+        //[InverseProperty("id_analisisTNavigation")]
+        //public virtual ICollection<historialanalisismedico> historialanalisismedicos { get; set; }
     }
 }

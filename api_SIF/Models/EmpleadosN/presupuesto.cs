@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public presupuesto()
         {
-            partida = new HashSet<partidum>();
+            //partida = new HashSet<partidum>();
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? cantidad { get; set; }
 
-        [InverseProperty("id_presupuestoNavigation")]
-        public virtual ICollection<partidum> partida { get; set; }
+        //[InverseProperty("id_presupuestoNavigation")]
+        //public virtual ICollection<partidum> partida { get; set; }
     }
 }

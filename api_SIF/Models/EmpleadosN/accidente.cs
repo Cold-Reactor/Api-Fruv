@@ -13,7 +13,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public accidente()
         {
-            accidente_diagnosticos = new HashSet<accidente_diagnostico>();
+            //accidente_diagnosticos = new HashSet<accidente_diagnostico>();
         }
 
         [Key]
@@ -46,13 +46,13 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string recomendacion { get; set; }
 
-        [ForeignKey("id_area")]
-        [InverseProperty("accidentes")]
-        public virtual area id_areaNavigation { get; set; }
-        [ForeignKey("id_empleado")]
-        [InverseProperty("accidentes")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [InverseProperty("id_accidenteNavigation")]
-        public virtual ICollection<accidente_diagnostico> accidente_diagnosticos { get; set; }
+        //[ForeignKey("id_area")]
+        //[InverseProperty("accidentes")]
+        //public virtual area id_areaNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("accidentes")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[InverseProperty("id_accidenteNavigation")]
+        //public virtual ICollection<accidente_diagnostico> accidente_diagnosticos { get; set; }
     }
 }

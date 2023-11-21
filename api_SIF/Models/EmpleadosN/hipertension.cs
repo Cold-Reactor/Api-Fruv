@@ -23,8 +23,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string hta { get; set; }
 
-        [ForeignKey("id_trabajoE")]
-        [InverseProperty("hipertensions")]
-        public virtual trabajoexterno id_trabajoENavigation { get; set; }
+        //[ForeignKey("id_trabajoE")]
+        //[InverseProperty("hipertensions")]
+        //public virtual trabajoexterno id_trabajoENavigation { get; set; }
     }
 }

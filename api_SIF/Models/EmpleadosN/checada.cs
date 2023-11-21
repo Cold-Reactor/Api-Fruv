@@ -28,11 +28,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "datetime")]
         public DateTime? fechaHoraSubida { get; set; }
 
-        [ForeignKey("id_checador")]
-        [InverseProperty("checada")]
-        public virtual checador id_checadorNavigation { get; set; }
-        [ForeignKey("id_empleado")]
-        [InverseProperty("checada")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_checador")]
+        //[InverseProperty("checada")]
+        //public virtual checador id_checadorNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("checada")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

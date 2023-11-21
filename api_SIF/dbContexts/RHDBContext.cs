@@ -115,32 +115,32 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.inicia_ST7).HasDefaultValueSql("b'0'");
 
-                entity.HasOne(d => d.id_areaNavigation)
-                    .WithMany(p => p.accidentes)
-                    .HasForeignKey(d => d.id_area)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_incapacidad_area1");
+                //entity.HasOne(d => d.id_areaNavigation)
+                //    .WithMany(p => p.accidentes)
+                //    .HasForeignKey(d => d.id_area)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_incapacidad_area1");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.accidentes)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_incapacidad_empleados1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.accidentes)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_incapacidad_empleados1");
             });
 
             modelBuilder.Entity<accidente_diagnostico>(entity =>
             {
-                entity.HasOne(d => d.id_accidenteNavigation)
-                    .WithMany(p => p.accidente_diagnosticos)
-                    .HasForeignKey(d => d.id_accidente)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_incapacidad_has_diagnostico_incapacidad1");
+                //entity.HasOne(d => d.id_accidenteNavigation)
+                //    .WithMany(p => p.accidente_diagnosticos)
+                //    .HasForeignKey(d => d.id_accidente)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_incapacidad_has_diagnostico_incapacidad1");
 
-                entity.HasOne(d => d.id_diagnosticoNavigation)
-                    .WithMany(p => p.accidente_diagnosticos)
-                    .HasForeignKey(d => d.id_diagnostico)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_incapacidad_has_diagnostico_diagnostico1");
+                //entity.HasOne(d => d.id_diagnosticoNavigation)
+                //    .WithMany(p => p.accidente_diagnosticos)
+                //    .HasForeignKey(d => d.id_diagnostico)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_incapacidad_has_diagnostico_diagnostico1");
             });
 
             modelBuilder.Entity<accidentediagnostico>(entity =>
@@ -155,11 +155,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_amonestacion)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.amonestacions)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_amonestacion_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.amonestacions)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_amonestacion_empleado1");
             });
 
             modelBuilder.Entity<analisistipo>(entity =>
@@ -173,32 +173,32 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_area)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_departamentoNavigation)
-                    .WithMany(p => p.areas)
-                    .HasForeignKey(d => d.id_departamento)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_area_departamento1");
+                //entity.HasOne(d => d.id_departamentoNavigation)
+                //    .WithMany(p => p.areas)
+                //    .HasForeignKey(d => d.id_departamento)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_area_departamento1");
 
-                entity.HasMany(d => d.id_bitacoras)
-                    .WithMany(p => p.id_areas)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "area_cincosbitacora",
-                        l => l.HasOne<cincosbitacora>().WithMany().HasForeignKey("id_bitacora").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_area_has_cincoSbitacora_cincoSbitacora1"),
-                        r => r.HasOne<area>().WithMany().HasForeignKey("id_area").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_area_has_cincoSbitacora_area1"),
-                        j =>
-                        {
-                            j.HasKey("id_area", "id_bitacora").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                //entity.HasMany(d => d.id_bitacoras)
+                //    .WithMany(p => p.id_areas)
+                //    .UsingEntity<Dictionary<string, object>>(
+                //        "area_cincosbitacora",
+                //        l => l.HasOne<cincosbitacora>().WithMany().HasForeignKey("id_bitacora").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_area_has_cincoSbitacora_cincoSbitacora1"),
+                //        r => r.HasOne<area>().WithMany().HasForeignKey("id_area").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_area_has_cincoSbitacora_area1"),
+                //        j =>
+                //        {
+                //            j.HasKey("id_area", "id_bitacora").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
-                            j.ToTable("area_cincosbitacora").UseCollation("utf8_spanish2_ci");
+                //            j.ToTable("area_cincosbitacora").UseCollation("utf8_spanish2_ci");
 
-                            j.HasIndex(new[] { "id_area" }, "fk_area_has_cincoSbitacora_area1_idx");
+                //            j.HasIndex(new[] { "id_area" }, "fk_area_has_cincoSbitacora_area1_idx");
 
-                            j.HasIndex(new[] { "id_bitacora" }, "fk_area_has_cincoSbitacora_cincoSbitacora1_idx");
+                //            j.HasIndex(new[] { "id_bitacora" }, "fk_area_has_cincoSbitacora_cincoSbitacora1_idx");
 
-                            j.IndexerProperty<int>("id_area").HasColumnType("int(11)");
+                //            j.IndexerProperty<int>("id_area").HasColumnType("int(11)");
 
-                            j.IndexerProperty<int>("id_bitacora").HasColumnType("int(11)");
-                        });
+                //            j.IndexerProperty<int>("id_bitacora").HasColumnType("int(11)");
+                //        });
             });
 
             modelBuilder.Entity<checada>(entity =>
@@ -208,17 +208,18 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.fechaHoraSubida).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                entity.HasOne(d => d.id_checadorNavigation)
-                    .WithMany(p => p.checada)
-                    .HasForeignKey(d => d.id_checador)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_checadas_checador1");
+                //entity.HasOne(d => d.id_checador
+                //)
+                //    .WithMany(p => p.checada)
+                //    .HasForeignKey(d => d.id_checador)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_checadas_checador1");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.checada)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("empleado");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.checada)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("empleado");
             });
 
             modelBuilder.Entity<checador>(entity =>
@@ -241,17 +242,17 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.valor).HasDefaultValueSql("'0'");
 
-                entity.HasOne(d => d.id_bitacoraNavigation)
-                    .WithMany(p => p.cincosbitacora_cincostipos)
-                    .HasForeignKey(d => d.id_bitacora)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_cincoSbitacora_has_cincoStipo_cincoSbitacora1");
+                //entity.HasOne(d => d.id_bitacoraNavigation)
+                //    .WithMany(p => p.cincosbitacora_cincostipos)
+                //    .HasForeignKey(d => d.id_bitacora)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_cincoSbitacora_has_cincoStipo_cincoSbitacora1");
 
-                entity.HasOne(d => d.id_cincoStipoNavigation)
-                    .WithMany(p => p.cincosbitacora_cincostipos)
-                    .HasForeignKey(d => d.id_cincoStipo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_cincoSbitacora_has_cincoStipo_cincoStipo1");
+                //entity.HasOne(d => d.id_cincoStipoNavigation)
+                //    .WithMany(p => p.cincosbitacora_cincostipos)
+                //    .HasForeignKey(d => d.id_cincoStipo)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_cincoSbitacora_has_cincoStipo_cincoStipo1");
             });
 
             modelBuilder.Entity<cincostipo>(entity =>
@@ -272,17 +273,17 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY")
                     .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
-                entity.HasOne(d => d.id_consultaNavigation)
-                    .WithMany(p => p.consulta_medicamentos)
-                    .HasForeignKey(d => d.id_consulta)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_consulta_has_medicamentos_consulta1");
+                //entity.HasOne(d => d.id_consultaNavigation)
+                //    .WithMany(p => p.consulta_medicamentos)
+                //    .HasForeignKey(d => d.id_consulta)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_consulta_has_medicamentos_consulta1");
 
-                entity.HasOne(d => d.id_medicamentoNavigation)
-                    .WithMany(p => p.consulta_medicamentos)
-                    .HasForeignKey(d => d.id_medicamento)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_consulta_has_medicamentos_medicamentos1");
+                //entity.HasOne(d => d.id_medicamentoNavigation)
+                //    .WithMany(p => p.consulta_medicamentos)
+                //    .HasForeignKey(d => d.id_medicamento)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_consulta_has_medicamentos_medicamentos1");
             });
 
             modelBuilder.Entity<consultum>(entity =>
@@ -290,36 +291,36 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_consulta)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_areaNavigation)
-                    .WithMany(p => p.consulta)
-                    .HasForeignKey(d => d.id_area)
-                    .HasConstraintName("fk_consultorio_area1");
+                //entity.HasOne(d => d.id_areaNavigation)
+                //    .WithMany(p => p.consulta)
+                //    .HasForeignKey(d => d.id_area)
+                //    .HasConstraintName("fk_consultorio_area1");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.consulta)
-                    .HasForeignKey(d => d.id_empleado)
-                    .HasConstraintName("fk_consultorio_empleados1");
+                ////entity.HasOne(d => d.id_empleadoNavigation)
+                ////    .WithMany(p => p.consulta)
+                ////    .HasForeignKey(d => d.id_empleado)
+                ////    .HasConstraintName("fk_consultorio_empleados1");
 
-                entity.HasMany(d => d.id_diagnosticos)
-                    .WithMany(p => p.id_consulta)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "consultas_diagnostico",
-                        l => l.HasOne<diagnostico>().WithMany().HasForeignKey("id_diagnostico").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consultorio_has_diagnostico_diagnostico1"),
-                        r => r.HasOne<consultum>().WithMany().HasForeignKey("id_consulta").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consultorio_has_diagnostico_consultorio1"),
-                        j =>
-                        {
-                            j.HasKey("id_consulta", "id_diagnostico").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                //entity.HasMany(d => d.id_diagnosticos)
+                //    .WithMany(p => p.id_consulta)
+                //    .UsingEntity<Dictionary<string, object>>(
+                //        "consultas_diagnostico",
+                //        l => l.HasOne<diagnostico>().WithMany().HasForeignKey("id_diagnostico").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consultorio_has_diagnostico_diagnostico1"),
+                //        r => r.HasOne<consultum>().WithMany().HasForeignKey("id_consulta").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("fk_consultorio_has_diagnostico_consultorio1"),
+                //        j =>
+                //        {
+                //            j.HasKey("id_consulta", "id_diagnostico").HasName("PRIMARY").HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
-                            j.ToTable("consultas_diagnosticos").UseCollation("utf8_spanish2_ci");
+                //            j.ToTable("consultas_diagnosticos").UseCollation("utf8_spanish2_ci");
 
-                            j.HasIndex(new[] { "id_consulta" }, "fk_consultorio_has_diagnostico_consultorio1_idx");
+                //            j.HasIndex(new[] { "id_consulta" }, "fk_consultorio_has_diagnostico_consultorio1_idx");
 
-                            j.HasIndex(new[] { "id_diagnostico" }, "fk_consultorio_has_diagnostico_diagnostico1_idx");
+                //            j.HasIndex(new[] { "id_diagnostico" }, "fk_consultorio_has_diagnostico_diagnostico1_idx");
 
-                            j.IndexerProperty<int>("id_consulta").HasColumnType("int(11)");
+                //            j.IndexerProperty<int>("id_consulta").HasColumnType("int(11)");
 
-                            j.IndexerProperty<int>("id_diagnostico").HasColumnType("int(11)");
-                        });
+                //            j.IndexerProperty<int>("id_diagnostico").HasColumnType("int(11)");
+                //        });
             });
 
             modelBuilder.Entity<cotizacion>(entity =>
@@ -327,22 +328,22 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_cotizacion)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_ivaNavigation)
-                    .WithMany(p => p.cotizacions)
-                    .HasForeignKey(d => d.id_iva)
-                    .HasConstraintName("fk_cotizacion_iva1");
+                //entity.HasOne(d => d.id_ivaNavigation)
+                //    .WithMany(p => p.cotizacions)
+                //    .HasForeignKey(d => d.id_iva)
+                //    .HasConstraintName("fk_cotizacion_iva1");
 
-                entity.HasOne(d => d.id_proveedorNavigation)
-                    .WithMany(p => p.cotizacions)
-                    .HasForeignKey(d => d.id_proveedor)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_cotizacion_proveedor1");
+                //entity.HasOne(d => d.id_proveedorNavigation)
+                //    .WithMany(p => p.cotizacions)
+                //    .HasForeignKey(d => d.id_proveedor)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_cotizacion_proveedor1");
 
-                entity.HasOne(d => d.id_solicitudCNavigation)
-                    .WithMany(p => p.cotizacions)
-                    .HasForeignKey(d => d.id_solicitudC)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_cotizacion_solicitudCompra1");
+                //entity.HasOne(d => d.id_solicitudCNavigation)
+                //    .WithMany(p => p.cotizacions)
+                //    .HasForeignKey(d => d.id_solicitudC)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_cotizacion_solicitudCompra1");
             });
 
             modelBuilder.Entity<crud>(entity =>
@@ -399,11 +400,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_empleadoArchivo)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoArchivoTNavigation)
-                    .WithMany(p => p.empleadoarchivos)
-                    .HasForeignKey(d => d.id_empleadoArchivoT)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_empleadoArchivo_empleadoTipoArchivo1");
+                //entity.HasOne(d => d.id_empleadoArchivoTNavigation)
+                //    .WithMany(p => p.empleadoarchivos)
+                //    .HasForeignKey(d => d.id_empleadoArchivoT)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_empleadoArchivo_empleadoTipoArchivo1");
             });
 
             modelBuilder.Entity<empleadohistorial>(entity =>
@@ -411,17 +412,17 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_empleadoHistorial)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.empleadohistorials)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_empleado_status_empleados1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.empleadohistorials)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_empleado_status_empleados1");
 
-                entity.HasOne(d => d.id_tipoBajaNavigation)
-                    .WithMany(p => p.empleadohistorials)
-                    .HasForeignKey(d => d.id_tipoBaja)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_empleado_historial_tipo_baja1");
+                //entity.HasOne(d => d.id_tipoBajaNavigation)
+                //    .WithMany(p => p.empleadohistorials)
+                //    .HasForeignKey(d => d.id_tipoBaja)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_empleado_historial_tipo_baja1");
             });
 
             modelBuilder.Entity<empleadotipo>(entity =>
@@ -553,17 +554,17 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.vistaOido).HasDefaultValueSql("'0'");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.examenmedicos)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_examen_medico_empleados1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.examenmedicos)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_examen_medico_empleados1");
 
-                entity.HasOne(d => d.id_examenMedicoTNavigation)
-                    .WithMany(p => p.examenmedicos)
-                    .HasForeignKey(d => d.id_examenMedicoT)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_examenMedico_examenMedicoT1");
+                //entity.HasOne(d => d.id_examenMedicoTNavigation)
+                //    .WithMany(p => p.examenmedicos)
+                //    .HasForeignKey(d => d.id_examenMedicoT)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_examenMedico_examenMedicoT1");
             });
 
             modelBuilder.Entity<examenmedicot>(entity =>
@@ -581,11 +582,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_falta)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.falta)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_faltas_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.falta)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_faltas_empleado1");
             });
 
             modelBuilder.Entity<formato>(entity =>
@@ -593,10 +594,10 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_formato)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_departamentoNavigation)
-                    .WithMany(p => p.formatos)
-                    .HasForeignKey(d => d.id_departamento)
-                    .HasConstraintName("fk_formato_departamento1");
+                //entity.HasOne(d => d.id_departamentoNavigation)
+                //    .WithMany(p => p.formatos)
+                //    .HasForeignKey(d => d.id_departamento)
+                //    .HasConstraintName("fk_formato_departamento1");
             });
 
             modelBuilder.Entity<hipertension>(entity =>
@@ -604,11 +605,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_hiperT)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_trabajoENavigation)
-                    .WithMany(p => p.hipertensions)
-                    .HasForeignKey(d => d.id_trabajoE)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_hiperTension_trabajoExterno1");
+                //entity.HasOne(d => d.id_trabajoENavigation)
+                //    .WithMany(p => p.hipertensions)
+                //    .HasForeignKey(d => d.id_trabajoE)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_hiperTension_trabajoExterno1");
             });
 
             modelBuilder.Entity<historialanalisismedico>(entity =>
@@ -616,17 +617,17 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_historialA)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_analisisTNavigation)
-                    .WithMany(p => p.historialanalisismedicos)
-                    .HasForeignKey(d => d.id_analisisT)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_historialAnalisis_analisisTipo1");
+                //entity.HasOne(d => d.id_analisisTNavigation)
+                //    .WithMany(p => p.historialanalisismedicos)
+                //    .HasForeignKey(d => d.id_analisisT)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_historialAnalisis_analisisTipo1");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.historialanalisismedicos)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_historialAnalisis_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.historialanalisismedicos)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_historialAnalisis_empleado1");
             });
 
             modelBuilder.Entity<hora>(entity =>
@@ -640,11 +641,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_incapacidad)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.incapacidads)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_incapacidad_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.incapacidads)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_incapacidad_empleado1");
             });
 
             modelBuilder.Entity<inmobiliario>(entity =>
@@ -652,11 +653,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_inmobiliario)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_areaNavigation)
-                    .WithMany(p => p.inmobiliarios)
-                    .HasForeignKey(d => d.id_area)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_inmobiliario_area1");
+                //entity.HasOne(d => d.id_areaNavigation)
+                //    .WithMany(p => p.inmobiliarios)
+                //    .HasForeignKey(d => d.id_area)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_inmobiliario_area1");
             });
 
             modelBuilder.Entity<iva>(entity =>
@@ -670,11 +671,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_medicamento)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_medicamentoTNavigation)
-                    .WithMany(p => p.medicamentos)
-                    .HasForeignKey(d => d.id_medicamentoT)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_medicamentos_medicamentoTipo1");
+                //entity.HasOne(d => d.id_medicamentoTNavigation)
+                //    .WithMany(p => p.medicamentos)
+                //    .HasForeignKey(d => d.id_medicamentoT)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_medicamentos_medicamentoTipo1");
             });
 
             modelBuilder.Entity<medicamentotipo>(entity =>
@@ -694,11 +695,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_ordenC)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_cotizacionNavigation)
-                    .WithMany(p => p.ordencompras)
-                    .HasForeignKey(d => d.id_cotizacion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_ordenCompra_cotizacion1");
+                //entity.HasOne(d => d.id_cotizacionNavigation)
+                //    .WithMany(p => p.ordencompras)
+                //    .HasForeignKey(d => d.id_cotizacion)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_ordenCompra_cotizacion1");
             });
 
             modelBuilder.Entity<pariente>(entity =>
@@ -706,11 +707,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_pariente)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.parientes)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_pariente_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.parientes)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_pariente_empleado1");
             });
 
             modelBuilder.Entity<partidum>(entity =>
@@ -718,21 +719,21 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_partida)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_areaNavigation)
-                    .WithMany(p => p.partida)
-                    .HasForeignKey(d => d.id_area)
-                    .HasConstraintName("fk_partida_area1");
+                //entity.HasOne(d => d.id_areaNavigation)
+                //    .WithMany(p => p.partida)
+                //    .HasForeignKey(d => d.id_area)
+                //    .HasConstraintName("fk_partida_area1");
 
-                entity.HasOne(d => d.id_departamentoNavigation)
-                    .WithMany(p => p.partida)
-                    .HasForeignKey(d => d.id_departamento)
-                    .HasConstraintName("fk_partida_departamento1");
+                //entity.HasOne(d => d.id_departamentoNavigation)
+                //    .WithMany(p => p.partida)
+                //    .HasForeignKey(d => d.id_departamento)
+                //    .HasConstraintName("fk_partida_departamento1");
 
-                entity.HasOne(d => d.id_presupuestoNavigation)
-                    .WithMany(p => p.partida)
-                    .HasForeignKey(d => d.id_presupuesto)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_partida_presupuesto1");
+                //entity.HasOne(d => d.id_presupuestoNavigation)
+                //    .WithMany(p => p.partida)
+                //    .HasForeignKey(d => d.id_presupuesto)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_partida_presupuesto1");
             });
 
             modelBuilder.Entity<permiso>(entity =>
@@ -744,15 +745,15 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.status).HasDefaultValueSql("b'0'");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.permisos)
-                    .HasForeignKey(d => d.id_empleado)
-                    .HasConstraintName("fk_permiso_empleados1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.permisos)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .HasConstraintName("fk_permiso_empleados1");
 
-                entity.HasOne(d => d.id_modalidadNavigation)
-                    .WithMany(p => p.permisos)
-                    .HasForeignKey(d => d.id_modalidad)
-                    .HasConstraintName("fk_permiso_permisoModalidad1");
+                //entity.HasOne(d => d.id_modalidadNavigation)
+                //    .WithMany(p => p.permisos)
+                //    .HasForeignKey(d => d.id_modalidad)
+                //    .HasConstraintName("fk_permiso_permisoModalidad1");
             });
 
             modelBuilder.Entity<permisomodalidad>(entity =>
@@ -798,10 +799,10 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_renovacion)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.renovacions)
-                    .HasForeignKey(d => d.id_empleado)
-                    .HasConstraintName("fk_renovacion_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.renovacions)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .HasConstraintName("fk_renovacion_empleado1");
             });
 
             modelBuilder.Entity<solicitudcompra>(entity =>
@@ -811,10 +812,10 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.status).HasDefaultValueSql("'1'");
 
-                entity.HasOne(d => d.id_partidaNavigation)
-                    .WithMany(p => p.solicitudcompras)
-                    .HasForeignKey(d => d.id_partida)
-                    .HasConstraintName("fk_solicitudCompra_partida1");
+                //entity.HasOne(d => d.id_partidaNavigation)
+                //    .WithMany(p => p.solicitudcompras)
+                //    .HasForeignKey(d => d.id_partida)
+                //    .HasConstraintName("fk_solicitudCompra_partida1");
             });
 
             modelBuilder.Entity<submodulo>(entity =>
@@ -822,11 +823,11 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_subM)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_rolNavigation)
-                    .WithMany(p => p.submodulos)
-                    .HasForeignKey(d => d.id_rol)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_subModulos_empleadoRol1");
+                //entity.HasOne(d => d.id_rolNavigation)
+                //    .WithMany(p => p.submodulos)
+                //    .HasForeignKey(d => d.id_rol)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_subModulos_empleadoRol1");
             });
 
             modelBuilder.Entity<sucursale>(entity =>
@@ -844,11 +845,11 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.status).HasDefaultValueSql("b'1'");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.suspensions)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_suspension_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.suspensions)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_suspension_empleado1");
             });
 
             modelBuilder.Entity<tiempoextra>(entity =>
@@ -874,17 +875,17 @@ namespace api_SIF.dbContexts
                 entity.HasKey(e => e.id_trabajoRefaccion)
                     .HasName("PRIMARY");
 
-                entity.HasOne(d => d.id_refaccionNavigation)
-                    .WithMany(p => p.trabajo_refaccions)
-                    .HasForeignKey(d => d.id_refaccion)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_refaccion_has_trabajoInterno_refaccion1");
+                //entity.HasOne(d => d.id_refaccionNavigation)
+                //    .WithMany(p => p.trabajo_refaccions)
+                //    .HasForeignKey(d => d.id_refaccion)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_refaccion_has_trabajoInterno_refaccion1");
 
-                entity.HasOne(d => d.id_trabajoINavigation)
-                    .WithMany(p => p.trabajo_refaccions)
-                    .HasForeignKey(d => d.id_trabajoI)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_refaccion_has_trabajoInterno_trabajoInterno1");
+                //entity.HasOne(d => d.id_trabajoINavigation)
+                //    .WithMany(p => p.trabajo_refaccions)
+                //    .HasForeignKey(d => d.id_trabajoI)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_refaccion_has_trabajoInterno_trabajoInterno1");
             });
 
             modelBuilder.Entity<trabajoexterno>(entity =>
@@ -906,29 +907,29 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.rs).HasDefaultValueSql("b'0'");
 
-                entity.HasOne(d => d.id_areaNavigation)
-                    .WithMany(p => p.trabajoexternos)
-                    .HasForeignKey(d => d.id_area)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoExterno_area1");
+                //entity.HasOne(d => d.id_areaNavigation)
+                //    .WithMany(p => p.trabajoexternos)
+                //    .HasForeignKey(d => d.id_area)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoExterno_area1");
 
-                entity.HasOne(d => d.id_departamentoNavigation)
-                    .WithMany(p => p.trabajoexternos)
-                    .HasForeignKey(d => d.id_departamento)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoExterno_departamento1");
+                //entity.HasOne(d => d.id_departamentoNavigation)
+                //    .WithMany(p => p.trabajoexternos)
+                //    .HasForeignKey(d => d.id_departamento)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoExterno_departamento1");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.trabajoexternos)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajo_empleados1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.trabajoexternos)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajo_empleados1");
 
-                entity.HasOne(d => d.id_tipoNavigation)
-                    .WithMany(p => p.trabajoexternos)
-                    .HasForeignKey(d => d.id_tipo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajo_trabajo_tipo1");
+                //entity.HasOne(d => d.id_tipoNavigation)
+                //    .WithMany(p => p.trabajoexternos)
+                //    .HasForeignKey(d => d.id_tipo)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajo_trabajo_tipo1");
             });
 
             modelBuilder.Entity<trabajointerno>(entity =>
@@ -942,35 +943,35 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.liberacionSH).HasDefaultValueSql("b'0'");
 
-                entity.HasOne(d => d.id_areaNavigation)
-                    .WithMany(p => p.trabajointernos)
-                    .HasForeignKey(d => d.id_area)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoInterno_area1");
+                //entity.HasOne(d => d.id_areaNavigation)
+                //    .WithMany(p => p.trabajointernos)
+                //    .HasForeignKey(d => d.id_area)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoInterno_area1");
 
-                entity.HasOne(d => d.id_departamentoNavigation)
-                    .WithMany(p => p.trabajointernos)
-                    .HasForeignKey(d => d.id_departamento)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoInterno_departamento1");
+                //entity.HasOne(d => d.id_departamentoNavigation)
+                //    .WithMany(p => p.trabajointernos)
+                //    .HasForeignKey(d => d.id_departamento)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoInterno_departamento1");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.trabajointernos)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoInterno_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.trabajointernos)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoInterno_empleado1");
 
-                entity.HasOne(d => d.id_inmobiliarioNavigation)
-                    .WithMany(p => p.trabajointernos)
-                    .HasForeignKey(d => d.id_inmobiliario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoInterno_inmobiliario1");
+                //entity.HasOne(d => d.id_inmobiliarioNavigation)
+                //    .WithMany(p => p.trabajointernos)
+                //    .HasForeignKey(d => d.id_inmobiliario)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoInterno_inmobiliario1");
 
-                entity.HasOne(d => d.id_tipo_trabajoNavigation)
-                    .WithMany(p => p.trabajointernos)
-                    .HasForeignKey(d => d.id_tipo_trabajo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_trabajoInterno_trabajoTipo1");
+                //entity.HasOne(d => d.id_tipo_trabajoNavigation)
+                //    .WithMany(p => p.trabajointernos)
+                //    .HasForeignKey(d => d.id_tipo_trabajo)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_trabajoInterno_trabajoTipo1");
             });
 
             modelBuilder.Entity<trabajotipo>(entity =>
@@ -996,11 +997,11 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.salidaF).HasDefaultValueSql("'00:00:00'");
 
-                entity.HasOne(d => d.id_sucursalNavigation)
-                    .WithMany(p => p.turnos)
-                    .HasForeignKey(d => d.id_sucursal)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_sucursal");
+                //entity.HasOne(d => d.id_sucursalNavigation)
+                //    .WithMany(p => p.turnos)
+                //    .HasForeignKey(d => d.id_sucursal)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_sucursal");
             });
 
             modelBuilder.Entity<usuario>(entity =>
@@ -1012,11 +1013,11 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.god).HasDefaultValueSql("'0'");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.usuarios)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_usuario_empleado1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.usuarios)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_usuario_empleado1");
             });
 
             modelBuilder.Entity<usuario_empleadorol>(entity =>
@@ -1028,28 +1029,28 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.master).HasDefaultValueSql("'0'");
 
-                entity.HasOne(d => d.id_crudNavigation)
-                    .WithMany(p => p.usuario_empleadorols)
-                    .HasForeignKey(d => d.id_crud)
-                    .HasConstraintName("fk_usuario_has_empleadoRol_crud1");
+                //entity.HasOne(d => d.id_crudNavigation)
+                //    .WithMany(p => p.usuario_empleadorols)
+                //    .HasForeignKey(d => d.id_crud)
+                //    .HasConstraintName("fk_usuario_has_empleadoRol_crud1");
 
-                entity.HasOne(d => d.id_rolNavigation)
-                    .WithMany(p => p.usuario_empleadorols)
-                    .HasForeignKey(d => d.id_rol)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_usuario_has_empleadoRol_empleadoRol1");
+                //entity.HasOne(d => d.id_rolNavigation)
+                //    .WithMany(p => p.usuario_empleadorols)
+                //    .HasForeignKey(d => d.id_rol)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_usuario_has_empleadoRol_empleadoRol1");
 
-                entity.HasOne(d => d.id_sucursalNavigation)
-                    .WithMany(p => p.usuario_empleadorols)
-                    .HasForeignKey(d => d.id_sucursal)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_usuario_has_empleadoRol_sucursal1");
+                //entity.HasOne(d => d.id_sucursalNavigation)
+                //    .WithMany(p => p.usuario_empleadorols)
+                //    .HasForeignKey(d => d.id_sucursal)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_usuario_has_empleadoRol_sucursal1");
 
-                entity.HasOne(d => d.id_usuarioNavigation)
-                    .WithOne(p => p.usuario_empleadorol)
-                    .HasForeignKey<usuario_empleadorol>(d => d.id_usuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_usuario_has_empleadoRol_usuario1");
+                //entity.HasOne(d => d.id_usuarioNavigation)
+                //    .WithOne(p => p.usuario_empleadorol)
+                //    .HasForeignKey<usuario_empleadorol>(d => d.id_usuario)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_usuario_has_empleadoRol_usuario1");
             });
 
             modelBuilder.Entity<usuariorol>(entity =>
@@ -1071,11 +1072,11 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.pagado).HasDefaultValueSql("b'0'");
 
-                entity.HasOne(d => d.id_empleadoNavigation)
-                    .WithMany(p => p.vacaciones)
-                    .HasForeignKey(d => d.id_empleado)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_vacaciones_empleados1");
+                //entity.HasOne(d => d.id_empleadoNavigation)
+                //    .WithMany(p => p.vacaciones)
+                //    .HasForeignKey(d => d.id_empleado)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("fk_vacaciones_empleados1");
             });
 
             modelBuilder.Entity<vacacionesperiodo>(entity =>

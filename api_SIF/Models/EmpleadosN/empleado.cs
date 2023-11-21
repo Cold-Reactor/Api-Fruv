@@ -21,23 +21,23 @@ namespace api_SIF.Models.EmpleadosN
     {
         public empleado()
         {
-            accidentes = new HashSet<accidente>();
-            amonestacions = new HashSet<amonestacion>();
-            checada = new HashSet<checada>();
-            consulta = new HashSet<consultum>();
-            empleadohistorials = new HashSet<empleadohistorial>();
-            examenmedicos = new HashSet<examenmedico>();
-            falta = new HashSet<falta>();
-            historialanalisismedicos = new HashSet<historialanalisismedico>();
-            incapacidads = new HashSet<incapacidad>();
-            parientes = new HashSet<pariente>();
-            permisos = new HashSet<permiso>();
-            renovacions = new HashSet<renovacion>();
-            suspensions = new HashSet<suspension>();
-            trabajoexternos = new HashSet<trabajoexterno>();
-            trabajointernos = new HashSet<trabajointerno>();
-            usuarios = new HashSet<usuario>();
-            vacaciones = new HashSet<vacacione>();
+            //accidentes = new HashSet<accidente>();
+            //amonestacions = new HashSet<amonestacion>();
+            //checada = new HashSet<checada>();
+            //consulta = new HashSet<consultum>();
+            //empleadohistorials = new HashSet<empleadohistorial>();
+            //examenmedicos = new HashSet<examenmedico>();
+            //falta = new HashSet<falta>();
+            //historialanalisismedicos = new HashSet<historialanalisismedico>();
+            //incapacidads = new HashSet<incapacidad>();
+            //parientes = new HashSet<pariente>();
+            //permisos = new HashSet<permiso>();
+            //renovacions = new HashSet<renovacion>();
+            //suspensions = new HashSet<suspension>();
+            //trabajoexternos = new HashSet<trabajoexterno>();
+            //trabajointernos = new HashSet<trabajointerno>();
+            //usuarios = new HashSet<usuario>();
+            //vacaciones = new HashSet<vacacione>();
         }
 
         [Key]
@@ -116,39 +116,39 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_area { get; set; }
         public double? bonoProd { get; set; }
 
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<accidente> accidentes { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<amonestacion> amonestacions { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<checada> checada { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<consultum> consulta { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<empleadohistorial> empleadohistorials { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<examenmedico> examenmedicos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<falta> falta { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<historialanalisismedico> historialanalisismedicos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<incapacidad> incapacidads { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<pariente> parientes { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<permiso> permisos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<renovacion> renovacions { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<suspension> suspensions { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<trabajointerno> trabajointernos { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<usuario> usuarios { get; set; }
-        [InverseProperty("id_empleadoNavigation")]
-        public virtual ICollection<vacacione> vacaciones { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<accidente> accidentes { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<amonestacion> amonestacions { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<checada> checada { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<consultum> consulta { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<empleadohistorial> empleadohistorials { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<examenmedico> examenmedicos { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<falta> falta { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<historialanalisismedico> historialanalisismedicos { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<incapacidad> incapacidads { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<pariente> parientes { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<permiso> permisos { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<renovacion> renovacions { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<suspension> suspensions { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<trabajointerno> trabajointernos { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<usuario> usuarios { get; set; }
+        //[InverseProperty("id_empleadoNavigation")]
+        //public virtual ICollection<vacacione> vacaciones { get; set; }
     }
 }

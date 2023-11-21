@@ -26,8 +26,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? cantidadPago { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("vacaciones")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("vacaciones")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

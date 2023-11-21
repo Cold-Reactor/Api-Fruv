@@ -13,7 +13,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public medicamento()
         {
-            consulta_medicamentos = new HashSet<consulta_medicamento>();
+            //consulta_medicamentos = new HashSet<consulta_medicamento>();
         }
 
         [Key]
@@ -28,10 +28,10 @@ namespace api_SIF.Models.EmpleadosN
         [Precision(10, 0)]
         public decimal cantidad { get; set; }
 
-        [ForeignKey("id_medicamentoT")]
-        [InverseProperty("medicamentos")]
-        public virtual medicamentotipo id_medicamentoTNavigation { get; set; }
-        [InverseProperty("id_medicamentoNavigation")]
-        public virtual ICollection<consulta_medicamento> consulta_medicamentos { get; set; }
+        //[ForeignKey("id_medicamentoT")]
+        //[InverseProperty("medicamentos")]
+        //public virtual medicamentotipo id_medicamentoTNavigation { get; set; }
+        //[InverseProperty("id_medicamentoNavigation")]
+        //public virtual ICollection<consulta_medicamento> consulta_medicamentos { get; set; }
     }
 }

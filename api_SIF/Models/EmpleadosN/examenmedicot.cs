@@ -11,7 +11,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public examenmedicot()
         {
-            examenmedicos = new HashSet<examenmedico>();
+            //examenmedicos = new HashSet<examenmedico>();
         }
 
         [Key]
@@ -23,7 +23,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int utilizable { get; set; }
 
-        [InverseProperty("id_examenMedicoTNavigation")]
-        public virtual ICollection<examenmedico> examenmedicos { get; set; }
+        //[InverseProperty("id_examenMedicoTNavigation")]
+        //public virtual ICollection<examenmedico> examenmedicos { get; set; }
     }
 }

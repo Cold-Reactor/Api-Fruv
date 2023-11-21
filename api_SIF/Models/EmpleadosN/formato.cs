@@ -21,8 +21,8 @@ namespace api_SIF.Models.EmpleadosN
         public string noFormato { get; set; }
         public DateOnly fechaI { get; set; }
 
-        [ForeignKey("id_departamento")]
-        [InverseProperty("formatos")]
-        public virtual departamento id_departamentoNavigation { get; set; }
+        //[ForeignKey("id_departamento")]
+        //[InverseProperty("formatos")]
+        //public virtual departamento id_departamentoNavigation { get; set; }
     }
 }

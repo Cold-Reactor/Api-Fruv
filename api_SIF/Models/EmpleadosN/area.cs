@@ -14,13 +14,13 @@ namespace api_SIF.Models.EmpleadosN
     {
         public area()
         {
-            accidentes = new HashSet<accidente>();
-            consulta = new HashSet<consultum>();
-            inmobiliarios = new HashSet<inmobiliario>();
-            partida = new HashSet<partidum>();
-            trabajoexternos = new HashSet<trabajoexterno>();
-            trabajointernos = new HashSet<trabajointerno>();
-            id_bitacoras = new HashSet<cincosbitacora>();
+            //accidentes = new HashSet<accidente>();
+            //consulta = new HashSet<consultum>();
+            //inmobiliarios = new HashSet<inmobiliario>();
+            //partida = new HashSet<partidum>();
+            //trabajoexternos = new HashSet<trabajoexterno>();
+            //trabajointernos = new HashSet<trabajointerno>();
+            //id_bitacoras = new HashSet<cincosbitacora>();
         }
 
         [Key]
@@ -32,24 +32,29 @@ namespace api_SIF.Models.EmpleadosN
         [Column("area", TypeName = "tinytext")]
         public string area1 { get; set; }
 
-        [ForeignKey("id_departamento")]
-        [InverseProperty("areas")]
-        public virtual departamento id_departamentoNavigation { get; set; }
-        [InverseProperty("id_areaNavigation")]
-        public virtual ICollection<accidente> accidentes { get; set; }
-        [InverseProperty("id_areaNavigation")]
-        public virtual ICollection<consultum> consulta { get; set; }
-        [InverseProperty("id_areaNavigation")]
-        public virtual ICollection<inmobiliario> inmobiliarios { get; set; }
-        [InverseProperty("id_areaNavigation")]
-        public virtual ICollection<partidum> partida { get; set; }
-        [InverseProperty("id_areaNavigation")]
-        public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
-        [InverseProperty("id_areaNavigation")]
-        public virtual ICollection<trabajointerno> trabajointernos { get; set; }
+        //[ForeignKey("id_departamento")]
+        //[InverseProperty("areas")]
+        //public
+        //
+        //
+        //
+        //departamento id_departamentoNavigation { get; set; }
+        //[InverseProperty("id_area
+        //")]
+        //public virtual ICollection<accidente> accidentes { get; set; }
+        //[InverseProperty("id_areaNavigation")]
+        //public virtual ICollection<consultum> consulta { get; set; }
+        //[InverseProperty("id_areaNavigation")]
+        //public virtual ICollection<inmobiliario> inmobiliarios { get; set; }
+        //[InverseProperty("id_areaNavigation")]
+        //public virtual ICollection<partidum> partida { get; set; }
+        //[InverseProperty("id_areaNavigation")]
+        //public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
+        //[InverseProperty("id_areaNavigation")]
+        //public virtual ICollection<trabajointerno> trabajointernos { get; set; }
 
-        [ForeignKey("id_area")]
-        [InverseProperty("id_areas")]
-        public virtual ICollection<cincosbitacora> id_bitacoras { get; set; }
+        //[ForeignKey("id_area")]
+        //[InverseProperty("id_areas")]
+        //public virtual ICollection<cincosbitacora> id_bitacoras { get; set; }
     }
 }

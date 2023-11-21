@@ -28,17 +28,17 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int? master { get; set; }
 
-        [ForeignKey("id_crud")]
-        [InverseProperty("usuario_empleadorols")]
-        public virtual crud id_crudNavigation { get; set; }
-        [ForeignKey("id_rol")]
-        [InverseProperty("usuario_empleadorols")]
-        public virtual usuariorol id_rolNavigation { get; set; }
-        [ForeignKey("id_sucursal")]
-        [InverseProperty("usuario_empleadorols")]
-        public virtual sucursale id_sucursalNavigation { get; set; }
-        [ForeignKey("id_usuario")]
-        [InverseProperty("usuario_empleadorol")]
-        public virtual usuario id_usuarioNavigation { get; set; }
+        //[ForeignKey("id_crud")]
+        //[InverseProperty("usuario_empleadorols")]
+        //public virtual crud id_crudNavigation { get; set; }
+        //[ForeignKey("id_rol")]
+        //[InverseProperty("usuario_empleadorols")]
+        //public virtual usuariorol id_rolNavigation { get; set; }
+        //[ForeignKey("id_sucursal")]
+        //[InverseProperty("usuario_empleadorols")]
+        //public virtual sucursale id_sucursalNavigation { get; set; }
+        //[ForeignKey("id_usuario")]
+        //[InverseProperty("usuario_empleadorol")]
+        //public virtual usuario id_usuarioNavigation { get; set; }
     }
 }

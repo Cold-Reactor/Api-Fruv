@@ -21,11 +21,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinyint(4)")]
         public sbyte? valor { get; set; }
 
-        [ForeignKey("id_bitacora")]
-        [InverseProperty("cincosbitacora_cincostipos")]
-        public virtual cincosbitacora id_bitacoraNavigation { get; set; }
-        [ForeignKey("id_cincoStipo")]
-        [InverseProperty("cincosbitacora_cincostipos")]
-        public virtual cincostipo id_cincoStipoNavigation { get; set; }
+        //[ForeignKey("id_bitacora")]
+        //[InverseProperty("cincosbitacora_cincostipos")]
+        //public virtual cincosbitacora id_bitacoraNavigation { get; set; }
+        //[ForeignKey("id_cincoStipo")]
+        //[InverseProperty("cincosbitacora_cincostipos")]
+        //public virtual cincostipo id_cincoStipoNavigation { get; set; }
     }
 }

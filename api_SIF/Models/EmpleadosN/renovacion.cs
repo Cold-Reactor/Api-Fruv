@@ -18,8 +18,8 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_empleado { get; set; }
         public DateOnly? fecha { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("renovacions")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("renovacions")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

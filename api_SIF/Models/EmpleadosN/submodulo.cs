@@ -18,8 +18,8 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string nombre { get; set; }
 
-        [ForeignKey("id_rol")]
-        [InverseProperty("submodulos")]
-        public virtual usuariorol id_rolNavigation { get; set; }
+        //[ForeignKey("id_rol")]
+        //[InverseProperty("submodulos")]
+        //public virtual usuariorol id_rolNavigation { get; set; }
     }
 }

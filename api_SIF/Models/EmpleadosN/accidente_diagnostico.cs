@@ -20,11 +20,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id { get; set; }
 
-        [ForeignKey("id_accidente")]
-        [InverseProperty("accidente_diagnosticos")]
-        public virtual accidente id_accidenteNavigation { get; set; }
-        [ForeignKey("id_diagnostico")]
-        [InverseProperty("accidente_diagnosticos")]
-        public virtual diagnostico id_diagnosticoNavigation { get; set; }
+        //[ForeignKey("id_accidente")]
+        //[InverseProperty("accidente_diagnosticos")]
+        //public virtual accidente id_accidenteNavigation { get; set; }
+        //[ForeignKey("id_diagnostico")]
+        //[InverseProperty("accidente_diagnosticos")]
+        //public virtual diagnostico id_diagnosticoNavigation { get; set; }
     }
 }

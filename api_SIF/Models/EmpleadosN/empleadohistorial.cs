@@ -26,11 +26,11 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string razon { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("empleadohistorials")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [ForeignKey("id_tipoBaja")]
-        [InverseProperty("empleadohistorials")]
-        public virtual tipobaja id_tipoBajaNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("empleadohistorials")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_tipoBaja")]
+        //[InverseProperty("empleadohistorials")]
+        //public virtual tipobaja id_tipoBajaNavigation { get; set; }
     }
 }

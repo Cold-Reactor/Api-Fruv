@@ -21,11 +21,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
 
-        [ForeignKey("id_analisisT")]
-        [InverseProperty("historialanalisismedicos")]
-        public virtual analisistipo id_analisisTNavigation { get; set; }
-        [ForeignKey("id_empleado")]
-        [InverseProperty("historialanalisismedicos")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_analisisT")]
+        //[InverseProperty("historialanalisismedicos")]
+        //public virtual analisistipo id_analisisTNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("historialanalisismedicos")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

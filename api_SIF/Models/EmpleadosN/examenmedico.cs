@@ -192,11 +192,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "text")]
         public string indicaciones { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("examenmedicos")]
-        public virtual empleado id_empleadoNavigation { get; set; }
-        [ForeignKey("id_examenMedicoT")]
-        [InverseProperty("examenmedicos")]
-        public virtual examenmedicot id_examenMedicoTNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("examenmedicos")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_examenMedicoT")]
+        //[InverseProperty("examenmedicos")]
+        //public virtual examenmedicot id_examenMedicoTNavigation { get; set; }
     }
 }

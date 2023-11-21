@@ -27,8 +27,8 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string comentario { get; set; }
 
-        [ForeignKey("id_empleado")]
-        [InverseProperty("incapacidads")]
-        public virtual empleado id_empleadoNavigation { get; set; }
+        //[ForeignKey("id_empleado")]
+        //[InverseProperty("incapacidads")]
+        //public virtual empleado id_empleadoNavigation { get; set; }
     }
 }

@@ -21,11 +21,11 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinyint(4)")]
         public sbyte? cantidad { get; set; }
 
-        [ForeignKey("id_consulta")]
-        [InverseProperty("consulta_medicamentos")]
-        public virtual consultum id_consultaNavigation { get; set; }
-        [ForeignKey("id_medicamento")]
-        [InverseProperty("consulta_medicamentos")]
-        public virtual medicamento id_medicamentoNavigation { get; set; }
+        //[ForeignKey("id_consulta")]
+        //[InverseProperty("consulta_medicamentos")]
+        //public virtual consultum id_consultaNavigation { get; set; }
+        //[ForeignKey("id_medicamento")]
+        //[InverseProperty("consulta_medicamentos")]
+        //public virtual medicamento id_medicamentoNavigation { get; set; }
     }
 }

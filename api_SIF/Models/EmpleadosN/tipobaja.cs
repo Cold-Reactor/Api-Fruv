@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public tipobaja()
         {
-            empleadohistorials = new HashSet<empleadohistorial>();
+            //empleadohistorials = new HashSet<empleadohistorial>();
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinyint(4)")]
         public sbyte? tipo { get; set; }
 
-        [InverseProperty("id_tipoBajaNavigation")]
-        public virtual ICollection<empleadohistorial> empleadohistorials { get; set; }
+        //[InverseProperty("id_tipoBajaNavigation")]
+        //public virtual ICollection<empleadohistorial> empleadohistorials { get; set; }
     }
 }

@@ -12,11 +12,11 @@ namespace api_SIF.Models.EmpleadosN
     {
         public departamento()
         {
-            areas = new HashSet<area>();
-            formatos = new HashSet<formato>();
-            partida = new HashSet<partidum>();
-            trabajoexternos = new HashSet<trabajoexterno>();
-            trabajointernos = new HashSet<trabajointerno>();
+            //areas = new HashSet<area>();
+            //formatos = new HashSet<formato>();
+            //partida = new HashSet<partidum>();
+            //trabajoexternos = new HashSet<trabajoexterno>();
+            //trabajointernos = new HashSet<trabajointerno>();
         }
 
         [Key]
@@ -26,15 +26,15 @@ namespace api_SIF.Models.EmpleadosN
         [Column("departamento", TypeName = "tinytext")]
         public string departamento1 { get; set; }
 
-        [InverseProperty("id_departamentoNavigation")]
-        public virtual ICollection<area> areas { get; set; }
-        [InverseProperty("id_departamentoNavigation")]
-        public virtual ICollection<formato> formatos { get; set; }
-        [InverseProperty("id_departamentoNavigation")]
-        public virtual ICollection<partidum> partida { get; set; }
-        [InverseProperty("id_departamentoNavigation")]
-        public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
-        [InverseProperty("id_departamentoNavigation")]
-        public virtual ICollection<trabajointerno> trabajointernos { get; set; }
+        //[InverseProperty("id_departamentoNavigation")]
+        //public virtual ICollection<area> areas { get; set; }
+        //[InverseProperty("id_departamentoNavigation")]
+        //public virtual ICollection<formato> formatos { get; set; }
+        //[InverseProperty("id_departamentoNavigation")]
+        //public virtual ICollection<partidum> partida { get; set; }
+        //[InverseProperty("id_departamentoNavigation")]
+        //public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }
+        //[InverseProperty("id_departamentoNavigation")]
+        //public virtual ICollection<trabajointerno> trabajointernos { get; set; }
     }
 }

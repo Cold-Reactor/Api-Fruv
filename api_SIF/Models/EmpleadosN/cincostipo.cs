@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public cincostipo()
         {
-            cincosbitacora_cincostipos = new HashSet<cincosbitacora_cincostipo>();
+            //cincosbitacora_cincostipos = new HashSet<cincosbitacora_cincostipo>();
         }
 
         [Key]
@@ -25,7 +25,7 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string color { get; set; }
 
-        [InverseProperty("id_cincoStipoNavigation")]
-        public virtual ICollection<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }
+        //[InverseProperty("id_cincoStipoNavigation")]
+        //public virtual ICollection<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public inmobiliario()
         {
-            trabajointernos = new HashSet<trabajointerno>();
+            //trabajointernos = new HashSet<trabajointerno>();
         }
 
         [Key]
@@ -26,10 +26,10 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string inmobiliario1 { get; set; }
 
-        [ForeignKey("id_area")]
-        [InverseProperty("inmobiliarios")]
-        public virtual area id_areaNavigation { get; set; }
-        [InverseProperty("id_inmobiliarioNavigation")]
-        public virtual ICollection<trabajointerno> trabajointernos { get; set; }
+        //[ForeignKey("id_area")]
+        //[InverseProperty("inmobiliarios")]
+        //public virtual area id_areaNavigation { get; set; }
+        //[InverseProperty("id_inmobiliarioNavigation")]
+        //public virtual ICollection<trabajointerno> trabajointernos { get; set; }
     }
 }

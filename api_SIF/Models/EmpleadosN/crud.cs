@@ -12,7 +12,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public crud()
         {
-            usuario_empleadorols = new HashSet<usuario_empleadorol>();
+            //usuario_empleadorols = new HashSet<usuario_empleadorol>();
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "tinytext")]
         public string permiso { get; set; }
 
-        [InverseProperty("id_crudNavigation")]
-        public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
+        //[InverseProperty("id_crudNavigation")]
+        //public virtual ICollection<usuario_empleadorol> usuario_empleadorols { get; set; }
     }
 }
