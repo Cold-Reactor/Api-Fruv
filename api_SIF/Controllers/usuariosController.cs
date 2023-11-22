@@ -10,7 +10,7 @@ using api_SIF.dbContexts;
 
 namespace api_SIF.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("RH/[controller]")]
     [ApiController]
     public class usuariosController : ControllerBase
     {
