@@ -22,6 +22,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? id_subM { get; set; }
         [Column(TypeName = "int(11)")]
+        [Required(ErrorMessage = "El campo MiEntero es obligatorio")]
+
         public int? id_crud { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_sucursal { get; set; }

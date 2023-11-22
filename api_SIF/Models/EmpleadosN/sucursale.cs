@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class sucursale
+    public partial class Sucursale
     {
-        public sucursale()
+        public Sucursale()
         {
             //turnos = new HashSet<turno>();
             //usuario_empleadorols = new HashSet<usuario_empleadorol>();

@@ -22,7 +22,7 @@ namespace api_SIF.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<puesto>>> GetPuestos()
+        public async Task<ActionResult<IEnumerable<Puesto>>> GetPuestos()
         {
             var turnosLista = await _context.puestos.ToListAsync();
 
@@ -30,32 +30,32 @@ namespace api_SIF.Controllers
         }
 
         [HttpGet("{nombre}")]
-        public async Task<ActionResult<puesto>> GetPuesto(string nombre)
+        public async Task<ActionResult<Puesto>> GetPuesto(string nombre)
         {
-            var puesto = _context.puestos.FirstOrDefault<puesto>(x => x.nombre== nombre);
+            var puesto = _context.puestos.FirstOrDefault<Puesto>(x => x.puesto== nombre);
 
             return puesto;
         }
         [HttpPost]
-        public async Task<ActionResult<puesto>> Postarea(PuestoRequest reqPuesto)
+        public async Task<ActionResult<Puesto>> Postarea(PuestoRequest reqPuesto)
         {
             var entidadExistente = _context.puestos.SingleOrDefault(e => e.id_puesto == reqPuesto.id_puesto);
             if (entidadExistente == null)
             {
-                var reqAreaN = new puesto()
+                var reqAreaN = new Puesto()
                 {
                     id_puesto = reqPuesto.id_puesto,
                     id_empleadoT = reqPuesto.id_empleadoT,
-                    nombre = reqPuesto.nombre,
+                    puesto = reqPuesto.nombre,
                 };
                 _context.puestos.Add(reqAreaN);
                 _context.SaveChanges();
-                reqPuesto.id_puesto = Funciones.ObtenerUltimoId<puesto>(_context);
+                reqPuesto.id_puesto = Funciones.ObtenerUltimoId<Puesto>(_context);
             }
             else
             {
                 reqPuesto.id_puesto = entidadExistente.id_puesto;
-                entidadExistente.nombre = reqPuesto.nombre;
+                entidadExistente.puesto = reqPuesto.nombre;
                 entidadExistente.id_empleadoT = reqPuesto.id_empleadoT;
                 _context.SaveChanges();
 

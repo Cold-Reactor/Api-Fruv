@@ -18,7 +18,10 @@ namespace api_SIF.Models.EmpleadosN
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_medicamento { get; set; }
+        [Required]
+
         [Column(TypeName = "tinyint(4)")]
+
         public sbyte? cantidad { get; set; }
 
         //[ForeignKey("id_consulta")]

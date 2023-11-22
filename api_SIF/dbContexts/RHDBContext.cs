@@ -18,7 +18,7 @@ namespace api_SIF.dbContexts
         }
 
         public virtual DbSet<__efmigrationshistory> __efmigrationshistories { get; set; }
-        public virtual DbSet<accidente> accidentes { get; set; }
+        public virtual DbSet<Accidente> accidentes { get; set; }
         public virtual DbSet<accidente_diagnostico> accidente_diagnosticos { get; set; }
         public virtual DbSet<accidentediagnostico> accidentediagnosticos { get; set; }
         public virtual DbSet<amonestacion> amonestacions { get; set; }
@@ -29,7 +29,7 @@ namespace api_SIF.dbContexts
         public virtual DbSet<cincosbitacora> cincosbitacoras { get; set; }
         public virtual DbSet<cincosbitacora_cincostipo> cincosbitacora_cincostipos { get; set; }
         public virtual DbSet<cincostipo> cincostipos { get; set; }
-        public virtual DbSet<ciudad> ciudads { get; set; }
+        public virtual DbSet<Ciudad> ciudads { get; set; }
         public virtual DbSet<consulta_medicamento> consulta_medicamentos { get; set; }
         public virtual DbSet<consultum> consulta { get; set; }
         public virtual DbSet<cotizacion> cotizacions { get; set; }
@@ -42,9 +42,9 @@ namespace api_SIF.dbContexts
         public virtual DbSet<empleadoarchivo> empleadoarchivos { get; set; }
         public virtual DbSet<empleadohistorial> empleadohistorials { get; set; }
         public virtual DbSet<empleadotipo> empleadotipos { get; set; }
-        public virtual DbSet<empleadotipoarchivo> empleadotipoarchivos { get; set; }
-        public virtual DbSet<empresa> empresas { get; set; }
-        public virtual DbSet<estado> estados { get; set; }
+        public virtual DbSet<empleadoarchivotipo> empleadotipoarchivos { get; set; }
+        public virtual DbSet<Empresa> empresas { get; set; }
+        public virtual DbSet<Estado> estados { get; set; }
         public virtual DbSet<examenmedico> examenmedicos { get; set; }
         public virtual DbSet<examenmedicot> examenmedicots { get; set; }
         public virtual DbSet<falta> faltas { get; set; }
@@ -57,7 +57,7 @@ namespace api_SIF.dbContexts
         public virtual DbSet<iva> ivas { get; set; }
         public virtual DbSet<medicamento> medicamentos { get; set; }
         public virtual DbSet<medicamentotipo> medicamentotipos { get; set; }
-        public virtual DbSet<nomina> nominas { get; set; }
+        public virtual DbSet<Nomina> nominas { get; set; }
         public virtual DbSet<ordencompra> ordencompras { get; set; }
         public virtual DbSet<pariente> parientes { get; set; }
         public virtual DbSet<partidum> partida { get; set; }
@@ -65,12 +65,12 @@ namespace api_SIF.dbContexts
         public virtual DbSet<permisomodalidad> permisomodalidads { get; set; }
         public virtual DbSet<presupuesto> presupuestos { get; set; }
         public virtual DbSet<proveedor> proveedors { get; set; }
-        public virtual DbSet<puesto> puestos { get; set; }
+        public virtual DbSet<Puesto> puestos { get; set; }
         public virtual DbSet<refaccion> refaccions { get; set; }
         public virtual DbSet<renovacion> renovacions { get; set; }
         public virtual DbSet<solicitudcompra> solicitudcompras { get; set; }
         public virtual DbSet<submodulo> submodulos { get; set; }
-        public virtual DbSet<sucursale> sucursales { get; set; }
+        public virtual DbSet<Sucursal> sucursales { get; set; }
         public virtual DbSet<suspension> suspensions { get; set; }
         public virtual DbSet<tiempoextra> tiempoextras { get; set; }
         public virtual DbSet<tiempoextraestado> tiempoextraestados { get; set; }
@@ -106,9 +106,9 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<accidente>(entity =>
+            modelBuilder.Entity<Accidente>(entity =>
             {
-                entity.HasKey(e => e.id_accidentes)
+                entity.HasKey(e => e.id_Accidente)
                     .HasName("PRIMARY");
 
                 entity.Property(e => e.cierre_ST2).HasDefaultValueSql("b'0'");
@@ -261,7 +261,7 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<ciudad>(entity =>
+            modelBuilder.Entity<Ciudad>(entity =>
             {
                 entity.HasKey(e => e.id_ciudad)
                     .HasName("PRIMARY");
@@ -431,19 +431,19 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<empleadotipoarchivo>(entity =>
+            modelBuilder.Entity<empleadoarchivotipo>(entity =>
             {
                 entity.HasKey(e => e.id_empleadoArchivoT)
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<empresa>(entity =>
+            modelBuilder.Entity<Empresa>(entity =>
             {
                 entity.HasKey(e => e.id_empresa)
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<estado>(entity =>
+            modelBuilder.Entity<Estado>(entity =>
             {
                 entity.HasKey(e => e.id_estado)
                     .HasName("PRIMARY");
@@ -684,7 +684,7 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<nomina>(entity =>
+            modelBuilder.Entity<Nomina>(entity =>
             {
                 entity.HasKey(e => e.id_nomina)
                     .HasName("PRIMARY");
@@ -774,7 +774,7 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<puesto>(entity =>
+            modelBuilder.Entity<Puesto>(entity =>
             {
                 entity.HasKey(e => e.id_puesto)
                     .HasName("PRIMARY");
@@ -830,7 +830,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_subModulos_empleadoRol1");
             });
 
-            modelBuilder.Entity<sucursale>(entity =>
+            modelBuilder.Entity<Sucursale>(entity =>
             {
                 entity.HasKey(e => e.id_sucursal)
                     .HasName("PRIMARY");

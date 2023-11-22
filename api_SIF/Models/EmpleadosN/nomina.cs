@@ -8,13 +8,13 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("nomina")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class nomina
+    public partial class Nomina
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_nomina { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string nomina { get; set; }
     }
 }

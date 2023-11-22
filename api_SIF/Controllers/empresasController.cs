@@ -21,15 +21,15 @@ namespace api_SIF.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<empresa>>> Getempresas()
+        public async Task<ActionResult<IEnumerable<Empresa>>> Getempresas()
         {
             var empresasLista = _context.empresas.ToListAsync();
             return await empresasLista;
         }
         [HttpGet("{nombre}")]
-        public async Task<ActionResult<empresa>> GetEmpresa(string nombre)
+        public async Task<ActionResult<Empresa>> GetEmpresa(string nombre)
         {
-            var empresa = _context.empresas.SingleOrDefault(x=>x.nombre==nombre);
+            var empresa = _context.empresas.SingleOrDefault(x=>x.empresa==nombre);
             if (empresa == null)
             {
                 return NotFound();
@@ -38,24 +38,24 @@ namespace api_SIF.Controllers
             return empresa;
         }
         [HttpPost]
-        public async Task<ActionResult<empresa>> Postarea(empresa reqEmpresa)
+        public async Task<ActionResult<Empresa>> Postarea(Empresa reqEmpresa)
         {
             var entidadExistente = _context.empresas.SingleOrDefault(e => e.id_empresa == reqEmpresa.id_empresa);
             if (entidadExistente == null)
             {
-                var reqempresaN = new empresa()
+                var reqempresaN = new Empresa()
                 {
                     id_empresa = reqEmpresa.id_empresa,
-                    nombre = reqEmpresa.nombre,
+                    empresa = reqEmpresa.empresa,
                 };
                 _context.empresas.Add(reqempresaN);
                 _context.SaveChanges();
-                reqEmpresa.id_empresa = Funciones.ObtenerUltimoId<empresa>(_context);
+                reqEmpresa.id_empresa = Funciones.ObtenerUltimoId<Empresa>(_context);
             }
             else
             {
                 reqEmpresa.id_empresa = entidadExistente.id_empresa;
-                entidadExistente.nombre = reqEmpresa.nombre;
+                entidadExistente.empresa = reqEmpresa.empresa;
                 _context.SaveChanges();
 
             }

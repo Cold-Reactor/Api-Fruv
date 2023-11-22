@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api_SIF.Models.EmpleadosN
 {
     [Table("medicamento")]
-    [Index("id_medicamentoT", Name = "fk_medicamentos_medicamentoTipo1_idx")]
+    //[Index("id_medicamentoT", Name = "fk_medicamentos_medicamentoTipo1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class medicamento
     {
@@ -19,8 +19,6 @@ namespace api_SIF.Models.EmpleadosN
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_medicamento { get; set; }
-        [Column(TypeName = "int(11)")]
-        public int id_medicamentoT { get; set; }
         [Required]
         [Column("medicamento")]
         [StringLength(45)]

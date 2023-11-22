@@ -8,13 +8,13 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("estado")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class estado
+    public partial class Estado
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_estado { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string estado { get; set; }
     }
 }

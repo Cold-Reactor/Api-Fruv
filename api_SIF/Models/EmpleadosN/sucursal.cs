@@ -8,9 +8,9 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("sucursal")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class sucursal
+    public partial class Sucursal
     {
-        public sucursal()
+        public Sucursal()
         {
             //usuario_empleadorols = new HashSet<usuario_empleadorol>();
         }
@@ -20,7 +20,7 @@ namespace api_SIF.Models.EmpleadosN
         public int id_sucursal { get; set; }
         [Column("sucursal")]
         [StringLength(45)]
-        public string sucursal1 { get; set; }
+        public string sucursal { get; set; }
         [Column(TypeName = "tinytext")]
         public string nomenclatura { get; set; }
 

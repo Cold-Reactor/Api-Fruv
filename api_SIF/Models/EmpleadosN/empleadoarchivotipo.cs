@@ -8,9 +8,9 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("empleadotipoarchivo")]
     [MySqlCollation("utf8_spanish_ci")]
-    public partial class empleadotipoarchivo
+    public partial class empleadoarchivotipo
     {
-        public empleadotipoarchivo()
+        public empleadoarchivotipo()
         {
             //empleadoarchivos = new HashSet<empleadoarchivo>();
         }
@@ -20,7 +20,7 @@ namespace api_SIF.Models.EmpleadosN
         public int id_empleadoArchivoT { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string tipo { get; set; }
 
         //[InverseProperty("id_empleadoArchivoTNavigation")]
         //public virtual ICollection<empleadoarchivo> empleadoarchivos { get; set; }

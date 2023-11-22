@@ -22,7 +22,8 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string tipo { get; set; }
         [Required]
-        [StringLength(45)]
+
+        [Column(TypeName = "tinytext")]
         public string color { get; set; }
 
         //[InverseProperty("id_cincoStipoNavigation")]

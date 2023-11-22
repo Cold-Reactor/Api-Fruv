@@ -9,14 +9,14 @@ namespace api_SIF.Models.EmpleadosN
     [Table("puesto")]
     [Index("id_empleadoT", Name = "fk_puesto_empleadoT_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class puesto
+    public partial class Puesto
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_puesto { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string puesto { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_empleadoT { get; set; }
 

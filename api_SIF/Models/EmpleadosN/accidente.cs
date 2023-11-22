@@ -9,16 +9,16 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_area", Name = "fk_incapacidad_area1_idx")]
     [Index("id_empleado", Name = "fk_incapacidad_empleados1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class accidente
+    public partial class Accidente
     {
-        public accidente()
+        public Accidente()
         {
             //accidente_diagnosticos = new HashSet<accidente_diagnostico>();
         }
 
         [Key]
         [Column(TypeName = "int(11)")]
-        public int id_accidentes { get; set; }
+        public int id_Accidente { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
         [Column(TypeName = "int(11)")]

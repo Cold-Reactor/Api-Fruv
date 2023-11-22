@@ -8,13 +8,13 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("ciudad")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class ciudad
+    public partial class Ciudad
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_ciudad { get; set; }
         [Required]
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string ciudad { get; set; }
     }
 }

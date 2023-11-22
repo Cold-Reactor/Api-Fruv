@@ -20,15 +20,15 @@ namespace api_SIF.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ciudad>>> Getciudades()
+        public async Task<ActionResult<IEnumerable<Ciudad>>> Getciudades()
         {
             var ciudadesLista = _context.ciudads;
             return await ciudadesLista.ToListAsync();
         }
         [HttpGet("{nombre}")]
-        public async Task<ActionResult<ciudad>> GetCiudad(string nombre)
+        public async Task<ActionResult<Ciudad>> GetCiudad(string nombre)
         {
-            var ciudad =  _context.ciudads.SingleOrDefault(x => x.nombre==nombre);
+            var ciudad =  _context.ciudads.SingleOrDefault(x => x.ciudad==nombre);
             if (ciudad == null)
             {
                 return NotFound();
@@ -37,24 +37,24 @@ namespace api_SIF.Controllers
             return ciudad;
         }
         [HttpPost]
-        public async Task<ActionResult<ciudad>> PostCiudad(ciudad reqCiudad)
+        public async Task<ActionResult<Ciudad>> PostCiudad(Ciudad reqCiudad)
         {
             var entidadExistente = _context.ciudads.SingleOrDefault(e => e.id_ciudad == reqCiudad.id_ciudad);
             if (entidadExistente == null)
             {
-                var reqCiudadaN = new ciudad()
+                var reqCiudadaN = new Ciudad()
                 {
                     id_ciudad = reqCiudad.id_ciudad,
-                    nombre = reqCiudad.nombre,
+                    ciudad = reqCiudad.ciudad,
                 };
                 _context.ciudads.Add(reqCiudadaN);
                 _context.SaveChanges();
-                reqCiudad.id_ciudad = Funciones.ObtenerUltimoId<ciudad>(_context);
+                reqCiudad.id_ciudad = Funciones.ObtenerUltimoId<Ciudad>(_context);
             }
             else
             {
                 reqCiudad.id_ciudad = entidadExistente.id_ciudad;
-                entidadExistente.nombre = reqCiudad.nombre;
+                entidadExistente.ciudad = reqCiudad.ciudad;
                 _context.SaveChanges();
 
             }
