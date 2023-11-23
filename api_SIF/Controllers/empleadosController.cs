@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace api_SIF.Controllers
 {
-    [Authorize]
 
     [Route("RH/[controller]")]
     [ApiController]
@@ -27,7 +26,6 @@ namespace api_SIF.Controllers
         }
 
         // GET: api/empleados
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados()
         {
