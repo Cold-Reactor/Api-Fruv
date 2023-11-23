@@ -6,13 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api_SIF.Models.EmpleadosN
 {
-    [Index("id_area", Name = "fk_partida_area1_idx")]
     [Index("id_departamento", Name = "fk_partida_departamento1_idx")]
-    [Index("id_presupuesto", Name = "fk_partida_presupuesto1_idx")]
+    //[Index("id_presupuesto", Name = "fk_partida_presupuesto1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class partidum
+    public partial class Partida
     {
-        public partidum()
+        public Partida()
         {
             //solicitudcompras = new HashSet<solicitudcompra>();
         }
@@ -25,9 +24,10 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string grupo { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_presupuesto { get; set; }
-        [Column(TypeName = "int(11)")]
-        public int? id_area { get; set; }
+        public int cantidad { get; set; }
+
+        //[Column(TypeName = "int(11)")]
+        //public int? id_area { get; set; }
 
         //[ForeignKey("id_area")]
         //[InverseProperty("partida")]

@@ -9,7 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("ordencompra")]
     [Index("id_cotizacion", Name = "fk_ordenCompra_cotizacion1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class ordencompra
+    public partial class OrdenCompra
     {
         [Key]
         [Column(TypeName = "int(11)")]
@@ -23,7 +23,7 @@ namespace api_SIF.Models.EmpleadosN
         [StringLength(45)]
         public string descripcion { get; set; }
         [Column(TypeName = "int(11)")]
-        public int? provedor { get; set; }
+        public int? proveedor { get; set; }
         public double? precioU { get; set; }
         public double? iva { get; set; }
         public double? precioT { get; set; }

@@ -9,9 +9,9 @@ namespace api_SIF.Models.EmpleadosN
     [Table("solicitudcompra")]
     [Index("id_partida", Name = "fk_solicitudCompra_partida1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class solicitudcompra
+    public partial class SolicitudCompra
     {
-        public solicitudcompra()
+        public SolicitudCompra()
         {
             //cotizacions = new HashSet<cotizacion>();
         }
@@ -22,8 +22,8 @@ namespace api_SIF.Models.EmpleadosN
         public DateOnly? fecha { get; set; }
         [Column(TypeName = "int(11)")]
         public int? id_sucursal { get; set; }
-        [Column(TypeName = "int(11)")]
-        public int? id_departamento { get; set; }
+        //[Column(TypeName = "int(11)")]
+        //public int? id_departamento { get; set; }
         [Column(TypeName = "int(11)")]
         public int? id_solicitante { get; set; }
         [Column(TypeName = "int(11)")]

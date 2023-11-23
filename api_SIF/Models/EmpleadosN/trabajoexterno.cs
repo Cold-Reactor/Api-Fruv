@@ -10,11 +10,11 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_area", Name = "fk_trabajoExterno_area1_idx")]
     [Index("id_departamento", Name = "fk_trabajoExterno_departamento1_idx")]
     [Index("id_empleado", Name = "fk_trabajo_empleados1_idx")]
-    [Index("id_tipo", Name = "fk_trabajo_trabajo_tipo1_idx")]
+    //[Index("id_tipo", Name = "fk_trabajo_trabajo_tipo1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class trabajoexterno
+    public partial class TrabajoExterno
     {
-        public trabajoexterno()
+        public TrabajoExterno()
         {
             //hipertensions = new HashSet<hipertension>();
         }
@@ -27,7 +27,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_tipo { get; set; }
+        public int id_trabajoT { get; set; }
         [StringLength(45)]
         public string proveedor { get; set; }
         [StringLength(45)]

@@ -8,13 +8,13 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("tiempoextraestado")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class tiempoextraestado
+    public partial class TiempoExtraEstado
     {
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_estado { get; set; }
         [StringLength(45)]
-        public string nombre { get; set; }
+        public string estado { get; set; }
         [StringLength(10)]
         public string color { get; set; }
     }

@@ -48,7 +48,7 @@ namespace api_SIF.Controllers
             return reqArea;
         }
         [HttpPost]
-        public async Task<ActionResult<requestArea>> Postarea(requestArea reqArea)
+        public ActionResult<requestArea> Postarea(requestArea reqArea)
         {
             var entidadExistente = _context.areas.SingleOrDefault(e => e.id_area == reqArea.id_area);
             if (entidadExistente == null)
@@ -71,7 +71,7 @@ namespace api_SIF.Controllers
                 _context.SaveChanges();
 
             }
-            return Ok(new { id =  reqArea.id_area});
+            return Ok(new { id = reqArea.id_area });
         }
     }
 }

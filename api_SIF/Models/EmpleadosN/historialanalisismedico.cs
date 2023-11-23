@@ -10,7 +10,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_analisisT", Name = "fk_historialAnalisis_analisisTipo1_idx")]
     [Index("id_empleado", Name = "fk_historialAnalisis_empleado1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class historialanalisismedico
+    public partial class HistorialAnalisisMedico
     {
         [Key]
         [Column(TypeName = "int(11)")]
@@ -20,6 +20,7 @@ namespace api_SIF.Models.EmpleadosN
         public int id_analisisT { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
+        public string resultados { get; set; }
 
         //[ForeignKey("id_analisisT")]
         //[InverseProperty("historialanalisismedicos")]

@@ -11,11 +11,11 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_departamento", Name = "fk_trabajoInterno_departamento1_idx")]
     [Index("id_empleado", Name = "fk_trabajoInterno_empleado1_idx")]
     [Index("id_inmobiliario", Name = "fk_trabajoInterno_inmobiliario1_idx")]
-    [Index("id_tipo_trabajo", Name = "fk_trabajoInterno_trabajoTipo1_idx")]
+    //[Index("id_tipo_trabajo", Name = "fk_trabajoInterno_trabajoTipo1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class trabajointerno
+    public partial class TrabajoInterno
     {
-        public trabajointerno()
+        public TrabajoInterno()
         {
             //trabajo_refaccions = new HashSet<trabajo_refaccion>();
         }
@@ -31,7 +31,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_departamento { get; set; }
         [Column(TypeName = "int(11)")]
-        public int id_tipo_trabajo { get; set; }
+        public int id_trabajoT { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_area { get; set; }
         [Column(TypeName = "int(11)")]

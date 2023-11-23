@@ -8,9 +8,9 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("trabajotipo")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class trabajotipo
+    public partial class TrabajoTipo
     {
-        public trabajotipo()
+        public TrabajoTipo()
         {
             //trabajoexternos = new HashSet<trabajoexterno>();
             //trabajointernos = new HashSet<trabajointerno>();
@@ -22,6 +22,10 @@ namespace api_SIF.Models.EmpleadosN
         [Required]
         [Column(TypeName = "tinytext")]
         public string trabajoT { get; set; }
+        [Column(TypeName = "int(1)")]
+        public int? utilizable { get; set; }
+
+
 
         //[InverseProperty("id_tipoNavigation")]
         //public virtual ICollection<trabajoexterno> trabajoexternos { get; set; }

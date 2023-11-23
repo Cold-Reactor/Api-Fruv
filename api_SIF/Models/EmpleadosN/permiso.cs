@@ -10,7 +10,7 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_empleado", Name = "fk_permiso_empleados1_idx")]
     [Index("id_modalidad", Name = "fk_permiso_permisoModalidad1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class permiso
+    public partial class Permiso
     {
         [Key]
         [Column(TypeName = "int(11)")]
@@ -20,7 +20,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "datetime")]
         public DateTime? fechaCreacion { get; set; }
         [Column(TypeName = "int(11)")]
-        public int? supervisor { get; set; }
+        public int? id_supervisor { get; set; }
         [Column(TypeName = "int(11)")]
         public int? id_modalidad { get; set; }
         public DateOnly? fechaSalida { get; set; }

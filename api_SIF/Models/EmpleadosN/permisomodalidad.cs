@@ -8,9 +8,9 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("permisomodalidad")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class permisomodalidad
+    public partial class PermisoModalidad
     {
-        public permisomodalidad()
+        public PermisoModalidad()
         {
             //permisos = new HashSet<permiso>();
         }
@@ -19,7 +19,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_modalidad { get; set; }
         [StringLength(45)]
-        public string nombre { get; set; }
+        public string modalidad { get; set; }
 
         //[InverseProperty("id_modalidadNavigation")]
         //public virtual ICollection<permiso> permisos { get; set; }

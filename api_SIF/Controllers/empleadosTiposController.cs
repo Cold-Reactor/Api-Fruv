@@ -20,18 +20,18 @@ namespace api_SIF.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<empleadotipo>>> GetEmpleadosTipos()
+        public async Task<ActionResult<IEnumerable<EmpleadoTipo>>> GetEmpleadosTipos()
         {
             var empleadosTiposLista = _context.empleadotipos;
             return await empleadosTiposLista.ToListAsync();
         }
-        
+
         [HttpPost]
-        public async Task<ActionResult<empleadotipo>> PostEmpleadosTipos(empleadotipo reqEmpleadoTipo)
+        public ActionResult<EmpleadoTipo> PostEmpleadosTipos(EmpleadoTipo reqEmpleadoTipo)
         {
             var entidadExistente = _context.empleadotipos.SingleOrDefault(e => e.id_empleadoT == reqEmpleadoTipo.id_empleadoT);
             if (entidadExistente == null)
-            {                
+            {
                 _context.empleadotipos.Add(reqEmpleadoTipo);
                 _context.SaveChanges();
                 reqEmpleadoTipo.id_empleadoT = Funciones.ObtenerUltimoId<Ciudad>(_context);
@@ -39,7 +39,7 @@ namespace api_SIF.Controllers
             else
             {
                 reqEmpleadoTipo.id_empleadoT = entidadExistente.id_empleadoT;
-                entidadExistente.nombre = reqEmpleadoTipo.nombre;
+                entidadExistente.empleadoT = reqEmpleadoTipo.empleadoT;
                 _context.SaveChanges();
 
             }

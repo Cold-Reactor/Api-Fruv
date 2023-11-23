@@ -9,7 +9,7 @@ namespace api_SIF.Models.EmpleadosN
     [Table("incapacidad")]
     [Index("id_empleado", Name = "fk_incapacidad_empleado1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class incapacidad
+    public partial class Incapacidad
     {
         [Key]
         [Column(TypeName = "int(11)")]
@@ -17,7 +17,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_empleado { get; set; }
         [StringLength(45)]
-        public string incapacidadT { get; set; }
+        public string motivo { get; set; }
         public DateOnly? fechaInicio { get; set; }
         public DateOnly? fechaRegreso { get; set; }
         [Column(TypeName = "tinyint(4)")]

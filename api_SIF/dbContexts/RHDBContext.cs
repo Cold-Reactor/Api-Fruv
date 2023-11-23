@@ -41,7 +41,7 @@ namespace api_SIF.dbContexts
         public virtual DbSet<empleado_tiempoextra> empleado_tiempoextras { get; set; }
         public virtual DbSet<empleadoarchivo> empleadoarchivos { get; set; }
         public virtual DbSet<empleadohistorial> empleadohistorials { get; set; }
-        public virtual DbSet<empleadotipo> empleadotipos { get; set; }
+        public virtual DbSet<EmpleadoTipo> empleadotipos { get; set; }
         public virtual DbSet<empleadoarchivotipo> empleadotipoarchivos { get; set; }
         public virtual DbSet<Empresa> empresas { get; set; }
         public virtual DbSet<Estado> estados { get; set; }
@@ -50,35 +50,35 @@ namespace api_SIF.dbContexts
         public virtual DbSet<falta> faltas { get; set; }
         public virtual DbSet<formato> formatos { get; set; }
         public virtual DbSet<hipertension> hipertensions { get; set; }
-        public virtual DbSet<historialanalisismedico> historialanalisismedicos { get; set; }
+        public virtual DbSet<HistorialAnalisisMedico> historialanalisismedicos { get; set; }
         public virtual DbSet<hora> horas { get; set; }
-        public virtual DbSet<incapacidad> incapacidads { get; set; }
+        public virtual DbSet<Incapacidad> incapacidads { get; set; }
         public virtual DbSet<inmobiliario> inmobiliarios { get; set; }
         public virtual DbSet<iva> ivas { get; set; }
         public virtual DbSet<medicamento> medicamentos { get; set; }
         public virtual DbSet<medicamentotipo> medicamentotipos { get; set; }
         public virtual DbSet<Nomina> nominas { get; set; }
-        public virtual DbSet<ordencompra> ordencompras { get; set; }
+        public virtual DbSet<OrdenCompra> ordencompras { get; set; }
         public virtual DbSet<pariente> parientes { get; set; }
-        public virtual DbSet<partidum> partida { get; set; }
-        public virtual DbSet<permiso> permisos { get; set; }
-        public virtual DbSet<permisomodalidad> permisomodalidads { get; set; }
-        public virtual DbSet<presupuesto> presupuestos { get; set; }
-        public virtual DbSet<proveedor> proveedors { get; set; }
+        public virtual DbSet<Partida> partida { get; set; }
+        public virtual DbSet<Permiso> permisos { get; set; }
+        public virtual DbSet<PermisoModalidad> permisomodalidads { get; set; }
+        public virtual DbSet<Presupuesto> presupuestos { get; set; }
+        public virtual DbSet<Proveedor> proveedors { get; set; }
         public virtual DbSet<Puesto> puestos { get; set; }
         public virtual DbSet<refaccion> refaccions { get; set; }
         public virtual DbSet<renovacion> renovacions { get; set; }
-        public virtual DbSet<solicitudcompra> solicitudcompras { get; set; }
+        public virtual DbSet<SolicitudCompra> solicitudcompras { get; set; }
         public virtual DbSet<submodulo> submodulos { get; set; }
         public virtual DbSet<Sucursal> sucursales { get; set; }
         public virtual DbSet<suspension> suspensions { get; set; }
-        public virtual DbSet<tiempoextra> tiempoextras { get; set; }
-        public virtual DbSet<tiempoextraestado> tiempoextraestados { get; set; }
+        public virtual DbSet<TiempoExtra> tiempoextras { get; set; }
+        public virtual DbSet<TiempoExtraEstado> tiempoextraestados { get; set; }
         public virtual DbSet<tipobaja> tipobajas { get; set; }
         public virtual DbSet<trabajo_refaccion> trabajo_refaccions { get; set; }
-        public virtual DbSet<trabajoexterno> trabajoexternos { get; set; }
-        public virtual DbSet<trabajointerno> trabajointernos { get; set; }
-        public virtual DbSet<trabajotipo> trabajotipos { get; set; }
+        public virtual DbSet<TrabajoExterno> trabajoexternos { get; set; }
+        public virtual DbSet<TrabajoInterno> trabajointernos { get; set; }
+        public virtual DbSet<TrabajoTipo> trabajotipos { get; set; }
         public virtual DbSet<turno> turnos { get; set; }
         public virtual DbSet<usuario> usuarios { get; set; }
         public virtual DbSet<usuario_empleadorol> usuario_empleadorols { get; set; }
@@ -90,8 +90,7 @@ namespace api_SIF.dbContexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=sistema.fruvemex.com;port=3306;database=empleadosN;user=jaziel;password=902015jz", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.19-mysql"));
+               // optionsBuilder.UseMySql("server=sistema.fruvemex.com;port=3306;database=empleadosN;user=jaziel;password=902015jz", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.19-mysql"));
             }
         }
 
@@ -425,7 +424,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_empleado_historial_tipo_baja1");
             });
 
-            modelBuilder.Entity<empleadotipo>(entity =>
+            modelBuilder.Entity<EmpleadoTipo>(entity =>
             {
                 entity.HasKey(e => e.id_empleadoT)
                     .HasName("PRIMARY");
@@ -612,7 +611,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_hiperTension_trabajoExterno1");
             });
 
-            modelBuilder.Entity<historialanalisismedico>(entity =>
+            modelBuilder.Entity<HistorialAnalisisMedico>(entity =>
             {
                 entity.HasKey(e => e.id_historialA)
                     .HasName("PRIMARY");
@@ -636,7 +635,7 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<incapacidad>(entity =>
+            modelBuilder.Entity<Incapacidad>(entity =>
             {
                 entity.HasKey(e => e.id_incapacidad)
                     .HasName("PRIMARY");
@@ -690,7 +689,7 @@ namespace api_SIF.dbContexts
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<ordencompra>(entity =>
+            modelBuilder.Entity<OrdenCompra>(entity =>
             {
                 entity.HasKey(e => e.id_ordenC)
                     .HasName("PRIMARY");
@@ -714,7 +713,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_pariente_empleado1");
             });
 
-            modelBuilder.Entity<partidum>(entity =>
+            modelBuilder.Entity<Partida>(entity =>
             {
                 entity.HasKey(e => e.id_partida)
                     .HasName("PRIMARY");
@@ -736,7 +735,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_partida_presupuesto1");
             });
 
-            modelBuilder.Entity<permiso>(entity =>
+            modelBuilder.Entity<Permiso>(entity =>
             {
                 entity.HasKey(e => e.id_permiso)
                     .HasName("PRIMARY");
@@ -756,19 +755,19 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_permiso_permisoModalidad1");
             });
 
-            modelBuilder.Entity<permisomodalidad>(entity =>
+            modelBuilder.Entity<PermisoModalidad>(entity =>
             {
                 entity.HasKey(e => e.id_modalidad)
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<presupuesto>(entity =>
+            modelBuilder.Entity<Presupuesto>(entity =>
             {
                 entity.HasKey(e => e.id_presupuesto)
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<proveedor>(entity =>
+            modelBuilder.Entity<Proveedor>(entity =>
             {
                 entity.HasKey(e => e.id_proveedor)
                     .HasName("PRIMARY");
@@ -805,7 +804,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_renovacion_empleado1");
             });
 
-            modelBuilder.Entity<solicitudcompra>(entity =>
+            modelBuilder.Entity<SolicitudCompra>(entity =>
             {
                 entity.HasKey(e => e.id_solicitudC)
                     .HasName("PRIMARY");
@@ -852,13 +851,13 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_suspension_empleado1");
             });
 
-            modelBuilder.Entity<tiempoextra>(entity =>
+            modelBuilder.Entity<TiempoExtra>(entity =>
             {
                 entity.HasKey(e => e.id_tiempoExtra)
                     .HasName("PRIMARY");
             });
 
-            modelBuilder.Entity<tiempoextraestado>(entity =>
+            modelBuilder.Entity<TiempoExtraEstado>(entity =>
             {
                 entity.HasKey(e => e.id_estado)
                     .HasName("PRIMARY");
@@ -888,7 +887,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_refaccion_has_trabajoInterno_trabajoInterno1");
             });
 
-            modelBuilder.Entity<trabajoexterno>(entity =>
+            modelBuilder.Entity<TrabajoExterno>(entity =>
             {
                 entity.HasKey(e => e.id_trabajoE)
                     .HasName("PRIMARY");
@@ -932,7 +931,7 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_trabajo_trabajo_tipo1");
             });
 
-            modelBuilder.Entity<trabajointerno>(entity =>
+            modelBuilder.Entity<TrabajoInterno>(entity =>
             {
                 entity.HasKey(e => e.id_trabajoI)
                     .HasName("PRIMARY");
@@ -974,10 +973,12 @@ namespace api_SIF.dbContexts
                 //    .HasConstraintName("fk_trabajoInterno_trabajoTipo1");
             });
 
-            modelBuilder.Entity<trabajotipo>(entity =>
+            modelBuilder.Entity<TrabajoTipo>(entity =>
             {
                 entity.HasKey(e => e.id_trabajoT)
                     .HasName("PRIMARY");
+                entity.Property(e => e.utilizable).HasDefaultValueSql("'1'");
+
             });
 
             modelBuilder.Entity<turno>(entity =>

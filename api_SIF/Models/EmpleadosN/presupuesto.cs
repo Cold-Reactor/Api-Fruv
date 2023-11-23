@@ -8,9 +8,9 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("presupuesto")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class presupuesto
+    public partial class Presupuesto
     {
-        public presupuesto()
+        public Presupuesto()
         {
             //partida = new HashSet<partidum>();
         }
@@ -20,6 +20,9 @@ namespace api_SIF.Models.EmpleadosN
         public int id_presupuesto { get; set; }
         [Column(TypeName = "int(11)")]
         public int? cantidad { get; set; }
+        [Column(TypeName = "int(11)")]
+        public int? id_departamento { get; set; }
+        public DateTime fecha { get; set; }
 
         //[InverseProperty("id_presupuestoNavigation")]
         //public virtual ICollection<partidum> partida { get; set; }

@@ -8,9 +8,9 @@ namespace api_SIF.Models.EmpleadosN
 {
     [Table("proveedor")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class proveedor
+    public partial class Proveedor
     {
-        public proveedor()
+        public Proveedor()
         {
             //cotizacions = new HashSet<cotizacion>();
         }
@@ -19,12 +19,13 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int id_proveedor { get; set; }
         [Column(TypeName = "tinytext")]
-        public string nombre { get; set; }
+        public string proveedor { get; set; }
         [Column(TypeName = "tinytext")]
         public string calle { get; set; }
         [Column(TypeName = "tinytext")]
         public string ciudad { get; set; }
         [Column(TypeName = "int(11)")]
+        [Required]
         public int? id_estado { get; set; }
         [Column(TypeName = "int(11)")]
         public int? codigoPostal { get; set; }
