@@ -127,7 +127,22 @@ namespace api_SIF.Controllers
             return await empleadosLista.ToListAsync();
             //return await _context.empleados.ToListAsync();
         }
-        
+
+        [HttpGet("GetProximoEmpleadoPorSucursal/{id_sucursal}")]
+        public async Task<ActionResult<Object>> GetProximoEmpleadoPorSucursal(int id_sucursal)
+        {
+            try
+            {
+                int maximoValor = _context.empleados
+            .Where(e => e.id_sucursal == id_sucursal)
+            .Max(e => e.no_empleado);
+                return Ok(new {no_empleado= maximoValor + 1 });
+            }
+            catch (Exception e) {
+                return NotFound();
+            }
+        }
+
 
         // GET: api/empleados/5
         [HttpGet("{id}")]
