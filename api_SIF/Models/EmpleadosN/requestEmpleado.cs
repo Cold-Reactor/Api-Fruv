@@ -44,9 +44,12 @@ namespace api_SIF.Models.EmpleadosN
             public DateOnly? fechaIngreso { get; set; }
             public int? id_empresa { get; set; }
             public int? id_sucursal { get; set; }
-            public int? presencial { get; set; }
+            public int? confianza { get; set; }
             public string parentesco { get; set; }
-            public string imagen { get; set; }
+        public string imagen { get; set; }
+        public double? bonoProd { get; set; }
+
+       // public byte[] imagenByte { get; set; }
             public string firma { get; set; }
             public int? id_rol { get; set; }
             public int? status { get; set; }

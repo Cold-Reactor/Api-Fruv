@@ -15,7 +15,7 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_area { get; set; }
 
         public string area { get; set; }
-        public int presencial { get; set; }
+        public int confianza { get; set; }
         public List<requestChecadaCheck> checadas { get; set; }
     }
 }

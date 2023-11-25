@@ -10,6 +10,8 @@ using api_SIF.dbContexts;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
+using System.Reflection;
 
 namespace api_SIF.Controllers
 {
@@ -64,9 +66,10 @@ namespace api_SIF.Controllers
                             fechaIngreso = x.fechaIngreso,
                             id_empresa = x.id_empresa,
                             id_sucursal = x.id_sucursal,
-                            presencial = x.presencial,
+                            confianza = x.confianza,
                             //parentesco = x.parentesco,
-                            imagen = x.imagen,
+                            //imagenByte = x.imagen,
+                            imagen = Encoding.UTF8.GetString(x.imagen),
                             firma = x.firma,
                             id_rol = x.id_rol,
                             status = x.status,
@@ -115,9 +118,11 @@ namespace api_SIF.Controllers
                                      fechaIngreso = x.fechaIngreso,
                                      id_empresa = x.id_empresa,
                                      id_sucursal = x.id_sucursal,
-                                     presencial = x.presencial,
+                                     confianza = x.confianza,
                                      //parentesco = x.parentesco,
-                                     imagen = x.imagen,
+                                     //imagenByte = x.imagen,
+                                     imagen = Encoding.UTF8.GetString(x.imagen),
+
                                      firma = x.firma,
                                      id_rol = x.id_rol,
                                      status = x.status,
@@ -187,9 +192,11 @@ namespace api_SIF.Controllers
                 fechaIngreso = empleado.fechaIngreso,
                 id_empresa = empleado.id_empresa,
                 id_sucursal = empleado.id_sucursal,
-                presencial = empleado.presencial,
+                confianza = empleado.confianza,
                 //parentesco = empleado.parentesco,
-                imagen = empleado.imagen,
+                //imagenByte = empleado.imagen,
+                imagen = Encoding.UTF8.GetString(empleado.imagen),
+
                 firma = empleado.firma,
                 id_rol = empleado.id_rol,
                 status = empleado.status,
@@ -236,10 +243,12 @@ namespace api_SIF.Controllers
                 fechaIngreso = x.fechaIngreso,
                 id_empresa = x.id_empresa,
                 id_sucursal = x.id_sucursal,
-                presencial = x.presencial,
-                //parentesco = x.parentesco,
-                imagen = x.imagen,
-                firma = x.firma,
+                confianza = x.confianza,
+                 imagen = Encoding.UTF8.GetString(x.imagen),
+
+                 //parentesco = x.parentesco,
+                 //imagenByte = x.imagen,
+                 firma = x.firma,
                 id_rol = x.id_rol,
                 status = x.status,
                 externo = x.externo
@@ -250,44 +259,121 @@ namespace api_SIF.Controllers
         
         // PUT: api/empleados/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Putempleado(int id, empleado empleado)
+        [HttpPut("{id_empleado}")]
+        public async Task<IActionResult> Putempleado(int id_empleado, requestEmpleado empleado)
         {
-            if (id != empleado.id_empleado)
+            if (id_empleado != empleado.id_empleado)
             {
                 return BadRequest();
             }
-            _context.Entry(empleado).State = EntityState.Modified;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!empleadoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            var emp1 = _context.empleados.FirstOrDefault(x => x.id_empleado == id_empleado);
+            
+            
+            //if (empleado.imagen!=null && empleado.imagen.Length>0)
+            //{
+            //    emp1.imagen = Convert.FromBase64String(empleado.imagen.Replace("data:image/...;base64,", ""));
+            //}
+            ModificarAtributosNoNulos(emp1,empleado);
+
+
+            _context.empleados.Update(emp1);
+            _context.SaveChanges();
 
             return NoContent();
         }
-        
+
+        static void ModificarAtributosNoNulos(object objeto, object objetoRequest)
+        {
+            Type tipoObjeto = objeto.GetType();
+            Type tipoObjetoRequest = objetoRequest.GetType();
+
+            PropertyInfo[] propiedades = tipoObjeto.GetProperties();
+            PropertyInfo[] propiedadesRequest = tipoObjetoRequest.GetProperties();
+
+            for (int i = 0; i < propiedades.Length ; i++)
+            {
+                for (int j = 0; j < propiedadesRequest.Length; j++)
+
+                {
+                    if (propiedades[i].Name.Equals(propiedadesRequest[j].Name)
+                        &&
+                        (propiedadesRequest[j].GetValue(objetoRequest) != null && propiedadesRequest[j].GetValue(objetoRequest).Equals(0) && propiedadesRequest[j].GetValue(objetoRequest).Equals(""))
+                        
+                        )
+                    {
+                        if (propiedades[i].Name.Equals("imagen"))
+                        {
+                            propiedades[i].SetValue(objeto, propiedadesRequest[j].GetValue(objetoRequest));
+
+                        }
+                        else
+                        {
+                            propiedades[i].SetValue(objeto, propiedadesRequest[j].GetValue(objetoRequest));
+                        }
+                        continue;
+                    }
+                }
+                    
+                
+            }
+        }
         // POST: api/empleados
         [HttpPost]
-        public async Task<ActionResult<empleado>> Postempleado(empleado empleado)
+        public async Task<ActionResult<empleado>> Postempleado(requestEmpleado empleado)
         {
+            //byte[] datosBlob = Encoding.UTF8.GetBytes(empleado.imagen);
+            byte[] datosBlob = Convert.FromBase64String(empleado.imagen.Replace("data:image/...;base64,", ""));
+
             if (empleado==null || empleado.id_empleado>0)
             {
-                return BadRequest();
+               //return BadRequest();
             }
-            empleado.no_empleado = this.ObtenerUltimoNumeroEmpleadoMasUno(empleado.id_sucursal);
+            var emp1 = new empleado
+            {
+                email = empleado.email,
+                confianza = empleado.confianza,
+                apellidoMaterno = empleado.apellidoMaterno,
+                apellidoPaterno =empleado.apellidoPaterno,
+                bonoProd = empleado.bonoProd,
+                carrera = empleado.carrera,
+                CP = empleado.CP,
+                CURP = empleado.CURP,
+                direccion = empleado.direccion,
+                estadoCivil =  empleado.estadoCivil,
+                externo = empleado.externo,
+                fechaIngreso = empleado.fechaIngreso,
+                fechaNacimiento = empleado.fechaNacimiento,
+                firma = empleado.firma,
+                gradoEstudios = empleado.gradoEstudios,
+                id_area = empleado.id_area,
+                id_ciudad = empleado.id_ciudad,
+                id_empleado = empleado.id_empleado,
+                id_estado = empleado.id_estado,
+                id_empresa = empleado.id_empresa,
+                id_nomina = empleado.id_nomina,
+                id_puesto = empleado.id_puesto,
+                id_rol = empleado.id_rol,
+                id_sucursal = empleado.id_sucursal,
+                id_turno = empleado.id_turno,
+                imagen = datosBlob,
+                IMSS = empleado.IMSS,
+                instituto = empleado.instituto,
+                jefeInmediato = empleado.jefeInmediato,
+                nombre = empleado.nombre,
+                no_empleado = empleado.no_empleado,
+                RFC = empleado.RFC,
+                salarioDiario = empleado.salarioDiario,
+                sexo = empleado.sexo,
+                status = empleado.status,
+                telefono = empleado.telefono,
+                telefonoEmergencias = empleado.telefonoEmergencias,
+                titulo = empleado.titulo,
+                
+
+            };
+            //empleado.no_empleado = this.ObtenerUltimoNumeroEmpleadoMasUno(empleado.id_sucursal);
             
-            _context.empleados.Add(empleado);
+            _context.empleados.Add(emp1);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("Getempleado", new { id = empleado.id_empleado,no_empleado=empleado.no_empleado }, empleado);
@@ -302,6 +388,7 @@ namespace api_SIF.Controllers
             {
                 return NotFound();
             }
+
             _context.empleados.Remove(empleado);
             await _context.SaveChangesAsync();
             return NoContent();

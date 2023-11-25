@@ -111,7 +111,7 @@ namespace api_SIF.Controllers
                                  sucursal = p.id_sucursal,
                                  turno = p.id_turno.ToString(),
                                  area = p.id_area.ToString(),
-                                 presencial = (int)p.presencial,
+                                 confianza = (int)p.confianza,
                              }).ToList();
             if (no_empleado>0)
             {

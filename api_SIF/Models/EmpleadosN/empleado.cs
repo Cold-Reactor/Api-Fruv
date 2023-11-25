@@ -101,9 +101,9 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? id_sucursal { get; set; }
         [Column(TypeName = "int(1)")]
-        public int? presencial { get; set; }
-        [StringLength(300)]
-        public string imagen { get; set; }
+        public int? confianza { get; set; }
+        [MaxLength(1000)] 
+        public byte[] imagen { get; set; }
         [Column(TypeName = "text")]
         public string firma { get; set; }
         [Column(TypeName = "int(1)")]

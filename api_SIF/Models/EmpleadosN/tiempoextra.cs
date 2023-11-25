@@ -19,10 +19,10 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_supervisor { get; set; }
         [Column(TypeName = "int(11)")]
         [Required]
-        public int? departamento { get; set; }
+        public int? id_departamento { get; set; }
         [Column(TypeName = "int(11)")]
         [Required]
-        public int? area { get; set; }
+        public int? id_area { get; set; }
         [Column(TypeName = "text")]
         public string justificacion { get; set; }
         [Column(TypeName = "int(11)")]
