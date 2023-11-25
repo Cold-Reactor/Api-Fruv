@@ -380,7 +380,7 @@ namespace api_SIF.dbContexts
 
                 entity.Property(e => e.externo).HasDefaultValueSql("'0'");
 
-                entity.Property(e => e.presencial).HasDefaultValueSql("'1'");
+                entity.Property(e => e.confianza).HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.status).HasDefaultValueSql("'1'");
 
