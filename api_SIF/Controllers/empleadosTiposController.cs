@@ -25,6 +25,12 @@ namespace api_SIF.Controllers
             var empleadosTiposLista = _context.empleadotipos;
             return await empleadosTiposLista.ToListAsync();
         }
+        [HttpGet("{id_empleadoT}")]
+        public async Task<ActionResult<EmpleadoTipo>> GetEmpleadoTipoByID(int id_empleadoT)
+        {
+            var empleadosTipo = _context.empleadotipos.FirstOrDefault<EmpleadoTipo>(x => x.id_empleadoT == id_empleadoT); ;
+            return empleadosTipo;
+        }
 
         [HttpPost]
         public ActionResult<EmpleadoTipo> PostEmpleadosTipos(EmpleadoTipo reqEmpleadoTipo)

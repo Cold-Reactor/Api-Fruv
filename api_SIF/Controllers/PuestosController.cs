@@ -29,10 +29,10 @@ namespace api_SIF.Controllers
             return turnosLista;
         }
 
-        [HttpGet("{nombre}")]
-        public async Task<ActionResult<Puesto>> GetPuesto(string nombre)
+        [HttpGet("{id_puesto}")]
+        public async Task<ActionResult<Puesto>> GetPuesto(int id_puesto)
         {
-            var puesto = _context.puestos.FirstOrDefault<Puesto>(x => x.puesto== nombre);
+            var puesto = _context.puestos.FirstOrDefault<Puesto>(x => x.id_puesto== id_puesto);
 
             return puesto;
         }
