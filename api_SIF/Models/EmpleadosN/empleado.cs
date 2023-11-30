@@ -103,7 +103,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int? confianza { get; set; }
         [MaxLength(1000)] 
-        public byte[] imagen { get; set; }
+        public string imagen { get; set; }
         [Column(TypeName = "text")]
         public string firma { get; set; }
         [Column(TypeName = "int(1)")]

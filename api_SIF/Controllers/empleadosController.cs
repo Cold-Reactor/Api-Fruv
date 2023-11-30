@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using System.Reflection;
+using api_SIF.Clases;
 
 namespace api_SIF.Controllers
 {
@@ -69,7 +70,7 @@ namespace api_SIF.Controllers
                             confianza = x.confianza,
                             //parentesco = x.parentesco,
                             //imagenByte = x.imagen,
-                            imagen = Encoding.UTF8.GetString(x.imagen),
+                            imagen = x.imagen,
                             firma = x.firma,
                             id_rol = x.id_rol,
                             status = x.status,
@@ -121,7 +122,7 @@ namespace api_SIF.Controllers
                                      confianza = x.confianza,
                                      //parentesco = x.parentesco,
                                      //imagenByte = x.imagen,
-                                     imagen = Encoding.UTF8.GetString(x.imagen),
+                                     imagen = x.imagen,
 
                                      firma = x.firma,
                                      id_rol = x.id_rol,
@@ -195,7 +196,7 @@ namespace api_SIF.Controllers
                 confianza = empleado.confianza,
                 //parentesco = empleado.parentesco,
                 //imagenByte = empleado.imagen,
-                imagen = Encoding.UTF8.GetString(empleado.imagen),
+                imagen = empleado.imagen,
 
                 firma = empleado.firma,
                 id_rol = empleado.id_rol,
@@ -244,7 +245,7 @@ namespace api_SIF.Controllers
                 id_empresa = x.id_empresa,
                 id_sucursal = x.id_sucursal,
                 confianza = x.confianza,
-                 imagen = Encoding.UTF8.GetString(x.imagen),
+                 imagen = x.imagen,
 
                  //parentesco = x.parentesco,
                  //imagenByte = x.imagen,
@@ -322,7 +323,7 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<empleado>> Postempleado(requestEmpleado empleado)
         {
             //byte[] datosBlob = Encoding.UTF8.GetBytes(empleado.imagen);
-            byte[] datosBlob = Convert.FromBase64String(empleado.imagen.Replace("data:image/...;base64,", ""));
+            //byte[] datosBlob = Convert.FromBase64String(empleado.imagen.Replace("data:image/...;base64,", ""));
 
             if (empleado==null || empleado.id_empleado>0)
             {
@@ -355,7 +356,7 @@ namespace api_SIF.Controllers
                 id_rol = empleado.id_rol,
                 id_sucursal = empleado.id_sucursal,
                 id_turno = empleado.id_turno,
-                imagen = datosBlob,
+                imagen = empleado.imagen,
                 IMSS = empleado.IMSS,
                 instituto = empleado.instituto,
                 jefeInmediato = empleado.jefeInmediato,
@@ -375,8 +376,9 @@ namespace api_SIF.Controllers
             
             _context.empleados.Add(emp1);
             await _context.SaveChangesAsync();
+            empleado.id_empleado = Funciones.ObtenerUltimoId<empleado>(_context); ;
 
-            return CreatedAtAction("Getempleado", new { id = empleado.id_empleado,no_empleado=empleado.no_empleado }, empleado);
+            return Ok(new { id = empleado.id_empleado});
         }
         
         // DELETE: api/empleados/5
