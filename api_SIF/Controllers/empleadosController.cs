@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using System.Reflection;
 using api_SIF.Clases;
+using api_SIF.Services;
 
 namespace api_SIF.Controllers
 {
@@ -268,19 +269,185 @@ namespace api_SIF.Controllers
                 return BadRequest();
             }
             var emp1 = _context.empleados.FirstOrDefault(x => x.id_empleado == id_empleado);
-            
-            
-            //if (empleado.imagen!=null && empleado.imagen.Length>0)
+
+            #region validacionesParaActualizarRegistros
+            if (empleado.nombre != null && empleado.nombre.Length > 0)
+            {
+                emp1.nombre = empleado.nombre;
+            }
+            if (empleado.apellidoPaterno != null && empleado.apellidoPaterno.Length > 0)
+            {
+                emp1.apellidoPaterno = empleado.apellidoPaterno;
+            }
+            if (empleado.apellidoMaterno != null && empleado.apellidoMaterno.Length > 0)
+            {
+                emp1.apellidoMaterno = empleado.apellidoMaterno;
+            }
+            if (empleado.estadoCivil != null && empleado.estadoCivil.Length > 0)
+            {
+                emp1.estadoCivil = empleado.estadoCivil;
+            }
+            if (empleado.sexo != null && empleado.sexo.Length > 0)
+            {
+                emp1.sexo = empleado.sexo;
+            }
+
+
+
+            if (empleado.fechaNacimiento != null )
+            {
+                emp1.fechaNacimiento = empleado.fechaNacimiento;
+            }
+            if (empleado.IMSS != null && empleado.IMSS.Length > 0)
+            {
+                emp1.IMSS = empleado.IMSS;
+            }
+            if (empleado.telefono != null && empleado.telefono.Length > 0)
+            {
+                emp1.telefono = empleado.telefono;
+            }
+
+
+            if (empleado.telefonoEmergencias != null && empleado.telefonoEmergencias.Length > 0)
+            {
+                emp1.telefonoEmergencias = empleado.telefonoEmergencias;
+            }
+            if (empleado.email != null && empleado.email.Length > 0)
+            {
+                emp1.email = empleado.email;
+            }
+            if (empleado.CURP != null && empleado.CURP.Length > 0)
+            {
+                emp1.CURP = empleado.CURP;
+            }
+            if (empleado.RFC != null && empleado.RFC.Length > 0)
+            {
+                emp1.RFC = empleado.RFC;
+            }
+            if (empleado.id_ciudad != null && empleado.id_ciudad > 0)
+            {
+                emp1.id_ciudad = empleado.id_ciudad;
+            }
+            if (empleado.id_estado != null && empleado.id_estado > 0)
+            {
+                emp1.id_estado = empleado.id_estado;
+            }
+            if (empleado.direccion != null && empleado.direccion.Length > 0)
+            {
+                emp1.direccion = empleado.direccion;
+            }
+            if (empleado.CP != null && empleado.CP > 0)
+            {
+                emp1.CP = empleado.CP;
+            }
+            if (empleado.gradoEstudios != null && empleado.gradoEstudios.Length > 0)
+            {
+                emp1.gradoEstudios = empleado.gradoEstudios;
+            }
+            if (empleado.carrera != null && empleado.carrera.Length > 0)
+            {
+                emp1.carrera = empleado.carrera;
+            }
+            if (empleado.instituto != null && empleado.instituto.Length > 0)
+            {
+                emp1.instituto = empleado.instituto;
+            }
+            if (empleado.titulo != null && empleado.titulo > 0)
+            {
+                emp1.titulo = empleado.titulo;
+            }
+            //if (empleado.id_empleadoTipo != null && empleado.id_empleadoTipo.Length > 0)
             //{
-            //    emp1.imagen = Convert.FromBase64String(empleado.imagen.Replace("data:image/...;base64,", ""));
+            //    emp1.id_empleadoT = empleado.id_empleadoTipo;
             //}
-            ModificarAtributosNoNulos(emp1,empleado);
+            if (empleado.id_puesto != null && empleado.id_puesto > 0)
+            {
+                emp1.id_puesto = empleado.id_puesto;
+            }
+            if (empleado.jefeInmediato != null && empleado.jefeInmediato > 0)
+            {
+                emp1.jefeInmediato = empleado.jefeInmediato;
+            }
+            if (empleado.id_turno != null && empleado.id_turno > 0)
+            {
+                emp1.id_turno = empleado.id_turno;
+            }
+            if (empleado.salarioDiario != null && empleado.salarioDiario > 0)
+            {
+                emp1.salarioDiario = empleado.salarioDiario;
+            }
+            if (empleado.id_nomina != null && empleado.id_nomina > 0)
+            {
+                emp1.id_nomina = empleado.id_nomina;
+            }
+            if (empleado.fechaIngreso != null)
+            {
+                emp1.fechaIngreso = empleado.fechaIngreso;
+            }
+            if (empleado.id_nomina != null && empleado.id_nomina > 0)
+            {
+                emp1.id_nomina = empleado.id_nomina;
+            }
+            if (empleado.fechaIngreso != null )
+            {
+                emp1.fechaIngreso = empleado.fechaIngreso;
+            }
+                if (empleado.id_empresa != null && empleado.id_empresa > 0)
+                {
+                    emp1.id_empresa = empleado.id_empresa;
+                }
+                if (empleado.id_sucursal != null && empleado.id_sucursal > 0)
+                {
+                    emp1.id_sucursal = empleado.id_sucursal;
+                }
+                if (empleado.confianza != null && empleado.confianza > 0)
+                {
+                    emp1.confianza = empleado.confianza;
+                }
+                //if (empleado.parentesco != null && empleado.parentesco.Length > 0)
+                //{
+                //    emp1.parentesco = empleado.parentesco;
+                //}
+                if (empleado.imagen != null && empleado.imagen.Length > 0)
+                {
+                    emp1.imagen = empleado.imagen;
+                }
+                if (empleado.bonoProd != null && empleado.bonoProd > 0)
+                {
+                    emp1.bonoProd = empleado.bonoProd;
+                }
+                if (empleado.firma != null && empleado.firma.Length > 0)
+                {
+                    emp1.firma = empleado.firma;
+                }
+                if (empleado.id_rol != null && empleado.id_rol > 0)
+                {
+                    emp1.id_rol = empleado.id_rol;
+                }
+                if (empleado.status != null && empleado.status > 0)
+                {
+                    emp1.status = empleado.status;
+                }
+                if (empleado.externo != null && empleado.externo > 0)
+                {
+                    emp1.externo = empleado.externo;
+                }
+                if (empleado.id_area != null && empleado.id_area > 0)
+                {
+                    emp1.id_area = empleado.id_area;
+                }
+
+
+            #endregion
+
+            //ModificarAtributosNoNulos(emp1, empleado);
+
 
 
             _context.empleados.Update(emp1);
             _context.SaveChanges();
 
-            return NoContent();
+            return Ok();
         }
 
         static void ModificarAtributosNoNulos(object objeto, object objetoRequest)
