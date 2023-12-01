@@ -40,7 +40,7 @@ namespace api_SIF.Controllers
             {
                 _context.empleadotipos.Add(reqEmpleadoTipo);
                 _context.SaveChanges();
-                reqEmpleadoTipo.id_empleadoT = Funciones.ObtenerUltimoId<Ciudad>(_context);
+                reqEmpleadoTipo.id_empleadoT = Funciones.ObtenerUltimoId<EmpleadoTipo>(_context);
             }
             else
             {
