@@ -187,16 +187,21 @@ namespace api_SIF.Controllers
                                      externo = x.externo
                                  };
 
-            if (int.TryParse(id_area, out int result))
+            if (int.TryParse(id_area, out int result) && result != 0)
             {
                 empleadosLista = empleadosLista.Where(x => x.id_area == result);
             }
 
-            if (int.TryParse(id_turno, out int result2))
+            if (int.TryParse(id_turno, out int result2) && result2 != 0)
             {
                 empleadosLista = empleadosLista.Where(x => x.id_turno == result2);
             }
+            if (int.TryParse(id_departamento, out int result3) && result3 != 0)
+            {
+                var areasLista = _context.areas.Where<area>(xx => xx.id_departamento == result3).Select(ts => ts.id_area).ToList(); ;
 
+                empleadosLista = empleadosLista.Where(x => areasLista.Contains((int)x.id_area));
+            }
 
             return await empleadosLista.ToListAsync();
             //return await _context.empleados.ToListAsync();

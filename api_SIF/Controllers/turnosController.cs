@@ -137,5 +137,18 @@ namespace api_SIF.Controllers
         {
             return _context.turnos.Any(e => e.id_turno == id);
         }
+        [HttpGet("GetTurnoId/{id}")]
+        public async Task<ActionResult<turno>> GetTurnoId(int id)
+        {
+            var turno = await _context.turnos.FindAsync(id);
+
+            if (turno == null)
+            {
+                return NotFound();
+            }
+           
+            return turno;
+        }
+
     }
 }
