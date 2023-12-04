@@ -138,16 +138,34 @@ namespace api_SIF.Controllers
             return _context.turnos.Any(e => e.id_turno == id);
         }
         [HttpGet("GetTurnoId/{id}")]
-        public async Task<ActionResult<turno>> GetTurnoId(int id)
+        public async Task<ActionResult<requestTurno>> GetTurnoId(int id)
         {
-            var turno = await _context.turnos.FindAsync(id);
+            var x = await _context.turnos.FindAsync(id);
 
-            if (turno == null)
+            if (x == null)
             {
                 return NotFound();
             }
-           
-            return turno;
+            requestTurno tr = new requestTurno()
+            {
+                disponible = x.disponible,
+                comida = Clases.Funciones.HoraAString(x.comida),
+                turno = x.turno1,
+                descanso = x.descanso,
+                entrada = Clases.Funciones.HoraAString(x.entrada),
+                entradaF = Clases.Funciones.HoraAString(x.entradaF),
+                horas = x.horas,
+                horasF = x.horasF,
+                horas_trabajadas = x.horas_trabajadas,
+                id_turno = x.id_turno,
+                nocturno = x.nocturno,
+                id_sucursal = x.id_sucursal,
+                salida = Clases.Funciones.HoraAString(x.salida),
+                salidaF = Clases.Funciones.HoraAString(x.salidaF)
+            };
+
+
+            return tr;
         }
 
     }
