@@ -21,6 +21,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public empleado()
         {
+            this.status = 1;
             //accidentes = new HashSet<accidente>();
             //amonestacions = new HashSet<amonestacion>();
             //checada = new HashSet<checada>();

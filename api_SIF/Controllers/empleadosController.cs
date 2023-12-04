@@ -196,6 +196,8 @@ namespace api_SIF.Controllers
             {
                 empleadosLista = empleadosLista.Where(x => x.id_turno == result2);
             }
+
+
             return await empleadosLista.ToListAsync();
             //return await _context.empleados.ToListAsync();
         }
@@ -599,7 +601,7 @@ namespace api_SIF.Controllers
                 RFC = empleado.RFC,
                 salarioDiario = empleado.salarioDiario,
                 sexo = empleado.sexo,
-                status = empleado.status,
+                //status = empleado.status,
                 telefono = empleado.telefono,
                 telefonoEmergencias = empleado.telefonoEmergencias,
                 titulo = empleado.titulo,
