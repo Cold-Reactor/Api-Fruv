@@ -47,6 +47,26 @@ namespace api_SIF.Controllers
             };
             return reqArea;
         }
+        [HttpGet("GetAreaIdDepto/{id}")]
+        public async Task<ActionResult<IEnumerable<requestArea>>> GetAreaByDepto(int id)
+        {
+            var areaLista = from x in _context.areas.Where(x=>x.id_departamento==id)
+                       select new requestArea()
+                       {
+                           id_area = x.id_area,
+                           id_departamento = x.id_departamento,
+                           area = x.area1,
+
+                       };
+
+
+            if (areaLista == null)
+            {
+                return NotFound();
+            }
+           
+            return await areaLista.ToListAsync();
+        }
         [HttpPost]
         public ActionResult<requestArea> Postarea(requestArea reqArea)
         {
