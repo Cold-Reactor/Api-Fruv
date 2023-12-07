@@ -137,10 +137,10 @@ namespace api_SIF.Controllers
         //    return await empleadosLista.ToListAsync();
         //    //return await _context.empleados.ToListAsync();
         //}
-        [HttpGet("Getempleados/{id_sucursal}/{id_departamento}/{id_area}/{id_turno}")]
-        public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados(int id_sucursal, string id_departamento, string id_area, string id_turno)
+        [HttpGet("Getempleados/{id_empresa}/{id_sucursal}/{id_departamento}/{id_area}/{id_turno}")]
+        public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados(int id_empresa, string id_sucursal, string id_departamento, string id_area, string id_turno)
         {
-            var empleadosLista = from x in _context.empleados.Where(x => x.id_sucursal == id_sucursal)
+            var empleadosLista = from x in _context.empleados.Where(x => x.id_empresa == id_empresa)
                                  select new requestEmpleado()
                                  {
 
@@ -186,6 +186,12 @@ namespace api_SIF.Controllers
                                      status = x.status,
                                      externo = x.externo
                                  };
+
+            if (int.TryParse(id_sucursal, out int result4) && result4 != 0)
+            {
+                empleadosLista = empleadosLista.Where(x => x.id_sucursal == result4);
+            }
+
 
             if (int.TryParse(id_area, out int result) && result != 0)
             {
