@@ -48,6 +48,18 @@ namespace api_SIF.Controllers
             return reqDepto;
 ;
         }
+        [HttpGet("GetDeptoByArea/{id_area}")]
+        public async Task<ActionResult<departamento>> GetDeptoByArea(int id_area)
+        {
+            var area = _context.areas.FirstOrDefault(x => x.id_area == id_area);
+            if (area == null)
+            {
+                return NotFound();
+            }
+            var depto = _context.departamentos.FirstOrDefault(x=>x.id_departamento==area.id_departamento);
+
+            return depto;
+        }
         [HttpPost]
         public async Task<ActionResult<requestDepartamento>> PostDepartamentos(requestDepartamento reqDepto)
         {
