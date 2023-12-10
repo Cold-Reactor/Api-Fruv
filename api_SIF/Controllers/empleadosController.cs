@@ -347,7 +347,7 @@ namespace api_SIF.Controllers
             {
                 return BadRequest();
             }
-            var emp1 = _context.empleados.FirstOrDefault(x => x.id_empleado == id_empleado);
+            var emp1 = _context.empleados.FirstOrDefault(x => x.id_empleado == id_empleado);    
 
             #region validacionesParaActualizarRegistros
             if (empleado.nombre != null && empleado.nombre.Length > 0)
@@ -431,7 +431,7 @@ namespace api_SIF.Controllers
             {
                 emp1.instituto = empleado.instituto;
             }
-            if (empleado.titulo != null && empleado.titulo > 0)
+            if (empleado.titulo != null)
             {
                 emp1.titulo = empleado.titulo;
             }
@@ -479,7 +479,7 @@ namespace api_SIF.Controllers
                 {
                     emp1.id_sucursal = empleado.id_sucursal;
                 }
-                if (empleado.confianza != null && empleado.confianza > 0)
+                if (empleado.confianza != null )
                 {
                     emp1.confianza = empleado.confianza;
                 }
@@ -503,15 +503,15 @@ namespace api_SIF.Controllers
                 {
                     emp1.id_rol = empleado.id_rol;
                 }
-                if (empleado.status != null && empleado.status > 0)
+                if (empleado.status != null)
                 {
                     emp1.status = empleado.status;
                 }
-                if (empleado.externo != null && empleado.externo > 0)
+                if (empleado.externo != null)
                 {
                     emp1.externo = empleado.externo;
                 }
-                if (empleado.id_area != null && empleado.id_area > 0)
+                if (empleado.id_area != null)
                 {
                     emp1.id_area = empleado.id_area;
                 }
