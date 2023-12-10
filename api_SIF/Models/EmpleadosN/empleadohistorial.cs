@@ -21,8 +21,7 @@ namespace api_SIF.Models.EmpleadosN
         public int id_tipoBaja { get; set; }
         public DateOnly fecha { get; set; }
         public double? salario { get; set; }
-        [StringLength(45)]
-        public string puesto { get; set; }
+        public int id_puesto { get; set; }
         [StringLength(45)]
         public string razon { get; set; }
 
