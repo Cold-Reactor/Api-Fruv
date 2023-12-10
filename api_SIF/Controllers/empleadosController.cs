@@ -137,8 +137,8 @@ namespace api_SIF.Controllers
         //    return await empleadosLista.ToListAsync();
         //    //return await _context.empleados.ToListAsync();
         //}
-        [HttpGet("Getempleados/{id_empresa}/{id_sucursal}/{id_departamento}/{id_area}/{id_turno}")]
-        public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados(int id_empresa, string id_sucursal, string id_departamento, string id_area, string id_turno)
+        [HttpGet("Getempleados/{id_empresa}/{id_sucursal}/{id_departamento}/{id_area}/{id_turno}/{status}")]
+        public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados(int id_empresa, string id_sucursal, string id_departamento, string id_area, string id_turno,string status)
         {
             var empleadosLista = from x in _context.empleados.Where(x => x.id_empresa == id_empresa)
                                  select new requestEmpleado()
@@ -186,26 +186,25 @@ namespace api_SIF.Controllers
                                      status = x.status,
                                      externo = x.externo
                                  };
-
+            if (int.TryParse(status, out int result5))
+            {
+                empleadosLista = empleadosLista.Where(x => x.status == result5);
+            }
             if (int.TryParse(id_sucursal, out int result4) && result4 != 0)
             {
                 empleadosLista = empleadosLista.Where(x => x.id_sucursal == result4);
             }
-
-
             if (int.TryParse(id_area, out int result) && result != 0)
             {
                 empleadosLista = empleadosLista.Where(x => x.id_area == result);
             }
-
             if (int.TryParse(id_turno, out int result2) && result2 != 0)
             {
                 empleadosLista = empleadosLista.Where(x => x.id_turno == result2);
             }
             if (int.TryParse(id_departamento, out int result3) && result3 != 0)
             {
-                var areasLista = _context.areas.Where<area>(xx => xx.id_departamento == result3).Select(ts => ts.id_area).ToList(); ;
-
+                var areasLista = _context.areas.Where<area>(xx => xx.id_departamento == result3).Select(ts => ts.id_area).ToList();
                 empleadosLista = empleadosLista.Where(x => areasLista.Contains((int)x.id_area));
             }
 
