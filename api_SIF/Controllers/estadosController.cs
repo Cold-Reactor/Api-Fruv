@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace api_SIF.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("RH/[controller]")]
     [ApiController]
     public class estadosController : ControllerBase
     {

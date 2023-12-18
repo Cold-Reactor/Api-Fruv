@@ -26,6 +26,14 @@ namespace api_SIF.Controllers
             var Lista = _context.empleadohistorials;
             return await Lista.ToListAsync();
         }
+
+        [HttpGet("{id_empleado}")]
+        public async Task<ActionResult<IEnumerable<empleadohistorial>>> GetEmpleadoHistorial(int id_empleado)
+        {
+            var Lista = await _context.empleadohistorials.Where(e => e.id_empleado == id_empleado).ToListAsync();
+            return Lista;
+        }
+
         [HttpPost]
         public ActionResult<empleadohistorial> PostEmpleadoHistorial(empleadohistorial req)
         {
@@ -58,5 +66,25 @@ namespace api_SIF.Controllers
             }
             return Ok(new { id = req.id_empleadoHistorial });
         }
+
+        [HttpPut("{id_empleadoHistorial}")]
+        public ActionResult<empleadohistorial> PutEmpleadoHistorial(int id_empleadoHistorial, empleadohistorial req)
+        {
+            var entidadExistente = _context.empleadohistorials.SingleOrDefault(e => e.id_empleadoHistorial == id_empleadoHistorial);
+            if (entidadExistente == null)
+            {
+                return NotFound();
+            }
+            entidadExistente.fecha = req.fecha;
+            entidadExistente.id_empleado = req.id_empleado;
+            entidadExistente.id_tipoBaja = req.id_tipoBaja;
+            entidadExistente.id_puesto = req.id_puesto;
+            entidadExistente.razon = req.razon ?? entidadExistente.razon;
+            entidadExistente.salario = req.salario ?? entidadExistente.salario;
+            _context.SaveChanges();
+            return Ok(new { id = id_empleadoHistorial });
+        }
+
+
     }
 }

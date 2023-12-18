@@ -11,6 +11,10 @@ namespace api_SIF.Models.EmpleadosN
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class suspension
     {
+        public suspension()
+        {
+            status = 1;
+        }
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_suspension { get; set; }
