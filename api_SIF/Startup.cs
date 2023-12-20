@@ -1,4 +1,5 @@
 using api_SIF.dbContexts;
+using api_SIF.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -60,6 +61,7 @@ namespace api_SIF
            .EnableSensitiveDataLogging()
            .EnableDetailedErrors());
             #endregion
+            services.AddScoped<EntidadService>();
 
 
             services.AddSwaggerGen(c =>
