@@ -84,8 +84,8 @@ namespace api_SIF.Controllers
                                              nomina = (int)c.nomina,
                                              id_empleado = c.id_empleado
 
-                                         }).OrderBy(x=>x.fecha).ToList();
-
+                                         }).ToList();
+            check = check.OrderBy(x => x.hora).ToList();
             List<requestChecadaCheck> checadas1 = new List<requestChecadaCheck>();
             var turnos = (from p in _context.turnos
                           select new turno
