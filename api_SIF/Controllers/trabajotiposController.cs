@@ -37,20 +37,20 @@ namespace api_SIF.Controllers
 
         // GET: api/trabajotipos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<TrabajoTipoRequest>>> Gettrabajotipo(int id)
+        public async Task<ActionResult<TrabajoTipoRequest>> Gettrabajotipo(int id)
         {
-            var trabajoTipos = from x in _context.trabajotipos
-                               select new TrabajoTipoRequest
-                               {
-                                   id_trabajoT = x.id_trabajoT,
-                                   trabajoT = x.trabajoT
-                               };
-            if (trabajoTipos == null)
+            var x =  _context.trabajotipos.SingleOrDefault(x => x.id_trabajoT == id);
+             
+            if (x == null)
             {
                 return NotFound();
             }
-
-            return trabajoTipos.Where(x=>x.id_trabajoT==id).ToList();
+            var trabajoReque = new TrabajoTipoRequest
+            {
+                id_trabajoT = x.id_trabajoT,
+                trabajoT = x.trabajoT
+            };
+            return trabajoReque;
         }
     }
 

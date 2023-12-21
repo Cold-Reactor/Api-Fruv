@@ -287,16 +287,17 @@ namespace api_SIF.Controllers
         
         // GET: api/empleados/5/9
         [HttpGet("{noEmpleado}/{id_sucursal}")]
-        public async Task<IEnumerable<requestEmpleado>> Getempleado(int noEmpleado,int id_sucursal)
+        public async Task<requestEmpleado> Getempleado(int noEmpleado,int id_sucursal)
         {
-            var empleado = from x in _context.empleados.Where(x=>x.no_empleado==noEmpleado && x.id_sucursal==id_sucursal)                        
-             select new requestEmpleado()
+            var x = _context.empleados.SingleOrDefault(x => x.no_empleado == noEmpleado && x.id_sucursal == id_sucursal);
+
+            requestEmpleado empleadoReq = new requestEmpleado()
             {
                 id_empleado = x.id_empleado,
                 no_empleado = x.no_empleado,
                 nombre = x.nombre,
                 apellidoPaterno = x.apellidoPaterno,
-                apellidoMaterno =   x.apellidoMaterno,
+                apellidoMaterno = x.apellidoMaterno,
                 estadoCivil = x.estadoCivil,
                 sexo = x.sexo,
                 fechaNacimiento = x.fechaNacimiento,
@@ -324,18 +325,17 @@ namespace api_SIF.Controllers
                 id_empresa = x.id_empresa,
                 id_sucursal = x.id_sucursal,
                 confianza = x.confianza,
-                 imagen = x.imagen,
-                 id_area = x.id_area,
+                imagen = x.imagen,
+                id_area = x.id_area,
 
-                 //parentesco = x.parentesco,
-                 //imagenByte = x.imagen,
-                 firma = x.firma,
+                //parentesco = x.parentesco,
+                //imagenByte = x.imagen,
+                firma = x.firma,
                 id_rol = x.id_rol,
                 status = x.status,
                 externo = x.externo
             };
-
-            return empleado;
+            return empleadoReq;
         }
         
         // PUT: api/empleados/5
