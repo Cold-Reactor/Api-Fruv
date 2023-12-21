@@ -22,22 +22,22 @@ namespace api_SIF.Controllers
             _context = context;
         }
         // GET: api/checadas
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<requestChecadas>>> Getchecadas()
-        {
-            var checadoresLista = from x in _context.checadas
-                                  select new requestChecadas()
-                                  {
-                                     id_checador = x.id_checador,
-                                     nomina= x.nomina,
-                                     fecha= x.fecha,
-                                     fechaHora= x.fechaHora,
-                                     hora= x.hora,  
-                                     id_checada = x.id_checada    ,
-                                     id_empleado = x.id_empleado,
-                                  };
-            return await checadoresLista.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<requestChecadas>>> Getchecadas()
+        //{
+        //    var checadoresLista = from x in _context.checadas
+        //                          select new requestChecadas()
+        //                          {
+        //                             id_checador = x.id_checador,
+        //                             nomina= x.nomina,
+        //                             fecha= x.fecha,
+        //                             fechaHora= x.fechaHora,
+        //                             hora= x.hora,  
+        //                             id_checada = x.id_checada    ,
+        //                             id_empleado = x.id_empleado,
+        //                          };
+        //    return await checadoresLista.ToListAsync();
+        //}
 
         // GET: api/checadas/5
         [HttpGet("{id}")]
@@ -186,14 +186,14 @@ namespace api_SIF.Controllers
 
         // POST: api/checadas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         public async Task<ActionResult<checada>> Postchecada(checada checada)
         {
             _context.checadas.Add(checada);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Getchecada", new { id = checada.id_checada }, checada);
+            return Ok(new { id = checada.id_checada });
         }
 
         // DELETE: api/checadas/5
