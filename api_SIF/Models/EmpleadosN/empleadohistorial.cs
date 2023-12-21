@@ -19,7 +19,7 @@ namespace api_SIF.Models.EmpleadosN
         public int id_empleado { get; set; }
         [Column(TypeName = "int(11)")]
         public int id_tipoBaja { get; set; }
-        public DateOnly fecha { get; set; }
+        public DateOnly? fecha { get; set; }
         public double? salario { get; set; }
         public int id_puesto { get; set; }
         [StringLength(45)]
