@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using api_SIF.Models.EmpleadosN;
 using api_SIF.dbContexts;
 using Microsoft.AspNetCore.Authorization;
+using System.Net.NetworkInformation;
 
 namespace api_SIF.Controllers
 {
@@ -62,7 +63,7 @@ namespace api_SIF.Controllers
         }
 
         [HttpGet("getEmpleadoChecadas/{from1}/{to}/{sucursal}/{area}/{no_empleado}/{id_turno_request}")]
-        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to, int sucursal, int area, int no_empleado, int id_turno_request)
+        public async Task<ActionResult<IEnumerable<requestEmpleadoChecadas>>> GetEmpleadoChecadasint (DateOnly from1, DateOnly to, int sucursal, string area, string no_empleado, string id_turno_request)
         {
             List<DateOnly> fechas = new List<DateOnly>();
             DateOnly date1 = from1;
@@ -113,17 +114,29 @@ namespace api_SIF.Controllers
                                  area = p.id_area.ToString(),
                                  confianza = (int)p.confianza,
                              }).ToList();
-            if (no_empleado>0)
+
+            if (int.TryParse(no_empleado, out int result1))
             {
-                empleados = empleados.Where(x => x.noEmpleado == no_empleado).ToList();
+                if (result1 > 0)
+                {
+                    empleados = empleados.Where(x => x.noEmpleado == result1).ToList();
+                }
             }
-            if (area > 0)
+            if (int.TryParse(area, out int result2))
             {
-                empleados = empleados.Where(x => x.id_area == area).ToList();
+                if (result2 > 0)
+                {
+
+                    empleados = empleados.Where(x => x.id_area == result2).ToList();
+
+                }
             }
-            if (id_turno_request > 0)
+            if (int.TryParse(id_turno_request, out int result3))
             {
-                empleados = empleados.Where(x => x.id_turno == id_turno_request).ToList();
+                if (result3 > 0)
+                {
+                    empleados = empleados.Where(x => x.id_turno == result3).ToList();
+                }
             }
             foreach (var empleado in empleados)
             {
