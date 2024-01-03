@@ -101,8 +101,10 @@ namespace api_SIF.Controllers
                           }
                          ).ToList();
                          ;
-            var empleados = (from p in _context.empleados                              
-                             where p.status==1 && p.id_sucursal==sucursal
+            var empleados = (from p in _context.empleados
+                             join a in _context.areas on p.id_area equals a.id_area into joinedTable
+                             from a in joinedTable.DefaultIfEmpty()
+                             where p.status == 1 && p.id_sucursal == sucursal
                              select new requestEmpleadoChecadas
                              {
                                  id_turno = p.id_turno,
@@ -111,7 +113,8 @@ namespace api_SIF.Controllers
                                  noEmpleado = p.no_empleado,
                                  sucursal = p.id_sucursal,
                                  turno = p.id_turno.ToString(),
-                                 area = p.id_area.ToString(),
+                                 id_area = p.id_area,
+                                 area = a != null ? a.area1 : null,
                                  confianza = (int)p.confianza,
                              }).ToList();
 
