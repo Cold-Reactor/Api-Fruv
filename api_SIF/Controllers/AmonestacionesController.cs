@@ -38,6 +38,57 @@ namespace api_SIF.Controllers
 
             return amonestacion;
         }
+        //funcion que busque amonestaciones por id_sucursal pero el id_sucursal se obtiene de la tabla empleados tienes que unir tabla amonestaciones con empleados
+        [HttpGet("sucursal/{id_sucursal}")]
+        public ActionResult<IEnumerable<RequestAmonestacion>> GetAmonestacionSucursal(int id_sucursal)
+        {
+            //var empleadoIds = _context.empleados
+            //.Where(e => e.id_sucursal == id_sucursal)
+            //.Select(e => e.id_empleado)
+            //.ToList();
+
+            var amonestacion = _context.amonestacions
+               // .Where(a => empleadoIds.Contains(a.id_empleado))
+                .ToList();
+            //llena un nuevo listado de amonestaciones con el modelo de requestAmonestaciones en especial el nombreSupervisor y nombreAmonestado
+            var amonestaciones = new List<RequestAmonestacion>();
+
+            foreach (var item in amonestacion)
+            {
+                var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                if(empleado.id_sucursal != id_sucursal)
+                {
+                    continue;
+                }
+                var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.jefeInmediato);
+                //soluciona cuando supervisor es null llenar valores vacios
+                if (supervisor == null)
+                {
+                    supervisor = new empleado();
+                    supervisor.nombre = "";
+                    supervisor.apellidoPaterno = "";
+                    supervisor.apellidoMaterno = "";
+                }
+                var amonestacionRequest = new RequestAmonestacion()
+                {
+                    id_amonestacion = item.id_amonestacion,
+                    id_empleado = item.id_empleado,
+                    nombreAmonestado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                    nombreSupervisor = supervisor.nombre + " " + supervisor.apellidoPaterno + " " + supervisor.apellidoMaterno,
+                    fecha = item.fecha,
+                    causa = item.causa,
+                    comentario = item.comentario,
+                    firmaAmonestado = item.firmaAmonestado,
+                    realizo = item.realizo
+                };
+                amonestaciones.Add(amonestacionRequest);
+            }
+
+
+            return amonestaciones;
+        }
+
+        
 
         // POST: RH/Amonestaciones
         [HttpPost]
