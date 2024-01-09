@@ -20,37 +20,76 @@ namespace api_SIF.Controllers
 
         // GET: RH/Amonestaciones
         [HttpGet]
-        public ActionResult<IEnumerable<amonestacion>> GetAmonestaciones()
+        public ActionResult<IEnumerable<RequestAmonestacion>> GetAmonestaciones()
         {
-            return _context.amonestacions.ToList();
+            var amonestaciones = _context.amonestacions.ToList();
+            var amonestacionesRequest = new List<RequestAmonestacion>();
+            foreach (var item in amonestaciones)
+            {
+                var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.jefeInmediato);
+                //soluciona cuando supervisor es null llenar valores vacios
+                if (supervisor == null)
+                {
+                    supervisor = new empleado();
+                    supervisor.nombre = "";
+                    supervisor.apellidoPaterno = "";
+                    supervisor.apellidoMaterno = "";
+                }
+                var amonestacionRequest = new RequestAmonestacion()
+                {
+                    id_amonestacion = item.id_amonestacion,
+                    id_empleado = item.id_empleado,
+                    nombreAmonestado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                    nombreSupervisor = supervisor.nombre + " " + supervisor.apellidoPaterno + " " + supervisor.apellidoMaterno,
+                    fecha = item.fecha,
+                    causa = item.causa,
+                    comentario = item.comentario,
+                    firmaAmonestado = item.firmaAmonestado,
+                    realizo = item.realizo
+                };
+                amonestacionesRequest.Add(amonestacionRequest);
+            }
+            return amonestacionesRequest;
+
         }
 
         // GET: RH/Amonestaciones/5
         [HttpGet("{id_amonestacion}")]
-        public ActionResult<amonestacion> GetAmonestacion(int id_amonestacion)
+        public ActionResult<RequestAmonestacion> GetAmonestacion(int id_amonestacion)
         {
             var amonestacion = _context.amonestacions.FirstOrDefault(a => a.id_amonestacion == id_amonestacion);
-
-            if (amonestacion == null)
+            var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == amonestacion.id_empleado);
+            var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.jefeInmediato);
+            if (supervisor == null)
             {
-                return NotFound();
+                supervisor = new empleado();
+                supervisor.nombre = "";
+                supervisor.apellidoPaterno = "";
+                supervisor.apellidoMaterno = "";
             }
-
-            return amonestacion;
+            var amonestacionRequest = new RequestAmonestacion()
+            {
+                id_amonestacion = amonestacion.id_amonestacion,
+                id_empleado = amonestacion.id_empleado,
+                nombreAmonestado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                nombreSupervisor = supervisor.nombre + " " + supervisor.apellidoPaterno + " " + supervisor.apellidoMaterno,
+                fecha = amonestacion.fecha,
+                causa = amonestacion.causa,
+                comentario = amonestacion.comentario,
+                firmaAmonestado = amonestacion.firmaAmonestado,
+                realizo = amonestacion.realizo
+            };
+            return amonestacionRequest;
         }
-        //funcion que busque amonestaciones por id_sucursal pero el id_sucursal se obtiene de la tabla empleados tienes que unir tabla amonestaciones con empleados
         [HttpGet("sucursal/{id_sucursal}")]
         public ActionResult<IEnumerable<RequestAmonestacion>> GetAmonestacionSucursal(int id_sucursal)
         {
-            //var empleadoIds = _context.empleados
-            //.Where(e => e.id_sucursal == id_sucursal)
-            //.Select(e => e.id_empleado)
-            //.ToList();
+          
 
             var amonestacion = _context.amonestacions
                // .Where(a => empleadoIds.Contains(a.id_empleado))
                 .ToList();
-            //llena un nuevo listado de amonestaciones con el modelo de requestAmonestaciones en especial el nombreSupervisor y nombreAmonestado
             var amonestaciones = new List<RequestAmonestacion>();
 
             foreach (var item in amonestacion)
@@ -61,7 +100,6 @@ namespace api_SIF.Controllers
                     continue;
                 }
                 var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.jefeInmediato);
-                //soluciona cuando supervisor es null llenar valores vacios
                 if (supervisor == null)
                 {
                     supervisor = new empleado();
