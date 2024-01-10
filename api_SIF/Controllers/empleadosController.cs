@@ -287,10 +287,13 @@ namespace api_SIF.Controllers
         
         // GET: api/empleados/5/9
         [HttpGet("{noEmpleado}/{id_sucursal}")]
-        public async Task<requestEmpleado> Getempleado(int noEmpleado,int id_sucursal)
+        public async Task<ActionResult<requestEmpleado>> Getempleado(int noEmpleado,int id_sucursal)
         {
             var x = _context.empleados.SingleOrDefault(x => x.no_empleado == noEmpleado && x.id_sucursal == id_sucursal);
-
+            if (x == null)
+            {
+                return NotFound();
+            }
             requestEmpleado empleadoReq = new requestEmpleado()
             {
                 id_empleado = x.id_empleado,
