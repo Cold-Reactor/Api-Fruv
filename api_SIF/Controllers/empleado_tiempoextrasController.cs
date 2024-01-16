@@ -3,6 +3,7 @@ using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,10 +20,10 @@ namespace api_SIF.Controllers
             _context = context;
         }
 
-        [HttpGet("empleado/{id_empleado}")]
-        public ActionResult<IEnumerable<empleado_tiempoextra>> Getempleado_tiempoextraPorEmpleado(int id_empleado)
+        [HttpGet("empleado/{id_empleado}/{fecha}")]
+        public ActionResult<IEnumerable<empleado_tiempoextra>> Getempleado_tiempoextraPorEmpleado(int id_empleado,DateTime fecha)
         {
-            var empleado_tiempoextra = _context.empleado_tiempoextras.Where(e => e.id_empleado == id_empleado).ToList();
+            var empleado_tiempoextra = _context.empleado_tiempoextras.Where(e => e.id_empleado == id_empleado && e.fechaInicio <= fecha && e.fechaSalida >= fecha).ToList();
 
             if (empleado_tiempoextra == null)
             {
