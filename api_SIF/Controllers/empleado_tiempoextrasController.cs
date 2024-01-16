@@ -23,7 +23,10 @@ namespace api_SIF.Controllers
         [HttpGet("empleado/{id_empleado}/{fecha}")]
         public ActionResult<IEnumerable<empleado_tiempoextra>> Getempleado_tiempoextraPorEmpleado(int id_empleado,DateTime fecha)
         {
-            var empleado_tiempoextra = _context.empleado_tiempoextras.Where(e => e.id_empleado == id_empleado && e.fechaInicio <= fecha && e.fechaSalida >= fecha).ToList();
+            //que se filtre la fecha sin importar la hora
+            var Fecha = fecha.Date;
+
+            var empleado_tiempoextra = _context.empleado_tiempoextras.Where(e => e.id_empleado == id_empleado && e.fechaInicio.Value.Date <= Fecha && e.fechaSalida.Value.Date >= Fecha).ToList();
 
             if (empleado_tiempoextra == null)
             {
