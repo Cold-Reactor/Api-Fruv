@@ -1,4 +1,5 @@
-﻿using api_SIF.dbContexts;
+﻿using api_SIF.Clases;
+using api_SIF.dbContexts;
 using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -82,6 +83,17 @@ namespace api_SIF.Controllers
             _context.Entry(empleado_tiempoextra).State = EntityState.Modified;
             _context.SaveChanges();
             return Ok();
+        }
+
+        [HttpGet("siguiente")]
+        public ActionResult<int> GetSiguienteId()
+        {
+            var ultimoId = Funciones.ObtenerUltimoId<empleado_tiempoextra>(_context);
+            if (ultimoId == -1)
+            {
+                ultimoId = 0;
+            }
+            return Ok(new { id = ultimoId + 1 });
         }
 
     }

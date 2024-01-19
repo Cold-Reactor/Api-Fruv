@@ -1,4 +1,5 @@
-﻿using api_SIF.dbContexts;
+﻿using api_SIF.Clases;
+using api_SIF.dbContexts;
 using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -162,6 +163,11 @@ namespace api_SIF.Controllers
             return Ok(new { id = existingAmonestacion.id_amonestacion });
         }
 
-        // DELETE: RH/Amonestaciones/5
+        [HttpGet("siguiente")]
+        public ActionResult<int> GetSiguienteId()
+        {
+            return Ok(new { id = Funciones.ObtenerUltimoId<amonestacion>(_context) + 1 });
+        }
+
     }
 }

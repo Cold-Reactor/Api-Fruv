@@ -15,15 +15,26 @@ namespace api_SIF.Clases
             var tableName = dbContext.Model.FindEntityType(typeof(T)).GetTableName();
             var primaryKeyColumnName = dbContext.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties
                 .Select(x => x.Name)
-                .SingleOrDefault();
+                .FirstOrDefault();
 
+            //if (primaryKeyColumnName != null)
+            //{
+            //    var ultimoId = dbContext.Set<T>().Max(t => EF.Property<int>(t, primaryKeyColumnName));
+            //    return ultimoId;
+            //}
             if (primaryKeyColumnName != null)
             {
-                var ultimoId = dbContext.Set<T>().Max(t => EF.Property<int>(t, primaryKeyColumnName));
-                return ultimoId;
+                var set = dbContext.Set<T>();
+                if (set.Any())
+                {
+                    var ultimoId = set.Max(t => EF.Property<int>(t, primaryKeyColumnName));
+                    return ultimoId;
+                }
             }
 
-            return -1; // Otra manera de manejar el caso donde no se puede determinar la clave primaria
+            return -1; 
         }
+        
+
     }
 }
