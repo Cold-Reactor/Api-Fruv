@@ -70,6 +70,14 @@ namespace api_SIF.Controllers
 
             return Ok(incapacidad);
         }
+        
+        [HttpGet]
+        public ActionResult<Incapacidad> GetIncapacidades()
+        {
+            var incapacidades = _context.incapacidads.ToList();
+
+            return Ok(incapacidades);
+        }
 
     }
 }
