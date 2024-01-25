@@ -15,7 +15,7 @@ using api_SIF.Models.EmpleadosN;
 
 namespace api_SIF.Controllers
 {
-    [Route("RH/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
