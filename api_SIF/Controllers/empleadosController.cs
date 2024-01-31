@@ -659,6 +659,22 @@ namespace api_SIF.Controllers
             // Suma uno al último valor obtenido
             return ultimoValor.Value + 1;
         }
+        //obtener ultimo noempleado +1 por sucursal y empresa
+        [HttpGet("GetUltimoNoEmpleado/{id_empresa}/{id_sucursal}")]
+        public async Task<ActionResult<Object>> GetUltimoNoEmpleado(int id_empresa, int id_sucursal)
+        {
+            try
+            {
+                int maximoValor = _context.empleados
+            .Where(e => e.id_sucursal == id_sucursal && e.id_empresa == id_empresa)
+            .Max(e => e.no_empleado);
+                return Ok(new { no_empleado = maximoValor + 1 });
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
         private bool empleadoExists(int id)
         {
             return _context.empleados.Any(e => e.id_empleado == id);
