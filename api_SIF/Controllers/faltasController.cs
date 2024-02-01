@@ -60,10 +60,7 @@ namespace api_SIF.Controllers
         public ActionResult<falta> GetFaltasEmpleadoFecha(int id_empleado, DateOnly fecha)
         {
             var falta = _context.faltas.FirstOrDefault(e => e.id_empleado == id_empleado && e.fecha == fecha);
-            if (falta == null)
-            {
-                return NotFound();
-            }
+            
             return falta;
 
         }

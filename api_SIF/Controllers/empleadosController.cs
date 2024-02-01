@@ -223,7 +223,7 @@ namespace api_SIF.Controllers
                 return Ok(new {no_empleado= maximoValor + 1 });
             }
             catch (Exception e) {
-                return NotFound();
+                return Ok(new { no_empleado = 0 });
             }
         }
 
@@ -234,10 +234,7 @@ namespace api_SIF.Controllers
         {
             var empleado = await _context.empleados.FindAsync(id);
 
-            if (empleado == null)
-            {
-                return NotFound();
-            }
+            
             var reqEmpleado = new requestEmpleado()
             {
                 id_empleado = empleado.id_empleado,
@@ -289,10 +286,10 @@ namespace api_SIF.Controllers
         [HttpGet("{noEmpleado}/{id_sucursal}")]
         public async Task<ActionResult<requestEmpleado>> Getempleado(int noEmpleado,int id_sucursal)
         {
-            var x = _context.empleados.SingleOrDefault(x => x.no_empleado == noEmpleado && x.id_sucursal == id_sucursal);
+            var x = _context.empleados.FirstOrDefault(x => x.no_empleado == noEmpleado && x.id_sucursal == id_sucursal);
             if (x == null)
             {
-                return NotFound();
+                return new requestEmpleado();
             }
             requestEmpleado empleadoReq = new requestEmpleado()
             {
@@ -338,6 +335,7 @@ namespace api_SIF.Controllers
                 status = x.status,
                 externo = x.externo
             };
+            
             return empleadoReq;
         }
         
@@ -659,7 +657,6 @@ namespace api_SIF.Controllers
             // Suma uno al último valor obtenido
             return ultimoValor.Value + 1;
         }
-        //obtener ultimo noempleado +1 por sucursal y empresa
         [HttpGet("GetUltimoNoEmpleado/{id_empresa}/{id_sucursal}")]
         public async Task<ActionResult<Object>> GetUltimoNoEmpleado(int id_empresa, int id_sucursal)
         {
@@ -672,7 +669,7 @@ namespace api_SIF.Controllers
             }
             catch (Exception e)
             {
-                return NotFound();
+                return Ok(new {no_empleado=0});
             }
         }
         private bool empleadoExists(int id)
