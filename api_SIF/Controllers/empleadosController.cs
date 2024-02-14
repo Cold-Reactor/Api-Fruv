@@ -264,6 +264,7 @@ namespace api_SIF.Controllers
                 jefeInmediato = empleado.jefeInmediato,
                 id_turno = empleado.id_turno,
                 salarioDiario = empleado.salarioDiario,
+                bonoProd = empleado.bonoProd,
                 id_nomina = empleado.id_nomina,
                 fechaIngreso = empleado.fechaIngreso,
                 id_empresa = empleado.id_empresa,
