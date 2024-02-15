@@ -236,9 +236,14 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<requestEmpleado>> Getempleado(int id)
         {
             var empleado = await _context.empleados.FindAsync(id);
+            var reqEmpleado = new requestEmpleado();
+            if(empleado == null)
+            {
+                return reqEmpleado;
+            }
 
-            
-            var reqEmpleado = new requestEmpleado()
+
+            reqEmpleado = new requestEmpleado()
             {
                 id_empleado = empleado.id_empleado,
                 no_empleado = empleado.no_empleado,
