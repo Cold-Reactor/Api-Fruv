@@ -26,6 +26,8 @@ namespace api_SIF.Models.EmpleadosN
         public ulong? temporal { get; set; }
         [StringLength(45)]
         public string comentario { get; set; }
+        [Column(TypeName = "int(1)")]
+        public ulong? embarazo { get; set; }
 
         //[ForeignKey("id_empleado")]
         //[InverseProperty("incapacidads")]

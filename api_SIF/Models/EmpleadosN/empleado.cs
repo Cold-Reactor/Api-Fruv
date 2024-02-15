@@ -117,6 +117,9 @@ namespace api_SIF.Models.EmpleadosN
         public int? id_area { get; set; }
         public double? bonoProd { get; set; }
 
+        [Column(TypeName = "int(1)")]
+        public int? discapacidad { get; set; }
+
         //[InverseProperty("id_empleadoNavigation")]
         //public virtual ICollection<accidente> accidentes { get; set; }
         //[InverseProperty("id_empleadoNavigation")]

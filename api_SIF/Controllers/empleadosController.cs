@@ -77,7 +77,8 @@ namespace api_SIF.Controllers
 
                             id_rol = x.id_rol,
                             status = x.status,
-                            externo = x.externo
+                            externo = x.externo,
+                            discapacidad = x.discapacidad,
                         };
 
             return await empleadosLista.ToListAsync();
@@ -131,7 +132,8 @@ namespace api_SIF.Controllers
                                      firma = x.firma,
                                      id_rol = x.id_rol,
                                      status = x.status,
-                                     externo = x.externo
+                                     externo = x.externo,
+                                     discapacidad = x.discapacidad,
                                  };
 
             return await empleadosLista.ToListAsync();
@@ -184,7 +186,8 @@ namespace api_SIF.Controllers
                                      firma = x.firma,
                                      id_rol = x.id_rol,
                                      status = x.status,
-                                     externo = x.externo
+                                     externo = x.externo,
+                                     discapacidad = x.discapacidad,
                                  };
             if (int.TryParse(status, out int result5))
             {
@@ -278,7 +281,8 @@ namespace api_SIF.Controllers
                 firma = empleado.firma,
                 id_rol = empleado.id_rol,
                 status = empleado.status,
-                externo = empleado.externo
+                externo = empleado.externo,
+                discapacidad = empleado.discapacidad,
             };
             return reqEmpleado;
         }
@@ -334,7 +338,8 @@ namespace api_SIF.Controllers
                 firma = x.firma,
                 id_rol = x.id_rol,
                 status = x.status,
-                externo = x.externo
+                externo = x.externo,
+                discapacidad = x.discapacidad,
             };
             
             return empleadoReq;
@@ -517,7 +522,10 @@ namespace api_SIF.Controllers
                 {
                     emp1.id_area = empleado.id_area;
                 }
-
+                if(empleado.discapacidad != null)
+            {
+                    emp1.discapacidad = empleado.discapacidad;
+                }
 
             #endregion
 
@@ -617,7 +625,7 @@ namespace api_SIF.Controllers
                 telefono = empleado.telefono,
                 telefonoEmergencias = empleado.telefonoEmergencias,
                 titulo = empleado.titulo,
-                
+                discapacidad = empleado.discapacidad
 
             };
             //empleado.no_empleado = this.ObtenerUltimoNumeroEmpleadoMasUno(empleado.id_sucursal);
@@ -724,7 +732,8 @@ namespace api_SIF.Controllers
                                      firma = x.firma,
                                      id_rol = x.id_rol,
                                      status = x.status,
-                                     externo = x.externo
+                                     externo = x.externo,
+                                     discapacidad = x.discapacidad,
                                  };
 
             return await empleadosLista.ToListAsync();

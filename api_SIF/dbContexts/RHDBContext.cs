@@ -385,6 +385,8 @@ namespace api_SIF.dbContexts
                 entity.Property(e => e.status).HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.titulo).HasDefaultValueSql("'0'");
+                entity.Property(e => e.discapacidad).HasDefaultValueSql("'0'");
+
             });
 
             modelBuilder.Entity<empleado_tiempoextra>(entity =>
