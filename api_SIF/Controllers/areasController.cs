@@ -36,7 +36,7 @@ namespace api_SIF.Controllers
             var area = await _context.areas.FindAsync(id);
             if (area == null)
             {
-                return NotFound();
+                area = new area();
             }
             var reqArea = new requestArea()
             {
@@ -60,10 +60,7 @@ namespace api_SIF.Controllers
                        };
 
 
-            if (areaLista == null)
-            {
-                return NotFound();
-            }
+           
            
             return await areaLista.ToListAsync();
         }

@@ -36,11 +36,12 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<requestSucursales>> GetSucursal(int id)
         {
             var area = await _context.sucursales.FindAsync(id);
+            var reqArea = new requestSucursales();
             if (area == null)
             {
-                return NotFound();
+               return reqArea;
             }
-            var reqArea = new requestSucursales()
+            reqArea = new requestSucursales()
             {
                 id_sucursal = area.id_sucursal,
                 sucursal = area.sucursal,

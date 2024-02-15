@@ -60,6 +60,11 @@ namespace api_SIF.Controllers
         public ActionResult<RequestAmonestacion> GetAmonestacion(int id_amonestacion)
         {
             var amonestacion = _context.amonestacions.FirstOrDefault(a => a.id_amonestacion == id_amonestacion);
+            var amonestacionRequest = new RequestAmonestacion();
+            if (amonestacion == null)
+            {
+                return amonestacionRequest;
+            }
             var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == amonestacion.id_empleado);
             var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.jefeInmediato);
             if (supervisor == null)
@@ -69,7 +74,7 @@ namespace api_SIF.Controllers
                 supervisor.apellidoPaterno = "";
                 supervisor.apellidoMaterno = "";
             }
-            var amonestacionRequest = new RequestAmonestacion()
+            amonestacionRequest = new RequestAmonestacion()
             {
                 id_amonestacion = amonestacion.id_amonestacion,
                 id_empleado = amonestacion.id_empleado,

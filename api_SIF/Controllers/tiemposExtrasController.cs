@@ -30,7 +30,7 @@ namespace api_SIF.Controllers
             var tiempoExtra = _context.tiempoextras.FirstOrDefault(t => t.id_tiempoExtra == id_tiempoExtra);
             if (tiempoExtra == null)
             {
-                return NotFound();
+                tiempoExtra = new TiempoExtra();
             }
             return tiempoExtra;
         }

@@ -33,7 +33,7 @@ namespace api_SIF.Controllers
 
             if (suspension == null)
             {
-                return NotFound();
+                suspension = new suspension();
             }
 
             return suspension;

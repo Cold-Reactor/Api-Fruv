@@ -40,12 +40,12 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<TrabajoTipoRequest>> Gettrabajotipo(int id)
         {
             var x =  _context.trabajotipos.SingleOrDefault(x => x.id_trabajoT == id);
-             
+            var trabajoReque = new TrabajoTipoRequest();
             if (x == null)
             {
-                return NotFound();
+                return trabajoReque;
             }
-            var trabajoReque = new TrabajoTipoRequest
+            trabajoReque = new TrabajoTipoRequest
             {
                 id_trabajoT = x.id_trabajoT,
                 trabajoT = x.trabajoT

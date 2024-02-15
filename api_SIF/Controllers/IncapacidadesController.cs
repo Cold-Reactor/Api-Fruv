@@ -65,7 +65,7 @@ namespace api_SIF.Controllers
 
             if (incapacidad == null)
             {
-                return NotFound();
+                incapacidad = new Incapacidad();
             }
 
             return Ok(incapacidad);

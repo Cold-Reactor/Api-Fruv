@@ -30,7 +30,7 @@ namespace api_SIF.Controllers
             var renovacion = _context.renovacions.FirstOrDefault(t => t.id_renovacion == id_renovacion);
             if (renovacion == null)
             {
-                return NotFound();
+                renovacion = new renovacion();
             }
             return renovacion;
         }

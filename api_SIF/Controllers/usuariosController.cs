@@ -36,7 +36,7 @@ namespace api_SIF.Controllers
 
             if (usuario == null)
             {
-                return NotFound();
+                usuario = new usuario();
             }
 
             return usuario;

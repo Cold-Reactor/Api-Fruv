@@ -31,7 +31,7 @@ namespace api_SIF.Controllers
             var tiempoextraestado = await _context.tiempoextraestados.FindAsync(id);
             if (tiempoextraestado == null)
             {
-                return NotFound();
+               tiempoextraestado = new TiempoExtraEstado();
             }
            
             return tiempoextraestado;

@@ -144,7 +144,7 @@ namespace api_SIF.Controllers
 
             if (x == null)
             {
-                return NotFound();
+                x = new turno();
             }
             requestTurno tr = new requestTurno()
             {

@@ -644,7 +644,7 @@ namespace api_SIF.Controllers
             var empleado = await _context.empleados.FindAsync(id);
             if (empleado == null)
             {
-                return NotFound();
+                empleado = new empleado();
             }
 
             _context.empleados.Remove(empleado);
