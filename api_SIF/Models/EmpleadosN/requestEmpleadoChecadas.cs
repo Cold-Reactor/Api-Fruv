@@ -16,6 +16,10 @@ namespace api_SIF.Models.EmpleadosN
 
         public string area { get; set; }
         public int confianza { get; set; }
+        public System.DateOnly? fechaIngreso { get; set; }
+        public double? salarioDiario { get; set; }
+
         public List<requestChecadaCheck> checadas { get; set; }
+
     }
 }

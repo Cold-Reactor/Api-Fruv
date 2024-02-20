@@ -11,6 +11,8 @@ namespace api_SIF.Models.EmpleadosN
         public int id_checador { get; set; }
         public DateTime fechaHora { get; set; }
         public DateOnly fecha { get; set; }
+        public DateOnly? fechaIngreso { get; set; }
+
         public TimeOnly hora { get; set; }
         public sbyte? nomina { get; set; }
     }

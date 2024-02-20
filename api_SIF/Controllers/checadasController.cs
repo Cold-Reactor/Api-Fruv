@@ -116,6 +116,8 @@ namespace api_SIF.Controllers
                                  id_area = p.id_area,
                                  area = a != null ? a.area1 : null,
                                  confianza = (int)p.confianza,
+                                 fechaIngreso = p.fechaIngreso,
+                                 salarioDiario = p.salarioDiario
                              }).ToList();
 
             if (int.TryParse(no_empleado, out int result1))
@@ -157,7 +159,8 @@ namespace api_SIF.Controllers
                     var checadaEmpleado = new requestChecadaCheck();
                     checadaEmpleado.fecha = fecha;
                     checadaEmpleado.extra = 0;
-                    checadaEmpleado.ausentismo = "";                    
+                    checadaEmpleado.ausentismo = "";  
+                    
                     var checksEmpleado = new List<requestCheck>();
                     foreach (var chec in check) {
                         if (chec.fecha==fecha) {
