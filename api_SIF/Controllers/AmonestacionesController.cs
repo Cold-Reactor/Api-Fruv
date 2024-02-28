@@ -47,7 +47,8 @@ namespace api_SIF.Controllers
                     causa = item.causa,
                     comentario = item.comentario,
                     firmaAmonestado = item.firmaAmonestado,
-                    realizo = item.realizo
+                    realizo = item.realizo,
+                    status = item.status
                 };
                 amonestacionesRequest.Add(amonestacionRequest);
             }
@@ -84,7 +85,8 @@ namespace api_SIF.Controllers
                 causa = amonestacion.causa,
                 comentario = amonestacion.comentario,
                 firmaAmonestado = amonestacion.firmaAmonestado,
-                realizo = amonestacion.realizo
+                realizo = amonestacion.realizo,
+                status = amonestacion.status
             };
             return amonestacionRequest;
         }
@@ -123,7 +125,8 @@ namespace api_SIF.Controllers
                     causa = item.causa,
                     comentario = item.comentario,
                     firmaAmonestado = item.firmaAmonestado,
-                    realizo = item.realizo
+                    realizo = item.realizo,
+                    status = item.status
                 };
                 amonestaciones.Add(amonestacionRequest);
             }
@@ -138,6 +141,10 @@ namespace api_SIF.Controllers
         [HttpPost]
         public ActionResult<amonestacion> CreateAmonestacion(amonestacion amonestacion)
         {
+            if(amonestacion.status == null)
+            {
+                amonestacion.status = 1;
+            }
             _context.amonestacions.Add(amonestacion);
             _context.SaveChanges();
 
@@ -160,7 +167,7 @@ namespace api_SIF.Controllers
             existingAmonestacion.causa = amonestacion.causa ?? existingAmonestacion.causa;
             existingAmonestacion.comentario = amonestacion.comentario ?? existingAmonestacion.comentario;
             existingAmonestacion.realizo = amonestacion.realizo ?? existingAmonestacion.realizo;
-            
+            existingAmonestacion.status = amonestacion.status ?? existingAmonestacion.status;
 
             _context.amonestacions.Update(existingAmonestacion);
             _context.SaveChanges();

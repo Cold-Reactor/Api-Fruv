@@ -11,6 +11,10 @@ namespace api_SIF.Models.EmpleadosN
     [MySqlCollation("utf8_spanish2_ci")]
     public partial class amonestacion
     {
+        public amonestacion()
+        {
+            status = 1;
+        }
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_amonestacion { get; set; }
@@ -26,7 +30,10 @@ namespace api_SIF.Models.EmpleadosN
         public int? realizo { get; set; }
         [Column(TypeName = "text")]
         public string firmaAmonestado { get; set; }
-
+        //agrega status de tipo bit
+        [Column(TypeName = "int(1)")]
+        public ulong? status { get; set; }
+       
         //[ForeignKey("id_empleado")]
         //[InverseProperty("amonestacions")]
         //public virtual empleado id_empleadoNavigation { get; set; }

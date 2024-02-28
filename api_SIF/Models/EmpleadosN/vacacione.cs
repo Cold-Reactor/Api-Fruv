@@ -25,6 +25,9 @@ namespace api_SIF.Models.EmpleadosN
         public ulong? pagado { get; set; }
         [Column(TypeName = "int(11)")]
         public int? cantidadPago { get; set; }
+        [Column(TypeName = "int(1)")]
+        public ulong? status { get; set; }
+
 
         //[ForeignKey("id_empleado")]
         //[InverseProperty("vacaciones")]

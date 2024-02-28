@@ -7,6 +7,10 @@ namespace api_SIF.Models.EmpleadosN
     public class RequestAmonestacion
     {
        
+        public RequestAmonestacion()
+        {
+            status = 1;
+        }
         public int id_amonestacion { get; set; }
         public int id_empleado { get; set; }
         public DateTime? fecha { get; set; }
@@ -16,5 +20,7 @@ namespace api_SIF.Models.EmpleadosN
         public string firmaAmonestado { get; set; }
         public string nombreSupervisor { get; set; }
         public string nombreAmonestado { get; set; }
+        public ulong? status { get; set; }
+
     }
 }
