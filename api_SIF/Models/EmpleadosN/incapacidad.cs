@@ -29,6 +29,9 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public ulong? embarazo { get; set; }
 
+        [Column(TypeName = "bit(1)")]
+        public ulong? status { get; set; }
+        
         //[ForeignKey("id_empleado")]
         //[InverseProperty("incapacidads")]
         //public virtual empleado id_empleadoNavigation { get; set; }
