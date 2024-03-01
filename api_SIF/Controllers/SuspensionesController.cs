@@ -38,6 +38,15 @@ namespace api_SIF.Controllers
 
             return suspension;
         }
+        [HttpGet("sucursal/{id_sucursal}")]
+        public ActionResult<IEnumerable<suspension>> GetSuspensionBySucursal(int id_sucursal)
+        {
+            var Lista = _context.suspensions
+                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
+                .Where(pe => pe.e.id_sucursal == id_sucursal)
+                .Select(pe => pe.p);
+            return Lista.ToList();
+        }
 
         // POST: RH/Suspensiones
         [HttpPost]

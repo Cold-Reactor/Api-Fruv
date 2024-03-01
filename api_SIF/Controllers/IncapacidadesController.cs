@@ -70,6 +70,15 @@ namespace api_SIF.Controllers
 
             return Ok(incapacidad);
         }
+        [HttpGet("sucursal/{id_sucursal}")]
+        public ActionResult<Incapacidad> GetIncapacidadesSucursal(int id_sucursal)
+        {
+            var incapacidades = _context.incapacidads
+                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
+                .Where(pe => pe.e.id_sucursal == id_sucursal)
+                .Select(pe => pe.p);
+            return Ok(incapacidades);
+        }
         
         [HttpGet]
         public ActionResult<Incapacidad> GetIncapacidades()
@@ -78,6 +87,8 @@ namespace api_SIF.Controllers
 
             return Ok(incapacidades);
         }
+
+
 
     }
 }

@@ -28,10 +28,10 @@ namespace api_SIF.Controllers
 
             var empleado_tiempoextra = _context.empleado_tiempoextras.Where(e => e.id_empleado == id_empleado && e.fechaInicio.Value.Date <= Fecha && e.fechaSalida.Value.Date >= Fecha).ToList();
 
-            if (empleado_tiempoextra == null)
-            {
-                return NotFound();
-            }
+            //if (empleado_tiempoextra == null)
+            //{
+            //    return NotFound();
+            //}
 
             return empleado_tiempoextra;
         }
@@ -94,6 +94,16 @@ namespace api_SIF.Controllers
                 ultimoId = 0;
             }
             return Ok(new { id = ultimoId + 1 });
+        }
+        //obtener tiempoextra uniendo con empleados filtrando por sucursal
+        [HttpGet("sucursal/{id_sucursal}")]
+        public ActionResult<IEnumerable<empleado_tiempoextra>> Getempleado_tiempoextraPorSucursal(int id_sucursal)
+        {
+            var Lista = _context.empleado_tiempoextras
+                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
+                .Where(pe => pe.e.id_sucursal == id_sucursal)
+                .Select(pe => pe.p);
+            return Lista.ToList();
         }
 
     }

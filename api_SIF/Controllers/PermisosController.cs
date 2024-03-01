@@ -67,6 +67,15 @@ namespace api_SIF.Controllers
             return Ok(new { id = ultimoId + 1 });
         }
 
+        [HttpGet("sucursal/{id_sucursal}")]
+        public ActionResult<IEnumerable<Permiso>> GetPermisosBySucursal(int id_sucursal)
+        {
+            var Lista = _context.permisos
+                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
+                .Where(pe => pe.e.id_sucursal == id_sucursal)
+                .Select(pe => pe.p);
+            return Lista.ToList();
+        }
 
         //[HttpDelete("{id}")]
         //public IActionResult DeletePermiso(int id)
