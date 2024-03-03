@@ -29,7 +29,6 @@ namespace api_SIF.Controllers
             {
                 var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
                 var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.jefeInmediato);
-                //soluciona cuando supervisor es null llenar valores vacios
                 if (supervisor == null)
                 {
                     supervisor = new empleado();
