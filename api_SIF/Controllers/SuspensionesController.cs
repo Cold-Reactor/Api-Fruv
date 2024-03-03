@@ -87,7 +87,11 @@ namespace api_SIF.Controllers
 
             return NoContent();
         }
-
+        [HttpGet("next")]
+        public ActionResult<int> GetNextIdSuspension()
+        {
+            return _context.suspensions.Max(s => s.id_suspension) + 1;
+        }
         // DELETE: RH/Suspensiones/5
         //[HttpDelete("{id_empleado}")]
         //public IActionResult DeleteSuspension(int id_empleado)

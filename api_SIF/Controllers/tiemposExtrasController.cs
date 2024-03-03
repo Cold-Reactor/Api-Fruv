@@ -62,6 +62,19 @@ namespace api_SIF.Controllers
             return Lista.ToList();
         }
 
+        [HttpGet("next")]
+        public ActionResult<int> GetNextIdTiempoExtra()
+        {
+            var nextId = 1;
+            if (_context.tiempoextras.Count() > 0)
+            {
+                nextId = _context.tiempoextras.Max(s => s.id_tiempoExtra) + 1;
+            }
+
+            return Ok(nextId);
+        }
+
+
 
     }
 }

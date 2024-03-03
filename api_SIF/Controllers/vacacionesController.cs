@@ -34,6 +34,10 @@ namespace api_SIF.Controllers
         [HttpPost]
         public ActionResult<vacacione> PostVacaciones(vacacione vacaciones)
         {
+            if(vacaciones.status ==null || vacaciones.status ==0)
+            {
+                vacaciones.status = 1;
+            }
             _context.vacaciones.Add(vacaciones);
             _context.SaveChanges();
 
@@ -77,8 +81,13 @@ namespace api_SIF.Controllers
         [HttpGet("siguiente")]
         public ActionResult<int> GetSiguienteId()
         {
-            var id = _context.vacaciones.Max(x => x.id_vacaciones) + 1;
-            return id;
+            //obtener el siguiente id de la tabla vacaciones si no hay ningun registro devolver 1
+            var nextId = 1;
+            if (_context.vacaciones.Count() > 0)
+            {
+                nextId = _context.vacaciones.Max(s => s.id_vacaciones) + 1;
+            }
+            return Ok(nextId);
         }
         [HttpGet("sucursal/{id_sucursal}")]
         public ActionResult<IEnumerable<vacacione>> GetVacacionesPorSucursal(int id_sucursal)

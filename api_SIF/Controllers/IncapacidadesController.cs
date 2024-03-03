@@ -87,6 +87,17 @@ namespace api_SIF.Controllers
 
             return Ok(incapacidades);
         }
+        [HttpGet("next")]
+        public ActionResult<int> GetNextIdIncapacidad()
+        {
+            var nextId = 1;
+            if (_context.incapacidads.Count() > 0)
+            {
+                nextId = _context.incapacidads.Max(s => s.id_incapacidad) + 1;
+            }
+
+            return Ok(nextId);
+        }
 
 
 
