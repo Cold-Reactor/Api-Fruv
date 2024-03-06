@@ -46,7 +46,9 @@ namespace api_SIF.Controllers
 
             var usuarioR = new UsuarioRequest();
             usuarioR.username = model.userName;
-            
+            //usuarioR.master = user.master;
+            usuarioR.god = user.god;
+            usuarioR.nombre = empleado.nombre+ " "+empleado.apellidoPaterno;
             usuarioR.id_empleado = user.id_empleado;
             if (empleado!=null) {
                 usuarioR.no_empleado = empleado.no_empleado;
@@ -57,7 +59,7 @@ namespace api_SIF.Controllers
             var jwtSettings = _configuration.GetSection("JwtSettings");
 
             DateTime expiracion_acceso = DateTime.UtcNow.AddDays(Convert.ToInt32(jwtSettings["ExpirationDays"]));
-            return Ok(new {token,usuarioR.id_empleado,usuarioR.no_empleado,usuarioR.id_sucursal,expiracion_acceso});
+            return Ok(new {token,usuarioR.id_empleado,usuarioR.no_empleado,usuarioR.id_sucursal,expiracion_acceso,usuarioR.god,usuarioR.nombre});
         }
         private string GenerateJwtTokenActualizacionExpiracion(string username)
         {

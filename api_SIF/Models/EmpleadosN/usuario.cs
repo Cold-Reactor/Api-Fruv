@@ -24,7 +24,9 @@ namespace api_SIF.Models.EmpleadosN
         public string password { get; set; }
         [Column(TypeName = "bit(1)")]
         public ulong? compras { get; set; }
-        public bool? god { get; set; }
+        public int? god { get; set; }
+        //public bool? master { get; set; }
+        
 
         //[ForeignKey("id_empleado")]
         //[InverseProperty("usuarios")]
