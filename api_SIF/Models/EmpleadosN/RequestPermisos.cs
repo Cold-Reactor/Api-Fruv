@@ -10,13 +10,8 @@ namespace api_SIF.Models.EmpleadosN
     [Index("id_empleado", Name = "fk_permiso_empleados1_idx")]
     [Index("id_modalidad", Name = "fk_permiso_permisoModalidad1_idx")]
     [MySqlCollation("utf8_spanish2_ci")]
-    public partial class Permiso
+    public partial class RequestPermisos
     {
-        public Permiso()
-        {
-            pagado = 0;
-            status = 1;
-        }
         [Key]
         [Column(TypeName = "int(11)")]
         public int id_permiso { get; set; }
@@ -43,14 +38,11 @@ namespace api_SIF.Models.EmpleadosN
         public int? pagado { get; set; }
         [Column(TypeName = "bit(1)")]
         public int? status { get; set; }
+        [Column(TypeName = "tinytext")]
+        public string nombreEmpleado { get; set; }
+        [Column(TypeName = "tinytext")]
+        public string nombreSupervisor { get; set; }
         [Column(TypeName = "int(11)")]
         public int? autorizo { get; set; }
-
-        //[ForeignKey("id_empleado")]
-        //[InverseProperty("permisos")]
-        //public virtual empleado id_empleadoNavigation { get; set; }
-        //[ForeignKey("id_modalidad")]
-        //[InverseProperty("permisos")]
-        //public virtual permisomodalidad id_modalidadNavigation { get; set; }
     }
 }

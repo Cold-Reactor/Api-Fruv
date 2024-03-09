@@ -4,7 +4,9 @@ using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace api_SIF.Controllers
@@ -67,16 +69,77 @@ namespace api_SIF.Controllers
             return Ok(new { id = ultimoId + 1 });
         }
 
-        [HttpGet("sucursal/{id_sucursal}")]
-        public ActionResult<IEnumerable<Permiso>> GetPermisosBySucursal(int id_sucursal)
+        [HttpGet("sucursal/{id_sucursal}/{status}")]
+        public ActionResult<IEnumerable<RequestPermisos>> GetPermisosBySucursal(int id_sucursal,int status)
         {
-            var Lista = _context.permisos
-                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
-                .Where(pe => pe.e.id_sucursal == id_sucursal)
-                .Select(pe => pe.p);
-            return Lista.ToList();
-        }
+            var permiso = from x in _context.permisos.Where(x => x.status == status)
+                          select new RequestPermisos()
+                          {
+                              id_permiso = x.id_permiso,
+                              id_empleado = x.id_empleado,
+                              fechaCreacion = x.fechaCreacion,
+                              id_supervisor = x.id_supervisor,
+                              id_modalidad = x.id_modalidad,
+                              fechaSalida = x.fechaSalida,
+                              fechaEntrada = x.fechaEntrada,
+                              dias = x.dias,
+                              horaSalida = x.horaSalida,
+                              horaEntrada = x.horaEntrada,
+                              horas = x.horas,
+                              motivo = x.motivo,
+                              pagado = x.pagado,
+                              status = x.status,
+                              autorizo = x.autorizo,
+                          };
 
+            var permisos = new List<RequestPermisos>();
+
+            foreach (var item in permiso.ToList())
+            {
+                Debug.WriteLine(item);
+                var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                if (empleado.id_sucursal != id_sucursal)
+                {
+                    continue;
+                }
+                var supervisor = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_supervisor);
+                if (supervisor == null)
+                {
+                    supervisor = new empleado();
+                    supervisor.nombre = "";
+                    supervisor.apellidoPaterno = "";
+                    supervisor.apellidoMaterno = "";
+                }
+                var permisoRequest = new RequestPermisos()
+                {
+                    id_permiso = item.id_permiso,
+                    id_empleado = item.id_empleado,
+                    fechaCreacion = item.fechaCreacion,
+                    id_supervisor = item.id_supervisor,
+                    id_modalidad = item.id_modalidad,
+                    fechaSalida = item.fechaSalida,
+                    fechaEntrada = item.fechaEntrada,
+                    dias = item.dias,
+                    horaSalida = item.horaSalida,
+                    horaEntrada = item.horaEntrada,
+                    horas = item.horas,
+                    motivo = item.motivo,
+                    pagado = item.pagado,
+                    status = item.status,
+                    autorizo = item.autorizo,
+                    nombreEmpleado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                    nombreSupervisor = supervisor.nombre + " " + supervisor.apellidoPaterno + " " + supervisor.apellidoMaterno
+                };
+                permisos.Add(permisoRequest);
+            }
+            return permisos;
+
+            //var Lista = _context.permisos
+            //    .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
+            //    .Where(pe => pe.e.id_sucursal == id_sucursal)
+            //    .Select(pe => pe.p);
+            //return Lista.ToList();
+        }
         //[HttpDelete("{id}")]
         //public IActionResult DeletePermiso(int id)
         //{
