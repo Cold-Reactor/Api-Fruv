@@ -3,6 +3,7 @@ using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace api_SIF.Controllers
@@ -71,9 +72,9 @@ namespace api_SIF.Controllers
             return Ok(incapacidad);
         }
         [HttpGet("sucursal/{id_sucursal}/{status}")]
-        public ActionResult<Incapacidad> GetIncapacidadesSucursal(int id_sucursal,string status)
+        public ActionResult<IEnumerable<RequestIncapacidad>>GetIncapacidadesSucursal(int id_sucursal,string status)
         {
-            var incapacidades = _context.incapacidads
+            var incapacidad = _context.incapacidads
                 .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
                 .Where(pe => pe.e.id_sucursal == id_sucursal)
                 .Select(pe => pe.p);
@@ -81,10 +82,30 @@ namespace api_SIF.Controllers
             {
                 if (result1 >= 0)
                 {
-                    incapacidades = incapacidades.Where(p => p.status == result1);
+                    incapacidad = incapacidad.Where(p => p.status == result1);
                 }
             }
-            return Ok(incapacidades);
+            var incapacidades = new List<RequestIncapacidad>();
+            foreach (var item in incapacidades)
+            {
+                var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                var vacacionesRequest = new RequestIncapacidad()
+                {
+                    id_incapacidad = item.id_incapacidad,
+                    id_empleado = item.id_empleado,
+                    motivo = item.motivo,
+                    fechaInicio = item.fechaInicio,
+                    fechaRegreso = item.fechaRegreso,
+                    dias = item.dias,
+                    temporal = item.temporal,
+                    comentario = item.comentario,
+                    embarazo = item.embarazo,
+                    nombreEmpleado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                    status = item.status
+                };
+                incapacidades.Add(vacacionesRequest);
+            }
+            return incapacidades;
         }
         
         [HttpGet]
