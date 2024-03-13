@@ -31,7 +31,7 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(11)")]
         public int? realizo { get; set; }
         [Column(TypeName = "bit(1)")]
-        public ulong? status { get; set; }
+        public int? status { get; set; }
         [Column(TypeName = "text")]
         public string firmaAmonestado { get; set; }
         [Column(TypeName = "text")]

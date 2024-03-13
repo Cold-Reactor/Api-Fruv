@@ -3,6 +3,7 @@ using api_SIF.dbContexts;
 using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -89,14 +90,21 @@ namespace api_SIF.Controllers
             };
             return amonestacionRequest;
         }
-        [HttpGet("sucursal/{id_sucursal}")]
-        public ActionResult<IEnumerable<RequestAmonestacion>> GetAmonestacionSucursal(int id_sucursal)
+        [HttpGet("sucursal/{id_sucursal}/{status}")]
+        public ActionResult<IEnumerable<RequestAmonestacion>> GetAmonestacionSucursal(int id_sucursal,string status)
         {
           
 
             var amonestacion = _context.amonestacions
                // .Where(a => empleadoIds.Contains(a.id_empleado))
                 .ToList();
+            if (int.TryParse(status, out int result1))
+            {
+                if (result1 >= 0)
+                {
+                    amonestacion = amonestacion.Where(p => p.status == result1).ToList();
+                }
+            }
             var amonestaciones = new List<RequestAmonestacion>();
 
             foreach (var item in amonestacion)
@@ -129,7 +137,7 @@ namespace api_SIF.Controllers
                 };
                 amonestaciones.Add(amonestacionRequest);
             }
-
+            
 
             return amonestaciones;
         }

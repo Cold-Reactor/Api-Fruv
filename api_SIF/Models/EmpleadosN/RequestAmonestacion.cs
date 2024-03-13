@@ -20,7 +20,7 @@ namespace api_SIF.Models.EmpleadosN
         public string firmaAmonestado { get; set; }
         public string nombreSupervisor { get; set; }
         public string nombreAmonestado { get; set; }
-        public ulong? status { get; set; }
+        public int? status { get; set; }
 
     }
 }

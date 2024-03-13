@@ -1,4 +1,5 @@
 ﻿using api_SIF.dbContexts;
+using api_SIF.Models.Empleados;
 using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -52,14 +53,22 @@ namespace api_SIF.Controllers
             _context.SaveChanges();
             return NoContent();
         }
-        [HttpGet("sucursal/{id_sucursal}")]
-        public ActionResult<IEnumerable<TiempoExtra>> GetTiempoExtraBySucursal(int id_sucursal)
+        [HttpGet("sucursal/{id_sucursal}/{id_estado}")]
+        public ActionResult<IEnumerable<TiempoExtra>> GetTiempoExtraBySucursal(int id_sucursal,string id_estado)
         {
             var Lista = _context.tiempoextras
                 .Join(_context.empleados, p => p.id_supervisor, e => e.id_empleado, (p, e) => new { p, e })
                 .Where(pe => pe.e.id_sucursal == id_sucursal)
-                .Select(pe => pe.p);
-            return Lista.ToList();
+                .Select(pe => pe.p).ToList();
+            if (int.TryParse(id_estado, out int result1))
+            {
+                if (result1 >= 0)
+                {
+                   Lista = Lista.Where(p => p.id_estado == result1).ToList();
+                }
+            }
+            
+            return Lista;
         }
 
         [HttpGet("next")]

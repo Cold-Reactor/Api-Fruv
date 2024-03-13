@@ -70,13 +70,20 @@ namespace api_SIF.Controllers
 
             return Ok(incapacidad);
         }
-        [HttpGet("sucursal/{id_sucursal}")]
-        public ActionResult<Incapacidad> GetIncapacidadesSucursal(int id_sucursal)
+        [HttpGet("sucursal/{id_sucursal}/{status}")]
+        public ActionResult<Incapacidad> GetIncapacidadesSucursal(int id_sucursal,string status)
         {
             var incapacidades = _context.incapacidads
                 .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
                 .Where(pe => pe.e.id_sucursal == id_sucursal)
                 .Select(pe => pe.p);
+            if (int.TryParse(status, out int result1))
+            {
+                if (result1 >= 0)
+                {
+                    incapacidades = incapacidades.Where(p => p.status == result1);
+                }
+            }
             return Ok(incapacidades);
         }
         

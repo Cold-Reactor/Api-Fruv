@@ -13,7 +13,7 @@ namespace api_SIF.Models.EmpleadosN
     {
         public amonestacion()
         {
-            status = 1;
+            //status = 1;
         }
         [Key]
         [Column(TypeName = "int(11)")]
@@ -32,7 +32,7 @@ namespace api_SIF.Models.EmpleadosN
         public string firmaAmonestado { get; set; }
         //agrega status de tipo bit
         [Column(TypeName = "int(1)")]
-        public ulong? status { get; set; }
+        public int? status { get; set; }
        
         //[ForeignKey("id_empleado")]
         //[InverseProperty("amonestacions")]

@@ -30,7 +30,7 @@ namespace api_SIF.Models.EmpleadosN
         public ulong? embarazo { get; set; }
 
         [Column(TypeName = "bit(1)")]
-        public ulong? status { get; set; }
+        public int? status { get; set; }
         
         //[ForeignKey("id_empleado")]
         //[InverseProperty("incapacidads")]

@@ -48,7 +48,12 @@ namespace api_SIF.Controllers
             usuarioR.username = model.userName;
             //usuarioR.master = user.master;
             usuarioR.god = user.god;
+
             usuarioR.nombre = empleado.nombre+ " "+empleado.apellidoPaterno;
+            if(empleado.apellidoPaterno==null || empleado.apellidoPaterno == "")
+            {
+                usuarioR.nombre += empleado.apellidoMaterno;
+            }
             usuarioR.id_empleado = user.id_empleado;
             if (empleado!=null) {
                 usuarioR.no_empleado = empleado.no_empleado;

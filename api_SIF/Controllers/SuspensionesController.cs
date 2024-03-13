@@ -38,13 +38,20 @@ namespace api_SIF.Controllers
 
             return suspension;
         }
-        [HttpGet("sucursal/{id_sucursal}")]
-        public ActionResult<IEnumerable<suspension>> GetSuspensionBySucursal(int id_sucursal)
+        [HttpGet("sucursal/{id_sucursal}/{status}")]
+        public ActionResult<IEnumerable<suspension>> GetSuspensionBySucursal(int id_sucursal,string status)
         {
             var Lista = _context.suspensions
                 .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
                 .Where(pe => pe.e.id_sucursal == id_sucursal)
                 .Select(pe => pe.p);
+            if (int.TryParse(status, out int result1))
+            {
+                if (result1 >= 0)
+                {
+                    Lista = Lista.Where(p => p.status == result1);
+                }
+            }
             return Lista.ToList();
         }
 
