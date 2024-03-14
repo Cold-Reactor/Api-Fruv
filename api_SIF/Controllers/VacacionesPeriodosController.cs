@@ -2,7 +2,9 @@
 using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace api_SIF.Controllers
 {
@@ -31,6 +33,19 @@ namespace api_SIF.Controllers
                 return NotFound();
             }
             return Ok(vacacionesPeriodo);
+        }
+        [HttpGet("Periodo/{periodo}")]
+        public async Task<ActionResult<Object>> GetVacacionesPeriodoDias(int periodo)
+        {
+            try
+            {
+                int dias = _context.vacacionesperiodos.FirstOrDefault(p => p.años == periodo).dias;
+                return Ok(new { dias = dias });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { dias = 0 });
+            }
         }
         [HttpPost]
         public ActionResult CreateVacacionesPeriodo(vacacionesperiodo vacacionesPeriodo)
