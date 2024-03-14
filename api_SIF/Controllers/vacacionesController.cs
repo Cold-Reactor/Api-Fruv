@@ -4,8 +4,10 @@ using api_SIF.Models.EmpleadosN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace api_SIF.Controllers
@@ -90,19 +92,38 @@ namespace api_SIF.Controllers
             return Ok(nextId);
         }
         [HttpGet("sucursal/{id_sucursal}/{status}")]
-        public ActionResult<IEnumerable<vacacione>> GetVacacionesPorSucursal(int id_sucursal,string status)
+        public ActionResult<IEnumerable<requestVacaciones>> GetVacacionesPorSucursal(int id_sucursal,string status)
         {
-            var Lista = _context.vacaciones
+            var amonestacion = _context.vacaciones
                 .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
                 .Where(pe => pe.e.id_sucursal == id_sucursal)
                 .Select(pe => pe.p);
             if (ulong.TryParse(status, out ulong result1))
             {                 if (result1 >= 0)
                 {
-                    Lista =  Lista.Where(p => p.status == result1);
+                    amonestacion = amonestacion.Where(p => p.status == result1);
                 }
             }
-            return Lista.ToList();
+            var vacaciones = new List<requestVacaciones>();
+            foreach(var item in amonestacion)
+            {
+                var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                var vacacionesRequest = new requestVacaciones()
+                {
+                    id_vacaciones = item.id_vacaciones,
+                    id_empleado = item.id_empleado,
+                    fechaInicio = item.fechaInicio,
+                    fechaRegreso = item.fechaRegreso,
+                    dias = item.dias,
+                    gozado = item.gozado,
+                    pagado = item.pagado,
+                    cantidadPago = item.cantidadPago,
+                    nombreEmpleado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                    status = item.status
+                };
+                vacaciones.Add(vacacionesRequest);
+            }
+            return vacaciones;
         }
     }
 }

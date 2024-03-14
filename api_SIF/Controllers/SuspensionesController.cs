@@ -39,9 +39,9 @@ namespace api_SIF.Controllers
             return suspension;
         }
         [HttpGet("sucursal/{id_sucursal}/{status}")]
-        public ActionResult<IEnumerable<suspension>> GetSuspensionBySucursal(int id_sucursal,string status)
+        public ActionResult<IEnumerable<RequestSuspension>> GetSuspensionBySucursal(int id_sucursal,string status)
         {
-            var Lista = _context.suspensions
+            var suspension = _context.suspensions
                 .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
                 .Where(pe => pe.e.id_sucursal == id_sucursal)
                 .Select(pe => pe.p);
@@ -49,10 +49,32 @@ namespace api_SIF.Controllers
             {
                 if (result1 >= 0)
                 {
-                    Lista = Lista.Where(p => p.status == result1);
+                    suspension = suspension.Where(p => p.status == result1);
                 }
             }
-            return Lista.ToList();
+            var suspensiones = new List<RequestSuspension>();
+            foreach (var item in suspensiones)
+            {
+                var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                var vacacionesRequest = new RequestSuspension()
+                {
+                    id_suspension = item.id_suspension,
+                    fecha = item.fecha,
+                    id_empleado = item.id_empleado,
+                    fechaInicio = item.fechaInicio,
+                    fechaRegreso = item.fechaRegreso,
+                    dias = item.dias,
+                    motivo = item.motivo,
+                    realizo = item.realizo,
+                    nombreEmpleado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
+                    status = item.status,
+                    firmaAmonestado = item.firmaAmonestado,
+                    firmaSupervisor = item.firmaSupervisor,
+                    firmaRH = item.firmaRH
+                };
+                suspensiones.Add(vacacionesRequest);
+            }
+            return suspensiones;
         }
 
         // POST: RH/Suspensiones
