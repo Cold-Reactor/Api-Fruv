@@ -23,7 +23,7 @@ namespace api_SIF.dbContexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-         //       optionsBuilder.UseMySql("server=localhost;port=3306;database=materiaprima;user=root;password=enramfle", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.27-mariadb"));
+         //       optionsBuilder.UseMySql("server=192.168.1.248;port=3306;database=materiaprima;user=root;password=enramfle", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.27-mariadb"));
             }
         }
 
