@@ -72,24 +72,19 @@ namespace api_SIF.Controllers
             return Ok(incapacidad);
         }
         [HttpGet("sucursal/{id_sucursal}/{status}")]
-        public ActionResult<IEnumerable<RequestIncapacidad>>GetIncapacidadesSucursal(int id_sucursal,string status)
+        public ActionResult<IEnumerable<RequestIncapacidad>>GetIncapacidadesSucursal(int id_sucursal,int status)
         {
-            var incapacidad = _context.incapacidads
-                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
-                .Where(pe => pe.e.id_sucursal == id_sucursal)
-                .Select(pe => pe.p);
-            if (int.TryParse(status, out int result1))
-            {
-                if (result1 >= 0)
-                {
-                    incapacidad = incapacidad.Where(p => p.status == result1);
-                }
-            }
+            var incapacidad = _context.incapacidads.Where(p => p.status == status).ToList();
+
             var incapacidades = new List<RequestIncapacidad>();
-            foreach (var item in incapacidades)
+            foreach (var item in incapacidad)
             {
                 var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
-                var vacacionesRequest = new RequestIncapacidad()
+                if (empleado.id_sucursal != id_sucursal)
+                {
+                    continue;
+                }
+                var incapacidadesRequest = new RequestIncapacidad()
                 {
                     id_incapacidad = item.id_incapacidad,
                     id_empleado = item.id_empleado,
@@ -103,7 +98,7 @@ namespace api_SIF.Controllers
                     nombreEmpleado = empleado.nombre + " " + empleado.apellidoPaterno + " " + empleado.apellidoMaterno,
                     status = item.status
                 };
-                incapacidades.Add(vacacionesRequest);
+                incapacidades.Add(incapacidadesRequest);
             }
             return incapacidades;
         }
