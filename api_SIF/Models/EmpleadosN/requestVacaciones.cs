@@ -30,7 +30,7 @@ namespace api_SIF.Models.EmpleadosN
         public string nombreEmpleado { get; set; }
 
         [Column(TypeName = "int(1)")]
-        public ulong? status { get; set; }
+        public int? status { get; set; }
 
 
         //[ForeignKey("id_empleado")]

@@ -91,23 +91,24 @@ namespace api_SIF.Controllers
             }
             return Ok(nextId);
         }
-        [HttpGet("sucursal/{id_sucursal}/{status}")]
-        public ActionResult<IEnumerable<requestVacaciones>> GetVacacionesPorSucursal(int id_sucursal,string status)
+        [HttpGet("empleado/{id_empleado}")]
+        public ActionResult<IEnumerable<requestVacaciones>> GetVacacionesPorEmpleado(int id_empleado)
         {
-            var amonestacion = _context.vacaciones
-                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
-                .Where(pe => pe.e.id_sucursal == id_sucursal)
-                .Select(pe => pe.p);
-            if (ulong.TryParse(status, out ulong result1))
-            {                 if (result1 >= 0)
-                {
-                    amonestacion = amonestacion.Where(p => p.status == result1);
-                }
-            }
+            return Ok(_context.vacaciones.Where(v => v.id_empleado == id_empleado).ToList());
+        }
+        [HttpGet("sucursal/{id_sucursal}/{status}")]
+        public ActionResult<IEnumerable<requestVacaciones>> GetVacacionesPorSucursal(int id_sucursal,int status)
+        {
+            var vacacion = _context.vacaciones.Where(p => p.status == status).ToList();
+
             var vacaciones = new List<requestVacaciones>();
-            foreach(var item in amonestacion)
+            foreach(var item in vacacion)
             {
                 var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                if (empleado.id_sucursal != id_sucursal)
+                {
+                    continue;
+                }
                 var vacacionesRequest = new requestVacaciones()
                 {
                     id_vacaciones = item.id_vacaciones,

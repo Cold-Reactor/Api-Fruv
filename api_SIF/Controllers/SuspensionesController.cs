@@ -39,23 +39,18 @@ namespace api_SIF.Controllers
             return suspension;
         }
         [HttpGet("sucursal/{id_sucursal}/{status}")]
-        public ActionResult<IEnumerable<RequestSuspension>> GetSuspensionBySucursal(int id_sucursal,string status)
+        public ActionResult<IEnumerable<RequestSuspension>> GetSuspensionBySucursal(int id_sucursal,int status)
         {
-            var suspension = _context.suspensions
-                .Join(_context.empleados, p => p.id_empleado, e => e.id_empleado, (p, e) => new { p, e })
-                .Where(pe => pe.e.id_sucursal == id_sucursal)
-                .Select(pe => pe.p);
-            if (int.TryParse(status, out int result1))
-            {
-                if (result1 >= 0)
-                {
-                    suspension = suspension.Where(p => p.status == result1);
-                }
-            }
+            var suspension = _context.suspensions.Where(p => p.status == status).ToList();
+
             var suspensiones = new List<RequestSuspension>();
-            foreach (var item in suspensiones)
+            foreach(var item in suspension)
             {
                 var empleado = _context.empleados.FirstOrDefault(e => e.id_empleado == item.id_empleado);
+                if (empleado.id_sucursal != id_sucursal)
+                {
+                    continue;
+                }
                 var vacacionesRequest = new RequestSuspension()
                 {
                     id_suspension = item.id_suspension,
