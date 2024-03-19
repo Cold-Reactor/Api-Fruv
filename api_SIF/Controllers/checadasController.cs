@@ -178,6 +178,81 @@ namespace api_SIF.Controllers
                             }
                         }
                      }
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var permisos = (from p in _context.permisos where p.pagado==1 && p.id_empleado == empleado.id_empleado && (p.fechaSalida <= fecha && p.fechaEntrada >= fecha)
+                                        select new { id_permiso = p.id_permiso }).ToList();
+                        if (permisos.Count > 0)
+                        {
+                            checadaEmpleado.ausentismo = "Permiso Pagado";
+                        }
+                    }
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var permisos = (from p in _context.permisos
+                                        where p.pagado==0 && p.id_empleado == empleado.id_empleado && (p.fechaSalida <= fecha && p.fechaEntrada >= fecha)
+                                        select new { id_permiso = p.id_permiso }).ToList();
+                        if (permisos.Count > 0)
+                        {
+                            checadaEmpleado.ausentismo = "Permiso";
+                        }
+                    }
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var suspensiones = (from p in _context.suspensions  where p.id_empleado == empleado.id_empleado && (p.fechaInicio <= fecha && p.fechaRegreso >= fecha)
+                                            select new {
+                                                id_suspension = p.id_suspension 
+                                            }                                                                                                                                                                                                                                                                                                                                                                                                           ).ToList();
+                        if (suspensiones.Count > 0)
+                        {
+                            checadaEmpleado.ausentismo = "Suspensión";
+                        }
+                    }
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var vacaciones = (from p in _context.vacaciones where p.gozado==1 && p.id_empleado == empleado.id_empleado && (p.fechaInicio <= fecha && p.fechaRegreso >= fecha)
+                                                                                   select new { id_vacaciones = p.id_vacaciones }).ToList();
+                        if (vacaciones.Count > 0)
+                        {
+                            checadaEmpleado.ausentismo = "Vacaciones";
+                        }
+                    }
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var diasferiados = (from p in _context.diasferiados where p.fechaInicial <= fecha && p.fechaFinal >= fecha
+                                                                                      select new { id_diasFeriados = p.id_diasFeriados }).ToList();
+                        if (diasferiados.Count > 0)
+                        {
+                            checadaEmpleado.ausentismo = "Feriado";
+                        }
+                    }
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var incapacidades = (from p in _context.incapacidads where p.id_empleado == empleado.id_empleado && (p.fechaInicio <= fecha && p.fechaRegreso >= fecha)
+                                           select new { id_incapacidad = p.id_incapacidad }).ToList();
+                        if (incapacidades.Count > 0)
+                        {
+                            checadaEmpleado.ausentismo = "Incapacidad";
+                        }
+                    }
+                   
+                        var fechaNacimiento = empleado.fechaIngreso.Value;
+                        //convierte la fecha de nacimiento a DateTime
+
+                        if (fechaNacimiento!=null) {
+                            if (fechaNacimiento.Month == fecha.Month && fechaNacimiento.Day == fecha.Day)
+                            {
+                                checadaEmpleado.ausentismo = "Cumpleaños";
+                            }
+                        }
+                    
+
+
+
+
+
+
+
                     checadaEmpleado.check = checksEmpleado;
                     checadasEmpleados.Add(checadaEmpleado);                    
                 }                
