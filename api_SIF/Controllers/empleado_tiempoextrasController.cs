@@ -41,16 +41,18 @@ namespace api_SIF.Controllers
 
         // GET: api/empleado_tiempoextras/5
         [HttpGet("{id_tiempoExtra}")]
-        public ActionResult<empleado_tiempoextra> Getempleado_tiempoextra(int id_tiempoExtra)
+        public ActionResult<IEnumerable<empleado_tiempoextra>> Getempleado_tiempoextra(int id_tiempoExtra)
         {
-            var empleado_tiempoextra = _context.empleado_tiempoextras.FirstOrDefault(e => e.id_tiempoExtra == id_tiempoExtra);
+            return _context.empleado_tiempoextras.Where(t => t.id_tiempoExtra == id_tiempoExtra).ToList();
 
-            if (empleado_tiempoextra == null)
-            {
-                return NotFound();
-            }
+            //var empleado_tiempoextra = _context.empleado_tiempoextras.FirstOrDefault(e => e.id_tiempoExtra == id_tiempoExtra);
 
-            return empleado_tiempoextra;
+            //if (empleado_tiempoextra == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return empleado_tiempoextra;
         }
 
        
