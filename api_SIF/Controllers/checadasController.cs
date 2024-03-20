@@ -235,8 +235,9 @@ namespace api_SIF.Controllers
                             checadaEmpleado.ausentismo = "Incapacidad";
                         }
                     }
-                   
-                        var fechaNacimiento = empleado.fechaIngreso.Value;
+                    if (checksEmpleado.Count == 0)
+                    {
+                        var fechaNacimiento = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.id_empleado).fechaNacimiento.Value;
                         //convierte la fecha de nacimiento a DateTime
 
                         if (fechaNacimiento!=null) {
@@ -245,6 +246,8 @@ namespace api_SIF.Controllers
                                 checadaEmpleado.ausentismo = "Cumpleaños";
                             }
                         }
+                    }
+
                     
 
 
