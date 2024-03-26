@@ -43,7 +43,7 @@ namespace api_SIF.Controllers
         }
         
         [HttpGet("{id_sucursal}/{from1}/{to}")]
-        public async Task<ActionResult<IEnumerable<RequestPlantillaGuardia>>> GetPlantillaGuardia(int sucursal, DateOnly from1, DateOnly to)
+        public async Task<ActionResult<IEnumerable<RequestPlantillaGuardia>>> GetPlantillaGuardia(int id_sucursal, DateOnly from1, DateOnly to)
         {
             List<DateOnly> fechas = new List<DateOnly>();
             DateOnly date1 = from1;
@@ -65,7 +65,7 @@ namespace api_SIF.Controllers
             var empleados = (from p in _context.empleados
                              join a in _context.areas on p.id_area equals a.id_area into joinedTable
                              from a in joinedTable.DefaultIfEmpty()
-                             where p.status == 1 && p.id_sucursal == sucursal && a.id_departamento == 11
+                             where p.status == 1 && p.id_sucursal == id_sucursal && a.id_departamento == 11
                              select new RequestPlantillaGuardia
                              {
                                  id_empleado = p.id_empleado,
