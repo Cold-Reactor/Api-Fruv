@@ -73,7 +73,7 @@ namespace api_SIF.Controllers
         public async Task<ActionResult<IEnumerable<requestTurno>>> GetTurno(int id_sucursal, int mixto)
         {
             var turnosLista = from x in _context.turnos
-                              where x.id_sucursal == id_sucursal && x.mixto == mixto
+                              where x.id_sucursal == id_sucursal || x.mixto == mixto
                               select new requestTurno()
                               {
                                   disponible = x.disponible,
