@@ -85,7 +85,7 @@ namespace api_SIF.dbContexts
         public virtual DbSet<usuariorol> usuariorols { get; set; }
         public virtual DbSet<vacacione> vacaciones { get; set; }
         public virtual DbSet<vacacionesperiodo> vacacionesperiodos { get; set; }
-
+        public virtual DbSet<plantillaSeguridad> plantilaseguridad { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -1085,6 +1085,12 @@ namespace api_SIF.dbContexts
             modelBuilder.Entity<vacacionesperiodo>(entity =>
             {
                 entity.HasKey(e => e.id_vacacionesP)
+                    .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<plantillaSeguridad>(entity =>
+            {
+                entity.HasKey(e => e.id_plantillaS)
                     .HasName("PRIMARY");
             });
 
