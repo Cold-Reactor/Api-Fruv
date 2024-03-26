@@ -69,6 +69,31 @@ namespace api_SIF.Controllers
 
             return await turnosLista.ToListAsync();
         }
+        [HttpGet("{id_sucursal}/{mixto}")]
+        public async Task<ActionResult<IEnumerable<requestTurno>>> GetTurno(int id_sucursal, int mixto)
+        {
+            var turnosLista = from x in _context.turnos
+                              where x.id_sucursal == id_sucursal && x.mixto == mixto
+                              select new requestTurno()
+                              {
+                                  disponible = x.disponible,
+                                  comida = Clases.Funciones.HoraAString(x.comida),
+                                  turno = x.turno1,
+                                  descanso = x.descanso,
+                                  entrada = Clases.Funciones.HoraAString(x.entrada),
+                                  entradaF = Clases.Funciones.HoraAString(x.entradaF),
+                                  horas = x.horas,
+                                  horasF = x.horasF,
+                                  horas_trabajadas = x.horas_trabajadas,
+                                  id_turno = x.id_turno,
+                                  nocturno = x.nocturno,
+                                  id_sucursal = x.id_sucursal,
+                                  salida = Clases.Funciones.HoraAString(x.salida),
+                                  salidaF = Clases.Funciones.HoraAString(x.salidaF)
+                              };
+
+            return await turnosLista.ToListAsync();
+        }
         [HttpPost]
         public async Task<ActionResult> Postchecada(TurnoRequest turnoNuevo)
         {

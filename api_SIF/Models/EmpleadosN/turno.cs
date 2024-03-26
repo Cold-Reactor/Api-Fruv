@@ -39,6 +39,8 @@ namespace api_SIF.Models.EmpleadosN
         [Column(TypeName = "int(1)")]
         public int nocturno { get; set; }
         [Column(TypeName = "int(1)")]
+        public int mixto { get; set; }
+        [Column(TypeName = "int(1)")]
         public int disponible { get; set; }
 
         //[ForeignKey("id_sucursal")]
