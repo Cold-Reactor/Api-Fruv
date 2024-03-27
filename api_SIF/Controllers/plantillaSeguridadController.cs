@@ -27,7 +27,7 @@ namespace api_SIF.Controllers
         [HttpGet("{id_empleado}/{fecha}")]
         public async Task<ActionResult<plantillaSeguridad>> GetPlantilla(int id_empleado, DateOnly fecha)
         {
-            var entity = await _context.plantilaseguridad.FirstOrDefaultAsync(item => item.id_empleado == id_empleado && item.fecha == fecha);
+            var entity = await _context.plantillas.FirstOrDefaultAsync(item => item.id_empleado == id_empleado && item.fecha == fecha);
             if (entity == null)
             {
                 return NotFound();
@@ -52,32 +52,25 @@ namespace api_SIF.Controllers
                 fechas.Add(date1);
                 date1 = date1.AddDays(1);
             }
-            List<plantillaSeguridad> plantillaS = (from c in _context.plantilaseguridad
-                                                      where c.fecha >= from1 && c.fecha <= to
-                                                      select new plantillaSeguridad
-                                                      { id_plantillaS = c.id_plantillaS,
-                                                        id_empleado=c.id_empleado,
-                                                        id_turno = c.id_turno,
-                                                        fecha = c.fecha,
-                                                      }).ToList();
+            List<plantillaSeguridad> plantillaS = await (from c in _context.plantillas
+                                                         where c.fecha >= from1 && c.fecha <= to
+                                                          select new plantillaSeguridad
+                                                          { id_plantillaS = c.id_plantillaS,
+                                                            id_empleado=c.id_empleado,
+                                                            id_turno = c.id_turno,
+                                                            fecha = c.fecha,
+                                                          }).ToListAsync();
             plantillaS = plantillaS.OrderBy(x => x.fecha).ToList();
 
-            var empleados = (from p in _context.empleados
-                             join a in _context.areas on p.id_area equals a.id_area into joinedTable
-                             from a in joinedTable.DefaultIfEmpty()
-                             where p.status == 1 && p.id_sucursal == id_sucursal && a.id_departamento == 11
-                             select new RequestPlantillaGuardia
-                             {
-                                 id_empleado = p.id_empleado,
-                                 nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
-                                 imagen = p.imagen
-                             }).ToList();
+            var empleados = await (from p in _context.empleados
+                                     join a in _context.areas on p.id_area equals a.id_area
+                                     where p.status == 1 && p.id_sucursal == id_sucursal && a.id_departamento == 1
+                                     select new RequestPlantillaGuardia
+                                     { id_empleado = p.id_empleado,
+                                       nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
+                                       imagen = p.imagen
+                                     }).ToListAsync();
 
-            //if (int.TryParse("11", out int result3) && result3 != 0)
-            //{
-            //    var areasLista = _context.areas.Where<area>(xx => xx.id_departamento == result3).Select(ts => ts.id_area).ToList();
-            //    empleados = empleados.Where(x => areasLista.Contains((int)x.id_area));
-            //}
             foreach (var empleado in empleados)
             { 
                 var plantilla = new List<plantillaSeguridad>();
@@ -98,6 +91,40 @@ namespace api_SIF.Controllers
                 empleado.plantilla = plantilla;
             }
             return empleados;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<plantillaSeguridad>> PostPlantillaS(List<plantillaSeguridad> plantillas)
+        {
+            //_context.plantillas.Add(plantilla);
+            //await _context.SaveChangesAsync();
+
+            //return Ok(new { id = plantilla.id_plantillaS });
+
+            foreach (var p in plantillas)
+            {
+                _context.plantillas.Add(p);
+            }
+                await _context.SaveChangesAsync();
+
+            return Ok("Plantilla Creada");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutPlantillaS(List<plantillaSeguridad> plantillas)
+        {
+            foreach(var p in plantillas)
+            {
+                var entity = await _context.plantillas.FirstOrDefaultAsync(item => item.id_plantillaS == p.id_plantillaS);
+                if (entity != null)
+                {
+                    //entity.id_plantillaS = checada.fecha;
+                    //entity.hora = checada.hora;
+                    entity.id_turno = p.id_turno;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            return Ok("Plantilla Actualizada");
         }
     }
 }
