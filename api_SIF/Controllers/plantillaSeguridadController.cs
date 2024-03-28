@@ -30,9 +30,11 @@ namespace api_SIF.Controllers
             var entity = await _context.plantillas.FirstOrDefaultAsync(item => item.id_empleado == id_empleado && item.fecha == fecha);
             if (entity == null)
             {
-                return NotFound();
+                //return NotFound();
+                return new plantillaSeguridad();
+
             }
-            var reqPlantilla = new plantillaSeguridad()
+            plantillaSeguridad reqPlantilla = new plantillaSeguridad()
             {
                 id_plantillaS = entity.id_plantillaS,
                 id_empleado = entity.id_empleado,
@@ -94,12 +96,8 @@ namespace api_SIF.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<plantillaSeguridad>> PostPlantillaS(List<plantillaSeguridad> plantillas)
+        public async Task<ActionResult<string>> PostPlantillaS(List<plantillaSeguridad> plantillas)
         {
-            //_context.plantillas.Add(plantilla);
-            //await _context.SaveChangesAsync();
-
-            //return Ok(new { id = plantilla.id_plantillaS });
 
             foreach (var p in plantillas)
             {
@@ -107,7 +105,7 @@ namespace api_SIF.Controllers
             }
                 await _context.SaveChangesAsync();
 
-            return Ok("Plantilla Creada");
+            return "Plantilla Creada";
         }
 
         [HttpPut]
