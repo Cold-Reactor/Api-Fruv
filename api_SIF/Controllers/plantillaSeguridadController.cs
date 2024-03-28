@@ -66,7 +66,7 @@ namespace api_SIF.Controllers
 
             var empleados = await (from p in _context.empleados
                                      join a in _context.areas on p.id_area equals a.id_area
-                                     where p.status == 1 && p.id_sucursal == id_sucursal && a.id_departamento == 1
+                                     where p.status == 1 && p.id_sucursal == id_sucursal && a.id_departamento == 11
                                      select new RequestPlantillaGuardia
                                      { id_empleado = p.id_empleado,
                                        nombre = p.apellidoPaterno + " " + p.apellidoMaterno + " " + p.nombre,
