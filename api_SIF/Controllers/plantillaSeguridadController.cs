@@ -96,22 +96,34 @@ namespace api_SIF.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> PostPlantillaS(List<plantillaSeguridad> plantillas)
+        public async Task<ActionResult<plantillaSeguridad[]>> PostPlantillaS(List<plantillaSeguridad> plantillas)
         {
+            List<plantillaSeguridad> plantillaS = new List<plantillaSeguridad>();
 
             foreach (var p in plantillas)
             {
                 _context.plantillas.Add(p);
-            }
                 await _context.SaveChangesAsync();
 
-            return "Plantilla Creada";
+                List<plantillaSeguridad> plantilla = await (from c in _context.plantillas
+                                                            where c.fecha == p.fecha && c.id_empleado == p.id_empleado
+                                                            select new plantillaSeguridad 
+                                                            {   id_plantillaS = c.id_plantillaS,
+                                                                id_empleado = c.id_empleado,
+                                                                id_turno = c.id_turno,
+                                                                fecha = c.fecha,
+                                                            }).ToListAsync();
+                plantillaS.AddRange(plantilla);
+            }
+
+            return Ok(plantillaS);
         }
 
         [HttpPut]
         public async Task<IActionResult> PutPlantillaS(List<plantillaSeguridad> plantillas)
         {
-            foreach(var p in plantillas)
+
+            foreach (var p in plantillas)
             {
                 var entity = await _context.plantillas.FirstOrDefaultAsync(item => item.id_plantillaS == p.id_plantillaS);
                 if (entity != null)
@@ -122,6 +134,7 @@ namespace api_SIF.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
+
             return Ok("Plantilla Actualizada");
         }
     }
