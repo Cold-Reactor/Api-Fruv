@@ -235,20 +235,30 @@ namespace api_SIF.Controllers
                             checadaEmpleado.ausentismo = "Incapacidad";
                         }
                     }
-                    if (checksEmpleado.Count == 0)
-                    {
-                        var fechaNacimiento = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.id_empleado).fechaNacimiento.Value;
-                        //convierte la fecha de nacimiento a DateTime
+                    var fechaNacimiento = empleado.fechaIngreso.Value;
+                    //convierte la fecha de nacimiento a DateTime
 
-                        if (fechaNacimiento!=null) {
-                            if (fechaNacimiento.Month == fecha.Month && fechaNacimiento.Day == fecha.Day)
-                            {
-                                checadaEmpleado.ausentismo = "Cumpleaños";
-                            }
+                    if (fechaNacimiento != null)
+                    {
+                        if (fechaNacimiento.Month == fecha.Month && fechaNacimiento.Day == fecha.Day)
+                        {
+                            checadaEmpleado.ausentismo = "Cumpleaños";
                         }
                     }
+                    //if (checksEmpleado.Count == 0)
+                    //{
+                    //    var fechaNacimiento = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.id_empleado).fechaNacimiento.Value;
+                    //    //convierte la fecha de nacimiento a DateTime
 
-                    
+                    //    if (fechaNacimiento!=null) {
+                    //        if (fechaNacimiento.Month == fecha.Month && fechaNacimiento.Day == fecha.Day)
+                    //        {
+                    //            checadaEmpleado.ausentismo = "Cumpleaños";
+                    //        }
+                    //    }
+                    //}
+
+
 
 
 
