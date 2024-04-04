@@ -235,7 +235,6 @@ namespace api_SIF.Controllers
                             checadaEmpleado.ausentismo = "Incapacidad";
                         }
                     }
-<<<<<<< HEAD
                         var fechaNacimiento = empleado.fechaIngreso.Value;
                         //convierte la fecha de nacimiento a DateTime
 
@@ -246,41 +245,6 @@ namespace api_SIF.Controllers
                                 checadaEmpleado.ausentismo = "Cumpleaños";
                             }
                         }
-=======
-                    var fechaNacimiento = empleado.fechaIngreso.Value;
-                    //convierte la fecha de nacimiento a DateTime
-
-                    if (fechaNacimiento != null)
-                    {
-                        if (fechaNacimiento.Month == fecha.Month && fechaNacimiento.Day == fecha.Day)
-                        {
-                            checadaEmpleado.ausentismo = "Cumpleaños";
-                        }
-                    }
->>>>>>> 75d13a84ef5e09d9a18491af78e5a18b2aa7ea24
-                    //if (checksEmpleado.Count == 0)
-                    //{
-                    //    var fechaNacimiento = _context.empleados.FirstOrDefault(e => e.id_empleado == empleado.id_empleado).fechaNacimiento.Value;
-                    //    //convierte la fecha de nacimiento a DateTime
-
-                    //    if (fechaNacimiento!=null) {
-                    //        if (fechaNacimiento.Month == fecha.Month && fechaNacimiento.Day == fecha.Day)
-                    //        {
-                    //            checadaEmpleado.ausentismo = "Cumpleaños";
-                    //        }
-                    //    }
-                    //}
-<<<<<<< HEAD
-=======
-
->>>>>>> 75d13a84ef5e09d9a18491af78e5a18b2aa7ea24
-
-
-
-
-
-
-
 
                     checadaEmpleado.check = checksEmpleado;
                     checadasEmpleados.Add(checadaEmpleado);                    
