@@ -9,5 +9,7 @@
         public  bool? master { get; set; }
         public string nombre { get; set; }
         public int? god { get; set; }
+
+        public int? departamento { get; set; }
     }
 }
