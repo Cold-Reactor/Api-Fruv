@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using api_SIF.dbContexts;
 using System.Linq;
 using api_SIF.Models.EmpleadosN;
+using Microsoft.EntityFrameworkCore;
 
 namespace api_SIF.Controllers
 {
@@ -33,7 +34,7 @@ namespace api_SIF.Controllers
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest model)
         {
             bool isValidUser = true;
-            var user = _context.usuarios.FirstOrDefault(x=>x.user== model.userName);
+            var user = _context.usuarios.FirstOrDefault(x=>x.user== model.userName); 
             if (user == null || !(model.password.Equals(user.password)))
             {
                 isValidUser = false;
@@ -42,12 +43,13 @@ namespace api_SIF.Controllers
             {
                 return Unauthorized(); // El usuario no está autorizado
             }
-            var empleado = _context.empleados.FirstOrDefault(x => x.id_empleado == user.id_empleado);
-
+            var empleado = await _context.empleados.FirstOrDefaultAsync(x => x.id_empleado == user.id_empleado);
+            var area = await _context.areas.FirstOrDefaultAsync(x => x.id_area == empleado.id_area);
             var usuarioR = new UsuarioRequest();
             usuarioR.username = model.userName;
             //usuarioR.master = user.master;
             usuarioR.god = user.god;
+            usuarioR.departamento = area.id_departamento;
 
             usuarioR.nombre = empleado.nombre+ " "+empleado.apellidoPaterno;
             if(empleado.apellidoPaterno==null || empleado.apellidoPaterno == "")
@@ -64,7 +66,7 @@ namespace api_SIF.Controllers
             var jwtSettings = _configuration.GetSection("JwtSettings");
 
             DateTime expiracion_acceso = DateTime.UtcNow.AddDays(Convert.ToInt32(jwtSettings["ExpirationDays"]));
-            return Ok(new {token,usuarioR.id_empleado,usuarioR.no_empleado,usuarioR.id_sucursal,expiracion_acceso,usuarioR.god,usuarioR.nombre});
+            return Ok(new {token,usuarioR.id_empleado,usuarioR.no_empleado,usuarioR.id_sucursal,expiracion_acceso,usuarioR.god,usuarioR.nombre,usuarioR.departamento});
         }
         private string GenerateJwtTokenActualizacionExpiracion(string username)
         {
