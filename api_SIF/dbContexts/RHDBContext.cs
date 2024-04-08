@@ -86,6 +86,8 @@ namespace api_SIF.dbContexts
         public virtual DbSet<vacacione> vacaciones { get; set; }
         public virtual DbSet<vacacionesperiodo> vacacionesperiodos { get; set; }
         public virtual DbSet<plantillaSeguridad> plantillas { get; set; }
+        public virtual DbSet<bitacoraSeguridad> bitacoras{ get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -1092,6 +1094,14 @@ namespace api_SIF.dbContexts
             {
                 entity.HasKey(e => e.id_plantillaS)
                     .HasName("PRIMARY");
+            });
+
+            modelBuilder.Entity<bitacoraSeguridad>(entity =>
+            {
+                entity.HasKey(e => e.id_bitacoraS)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.relevante).HasDefaultValueSql("b'0'");
             });
 
             OnModelCreatingPartial(modelBuilder);
