@@ -27,6 +27,7 @@ namespace api_SIF.Controllers
 
         [HttpGet("{sucursal}/{from1}/{to}")]
         public async Task<ActionResult<bitacoraSeguridad>> GetBitacora(int sucursal, DateTime from1, DateTime to)
+
         {
 
             List<bitacoraSeguridad> check = (from c in _context.bitacoras
@@ -52,5 +53,21 @@ namespace api_SIF.Controllers
             bitacora.id_bitacoraS = Funciones.ObtenerUltimoId<bitacoraSeguridad>(_context); ;
             return Ok(new { id = bitacora.id_bitacoraS });
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutBitacora(int id, bitacoraSeguridad bitacora)
+        {
+            var entity = await _context.bitacoras.FirstOrDefaultAsync(item => item.id_bitacoraS == id);
+
+            // Validate entity is not null
+            if (entity != null)
+            {
+                entity.imagen = bitacora.imagen;
+                entity.relevante = bitacora.relevante;  
+                _context.SaveChanges();
+            }
+            return Ok();
+        }
+
     }
 }
