@@ -36,7 +36,7 @@ namespace api_SIF.Controllers
             return Ok(new { id = checada.id_checada });
         }
 
-        [HttpGet("/{sucursal}/{from1}/{to}")]
+        [HttpGet("{sucursal}/{from1}/{to}")]
         public async Task<ActionResult<IEnumerable<checada[]>>> GetChecadaSeguridad(int sucursal, DateOnly from1, DateOnly to)
         {
             List<checada>  check = await (from c in _context.checadas join a in _context.empleados on c.id_empleado equals a.id_empleado
