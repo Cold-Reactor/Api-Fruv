@@ -139,7 +139,7 @@ namespace api_SIF.Controllers
             return await empleadosLista.ToListAsync();
         //return await _context.empleados.ToListAsync();
     }
-    [HttpGet("Getempleados/{id_empresa}/{id_sucursal}/{id_departamento}/{id_area}/{id_turno}/{status}")]
+        [HttpGet("Getempleados/{id_empresa}/{id_sucursal}/{id_departamento}/{id_area}/{id_turno}/{status}")]
         public async Task<ActionResult<IEnumerable<requestEmpleado>>> Getempleados(int id_empresa, string id_sucursal, string id_departamento, string id_area, string id_turno,string status)
         {
             var empleadosLista = from x in _context.empleados.Where(x => x.id_empresa == id_empresa)
@@ -359,7 +359,7 @@ namespace api_SIF.Controllers
             {
                 return BadRequest();
             }
-            var emp1 = _context.empleados.FirstOrDefault(x => x.id_empleado == id_empleado);    
+            var emp1 = await _context.empleados.FirstOrDefaultAsync(x => x.id_empleado == id_empleado);    
 
             #region validacionesParaActualizarRegistros
             if (empleado.nombre != null && empleado.nombre.Length > 0)
@@ -483,54 +483,54 @@ namespace api_SIF.Controllers
             {
                 emp1.fechaIngreso = empleado.fechaIngreso;
             }
-                if (empleado.id_empresa != null && empleado.id_empresa > 0)
-                {
-                    emp1.id_empresa = empleado.id_empresa;
-                }
-                if (empleado.id_sucursal != null && empleado.id_sucursal > 0)
-                {
-                    emp1.id_sucursal = empleado.id_sucursal;
-                }
-                if (empleado.confianza != null )
-                {
-                    emp1.confianza = empleado.confianza;
-                }
-                //if (empleado.parentesco != null && empleado.parentesco.Length > 0)
-                //{
-                //    emp1.parentesco = empleado.parentesco;
-                //}
-                if (empleado.imagen != null && empleado.imagen.Length > 0)
-                {
-                    emp1.imagen = empleado.imagen;
-                }
-                if (empleado.bonoProd != null && empleado.bonoProd > 0)
-                {
-                    emp1.bonoProd = empleado.bonoProd;
-                }
-                if (empleado.firma != null && empleado.firma.Length > 0)
-                {
-                    emp1.firma = empleado.firma;
-                }
-                if (empleado.id_rol != null && empleado.id_rol > 0)
-                {
-                    emp1.id_rol = empleado.id_rol;
-                }
-                if (empleado.status != null)
-                {
-                    emp1.status = empleado.status;
-                }
-                if (empleado.externo != null)
-                {
-                    emp1.externo = empleado.externo;
-                }
-                if (empleado.id_area != null)
-                {
-                    emp1.id_area = empleado.id_area;
-                }
-                if(empleado.discapacidad != null)
+            if (empleado.id_empresa != null && empleado.id_empresa > 0)
             {
-                    emp1.discapacidad = empleado.discapacidad;
-                }
+                emp1.id_empresa = empleado.id_empresa;
+            }
+            if (empleado.id_sucursal != null && empleado.id_sucursal > 0)
+            {
+                emp1.id_sucursal = empleado.id_sucursal;
+            }
+            if (empleado.confianza != null )
+            {
+                emp1.confianza = empleado.confianza;
+            }
+            //if (empleado.parentesco != null && empleado.parentesco.Length > 0)
+            //{
+            //    emp1.parentesco = empleado.parentesco;
+            //}
+            if (empleado.imagen != null && empleado.imagen.Length > 0)
+            {
+                emp1.imagen = empleado.imagen;
+            }
+            if (empleado.bonoProd != null && empleado.bonoProd > 0)
+            {
+                emp1.bonoProd = empleado.bonoProd;
+            }
+            if (empleado.firma != null && empleado.firma.Length > 0)
+            {
+                emp1.firma = empleado.firma;
+            }
+            if (empleado.id_rol != null && empleado.id_rol > 0)
+            {
+                emp1.id_rol = empleado.id_rol;
+            }
+            if (empleado.status != null)
+            {
+                emp1.status = empleado.status;
+            }
+            if (empleado.externo != null)
+            {
+                emp1.externo = empleado.externo;
+            }
+            if (empleado.id_area != null)
+            {
+                emp1.id_area = empleado.id_area;
+            }
+            if(empleado.discapacidad != null)
+            {
+                emp1.discapacidad = empleado.discapacidad;
+            }
 
             #endregion
 
@@ -539,7 +539,7 @@ namespace api_SIF.Controllers
 
 
             _context.empleados.Update(emp1);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok();
         }

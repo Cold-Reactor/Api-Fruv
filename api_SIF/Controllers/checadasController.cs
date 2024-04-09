@@ -272,7 +272,7 @@ namespace api_SIF.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Putchecada(int id, checada checada)
         {
-            var entity = _context.checadas.FirstOrDefault(item => item.id_checada == id);
+            var entity = await _context.checadas.FirstOrDefaultAsync(item => item.id_checada == id);
 
             // Validate entity is not null
             if (entity != null)
@@ -280,7 +280,7 @@ namespace api_SIF.Controllers
                 entity.fecha = checada.fecha;                
                 entity.hora = checada.hora;
                 entity.nomina = checada.nomina;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             return Ok();
         }

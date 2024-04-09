@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,10 +51,19 @@ namespace api_SIF.Controllers
         [HttpPost]
         public async Task<ActionResult<bitacoraSeguridad[]>> PostBitacora(bitacoraSeguridad bitacora)
         {
-            _context.bitacoras.Add(bitacora);
+            var emp1 = new bitacoraSeguridad
+            {
+                id_bitacoraS =bitacora.id_bitacoraS,
+                fecha = bitacora.fecha,
+                descripcion  = bitacora.descripcion,
+                imagen  = bitacora.imagen,
+                relevante = bitacora.relevante,
+                registro =bitacora.registro
+            };
+            _context.bitacoras.Add(emp1);
             await _context.SaveChangesAsync();
-            bitacora.id_bitacoraS = Funciones.ObtenerUltimoId<bitacoraSeguridad>(_context); ;
-            return Ok(new { id = bitacora.id_bitacoraS });
+            emp1.id_bitacoraS = Funciones.ObtenerUltimoId<bitacoraSeguridad>(_context); ;
+            return Ok(new { id = emp1.id_bitacoraS });
         }
 
         [HttpPut("{id}")]
