@@ -16,7 +16,6 @@ namespace api_SIF.Models.EmpleadosN
         [Required]
         [Column(TypeName = "text")]
         public string descripcion { get; set; }
-        [MaxLength(1000)]
         public string imagen { get; set; }
         [Column(TypeName = "int(1)")]
         public int? relevante { get; set; }
