@@ -73,7 +73,7 @@ namespace api_SIF.Controllers
                 date1= date1.AddDays(1);
 
             }
-            List<requestCheck> check = (from c in _context.checadas
+            List<requestCheck> check = await (from c in _context.checadas
                                          where c.fecha >=from1 && c.fecha<=to
                                          select new requestCheck
                                          {
@@ -85,7 +85,7 @@ namespace api_SIF.Controllers
                                              nomina = (int)c.nomina,
                                              id_empleado = c.id_empleado
 
-                                         }).ToList();
+                                         }).ToListAsync();
             check = check.OrderBy(x => x.hora).ToList();
             List<requestChecadaCheck> checadas1 = new List<requestChecadaCheck>();
             var turnos = (from p in _context.turnos
@@ -101,7 +101,7 @@ namespace api_SIF.Controllers
                           }
                          ).ToList();
                          ;
-            var empleados = (from p in _context.empleados
+            var empleados = await (from p in _context.empleados
                              join a in _context.areas on p.id_area equals a.id_area into joinedTable
                              from a in joinedTable.DefaultIfEmpty()
                              where p.status == 1 && p.id_sucursal == sucursal
@@ -118,7 +118,7 @@ namespace api_SIF.Controllers
                                  confianza = (int)p.confianza,
                                  fechaIngreso = p.fechaIngreso,
                                  salarioDiario = p.salarioDiario
-                             }).ToList();
+                             }).ToListAsync();
 
             if (int.TryParse(no_empleado, out int result1))
             {

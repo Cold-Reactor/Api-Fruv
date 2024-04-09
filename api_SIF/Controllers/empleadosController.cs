@@ -220,16 +220,15 @@ namespace api_SIF.Controllers
         {
             try
             {
-                int maximoValor = _context.empleados
+                int maximoValor = await _context.empleados
             .Where(e => e.id_sucursal == id_sucursal)
-            .Max(e => e.no_empleado);
+            .MaxAsync(e => e.no_empleado);
                 return Ok(new {no_empleado= maximoValor + 1 });
             }
             catch (Exception e) {
                 return Ok(new { no_empleado = 0 });
             }
         }
-
 
         // GET: api/empleados/5
         [HttpGet("{id}")]
@@ -296,7 +295,7 @@ namespace api_SIF.Controllers
         [HttpGet("{noEmpleado}/{id_sucursal}")]
         public async Task<ActionResult<requestEmpleado>> Getempleado(int noEmpleado,int id_sucursal)
         {
-            var x = _context.empleados.FirstOrDefault(x => x.no_empleado == noEmpleado && x.id_sucursal == id_sucursal);
+            var x = await _context.empleados.FirstOrDefaultAsync(x => x.no_empleado == noEmpleado && x.id_sucursal == id_sucursal);
             if (x == null)
             {
                 return new requestEmpleado();
@@ -676,9 +675,9 @@ namespace api_SIF.Controllers
         {
             try
             {
-                int maximoValor = _context.empleados
+                int maximoValor = await _context.empleados
             .Where(e => e.id_sucursal == id_sucursal && e.id_empresa == id_empresa)
-            .Max(e => e.no_empleado);
+            .MaxAsync(e => e.no_empleado);
                 return Ok(new { no_empleado = maximoValor + 1 });
             }
             catch (Exception e)
@@ -743,9 +742,5 @@ namespace api_SIF.Controllers
 
             return await empleadosLista.ToListAsync();
         }
-
-        
-        
-        
     }
 }

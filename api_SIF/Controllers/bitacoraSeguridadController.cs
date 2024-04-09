@@ -33,7 +33,7 @@ namespace api_SIF.Controllers
 
         {
 
-            List<bitacoraSeguridad> check = (from c in _context.bitacoras
+            List<bitacoraSeguridad> check =  await (from c in _context.bitacoras
                                              join a in _context.empleados on c.registro equals a.id_empleado
                                              where c.fecha >= from1 && c.fecha <= to && a.id_sucursal == sucursal
                                              select new bitacoraSeguridad
@@ -45,7 +45,7 @@ namespace api_SIF.Controllers
                                                  relevante = c.relevante,
                                                  registro = c.registro
 
-                                             }).ToList();
+                                             }).ToListAsync();
             return Ok(check);
         }
         [HttpPost]

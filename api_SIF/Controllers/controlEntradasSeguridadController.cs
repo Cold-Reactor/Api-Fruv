@@ -27,7 +27,7 @@ namespace api_SIF.Controllers
             _context = context;
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult<checada>> PostChecadaSeguridad(checada checada)
         {
             _context.checadas.Add(checada);
@@ -39,7 +39,7 @@ namespace api_SIF.Controllers
         [HttpGet("/{sucursal}/{from1}/{to}")]
         public async Task<ActionResult<IEnumerable<checada[]>>> GetChecadaSeguridad(int sucursal, DateOnly from1, DateOnly to)
         {
-            List<checada> check = (from c in _context.checadas join a in _context.empleados on c.id_empleado equals a.id_empleado
+            List<checada>  check = await (from c in _context.checadas join a in _context.empleados on c.id_empleado equals a.id_empleado
                                    where c.fecha >= from1 && c.fecha <= to && a.id_sucursal == sucursal && c.id_checador == 5
                                    select new checada
                                    {
@@ -51,9 +51,8 @@ namespace api_SIF.Controllers
                                      hora =c.hora,
                                      nomina =c.nomina,
 
-                                   }).ToList();
+                                   }).ToListAsync();
             return Ok(check);
-
         }
     }
 }
